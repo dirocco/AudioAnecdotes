@@ -97,7 +97,7 @@ float FIR_filter(float newsample, RingBuffer &samples, CoefBuffer &coeff)
    samples.pop_back();
    samples.push_front(newsample);
 
-#ifdef DEBUG
+#ifdef DEBUGPRINT
    printf("got %f - ", newsample);
    for(int i = 0; i < samples.size(); i++)
       printf("%f ",samples[i]);
