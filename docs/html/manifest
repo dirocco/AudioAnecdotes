@@ -9,6 +9,7 @@ src_v1 08HumanExperience.html    src_v1.tar Volume1/docs/html/08HumanExperience.
 src_v1 main.html                 src_v1.tar Volume1/docs/html/main.html
 src_v1 head.html                 src_v1.tar Volume1/docs/html/head.html
 src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
+src_v1 build.html                src_v1.tar Volume1/docs/html/build.html
 
 src_v1 images/minus.gif          src_v1.tar Volume1/docs/html/images/minus.gif
 src_v1 images/plus.gif           src_v1.tar Volume1/docs/html/images/plus.gif
