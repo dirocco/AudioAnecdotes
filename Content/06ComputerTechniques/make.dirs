@@ -1,0 +1,7 @@
+# make.dirs : holds a list of directories to be built
+#
+
+CHILDDIRS= \
+	1Greenebaum-API \
+	2Greenebaum-Test \
+	3Greenebaum-Files

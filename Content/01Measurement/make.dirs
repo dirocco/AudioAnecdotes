@@ -1,0 +1,5 @@
+# make.dirs : holds a list of directories to be built
+#
+
+CHILDDIRS= \
+	01Greenebaum
