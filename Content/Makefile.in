@@ -10,5 +10,6 @@
 #
 
 CHILDDIRS= Example\
+	   David_Thiel
 
 include @MAKEINCLUDESDIR@/build.root.make.inc

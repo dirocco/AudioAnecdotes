@@ -6,7 +6,8 @@
 #
 
 #subdirectories of the directory
-SUBDIRS=Example
+SUBDIRS=Example \
+	David_Thiel
 
 #the path to the directory which contains configure for this directory
 CONFIGROOT=.
