@@ -10,5 +10,4 @@ CHILDDIRS= \
 	04Synthesis \
 	05SignalProcessing \
 	06ComputerTechniques \
-	07ComputerTools \
-	Example
+	07ComputerTools
