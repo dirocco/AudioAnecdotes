@@ -12,7 +12,7 @@ CHILDDIRS= \
 	   05Malvar\
 	   06Greenebaum-API\
 	   06Greenebaum-Test\
-	   Example\
+	   07Greenebaum-PABLIO\
 	   Phil_Burk
 
 #	05Luna
