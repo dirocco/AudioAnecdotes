@@ -21,7 +21,8 @@ LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
 SOURCES = \
-	sineMask.c
+	sineMask.c \
+	sineMaski.c
 
 CHILDDIRS =
 

@@ -6,6 +6,10 @@ src_v1       sineMask.c   src_v1.tar       Volume1/Content/05SignalProcessing/1M
 src_v1       Makefile.in  src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/Makefile.in
 src_v1       config.mak   src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/config.mak
 
-bin_v1_win   sineMask.exe bin_v1_win.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMask.exe
-bin_v1_mac   sineMask     bin_v1_mac.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMask
-bin_v1_linux sineMask     bin_v1_linux.tar Volume1/Content/05SignalProcessing/1Malvar/sineMask
+bin_v1_win   sineMask.exe  bin_v1_win.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMask.exe
+bin_v1_mac   sineMask      bin_v1_mac.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMask
+bin_v1_linux sineMask      bin_v1_linux.tar Volume1/Content/05SignalProcessing/1Malvar/sineMask
+
+bin_v1_win   sineMaski.exe bin_v1_win.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMaski.exe
+bin_v1_mac   sineMaski     bin_v1_mac.tar   Volume1/Content/05SignalProcessing/1Malvar/sineMaski
+bin_v1_linux sineMaski     bin_v1_linux.tar Volume1/Content/05SignalProcessing/1Malvar/sineMaski
