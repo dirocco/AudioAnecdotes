@@ -14,12 +14,14 @@
 
 #include <stdio.h>
 
-#if defined(WIN32)
-#define GNUPLOT_PROGRAM "pgnuplot.exe"
-#else
-//#define GNUPLOT_PROGRAM "gnuplot"
-#define GNUPLOT_PROGRAM "pgnuplot.exe"
-#endif
+#define GNUPLOT_PROGRAM "pgnuplot"
+
+// #if defined(WIN32)
+// #define GNUPLOT_PROGRAM "pgnuplot.exe"
+// #else
+// //#define GNUPLOT_PROGRAM "gnuplot"
+// #define GNUPLOT_PROGRAM "pgnuplot.exe"
+// #endif
 
 #define GNUPLOT_MAX_STREAMS     15
 #define GNUPLOT_MAX_TITLE_LEN   80
