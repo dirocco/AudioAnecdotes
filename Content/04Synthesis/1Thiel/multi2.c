@@ -63,9 +63,9 @@ int main(int argc, char* argv[])
    unsigned  char DelayCount;
 
    unsigned short WavePointer,PointerIncrement;
-   int i,bufferIndex,lw = 0;
+   int i,lw = 0;
    unsigned char DACOutput;
-   unsigned char buffer[NUM_FRAMES];
+   unsigned short buffer[NUM_FRAMES];
    PABLIO_Stream *outStream;
    PaError result;
 
@@ -91,9 +91,8 @@ int main(int argc, char* argv[])
    Magnitude = (VolumeInit << 8) + VolumeInit;
    WidthRamp = 0x0707;
    NotDone = 1;
-   result = OpenAudioStream(&outStream, SAMPLE_RATE, paUInt8, 
+   result = OpenAudioStream(&outStream, SAMPLE_RATE, paInt16, 
       PABLIO_WRITE|PABLIO_MONO);
-   bufferIndex= 0;	//bufferIndex will hold the index of buffer
 
    while(NotDone) {
       if( (WavePointer >> 8) < AddSubPoint ) {
@@ -140,16 +139,10 @@ int main(int argc, char* argv[])
 	 DACOutput ^= 0xff;	//invert it
       }
 
-      buffer[bufferIndex++] = DACOutput;
-      // printf("%d\n", (short)OutputFormat);
-      if (bufferIndex >= NUM_FRAMES){
-	 WriteAudioStream(outStream, buffer, NUM_FRAMES);
-	 bufferIndex=0;
-      }
+      buffer[0] = (short)(DACOutput<<8);
+      WriteAudioStream(outStream, buffer, 1);
    }
 
-   if (bufferIndex!=0)
-      WriteAudioStream(outStream, buffer, bufferIndex+1);
    sleep(2);
    CloseAudioStream(outStream);
 }
