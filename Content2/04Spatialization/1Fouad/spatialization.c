@@ -168,11 +168,11 @@ int main(int argc, char *argv[])
 	 case '1': required=2; mode=PAN1D;   break;
 	 case '2': required=2; mode=PAN2D;   break;
 	 default:
-	    fprintf(stderr, "unknown argument %s\n");
+	    fprintf(stderr, "unknown argument %s\n", argv[1]);
 	    usage(argv[0]);
       }
 
-      printf("argc=%d, required=%d\n", argc, required);
+      // printf("argc=%d, required=%d\n", argc, required);
 
       if(argc!=(required+2)) {
 	 fprintf(stderr, "%s %s requires %d arguments\n", 
@@ -181,9 +181,9 @@ int main(int argc, char *argv[])
       } 
 
       int i;
-      for(i=1; i <= required; i++) {
-	 value[i-required]=atof(argv[i-required+2]);
-	 fprintf(stderr, "got (%s)=%f\n", argv[i-required+2], value[i-required]);
+      for(i=0; i < required; i++) {
+	 value[i]=atof(argv[i+2]);
+	 // fprintf(stderr, "got value[%d]=(%s)=%f\n", i,argv[i+2], value[i]);
       }
 
       switch(mode)  {
