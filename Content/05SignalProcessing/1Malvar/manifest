@@ -3,6 +3,7 @@ src_v1       hthres.m     src_v1.tar       Volume1/Content/05SignalProcessing/1M
 src_v1       thrabs.m     src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/thrabs.m
 
 src_v1       sineMask.c   src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/sineMask.c
+src_v1       sineMaski.c   src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/sineMaski.c
 src_v1       Makefile.in  src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/Makefile.in
 src_v1       config.mak   src_v1.tar       Volume1/Content/05SignalProcessing/1Malvar/config.mak
 
