@@ -31,4 +31,7 @@ CPPSOURCES = \
 
 EXECS=modulator$(EXEEXT) demodulator$(EXEEXT) channel$(EXEEXT)
 
+LOCALCLEAN= channel@EXEEXT@ demodulator@EXEEXT@ modulator@EXEEXT@ \
+      channel.@OBJEXT@ demodulator.@OBJEXT@ modulator.@OBJEXT@
+
 include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
