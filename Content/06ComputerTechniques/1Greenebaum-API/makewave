@@ -1,5 +1,0 @@
-all: passthruw.exe
-
-
-passthruw.exe : passthru-wav.c
-	gcc passthru-wav.c -l winmm -o passthruw.exe
