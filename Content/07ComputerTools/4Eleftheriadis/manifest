@@ -1,3 +1,3 @@
-src_v1 data_packing.c src_v1.tar Volume1/Authors/07ComputerTools/4Eleftheriadis/data_packing.c 
-src_v1 hellobits.c    src_v1.tar Volume1/Authors/07ComputerTools/4Eleftheriadis/hellobits.c 
-src_v1 snippets.c     src_v1.tar Volume1/Authors/07ComputerTools/4Eleftheriadis/snippets.c 
+src_v1 data_packing.c src_v1.tar Volume1/Content/07ComputerTools/4Eleftheriadis/data_packing.c 
+src_v1 hellobits.c    src_v1.tar Volume1/Content/07ComputerTools/4Eleftheriadis/hellobits.c 
+src_v1 snippets.c     src_v1.tar Volume1/Content/07ComputerTools/4Eleftheriadis/snippets.c 

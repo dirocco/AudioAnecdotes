@@ -1,2 +1,2 @@
-src_v1 Makefile.in src_v1.tar Volume1/Authors/05SignalProcessing/3Luna/Makefile.in
-src_v1 config.mak  src_v1.tar Volume1/Authors/05SignalProcessing/3Luna/config.mak
+src_v1 Makefile.in src_v1.tar Volume1/Content/05SignalProcessing/3Luna/Makefile.in
+src_v1 config.mak  src_v1.tar Volume1/Content/05SignalProcessing/3Luna/config.mak

@@ -1,22 +1,22 @@
-src_v1		Makefile.in	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/Makefile.in
-src_v1		config.mak	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/config.mak
-src_v1		mandolin.c	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/mandolin.c
-src_v1		clarinet.c	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/clarinet.c
-src_v1		mass_spring.c	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/mass_spring.c
-src_v1		string.c	src_v1.tar	 Volume1/Authors/04Synthesis/2Cook/string.c
+src_v1		Makefile.in	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/Makefile.in
+src_v1		config.mak	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/config.mak
+src_v1		mandolin.c	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/mandolin.c
+src_v1		clarinet.c	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/clarinet.c
+src_v1		mass_spring.c	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/mass_spring.c
+src_v1		string.c	src_v1.tar	 Volume1/Content/04Synthesis/2Cook/string.c
 
-bin_v1_win	mandolin.exe	bin_v1_win.tar	 Volume1/Authors/04Synthesis/2Cook/mandolin.exe
-bin_v1_mac	mandolin	bin_v1_mac.tar	 Volume1/Authors/04Synthesis/2Cook/mandolin
-bin_v1_linux	mandolin	bin_v1_linux.tar Volume1/Authors/04Synthesis/2Cook/mandolin
+bin_v1_win	mandolin.exe	bin_v1_win.tar	 Volume1/Content/04Synthesis/2Cook/mandolin.exe
+bin_v1_mac	mandolin	bin_v1_mac.tar	 Volume1/Content/04Synthesis/2Cook/mandolin
+bin_v1_linux	mandolin	bin_v1_linux.tar Volume1/Content/04Synthesis/2Cook/mandolin
 
-bin_v1_win	clarinet.exe	bin_v1_win.tar	 Volume1/Authors/04Synthesis/2Cook/clarinet.exe
-bin_v1_mac	clarinet	bin_v1_mac.tar	 Volume1/Authors/04Synthesis/2Cook/clarinet
-bin_v1_linux	clarinet	bin_v1_linux.tar Volume1/Authors/04Synthesis/2Cook/clarinet
+bin_v1_win	clarinet.exe	bin_v1_win.tar	 Volume1/Content/04Synthesis/2Cook/clarinet.exe
+bin_v1_mac	clarinet	bin_v1_mac.tar	 Volume1/Content/04Synthesis/2Cook/clarinet
+bin_v1_linux	clarinet	bin_v1_linux.tar Volume1/Content/04Synthesis/2Cook/clarinet
 
-bin_v1_win	mass_spring.exe	bin_v1_win.tar	 Volume1/Authors/04Synthesis/2Cook/mass_spring.exe
-bin_v1_mac	mass_spring	bin_v1_mac.tar	 Volume1/Authors/04Synthesis/2Cook/mass_spring
-bin_v1_linux	mass_spring	bin_v1_linux.tar Volume1/Authors/04Synthesis/2Cook/mass_spring
+bin_v1_win	mass_spring.exe	bin_v1_win.tar	 Volume1/Content/04Synthesis/2Cook/mass_spring.exe
+bin_v1_mac	mass_spring	bin_v1_mac.tar	 Volume1/Content/04Synthesis/2Cook/mass_spring
+bin_v1_linux	mass_spring	bin_v1_linux.tar Volume1/Content/04Synthesis/2Cook/mass_spring
 
-bin_v1_win	string.exe	bin_v1_win.tar	 Volume1/Authors/04Synthesis/2Cook/string.exe
-bin_v1_mac	string		bin_v1_mac.tar	 Volume1/Authors/04Synthesis/2Cook/string
-bin_v1_linux	string		bin_v1_linux.tar Volume1/Authors/04Synthesis/2Cook/string
+bin_v1_win	string.exe	bin_v1_win.tar	 Volume1/Content/04Synthesis/2Cook/string.exe
+bin_v1_mac	string		bin_v1_mac.tar	 Volume1/Content/04Synthesis/2Cook/string
+bin_v1_linux	string		bin_v1_linux.tar Volume1/Content/04Synthesis/2Cook/string

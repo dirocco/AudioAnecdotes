@@ -1,17 +1,17 @@
-src_v1		Makefile.in		src_v1.tar	Volume1/Authors/04Synthesis/4Thiel/Makefile.in
-src_v1		config.mak		src_v1.tar	Volume1/Authors/04Synthesis/4Thiel/config.mak
-src_v1		FilteredNoise3.c	src_v1.tar	Volume1/Authors/04Synthesis/4Thiel/FilteredNoise3.c
-src_v1		RockGuitar.c		src_v1.tar	Volume1/Authors/04Synthesis/4Thiel/RockGuitar.c
-src_v1		multi2.c		src_v1.tar	Volume1/Authors/04Synthesis/4Thiel/multi2.c
+src_v1		Makefile.in		src_v1.tar	Volume1/Content/04Synthesis/4Thiel/Makefile.in
+src_v1		config.mak		src_v1.tar	Volume1/Content/04Synthesis/4Thiel/config.mak
+src_v1		FilteredNoise3.c	src_v1.tar	Volume1/Content/04Synthesis/4Thiel/FilteredNoise3.c
+src_v1		RockGuitar.c		src_v1.tar	Volume1/Content/04Synthesis/4Thiel/RockGuitar.c
+src_v1		multi2.c		src_v1.tar	Volume1/Content/04Synthesis/4Thiel/multi2.c
 
-bin_v1_win	FilteredNoise3.exe	bin_v1_win.tar	Volume1/Authors/04Synthesis/4Thiel/FilteredNoise3.exe
-bin_v1_mac	FilteredNoise3		bin_v1_mac.tar	Volume1/Authors/04Synthesis/4Thiel/FilteredNoise3
-bin_v1_linux	FilteredNoise3		bin_v1_linux.tar Volume1/Authors/04Synthesis/4Thiel/FilteredNoise3
+bin_v1_win	FilteredNoise3.exe	bin_v1_win.tar	Volume1/Content/04Synthesis/4Thiel/FilteredNoise3.exe
+bin_v1_mac	FilteredNoise3		bin_v1_mac.tar	Volume1/Content/04Synthesis/4Thiel/FilteredNoise3
+bin_v1_linux	FilteredNoise3		bin_v1_linux.tar Volume1/Content/04Synthesis/4Thiel/FilteredNoise3
 
-bin_v1_win	RockGuitar.exe		bin_v1_win.tar	Volume1/Authors/04Synthesis/4Thiel/RockGuitar.exe
-bin_v1_mac	RockGuitar		bin_v1_mac.tar	Volume1/Authors/04Synthesis/4Thiel/RockGuitar
-bin_v1_linux	RockGuitar		bin_v1_linux.tar Volume1/Authors/04Synthesis/4Thiel/RockGuitar
+bin_v1_win	RockGuitar.exe		bin_v1_win.tar	Volume1/Content/04Synthesis/4Thiel/RockGuitar.exe
+bin_v1_mac	RockGuitar		bin_v1_mac.tar	Volume1/Content/04Synthesis/4Thiel/RockGuitar
+bin_v1_linux	RockGuitar		bin_v1_linux.tar Volume1/Content/04Synthesis/4Thiel/RockGuitar
 
-bin_v1_win	multi2.exe		bin_v1_win.tar	Volume1/Authors/04Synthesis/4Thiel/multi2.exe
-bin_v1_mac	multi2			bin_v1_mac.tar	Volume1/Authors/04Synthesis/4Thiel/multi2
-bin_v1_linux	multi2			bin_v1_linux.tar Volume1/Authors/04Synthesis/4Thiel/multi2
+bin_v1_win	multi2.exe		bin_v1_win.tar	Volume1/Content/04Synthesis/4Thiel/multi2.exe
+bin_v1_mac	multi2			bin_v1_mac.tar	Volume1/Content/04Synthesis/4Thiel/multi2
+bin_v1_linux	multi2			bin_v1_linux.tar Volume1/Content/04Synthesis/4Thiel/multi2
