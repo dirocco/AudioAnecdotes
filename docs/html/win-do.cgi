@@ -74,7 +74,7 @@ fi
 # fixup arguments 
 a=`echo $3 | /bin/sed 's/_/ /g | \
              /bin/sed 's/+/\//g' \
-             /bin/sed 's/%22/\"/g' `
+             /bin/sed 's/|/\"/g' `
 # echo a:[$a] >> /tmp/log
 
 
