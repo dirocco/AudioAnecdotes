@@ -21,7 +21,8 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
-foo=`echo $QUERY_STRING | /bin/sed 's/&/ /g' | /bin/sed 's/\.\.//g'`
+foo=`echo $QUERY_STRING | /bin/sed 's/%20/ /g' | /bin/sed 's/\.\.//g'`
+IFS='&'
 set -- $foo
 
 # root ourselves in the content directory
@@ -63,7 +64,7 @@ if [ $xworked -eq 1 ]; then
    list="xterm /usr/bin/X11/xterm /usr/X11R6/bin/xterm"
    (
       for prog in $list; do
-	 $prog -e ./$2 $3 2>> /tmp/log
+	 $prog -e ./$2 $3 $4 $5 2>> /tmp/log
 
 	 if [ $? -eq 0 ]; then
 	    break;  # no need to run others
@@ -71,7 +72,7 @@ if [ $xworked -eq 1 ]; then
       done
    )&
 else # skip the xterm and just run in the background
-   ./$2 $3 &
+   ./$2 $3 $4 $5 &
 fi
 
 echo Ho >> /tmp/log
