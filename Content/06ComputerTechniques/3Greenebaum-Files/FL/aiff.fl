@@ -111,17 +111,9 @@ class AIFCCommonChunkExt {
  * Contains the actual data.
  *
  */
-class SoundChunk(unsigned int sampleSize) {
+class SoundChunk {
     int(32)             ckID            = SSND_ID;
     int(32)             ckSize;
-    
-%pragma array=10000000, notrace
-    if (sampleSize == 32)
-	    int(32)             data[ckSize/4];
-    else if (sampleSize == 16)
-	    int(16)             data[ckSize/2];
-    else
-	    int(8)              data[ckSize];
 }
 
 %pragma trace
@@ -150,7 +142,6 @@ class AIFF {
     int(32)             formType;
 
 	bit isInvalid_id = 0;
-    unsigned int sampleSize = 8;
 	do {
 		// Read ahead
 		signed int(32)* id;
@@ -161,10 +152,10 @@ class AIFF {
             if (formType == AIFC_ID) {
                 AIFCCommonChunkExt ckCommonExt;
             } 
-            sampleSize = ckCommon.sampleSize;
 			break;
 		case SSND_ID:
-			SoundChunk ckSound(sampleSize);
+			SoundChunk ckSound;
+			isInvalid_id = 1;
 			break;
         case MARK_ID:
         case INST_ID:

@@ -96,3 +96,29 @@ class Audio {
         Raw8 raw;
     }
 }
+
+
+class SampleData(Audio audio) {
+
+%pragma notrace
+
+    unsigned int data;
+    if (audio.magic == 0x52494646) {    // "RIFF"   -- WAV Format
+        if (audio.sound.bytesPerSample == 4)
+            little int(32)        ldata;
+        else if (audio.sound.bytesPerSample == 2)
+            little int(16)        ldata;
+        else
+            little int(8)         ldata;
+        data = ldata;
+    }
+    else {
+        if (audio.sound.bytesPerSample == 4)
+            int(32)        bdata;
+        else if (audio.sound.bytesPerSample == 2)
+            int(16)        bdata;
+        else
+            int(8)         bdata;
+        data = bdata;
+    }
+}

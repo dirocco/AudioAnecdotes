@@ -59,12 +59,4 @@ class Header {
  */
 class AU {
     Header hd;
-  
-%pragma array=10000000, notrace
-    if (hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_32)
-        int(32) data[hd.dataSize/4];
-    else if (hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_16)
-        int(16) data[hd.dataSize/2];
-    else
-        int(8)  data[hd.dataSize];
 }

@@ -29,7 +29,7 @@
 #include "pablio.h"
 
 
-void play(PCMsound *sound, unsigned char *data)
+void play(PCMsound *sound, void *data)
 {
     PABLIO_Stream  *outStream;
     PaSampleFormat format;
@@ -63,8 +63,6 @@ void usage(void)
 
 int main(int argc, char *argv[])
 {
-    char * option;
-
     if (argc != 2) {
         usage();
         return 1;
@@ -92,45 +90,29 @@ int main(int argc, char *argv[])
         }
 #endif
 
-        unsigned char *data;
-
-        switch (audio.magic) {
-
-        case 0x464F524D:    // "FORM"   -- AIFF/AIFC Format
-            data = (unsigned char *) audio.aiff->ckSound->data;
-            break;
-
-        case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
-            data = (unsigned char *) audio.au->data;
-            break;
-
-        case 0x52494646:    // "RIFF"   -- WAV Format
-            data = (unsigned char *) audio.wav->ckData->data;
-            break;
-
-        default:            // Raw Format
-            fprintf(stderr, "Unrecognized audio file format: 0x%08x\n", audio.magic);
-            exit(1);
-        }
-
 		printf("bytes per sample:  %d\n", audio.sound->bytesPerSample);
 		printf("samples per frame: %d\n", audio.sound->samplesPerFrame);
 		printf("frames per second: %d\n", audio.sound->framesPerSecond);
 		printf("bytes of data:     %d\n", audio.sound->bytes);
 
+        SampleData sample;
+        void *data = (void *) new char[audio.sound->bytes];
+
         // pack the 4 bytes per sample data into the right number of bytes
-        for (int i = 0,j = 0; i < audio.sound->bytes; i += audio.sound->bytesPerSample, j++) {
-            void *dest = (char *) data + i;
-            int sample = *((int  *) data + j);
+        for (int i = 0; i < audio.sound->bytes / audio.sound->bytesPerSample; i++) {
+            sample.get(bs,&audio);
+
             if (audio.sound->bytesPerSample == 1)
-                *((char *) dest) = (char) sample;
+                *((char *) data + i) = (char) sample.data;
             else if (audio.sound->bytesPerSample == 2)
-                *((short *) dest) = (short) sample;
+                *((short *) data + i) = (short) sample.data;
             else if (audio.sound->bytesPerSample == 4)
-                *((int *) dest) = (int) sample;
+                *((int *) data + i) = (int) sample.data;
         }
 
         play(audio.sound, data);
+
+        delete[] (char *) data;
     }
 
     // Done
