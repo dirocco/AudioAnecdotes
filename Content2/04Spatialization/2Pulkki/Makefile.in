@@ -21,6 +21,6 @@ LOCALLINK=@LOCALLINK@
 
 
 
-SOURCES = vbap.c
+SOURCES = vbap-stream.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
