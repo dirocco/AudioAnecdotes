@@ -6,7 +6,7 @@ CPP=../../bin/cpp.pl
 
 TARGETS=linux-do.cgi win-do.cgi mac-do.cgi \
 debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi \
-06win.html 06unix.html
+06win.html 06unix.html head1.html head2.html main1.html main2.html
 
 all: $(TARGETS)
 
@@ -36,6 +36,18 @@ mac-do.cgi: do.cgi
 
 06unix.html: 06ComputerTechniques.html
 	$(CPP) 06ComputerTechniques.html > 06unix.html
+
+head1.html: head.html
+	$(CPP) head.html -D CD1 > head1.html
+
+head2.html: head.html
+	$(CPP) head.html -D CD2 > head2.html
+
+main1.html: main.html
+	$(CPP) main.html -D CD1 > main1.html
+
+main2.html: main.html
+	$(CPP) main.html -D CD2 > main2.html
 
 clean:
 	rm -f linux-do.cgi win-do.cgi mac-do.cig

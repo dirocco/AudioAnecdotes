@@ -2,7 +2,12 @@
 
 <head>
 
+#ifdef CD1
 <title>Audio Anecdotes Volume 1</title>
+#endif
+#ifdef CD2
+<title>Audio Anecdotes Volume 2</title>
+#endif
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
@@ -22,7 +27,12 @@
 			<h1><img border="0" src="./images/title02.gif" alt="Audio Anecdotes" width="475" height="70"></h1>
 		</td>
 		<td width="50%" valign="middle" align="right">
+#ifdef CD1
 			<h1>Volume 1</h1>
+#endif
+#ifdef CD2
+			<h1>Volume 2</h1>
+#endif
 		</td>
 	</tr>
 </table>
