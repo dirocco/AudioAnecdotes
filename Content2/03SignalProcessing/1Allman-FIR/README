@@ -1,0 +1,9 @@
+rawfile2stream thought.raw | playstream.exe
+
+or
+
+rawfile2stream thought.raw | fir2 | playstream.exe
+
+
+coefs.txt 31st order dsplay designed FIR lowpass 8000Hz cutoff
+rectangular window 44100Hz sampling rate...
