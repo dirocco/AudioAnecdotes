@@ -14,10 +14,10 @@ including the PABLIO audio library</title>
  <o:DocumentProperties>
   <o:Author>Ken Greenebaum</o:Author>
   <o:LastAuthor>Ken Greenebaum</o:LastAuthor>
-  <o:Revision>2</o:Revision>
-  <o:TotalTime>70</o:TotalTime>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>90</o:TotalTime>
   <o:Created>2003-10-26T22:37:00Z</o:Created>
-  <o:LastSaved>2003-10-26T22:37:00Z</o:LastSaved>
+  <o:LastSaved>2003-10-26T23:26:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
   <o:Words>623</o:Words>
   <o:Characters>3556</o:Characters>
@@ -100,66 +100,70 @@ div.Section1
 <div class=Section1>
 
 <p class=MsoPlainText><b style='mso-bidi-font-weight:normal'><span
-style='font-size:12.0pt;font-family:Arial'>Building Audio Anecdotes<o:p></o:p></span></b></p>
+style='font-size:12.0pt;font-family:Arial'>Building Audio&nbsp;Anecdotes<o:p></o:p></span></b></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>This document describes
-how to build Audio Anecdotes example code including the PABLIO audio library.
-This document assumes that the source code has already been installed to a
-writeable file-system on your computer from the CD using either the provided
-installer or the manual tarball installation method and that a POSIX tool chain
-is available on your machine (Linux and MacOSX distributions include these
-tools, for Windows the Cygwin environment is distributed on the Audio Anecdotes
+how to build <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
+example code including the PABLIO audio library. This document assumes that the
+source code has already been installed to a writeable file-system on your
+computer from the CD using either the provided installer or the manual tarball
+installation method and that a POSIX tool chain is available on your machine
+(Linux and MacOSX distributions include these tools, for Windows the Cygwin
+environment is distributed on the <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
 CD and is installed by default)<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>Audio Anecdotes’ build
-process is a traditional recursive build making use of make and GNU Autotools
-to provide an automatic build on our supported platforms: (Windows/Cygwin,
-Linux and MacOSX).<span style='mso-spacerun:yes'>  </span>Audio Anecdotes and
-PABLIO source code is largely portable and will likely build on other platforms.
-<span class=SpellE>PortAudio</span>, our audio portability layer, is platform
-specific but has been ported to a variety of popular platforms. For a complete
-build two sequential traversals (a configuration traversal and a build
+<p class=MsoPlainText><i style='mso-bidi-font-style:normal'><span
+style='font-family:Arial'>Audio&nbsp;Anecdotes</span></i><span
+style='font-family:Arial'>’ build process is a traditional recursive build
+making use of make and GNU Autotools to provide an automatic build on our
+supported platforms: (Windows/Cygwin, Linux and MacOSX).<span
+style='mso-spacerun:yes'>  </span><i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
+and PABLIO source code is largely portable and will likely build on other
+platforms. <span class=SpellE>PortAudio</span>, our audio portability layer, is
+platform specific but has been ported to a variety of popular platforms. For a
+complete build two sequential traversals (a configuration traversal and a build
 traversal) are made, both are initiated by the top level Makefile.<span
 style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>The first traversal is controlled
-by the config.mak files found in each directory.<span
+<p class=MsoPlainText><span style='font-family:Arial'>The first traversal is
+controlled by the config.mak files found in each directory.<span
 style='mso-spacerun:yes'>  </span>These makefiles (called config.mak so as not
 to conflict with the makefiles used in the second traversal) are responsible
-for calling the configure scripts which determine the nature of the platform you
-are running (the compiler used, filename extensions for objects, .etc) and use
-this information to translate the generic Makefile.in files to Makefiles
+for calling the configure scripts which determine the nature of the platform
+you are running (the compiler used, filename extensions for objects, .etc) and
+use this information to translate the generic Makefile.in files to Makefiles
 specific to your platform.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>The second traversal then
 recursively calls these makefiles created in the first stage to first build the
-Audio Anecdotes examples.<span style='mso-spacerun:yes'>  </span>The build
-traversal first creates libraries in the src directory and then the audio
-examples in Content. <o:p></o:p></span></p>
+<i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i> examples.<span
+style='mso-spacerun:yes'>  </span>The build traversal first creates libraries
+in the src directory and then the audio examples in Content. <o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>Building is simple: In your
-favorite command shell (via cygwin on Windows), <span class=SpellE>cd</span> to
-the directory you installed Audio Anecdotes to and then simply type make in the
-Volume1 directory everything should build automatically:<o:p></o:p></span></p>
+<p class=MsoPlainText><span style='font-family:Arial'>Building is simple: In
+your favorite command shell (via cygwin on Windows), <span class=SpellE>cd</span>
+to the directory you installed <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
+to and then simply type make in the Volume1 directory everything should build
+automatically:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
 1'>            </span></span><span class=SpellE><span class=GramE>cd</span></span>
-/usr/local/AudioAnecdotes/Volume1<o:p></o:p></p>
+/usr/local/AudioAnecdotes/Volume1</p>
 
 <p class=MsoPlainText><span style='mso-tab-count:1'>      </span><span
-class=GramE>make</span><o:p></o:p></p>
+class=GramE>make</span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -172,33 +176,35 @@ removed using the following command:<o:p></o:p></span></p>
 1'>            </span><o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-1'>            </span></span><span class=GramE>make</span> clean<o:p></o:p></p>
+1'>            </span></span><span class=GramE>make</span> clean</p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>The distribution may be clobbered
-(All temporary files, executables and copied headers will be removed) by using
-the following command:<o:p></o:p></span></p>
+<p class=MsoPlainText><span style='font-family:Arial'>The distribution may be
+clobbered (All temporary files, executables and copied headers will be removed)
+by using the following command:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-1'>            </span></span><span class=GramE>make</span> <span class=SpellE>distclean</span><o:p></o:p></p>
+1'>            </span></span><span class=GramE>make</span> <span class=SpellE>distclean</span></p>
+
+<p class=MsoPlainText><o:p>&nbsp;</o:p></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>NOTE: This will remove
-the executable examples causing the tour not to function until either a successful
-build is completed or the CD is re-installed!<o:p></o:p></span></p>
+the executable examples causing the tour not to function until either a
+successful build is completed or the CD is re-installed!<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>To get rid of Makefiles (generated
-from Makefile.in files):<o:p></o:p></span></p>
+<p class=MsoPlainText><span style='font-family:Arial'>To get rid of Makefiles
+(generated from Makefile.in files):<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -216,28 +222,28 @@ build environment configuration:<o:p></o:p></span></p>
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-1'>            </span></span><span class=GramE>make</span> <span class=SpellE>config-distclean</span><o:p></o:p></p>
+1'>            </span></span><span class=GramE>make</span> <span class=SpellE>config-distclean</span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>Examples are distributed
-in source form to encourage the reader to experiment with the code.
-Consequently the above mentioned commands will also work in each ‘leaf’
-directory.<span style='mso-spacerun:yes'>  </span>For instance the user would
-type make in a directory where a source file was modified to cause the
-executable to be automatically rebuilt. The user is responsible for
-understanding the inter directory dependencies if they wish to build in
-specific directories only. <span style='mso-spacerun:yes'> </span>Issuing make
-at the top level, volume1, directory is always safe if a little slower.<o:p></o:p></span></p>
+in source form to encourage the reader to experiment with the code. Consequently
+the above mentioned commands will also work in each ‘leaf’ directory.<span
+style='mso-spacerun:yes'>  </span>For instance the user would type make in a
+directory where a source file was modified to cause the executable to be
+automatically rebuilt. The user is responsible for understanding the inter
+directory dependencies if they wish to build in specific directories only.<span
+style='mso-spacerun:yes'>  </span>Issuing make at the top level, volume1,
+directory is always safe if a little slower.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>Commands that control
 configuration may also be individually issued in directories other than the top
-level; however they need to explicitly specify the config.mak file explicitly as
-in the following examples.<o:p></o:p></span></p>
+level; however they need to explicitly specify the config.mak file explicitly
+as in the following examples.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -247,7 +253,7 @@ environment:<o:p></o:p></span></p>
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-1'>            </span></span><span class=GramE>make</span> -f config.mak<o:p></o:p></p>
+1'>            </span></span><span class=GramE>make</span> -f config.mak</p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
 2'>                        </span>This will build configure scripts if
@@ -279,14 +285,15 @@ environment configuration:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
 1'>            </span></span><span class=GramE>make</span> -f config.mak <span
-class=SpellE>distclean</span><o:p></o:p></p>
+class=SpellE>distclean</span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>We used the following
-references when designing and implementing the Audio Anecdotes build process:<o:p></o:p></span></p>
+references when designing and implementing the <i style='mso-bidi-font-style:
+normal'>Audio&nbsp;Anecdotes</i> build process:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -294,6 +301,8 @@ references when designing and implementing the Audio Anecdotes build process:<o:
 href="http://www.amazon.com/exec/obidos/ASIN/0937175900/sworksstoryworks">Managing
 Projects With make</a>, Andrew <span class=SpellE>Oram</span> and Steve
 Talbott, 1991 O’Reilly and Associates<o:p></o:p></span></p>
+
+<p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><a
 href="http://www.amazon.com/exec/obidos/ASIN/1578701902/sworksstoryworks">GNU
