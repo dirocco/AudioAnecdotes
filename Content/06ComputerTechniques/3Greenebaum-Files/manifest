@@ -1,14 +1,12 @@
-src_v1 play.cpp src_v1.tar AudioAnecdotesV1/07Flavor/play.cpp
-src_v1 test.aifc src_v1.tar AudioAnecdotesV1/07Flavor/test.aifc
-src_v1 test.aiff src_v1.tar AudioAnecdotesV1/07Flavor/test.aiff
-src_v1 test.au src_v1.tar AudioAnecdotesV1/07Flavor/test.au
-
-src_v1 FL/aiff.fl src_v1.tar AudioAnecdotesV1/07Flavor/FL/aiff.fl
-src_v1 FL/au.fl src_v1.tar AudioAnecdotesV1/07Flavor/FL/au.fl
-src_v1 FL/audio.fl src_v1.tar AudioAnecdotesV1/07Flavor/FL/audio.fl
-src_v1 FL/raw.fl src_v1.tar AudioAnecdotesV1/07Flavor/FL/raw.fl
-src_v1 FL/wav.fl src_v1.tar AudioAnecdotesV1/07Flavor/FL/wav.fl
-
-bin_v1_win play.exe bin_v1_win.tar AudioAnecdotesV1/07Flavor/play.exe
-bin_v1_mac play.exe bin_v1_mac.tar AudioAnecdotesV1/07Flavor/play.exe
-bin_v1_linux play.exe bin_v1_linux.tar AudioAnecdotesV1/07Flavor/play.exe
+src_v1 play.cpp src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/play.cpp
+src_v1 test.aifc src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/test.aifc
+src_v1 test.aiff src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/test.aiff
+src_v1 test.au src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/test.au
+src_v1 FL/aiff.fl src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/FL/aiff.fl
+src_v1 FL/au.fl src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/FL/au.fl
+src_v1 FL/audio.fl src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/FL/audio.fl
+src_v1 FL/raw.fl src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/FL/raw.fl
+src_v1 FL/wav.fl src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/FL/wav.fl
+bin_v1_win play.exe bin_v1_win.tar AudioAnecdotesV1/06Greenebaum-Files/play.exe
+bin_v1_mac play bin_v1_mac.tar AudioAnecdotesV1/06Greenebaum-Files/play
+bin_v1_linux play bin_v1_linux.tar AudioAnecdotesV1/06Greenebaum-Files/play
