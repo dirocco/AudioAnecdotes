@@ -6,7 +6,7 @@ if (nargin < 1)
 endif
 
 closeplot
-load -force floatdata.hdf5;
+load -force floatdata.txt;
 
 subrange = 1:64;
 
