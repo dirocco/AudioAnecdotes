@@ -6,4 +6,12 @@ src_v2 05ComputerTechniques.html	src_v2.tar Volume2/docs/html/05ComputerTechniqu
 src_v2 06ComputerTools.html	src_v2.tar Volume2/docs/html/06ComputerTools.html
 src_v2 08SoundDesign.html	src_v2.tar Volume2/docs/html/08SoundDesign.html
 src_v2 09Nature.html	src_v2.tar Volume2/docs/html/09Nature.html
-src_v2 menu.html			src_v2.tar Volume2/docs/html/menu.html
+src_v2 menu.html		src_v2.tar Volume2/docs/html/menu.html
+src_v2 nofir				src_v2.tar Volume2/docs/html/nofir
+src_v2 nofir.bat			src_v2.tar Volume2/docs/html/nofir.bat
+src_v2 fir				src_v2.tar Volume2/docs/html/fir
+src_v2 fir.bat				src_v2.tar Volume2/docs/html/fir.bat
+src_v2 iir				src_v2.tar Volume2/docs/html/iir
+src_v2 iir.bat				src_v2.tar Volume2/docs/html/iir.bat
+src_v2 fp_fft				src_v2.tar Volume2/docs/html/fp_fft
+src_v2 fp_fft.bat			src_v2.tar Volume2/docs/html/fp_fft.bat
