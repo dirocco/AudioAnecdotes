@@ -27,11 +27,19 @@ else
         AC_MSG_RESULT([Setting builds to use shared libraries]);
 fi
 
+AC_ARG_WITH([toolroot],[  --with-toolroot[=DIR]   Use DIR as the root for all tools],ac_toolroot=$withval,ac_toolroot=[])
+
 dnl Some substitution variables
 AC_SUBST(MAKEINCLUDESDIR)
+AC_SUBST(TOOLROOT)
+AC_SUBST(LOCALOPT)
+AC_SUBST(LOCALLINK)
+AC_SUBST(LOCALDLINK)
+AC_SUBST(DLLTOOL)
 AC_SUBST(SHARED_LIB_CONDITIONAL)
 AC_SUBST(STATIC_LIB_CONDITIONAL)
 
+DLLTOOL=dlltool
 dnl need to compute the top of the build tree $srcdir is --srcdir of 
 dnl configure options
 case $srcdir in
@@ -72,6 +80,17 @@ case "${host_os}" in
         dnl ON cygwin, we must build a dll, which requires additional work
         SHARED_LIB_CONDITIONAL=builddll
         LIBS="-lwinmm -lm";
+	if [[ "$ac_toolroot" != "" ]] ; then
+        	AC_MSG_RESULT([Setting toolroot to $ac_toolroot]);
+		TOOLROOT="$ac_toolroot";
+                LOCALOPT="-nostdinc -nostdlib -I$TOOLROOT/usr/include -I$TOOLROOT/usr/lib/gcc-lib/i686-pc-cygwin/3.2/include -L$TOOLROOT/usr/lib -B$TOOLROOT/lib/"
+		LOCALLINK="$TOOLROOT/usr/lib/crt0.o -lcygwin -lkernel32";
+		LOCALLINK="-lcygwin -lkernel32";
+		DLLTOOL="$TOOLROOT/usr/bin/dlltool"
+		CC="$TOOLROOT/usr/bin/$CC";
+		AR="$TOOLROOT/$AR";
+		RANLIB=$TOOLROOT/usr/bin/$RANLIB; 
+	fi
         ;;
 
   *)
