@@ -1,12 +1,12 @@
-src_v1       ramptest.c   src_v1.tar       AudioAnecdotesV1/Authors/06Greenebaum-Test/ramptest.c
-src_v1       rampout.c    src_v1.tar       AudioAnecdotesV1/Authors/06Greenebaum-Test/rampout.c
-src_v1       Makefile.in  src_v1.tar       AudioAnecdotesV1/Authors/06Greenebaum-Test/Makefile.in
-src_v1       config.mak   src_v1.tar       AudioAnecdotesV1/Authors/06Greenebaum-Test/config.mak
+src_v1       ramptest.c   src_v1.tar       AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/ramptest.c
+src_v1       rampout.c    src_v1.tar       AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/rampout.c
+src_v1       Makefile.in  src_v1.tar       AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/Makefile.in
+src_v1       config.mak   src_v1.tar       AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/config.mak
 
-bin_v1_win   ramptest.exe bin_v1_win.tar   AudioAnecdotesV1/Authors/06Greenebaum-Test/ramptest.exe
-bin_v1_mac   ramptest     bin_v1_mac.tar   AudioAnecdotesV1/Authors/06Greenebaum-Test/ramptest
-bin_v1_linux ramptest     bin_v1_linux.tar AudioAnecdotesV1/Authors/06Greenebaum-Test/ramptest
+bin_v1_win   ramptest.exe bin_v1_win.tar   AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/ramptest.exe
+bin_v1_mac   ramptest     bin_v1_mac.tar   AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/ramptest
+bin_v1_linux ramptest     bin_v1_linux.tar AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/ramptest
 
-bin_v1_win   rampout.exe  bin_v1_win.tar   AudioAnecdotesV1/Authors/06Greenebaum-Test/rampout.exe
-bin_v1_mac   rampout      bin_v1_mac.tar   AudioAnecdotesV1/Authors/06Greenebaum-Test/rampout
-bin_v1_linux rampout      bin_v1_linux.tar AudioAnecdotesV1/Authors/06Greenebaum-Test/rampout
+bin_v1_win   rampout.exe  bin_v1_win.tar   AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/rampout.exe
+bin_v1_mac   rampout      bin_v1_mac.tar   AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/rampout
+bin_v1_linux rampout      bin_v1_linux.tar AudioAnecdotesV1/Authors/06ComputerTechniques/2Greenebaum-Test/rampout
