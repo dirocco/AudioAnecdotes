@@ -1,0 +1,73 @@
+Ross Bencina's Granular Synthesis Toolkit (RB-GST)
+Copyright (C) 2001 Ross Bencina
+email: rossb@audiomulch.com
+web: http://www.audiomulch.com/~rossb/
+
+RB-GST is distributed under the terms of the GNU General Public License.
+See the file COPYING for details.
+------------------------------------------------------------------------------
+
+This file discusses various implementation guidelines which have evolved
+during the course of development.
+
+
+PARAMETER PASSING
+
+At the lower levels of the system, parameter ranges should generally be chosen
+to be efficient rather than intuitive. For example envelopes with a skew
+factor use the range [0,1] even though [-1,1] is more intuitive (and is what
+is used by Demo.exe)
+
+All methods which depend on parameters being within a certain range
+should uses asserts to guarantee that this is the case. The asserted range
+should be the maximum plausible range.
+
+Parameters should not be gratuitously clamped in production code, especially
+in frequently called low level code. Always prefer asserts.
+
+
+IMPLEMENTING GENERATORS
+
+Where ever possible generators are expressed as forward iterators,
+ie they have a prefix operator++ to advance to the next state, and
+a operator* to return the current value. Note that this implementation
+technique should only be used if it is possible to represent an algorithm
+without introducing an additional member variable to cache the output of the
+"advance to next state" operation.
+
+Generally generators should be written to have well defined "infinite"
+behavior - that is, calling operator++ any number of times should result
+in defined behavior. If this behavior cannot be delivered affordably
+(an additional conditional test per sample is not considered affordable
+for example), then it should not be provided.
+
+My real-time granular synthesis article describes a low level pattern where:
+nextBoundary(), advance() and checkBoundary() are used instead of operator++.
+
+
+IMPLEMENTING FILTERS
+
+Filters should be expressed using operator(). When operator* can be
+implemented without incurring the cost of an additional member variable
+it should be supplied.
+
+
+ENVELOPE VALUES
+
+Before calling operator++ or advance() on an envelope for the first time the
+return value of operator* should be the initial state, ie 0. After calling
+advance() durationSamples times, the return value of operator* should be the
+final value, ie 0.
+
+
+ESSENCES
+
+Essences whose output parameters don't depend on grain duration have separate
+getters and setters for each parameter.
+
+Essences which depend on grain duration have a method called
+make***( duration,...) where *** are the names of all of the pararameters. This
+method calculates output parameters based on duration.
+
+
+#EOF

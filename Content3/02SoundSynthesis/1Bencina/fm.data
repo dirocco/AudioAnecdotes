@@ -1,0 +1,53 @@
+# Ross Bencina's Granular Synthesis Toolkit (RB-GST)
+# Copyright (C) 2001 Ross Bencina
+# email: rossb@audiomulch.com
+# web: http://www.audiomulch.com/~rossb/
+#
+# RB-GST is distributed under the terms of the GNU General Public License.
+# See the file COPYING for details.
+# ----------------------------------------------------------------------------
+#
+# StochasticFMGranulator demo file
+
+density = 1
+grainDuration = .001, .01
+amplitude = .1, .3
+carrierFrequency = 350, 350
+modulatorFrequency = 175, 175
+modulationIndex = 0,.1
+segment.duration = 15
+segment.annotation = "a light sprinkling of short grains, getting denser and longer..."
+%
+
+density = 30
+grainDuration = .03, .04
+amplitude = .06, .07
+segment.duration = 10
+segment.annotation = "...and denser..."
+%
+
+density = 300
+amplitude = .05, .05
+segment.duration = 10
+segment.annotation = "now 300 grains per second. increasing modulation index..."
+%
+
+modulationIndex = 1.2,1.2
+segment.duration = 10
+segment.annotation = "...randomizing modulator frequency..."
+%
+
+modulatorFrequency = 250, 450
+segment.duration = 10
+segment.annotation = "...decreasing density..."
+%
+
+density = 3
+amplitude = .08, .1
+segment.duration = 5
+%
+
+density = 1
+segment.duration = 0
+segment.annotation = "...the end."
+%

@@ -1,0 +1,106 @@
+# Ross Bencina's Granular Synthesis Toolkit (RB-GST)
+# Copyright (C) 2001 Ross Bencina
+# email: rossb@audiomulch.com
+# web: http://www.audiomulch.com/~rossb/
+#
+# RB-GST is distributed under the terms of the GNU General Public License.
+# See the file COPYING for details.
+# ----------------------------------------------------------------------------
+#
+# FofGenerator demo file
+
+fof1.fundamentalFrequency = 600
+fof1.formantCenterFrequency = 100
+fof1.formantBandwidth = 400
+fof1.formantSkirtWidth = 1000
+fof1.formantAmplitude = .2
+fof1.formantPhase = 0.
+
+fof2.fundamentalFrequency = 600
+fof2.formantCenterFrequency = 100
+fof2.formantBandwidth = 400
+fof2.formantSkirtWidth = 1000
+fof2.formantAmplitude = .2
+fof2.formantPhase = .6
+
+fof3.fundamentalFrequency = 600
+fof3.formantCenterFrequency = 100
+fof3.formantBandwidth = 400
+fof3.formantSkirtWidth = 1000
+fof3.formantAmplitude = .2
+fof3.formantPhase = 1.2
+
+segment.duration = .1
+%
+
+fof1.fundamentalFrequency = 115
+fof2.fundamentalFrequency = 115
+fof3.fundamentalFrequency = 115
+segment.duration = 3
+segment.annotation = "fof vowels..."
+%
+
+fof1.formantCenterFrequency = 700
+fof2.formantCenterFrequency = 1220
+fof3.formantCenterFrequency = 2600
+
+segment.duration = 3
+segment.annotation = "... AA ..."
+%
+segment.duration = 2
+%
+
+fof1.formantCenterFrequency = 320
+fof2.formantCenterFrequency = 1900
+fof3.formantCenterFrequency = 2900
+
+segment.duration = 3
+segment.annotation = "... IXR ..."
+%
+segment.duration = 2
+%
+
+fof1.formantCenterFrequency = 660
+fof2.formantCenterFrequency = 1200
+fof3.formantCenterFrequency = 2550
+
+segment.duration = 3
+segment.annotation = "... AY ..."
+%
+segment.duration = 2
+%
+
+fof1.formantCenterFrequency = 540
+fof2.formantCenterFrequency = 1100
+fof3.formantCenterFrequency = 2300
+
+segment.duration = 3
+segment.annotation = "... OW ..."
+%
+segment.duration = 2
+%
+
+fof1.formantCenterFrequency = 330
+fof2.formantCenterFrequency = 1200
+fof3.formantCenterFrequency = 2100
+
+segment.duration = 3
+segment.annotation = "... YU ..."
+%
+segment.duration = 10
+%
+
+fof1.fundamentalFrequency = 1
+fof2.fundamentalFrequency = 2
+fof3.fundamentalFrequency = 3
+
+segment.duration = 5
+%
+
+segment.duration = 2
+%
+
+fof1.formantAmplitude = 0
+fof2.formantAmplitude = 0
+fof3.formantAmplitude = 0
+segment.duration = 0

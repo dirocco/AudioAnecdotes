@@ -1,0 +1,80 @@
+# Ross Bencina's Granular Synthesis Toolkit (RB-GST)
+# Copyright (C) 2001 Ross Bencina
+# email: rossb@audiomulch.com
+# web: http://www.audiomulch.com/~rossb/
+#
+# RB-GST is distributed under the terms of the GNU General Public License.
+# See the file COPYING for details.
+# ----------------------------------------------------------------------------
+#
+# StochasticDelayLineGranulator demo file
+
+interonsetTime = .01,.011
+grainDuration = .048, .05
+delayTime = .1,.1
+playbackRate = 1,1
+amplitude = .3,.3
+sustain = .5,.5
+skew = 0,0
+feedback = 0
+segment.duration = 5
+segment.annotation = "this demonstration requires sound input...can you hear it?"
+%
+
+segment.duration = 7
+segment.annotation = "smearing time..."
+%
+
+
+delayTime = .1,.8
+segment.duration = 7
+%
+
+delayTime = .4,.4
+feedback = .6
+segment.duration = 7
+segment.annotation = "... normal delay ..."
+%
+
+segment.duration = 2
+%
+
+delayTime = .4,.405
+feedback = 0
+segment.duration = 1
+%
+
+playbackRate = .66666666,.6666666
+delayTime = .4,.405
+segment.annotation = "... a fifth down ..."
+segment.duration = 7
+%
+
+segment.duration = 1
+%
+
+playbackRate = 1.5,1.5
+segment.annotation = "... a fifth up ..."
+segment.duration = 7
+%
+
+segment.duration = 1
+%
+
+feedback = .8
+segment.annotation = "... pitch accumulation ..."
+segment.duration = 15
+%
+
+segment.annotation = "... dissipating ..."
+segment.duration = 10
+%
+
+skew = .9,.9
+sustain = .1, .1
+playbackRate = 1.,2.
+interonsetTime = .1,.15
+amplitude = .7,.7
+segment.annotation = "... the end"
+segment.duration = 0
+%

@@ -1,0 +1,56 @@
+# Ross Bencina's Granular Synthesis Toolkit (RB-GST)
+# Copyright (C) 2001 Ross Bencina
+# email: rossb@audiomulch.com
+# web: http://www.audiomulch.com/~rossb/
+#
+# RB-GST is distributed under the terms of the GNU General Public License.
+# See the file COPYING for details.
+# ----------------------------------------------------------------------------
+#
+# StochasticStoredSampleGranulator demo file
+
+sourceFile = "test.pcm"
+interonsetTime = .003,.004
+grainDuration = .048, .05
+inskipTime = .0,.001
+playbackRate = 1,1
+amplitude = .3,.3
+sustain = .5,.5
+skew = 0,0
+segment.duration = 4.8
+segment.annotation = "Playing back test.pcm at normal rate"
+%
+
+inskipTime = 4.8,4.8
+segment.duration = 2.4
+segment.annotation = "now backwards, double speed..."
+%
+
+
+inskipTime = .0,.0
+segment.duration = 0
+%
+
+inskipTime = .0,.01
+segment.duration = 24.
+segment.annotation = "now forwards at one fifth of normal speed with some time smearing..."
+%
+
+inskipTime = 4.8,4.9
+segment.duration = 0
+%
+
+segment.duration = .5
+%
+
+inskipTime = .6,.7
+segment.duration = 4
+segment.annotation = "freeze"
+%
+
+
+inskipTime = .6,.7
+segment.duration = 4
+playbackRate = 1,1.1
+segment.annotation = "pitch smear"
+%
