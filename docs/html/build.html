@@ -153,15 +153,26 @@ in the src directory and then the audio examples in Content. <o:p></o:p></span><
 <p class=MsoPlainText><span style='font-family:Arial'>Building is simple: In
 your favorite command shell (via cygwin on Windows), <span class=SpellE>cd</span>
 to the directory you installed <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
-to and then simply type make in the Volume1 directory everything should build
+to and then simply type make in the 
+#ifdef CD1
+Volume1 
+#endif
+#ifdef CD2
+Volume2 
+#endif
+directory everything should build
 automatically:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
 1'>            </span></span><span class=SpellE><span class=GramE>cd</span></span>
+#ifdef CD1
 /usr/local/AudioAnecdotes/Volume1</p>
-
+#endif
+#ifdef CD2
+/usr/local/AudioAnecdotes/Volume2</p>
+#endif
 <p class=MsoPlainText><span style='mso-tab-count:1'>      </span><span
 class=GramE>make</span></p>
 
