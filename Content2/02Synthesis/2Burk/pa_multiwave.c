@@ -476,7 +476,7 @@ int main(int argc, char **argv)
 	   err=1; 
         else switch (*((char *)argv[1]+1)) {
 	   case 'q': printf("Band-limited Sawtooth\n");     break;
-	   case 'n': printf("NON-Band-limited Sawtooth\n"); break;
+	   case 'd': printf("NON-Band-limited Sawtooth\n"); break;
 	   case 'b': 
 	      printf("Left channel: band-limited, right non-band limited \n"); 
 	                                                    break;
@@ -484,7 +484,7 @@ int main(int argc, char **argv)
 	}
 
         if(err) {
-	  printf("Usage: %s -q(aulity) -n(aive) -b(oth)\n", argv[0]);
+	  printf("Usage: %s -q(aulity) -d(efault) -b(oth)\n", argv[0]);
 	  exit(-1);
 	}
 
