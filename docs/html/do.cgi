@@ -198,13 +198,13 @@ fi
 IFS='|'
 doit=`/bin/cygpath --sysdir`/cmd
 if [ -f $doit ]; then
-   $doit /c start .\\$2 $a
+   $doit /k start .\\$2 $a
 else
 #ifdef DEBUG
    echo "cmd nothere" >> /tmp/log
 #endif
    doit=`/bin/cygpath --windir`/command
-   $doit /c start .\\$2 $a
+   $doit /k start .\\$2 $a
 fi
 #endif 
 
