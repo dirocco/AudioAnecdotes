@@ -1,18 +1,11 @@
-# these haven't been written yet
-^ src_v1 Makefile.in    src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/Makefile.in 
-^ src_v1 config.mak     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/config.mak 
-
-# the generated images can't be run until octave has been integrated into the build
-^ src_v1 *.ps         src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/
-
+src_v1 config.mak     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/config.mak
+src_v1 Makefile.in    src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/Makefile.in
 src_v1 clip.m         src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/clip.m 
 src_v1 compare.m      src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/compare.m 
 src_v1 deltamod.m     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/deltamod.m 
 src_v1 do_output.m    src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/do_output.m 
 src_v1 dsm.m          src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/dsm.m 
 src_v1 filtcompare.m  src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/filtcompare.m 
-src_v1 floatdata.hdf5 src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/floatdata.hdf5 
-src_v1 floatdata.txt  src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/floatdata.txt 
 src_v1 holes.m        src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/holes.m 
 src_v1 makesamples.m  src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/makesamples.m 
 src_v1 plotspec.m     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/plotspec.m 
