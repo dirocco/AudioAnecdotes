@@ -36,7 +36,8 @@
 #define BLEN 0x20000
 #define HLEN 0x1000
 
-static u_int32_t dist[0x10000];
+//static u_int32_t dist[0x10000];
+static unsigned int dist[0x10000];
 #define dis0 (dist+0x8000)
 
 static short buff1[BLEN];
