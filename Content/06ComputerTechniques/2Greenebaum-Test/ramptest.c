@@ -4,19 +4,31 @@ main()
 {
    typedef unsigned short USHORT;
 
-   USHORT count = 0;
-   int result;
+   USHORT count = 0;        // length of the current run
+   int result;              // used to test result of scanf
 
-   USHORT Received = 0, LastReceived = 0;
-   int    SignalCount = 0;
-   int    Total = 0;
-   int    ErrorCount = 0;
-   USHORT Expected;
+   USHORT Received = 0;     // stores value received from input stream
+   USHORT LastReceived = 0; // stores previous value received
+   int    SignalCount = 0;  
+   int    Total = 0;        // total number of input values read
+   int    ErrorCount = 0;   // total number of errors detected
+   int    ErrorCountRepeatedValue = 0;
+   int    ErrorCountSkippedValue  = 0;
+   int    ErrorCountWrongValue    = 0;
+   USHORT Expected;         // value expected to be seen in input stream
 
 
-   enum {START, WAITFORSIGNAL, RECEIVEDSIGNAL, ESTABLISHRUN, 
-                               RUNESTABLISHED, ERROR } states;
-   states state;
+   typedef enum 
+   {
+         START,             // start state
+         WAITFORSIGNAL,     // state for waiting for signal (nonzero value)
+         RECEIVEDSIGNAL,    // state that indicates a signal is detected
+         ESTABLISHRUN, 
+         RUNESTABLISHED, 
+         ERROR 
+   } states ;
+
+   states state = START;
 
    while(1) 
    {
@@ -25,7 +37,7 @@ main()
       if (result != 1)
       {
         printf("scanf didn't return 1\n");
-        exit(-1);
+        break;
       }
       Total++;
 
@@ -35,7 +47,7 @@ main()
 	    if (Received) 
             {
                count++;
-	       printf("found signal at sample %d\n", count-2);
+	       printf("START: found signal at sample %d\n", count-2);
 	       state = RECEIVEDSIGNAL;
 	    }
             else
@@ -47,69 +59,93 @@ main()
 
 	 case WAITFORSIGNAL: 
 
+            if (Received == 0)
+            {
+               state = WAITFORSIGNAL;
+               break;
+            }
+
             Expected =  ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
 
 	    if(Received == Expected)
             {
-	       printf("%d %d %d ", Received, LastReceived, 
-                          (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
+	       printf("WAITFORSIG received %d, lastreceived %d, expected %d ", 
+                                Received, LastReceived, Expected);
 	       printf("received expected value at %d\n", Total - 1);
-               // if we meet the theshold then transition to state 2
-               if ( ++count > THRESHOLD)
-               {
-                  state = RUNESTABLISHED;
-                  break;
-               }
 
-               state = 1;  // redundant, but put here for consistency
+               // if we meet the theshold then transition to state 2
+
+//               disable threshold logic for now
+//               if (++count > THRESHOLD)
+//               {
+//                  state = RUNESTABLISHED;
+//                  break;
+//               }
+
+               count++;
+               state = ESTABLISHRUN;  // redundant, here for consistency
             }
 
 	    else // Received != Expected
             {
                count = 0;  // reset count, proceed to error state (2)
 
-	       printf("state 1: %d %d %d ", Received, LastReceived, 
-                          (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
+	       printf("WAITFORSIG received %d, lastreceived %d, expected %d ", 
+                                Received, LastReceived, Expected);
 	       printf("Received unexpected value at %d\n", Total - 1);
                state = ERROR;
             }
 	    break;
-
 		 
-	 case ERROR: 
-
-            ErrorCount++;
-            printf("error detected\n");
-
-  // not sure what to do here ... talk to ken again about
-  // which errors to handle
-
-            Expected = Received + 1; // fix this
-            
-	    break;
-
 	 case ESTABLISHRUN: 
             Expected =  ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
-	    printf("state 3: %d %d %d ", Received, LastReceived, 
-                          (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
-	    printf("received expected value at %d\n", Total - 1);
+            printf("ESTABLISHRUN received %d, lastreceived %d, expected %d ", 
+                                Received, LastReceived, Expected);
+	    printf("Received expected value at %d\n", Total - 1);
+
 	    if(Received == Expected)
             {
               count++;
               state = ESTABLISHRUN;  // redundant but included for clarity
             }
+
             else 
             {
               count = 0;
-              state = WAITFORSIGNAL;
+              state = ERROR;
             } 
 
 	    break;
 
+	 case ERROR: 
+            // here if Received != Expected (which is LastReceived + 1)
+
+            ErrorCount++;
+            printf("error detected\n");
+
+            // determine which kind of error
+
+            if (Received == LastReceived)
+               // received the same value as PREVIOUS value
+               ErrorCountRepeatedValue++;
+      
+            if (Received > LastReceived + 1)
+               // (Received - LastReceived) samples were skipped 
+               ErrorCountSkippedValue++;
+
+            else // sample is unexpected, but less than expected
+               ErrorCountWrongValue++;
+
+            // reset and try again
+            state = ESTABLISHRUN;
+	    break;
 
 	 default:
 	    printf("I fell and I can't get up\n");
       }
    }
    printf("Detected %d errors.\n", ErrorCount);
+   printf("Detected %d missing values.\n", ErrorCountSkippedValue);
+   printf("Detected %d repeated values.\n", ErrorCountRepeatedValue);
+   printf("Detected %d incorrect values.\n", ErrorCountWrongValue);
 }
