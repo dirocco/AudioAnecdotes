@@ -1,14 +1,17 @@
-src_v1		Makefile.in		src_v1.tar	AudioAnecdotesV1/content/04Thiel/Makefile.in
-src_v1		config.mak		src_v1.tar	AudioAnecdotesV1/content/04Thiel/config.mak
-src_v1		FilteredNoise3.c	src_v1.tar	AudioAnecdotesV1/content/04Thiel/FilteredNoise3.c
-src_v1		RockGuitar.c		src_v1.tar	AudioAnecdotesV1/content/04Thiel/RockGuitar.c
-src_v1		multi2.c		src_v1.tar	AudioAnecdotesV1/content/04Thiel/multi2.c
-bin_v1_win	FilteredNoise3.exe	bin_v1_win.tar	AudioAnecdotesV1/content/04Thiel/FilteredNoise3.exe
-bin_v1_win	RockGuitar.exe		bin_v1_win.tar	AudioAnecdotesV1/content/04Thiel/RockGuitar.exe
-bin_v1_win	multi2.exe		bin_v1_win.tar	AudioAnecdotesV1/content/04Thiel/multi2.exe
-bin_v1_mac	FilteredNoise3		bin_v1_mac.tar	AudioAnecdotesV1/content/04Thiel/FilteredNoise3
-bin_v1_mac	RockGuitar		bin_v1_mac.tar	AudioAnecdotesV1/content/04Thiel/RockGuitar
-bin_v1_mac	multi2			bin_v1_mac.tar	AudioAnecdotesV1/content/04Thiel/multi2
-bin_v1_linux	FilteredNoise3		bin_v1_linux.tar AudioAnecdotesV1/content/04Thiel/FilteredNoise3
-bin_v1_linux	RockGuitar		bin_v1_linux.tar AudioAnecdotesV1/content/04Thiel/RockGuitar
-bin_v1_linux	multi2			bin_v1_linux.tar AudioAnecdotesV1/content/04Thiel/multi2
+src_v1		Makefile.in		src_v1.tar	AudioAnecdotesV1/Authors/04Thiel/Makefile.in
+src_v1		config.mak		src_v1.tar	AudioAnecdotesV1/Authors/04Thiel/config.mak
+src_v1		FilteredNoise3.c	src_v1.tar	AudioAnecdotesV1/Authors/04Thiel/FilteredNoise3.c
+src_v1		RockGuitar.c		src_v1.tar	AudioAnecdotesV1/Authors/04Thiel/RockGuitar.c
+src_v1		multi2.c		src_v1.tar	AudioAnecdotesV1/Authors/04Thiel/multi2.c
+
+bin_v1_win	FilteredNoise3.exe	bin_v1_win.tar	AudioAnecdotesV1/Authors/04Thiel/FilteredNoise3.exe
+bin_v1_mac	FilteredNoise3		bin_v1_mac.tar	AudioAnecdotesV1/Authors/04Thiel/FilteredNoise3
+bin_v1_linux	FilteredNoise3		bin_v1_linux.tar AudioAnecdotesV1/Authors/04Thiel/FilteredNoise3
+
+bin_v1_win	RockGuitar.exe		bin_v1_win.tar	AudioAnecdotesV1/Authors/04Thiel/RockGuitar.exe
+bin_v1_mac	RockGuitar		bin_v1_mac.tar	AudioAnecdotesV1/Authors/04Thiel/RockGuitar
+bin_v1_linux	RockGuitar		bin_v1_linux.tar AudioAnecdotesV1/Authors/04Thiel/RockGuitar
+
+bin_v1_win	multi2.exe		bin_v1_win.tar	AudioAnecdotesV1/Authors/04Thiel/multi2.exe
+bin_v1_mac	multi2			bin_v1_mac.tar	AudioAnecdotesV1/Authors/04Thiel/multi2
+bin_v1_linux	multi2			bin_v1_linux.tar AudioAnecdotesV1/Authors/04Thiel/multi2
