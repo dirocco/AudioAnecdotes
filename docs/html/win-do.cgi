@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 echo "Server: thttpd/2.20c 21nov01"
 echo "Content-type: text/html"
@@ -12,14 +12,17 @@ echo "Content-length: 5"
 echo "Location: "$HTTP_REFERER
 echo
 
-foo=`echo $QUERY_STRING | tr '&' ' ' | tr '+' '/'`
+foo=`echo $QUERY_STRING | /bin/tr '&' ' ' | /bin/tr '+' '/'`
 echo $foo
 
-cmd /c start $foo
-
-if [ $? -ne 0 ]; then
-   # hmm, cmd didn't work? Try command!
-   command /c start $foo
+doit=`/bin/cygpath --sysdir`/cmd
+if [ -f $doit ]; then
+   echo foundit
+   $doit /c start $foo
+else
+   echo noththere
+   doit=`/bin/cygpath --windir`/command
+   $doit /c start $foo
 fi
 
 exit 0
