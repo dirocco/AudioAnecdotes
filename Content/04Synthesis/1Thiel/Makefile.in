@@ -19,7 +19,6 @@ OBJEXT=@OBJEXT@
 
 SOURCES = \
 	RockGuitar.c \
-	pa_multiwave.c \
 	FilteredNoise3.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
