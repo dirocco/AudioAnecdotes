@@ -3,11 +3,11 @@
 #
 
 CHILDDIRS= \
+	   04Cook\
 	   04Thiel\
 	   05Luna\
            Example\
 	   Ken_Greenebaum\
-	   Perry_Cook\
 	   Phil_Burk\
 
 #	05Malvar
