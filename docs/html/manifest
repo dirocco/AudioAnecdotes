@@ -11,13 +11,13 @@ bin_v1_linux 06unix.html         bin_v1_linux.tar Volume1/docs/html/06ComputerTe
 
 src_v1 07ComputerTools.html      src_v1.tar Volume1/docs/html/07ComputerTools.html
 src_v1 08HumanExperience.html    src_v1.tar Volume1/docs/html/08HumanExperience.html
-src_v1 main.html                 src_v1.tar Volume1/docs/html/main.html
+src_v1 main1.html                src_v1.tar Volume1/docs/html/main.html
+src_v2 main2.html                src_v2.tar Volume2/docs/html/main.html
 
-src_v1 head.html                 src_v1.tar Volume1/docs/html/head.html
-src_v2 head.html                 src_v2.tar Volume2/docs/html/head.html
+src_v1 head1.html                src_v1.tar Volume1/docs/html/head.html
+src_v2 head2.html                src_v2.tar Volume2/docs/html/head.html
 
 src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
-src_v2 menu.html                 src_v2.tar Volume2/docs/html/menu.html
 
 src_v1 build.html                src_v1.tar Volume1/docs/html/build.html
 src_v2 build.html                src_v2.tar Volume2/docs/html/build.html
