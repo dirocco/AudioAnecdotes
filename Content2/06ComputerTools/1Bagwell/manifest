@@ -1,0 +1,25 @@
+src_v2 config.mak	src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/config.mak
+src_v2 Copyright	src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/Copyright
+src_v2 Makefile.in	src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/Makefile.in
+src_v2 README		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/README
+src_v2 corr.c		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/corr.c
+src_v2 ding.c		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/ding.c
+src_v2 model.c		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/model.c
+src_v2 ltest.pl		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/ltest.pl
+src_v2 wtest.pl		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/wtest.pl
+src_v2 plotA		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/plotA
+src_v2 plotAB		src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/plotAB
+src_v2 responseAB	src_v2.tar Volume2/Content2/06ComputerTools/1Bagwell/responseAB
+
+bin_v2_linux corr	bin_v2_linux.tar Volume2/Content2/06ComputerTools/1Bagwell/corr
+bin_v2_linux ding	bin_v2_linux.tar Volume2/Content2/06ComputerTools/1Bagwell/ding
+# bin_v2_linux lding	bin_v2_linux.tar Volume2/Content2/06ComputerTools/1Bagwell/lding
+# bin_v2_linux lmodel	bin_v2_linux.tar Volume2/Content2/06ComputerTools/1Bagwell/lmodel
+bin_v2_mac corr		bin_v2_mac.tar Volume2/Content2/06ComputerTools/1Bagwell/corr
+bin_v2_mac ding		bin_v2_mac.tar Volume2/Content2/06ComputerTools/1Bagwell/ding
+# bin_v2_mac lding	bin_v2_mac.tar Volume2/Content2/06ComputerTools/1Bagwell/lding
+# bin_v2_mac lmodel	bin_v2_mac.tar Volume2/Content2/06ComputerTools/1Bagwell/lmodel
+bin_v2_win corr.exe	bin_v2_win.tar Volume2/Content2/06ComputerTools/1Bagwell/corr.exe
+bin_v2_win ding.exe	bin_v2_win.tar Volume2/Content2/06ComputerTools/1Bagwell/ding.exe
+# bin_v2_win lding.exe	bin_v2_win.tar Volume2/Content2/06ComputerTools/1Bagwell/lding.exe
+# bin_v2_win lmodel.exe	bin_v2_win.tar Volume2/Content2/06ComputerTools/1Bagwell/lmodel.exe
