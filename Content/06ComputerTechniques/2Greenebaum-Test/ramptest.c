@@ -1,3 +1,7 @@
+// ramptest.c Ken Greenebaum 2003
+//
+// Analizes a 16bit unsigned ramp signal for anomalies
+
 #define RUNTHRESHOLD 2
 typedef enum boolean {FALSE, TRUE} boolean;
 typedef unsigned short USHORT;
@@ -15,7 +19,6 @@ return((USHORT) (value1 - value2));
 
 main()
 {
-   USHORT count = 0;        // length of the current run
    int result;              // used to test result of scanf
 
    USHORT received     = 0; // stores value received from input stream
@@ -40,10 +43,7 @@ main()
    USHORT firstSample;
    unsigned int firstValue;
 
-   int    SignalCount = 0;  
-
-
-   typedef enum {
+   enum {
       START,             // start state
       EATSILENCE,        // state for waiting for signal (nonzero value)
       RECEIVEDSIGNAL,    // state that indicates a signal is detected
@@ -51,9 +51,7 @@ main()
       RUNESTABLISHED, 
       REESTABLISHRUN,
       EOF
-   } states ;
-
-   states state = START;
+   } state = START;
 
    boolean done = FALSE;
    while(!done) {
@@ -65,7 +63,7 @@ main()
 	 state = EOF;
 
       switch(state) {
-	 case START: // first value should be 0 (silence or beggining of ramp)
+	 case START: // first value should be 0 (silence or beginning of ramp)
 	    if(received!=0) {
 	       printf("signal didn't begin with 0 as expected (rather we received %d at sample 0)\n",
 		     received);
@@ -101,7 +99,7 @@ main()
 	       state = RUNESTABLISHED;
 	       firstSample = sampleCount - runCount + 1;
 	       firstValue  = add(received, -1 * (runCount-1));
-	       printf("  (%d threshold) sample run found beggining at ", runCount);
+	       printf("  (%d threshold) sample run found beginning at ", runCount);
 	       printf("sample %d (value %d)\n", firstSample, firstValue);
 	    }
 	 break;
@@ -135,7 +133,7 @@ main()
 	       USHORT firstRunValue = add(received, -1 * (runCount-1));
 
 	       state = RUNESTABLISHED;
-	       printf("  %d sample run found beggining at ", runCount);
+	       printf("  %d sample run found beginning at ", runCount);
 	       printf("sample %d (value %d)\n",
 		  sampleCount - runCount + 1, firstRunValue);
 	       printf("  %d sample anomaly since last run\n", anomalyLength);
@@ -172,16 +170,15 @@ main()
 	 break;
       }
    }
-   printf("Satistics:\n");
+   printf("Statistics:\n");
    printf("  %d total samples received\n", sampleCount);
    printf("  %d silent samples before signal\n", silentCount);
    printf("  signal begun at sample %d, value %d\n", firstSample, firstValue);
-   // printf("  first run %s with zero\n", (1)?"started":"didn't start");// XXX
    printf("  %d discontinuities (", discontinuityCount);
    printf("%d instances of dropped samples, ", droppedInstances);
    printf("%d instances of incorrect samples, ", wrongInstances);
    printf("%d instances of inserted samples, ", insertedInstances);
-   printf("%d instances of indeterminite error)\n", indeterminateInstances);
+   printf("%d instances of indeterminate error)\n", indeterminateInstances);
    printf("Ended %s in sync\n",
 	 (lastReceived==add(firstValue, sub(sampleCount, firstSample))) ?"":"not");
 }
