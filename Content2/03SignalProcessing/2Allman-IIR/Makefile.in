@@ -10,7 +10,7 @@
 #
 
 CC = @CC@
-CFLAGS = @CFLAGS@ -I.
+CFLAGS = @CFLAGS@ -D DEBUG -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
 EXEEXT=@EXEEXT@
@@ -22,5 +22,6 @@ LOCALLINK=@LOCALLINK@
 
 
 SOURCES = iir.c
+CPPSOURCES = iir2.cpp
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
