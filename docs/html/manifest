@@ -19,8 +19,8 @@ src_v2 head2.html                src_v2.tar Volume2/docs/html/head.html
 
 src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
 
-src_v1 build.html                src_v1.tar Volume1/docs/html/build.html
-src_v2 build.html                src_v2.tar Volume2/docs/html/build.html
+src_v1 build.html.cd1            src_v1.tar Volume1/docs/html/build.html
+src_v2 build.html.cd2            src_v2.tar Volume2/docs/html/build.html
 
 src_v1 contacts.html             src_v1.tar Volume1/docs/html/contacts.html
 src_v2 contacts.html             src_v2.tar Volume2/docs/html/contacts.html
