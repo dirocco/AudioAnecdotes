@@ -1,2 +1,4 @@
 # media_v2 thought.raw media_v2.tar Volume2/Content2/media/thought.raw
+src_v2 config.mak  src_v2.tar Volume2/Content2/media/config.mak
+src_v2 Makefile.in src_v2.tar Volume2/Content2/media/Makefile.in
 src_v2 thought.raw src_v2.tar Volume2/Content2/media/thought.raw
