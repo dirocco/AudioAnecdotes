@@ -4,3 +4,5 @@ src_v2       rsf.c       src_v2.tar       Volume2/Content2/02Synthesis/1Fouad/rs
 bin_v2_win   rsf.exe     bin_v2_win.tar   Volume2/Content2/02Synthesis/1Fouad/rsf.exe
 bin_v2_mac   rsf         bin_v2_mac.tar   Volume2/Content2/02Synthesis/1Fouad/rsf
 bin_v2_linux rsf         bin_v2_linux.tar Volume2/Content2/02Synthesis/1Fouad/rsf
+src_v2       seagull.raw src_v2.tar       Volume2/Content2/02Synthesis/1Fouad/seagull.raw
+src_v2       wave.raw    src_v2.tar       Volume2/Content2/02Synthesis/1Fouad/wave.raw
