@@ -1,0 +1,3 @@
+cygwin passthru.exe dist-cygwin.tar passthru.exe dist-cygwin.tar
+cygwin sine.exe dist-cygwin.tar sine.exe
+cygwin sine_simple.exe dist-cygwin.tar sine_simple.exe
