@@ -31,6 +31,10 @@ PSFILES  = $(addsuffix .ps, $(FIGURES))
 EPSFILES = $(addsuffix .eps,$(FIGURES))
 PDFFILES = $(addsuffix .pdf,$(FIGURES))
 
+
+DISSABLED:
+	@echo dissabled until we build octave and get the example working
+
 .PHONY: all ps eps pdf clean clean_all
 
 all : ps eps pdf
