@@ -25,7 +25,6 @@ LOCALLINK=@LOCALLINK@
 SOURCES = \
 	mandolin.c \
 	mass_spring.c \
-	multi2.c \
 	string.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc

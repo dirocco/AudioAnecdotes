@@ -24,6 +24,7 @@ LOCALLINK=@LOCALLINK@
 
 SOURCES = \
 	RockGuitar.c \
-	FilteredNoise3.c
+	FilteredNoise3.c \
+	multi2.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
