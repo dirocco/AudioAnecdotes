@@ -1,0 +1,34 @@
+#
+# Example Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+CC = g++
+CFLAGS = @CFLAGS@ -I../include
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@ 
+LOCALCLEAN = 
+EXEEXT=@EXEEXT@
+OBJEXT=@OBJEXT@
+TOOLROOT=@TOOLROOT@
+LOCALOPT=@LOCALOPT@
+LOCALLINK=@LOCALLINK@
+
+CPPSOURCES = \
+	../lib/GnuplotDriver.cpp \
+	../lib/FormatSource.cpp \
+	../lib/PulseModulate.cpp \
+	../lib/BaseBandModulate.cpp \
+	../lib/AWGNChannel.cpp \
+	../lib/BaseBandDemodulate.cpp \
+	../lib/FormatSink.cpp
+
+EXECS=modem$(EXEEXT)
+
+include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
