@@ -1,15 +1,15 @@
-src_v1 FilteredNoise3.c src_v1.tar AudioAnecdotesV1/00Thiel/FilteredNoise3.c
-src_v1 RockGuitar.c src_v1.tar AudioAnecdotesV1/00Thiel/RockGuitar.c
-src_v1 multi2.c src_v1.tar AudioAnecdotesV1/00David_Thiel/multi2.c
+src_v1 FilteredNoise3.c src_v1.tar AudioAnecdotesV1/04Thiel/FilteredNoise3.c
+src_v1 RockGuitar.c src_v1.tar AudioAnecdotesV1/04Thiel/RockGuitar.c
+src_v1 multi2.c src_v1.tar AudioAnecdotesV1/04David_Thiel/multi2.c
 
-bin_v1_win FilteredNoise3.exe bin_v1_win.tar AudioAnecdotesV1/00Thiel/FilteredNoise3.exe
-bin_v1_win RockGuitar.exe bin_v1_win.tar AudioAnecdotesV1/00Thiel/RockGuitar.exe
-bin_v1_win multi2.exe bin_v1_win.tar AudioAnecdotesV1/00Thiel/multi2.exe
+bin_v1_win FilteredNoise3.exe bin_v1_win.tar AudioAnecdotesV1/04Thiel/FilteredNoise3.exe
+bin_v1_win RockGuitar.exe bin_v1_win.tar AudioAnecdotesV1/04Thiel/RockGuitar.exe
+bin_v1_win multi2.exe bin_v1_win.tar AudioAnecdotesV1/04Thiel/multi2.exe
 
-bin_v1_mac FilteredNoise3 bin_v1_mac.tar AudioAnecdotesV1/00Thiel/FilteredNoise3
-bin_v1_mac RockGuitar bin_v1_mac.tar AudioAnecdotesV1/00Thiel/RockGuitar
-bin_v1_mac multi2 bin_v1_mac.tar AudioAnecdotesV1/00Thiel/multi2
+bin_v1_mac FilteredNoise3.exe bin_v1_mac.tar AudioAnecdotesV1/04Thiel/FilteredNoise3.exe
+bin_v1_mac RockGuitar.exe bin_v1_mac.tar AudioAnecdotesV1/04Thiel/RockGuitar.exe
+bin_v1_mac multi2.exe bin_v1_mac.tar AudioAnecdotesV1/04Thiel/multi2.exe
 
-bin_v1_linux FilteredNoise3 bin_v1_linux.tar AudioAnecdotesV1/00Thiel/FilteredNoise3
-bin_v1_linux RockGuitar bin_v1_linux.tar AudioAnecdotesV1/00Thiel/RockGuitar
-bin_v1_linux multi2 bin_v1_linux.tar AudioAnecdotesV1/00Thiel/multi2
+bin_v1_linux FilteredNoise3.exe bin_v1_linux.tar AudioAnecdotesV1/04Thiel/FilteredNoise3.exe
+bin_v1_linux RockGuitar.exe bin_v1_linux.tar AudioAnecdotesV1/04Thiel/RockGuitar.exe
+bin_v1_linux multi2.exe bin_v1_linux.tar AudioAnecdotesV1/04Thiel/multi2.exe
