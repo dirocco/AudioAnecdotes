@@ -11,8 +11,9 @@
 #define DMAX 256
 #define RESTREFL 0.8
 #define RAMP 100.0
+#define NUM_FRAMES 1000
 
-void main(void) {
+int main(void) {
   int i, j = 0, k, dlength, bufferIndex=0;
   float scale[9] =                        //  E scale frequencies
       {164.81,184.99,207.65,220.00,
@@ -59,4 +60,5 @@ void main(void) {
     WriteAudioStream(outStream, buffer, bufferIndex+1);
   CloseAudioStream(outStream);
   fclose(fileOut);
+  return 0;
 }
