@@ -381,7 +381,7 @@ float GenNextSawtoothBL( TestData *data )
 }
 
 /*******************************************************************/
-int WriteSamplesToAudio( TestData *data )
+int WriteSamplesToAudio( char mode, TestData *data )
 {
     PaError         err = 0;
     PABLIO_Stream  *aOutStream;
@@ -390,7 +390,7 @@ int WriteSamplesToAudio( TestData *data )
 
 /* Open blocking I/O stream. */
 	err = OpenAudioStream( &aOutStream, SAMPLE_RATE, paFloat32,
-				     (PABLIO_WRITE | PABLIO_STEREO) );
+					(PABLIO_WRITE | PABLIO_STEREO) );
 	if( err != paNoError ) return err;
 
 	while( (data->freq < END_FREQ) && (numFrames < MAX_FRAMES) )
@@ -398,8 +398,12 @@ int WriteSamplesToAudio( TestData *data )
 		float val = GenNextSawtoothBL( data );
 
 /* Write band-limited and non-band-limited sawteeth to audio output. */
-		samples[0] = val;
+	        samples[0] = val;
 		samples[1] = data->phase;
+		if(mode=='q')
+		   samples[1] = val;         // both bandlimited
+	        else if(mode=='n')
+		   samples[0] = data->phase; // both NON-bandlimited
 		WriteAudioStream( aOutStream, samples, 1 );
 
 	/* Glissando */
@@ -459,18 +463,32 @@ int WriteSamplesToFile( TestData *data )
 }
 
 /*******************************************************************/
-int main( void );
-int main( void )
+
+int main(int argc, char **argv)
 {
 	TestData DATA;
 	int result;
 
-	printf("Generate Band-Limited Sawtooth\n");
-	printf("by Phil Burk\n");
-	printf("Left channel contains band-limited sawtooth.\n");
-	printf("Right channel contains NON-band-limited sawtooth.\n");
+	int err=0;
+	if(argc!=2)
+	   err=1; 
+        else if (*argv[1]!='-')
+	   err=1; 
+        else switch (*((char *)argv[1]+1)) {
+	   case 'q': printf("Band-limited Sawtooth\n");     break;
+	   case 'n': printf("NON-Band-limited Sawtooth\n"); break;
+	   case 'b': 
+	      printf("Left channel: band-limited, right non-band limited \n"); 
+	                                                    break;
+	   default: err=1;
+	}
+
+        if(err) {
+	  printf("Usage: %s -q(aulity) -n(aive) -b(oth)\n", argv[0]);
+	  exit(-1);
+	}
+
 	printf("START_FREQ = %g\n", START_FREQ);
-	fflush(stdout);
 
 /* Initialize band-limited sawtooth data. */
 	result = SawBL_Init( &DATA.pa_mt );
@@ -481,7 +499,7 @@ int main( void )
 #if NON_REAL_TIME
 	result = WriteSamplesToFile( &DATA );
 #else
-	result = WriteSamplesToAudio( &DATA );
+	result = WriteSamplesToAudio( *((char *)argv[1]+1), &DATA );
 #endif
 
 	SawBL_Term( &DATA.pa_mt );
