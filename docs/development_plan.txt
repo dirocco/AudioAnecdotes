@@ -1,6 +1,8 @@
 /
 
-/extras/platform     - packages, cygwin,
-/extras/independent
+/redist/[packages]     - packages, cygwin, octave, etc. (not synthesis toolkit!)
+                         /rdist only gets as far as the CD not the HD
+
+/cdutils               - stuff the cd installer needs to function???
 
 
