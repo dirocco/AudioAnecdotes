@@ -3,7 +3,15 @@
 # do.cgi is allows executables to be run from a client browser via this
 # cgi script on the server. Security is maintained by making all paths
 # relative to a designated root directory and dissallowing ..'s
-#
+
+# 3 parameters (path, program, and arguments) are passed to do.cgi
+# via the QUERY_STRING environment variable
+# Parameters are delimited by ampersands
+# Within the path slashes are encoded using plus signs
+# Within the parameter list, parameters are delimited using underscores
+# and a tilde substituted to the root directory AudioAnecdotes/Volume1
+# Ex: <a href="do.cgi?~Content+02Perception+2DiFillipo&clickfusion&-f_0">
+
 # NOTE: we have a problem that when run from thttpd as a shell script
 #  some xservers won't allos us to connect to the :0.0 display
 #  we probe and detect this and just don't run our command in an
@@ -21,16 +29,71 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
-foo=`echo $QUERY_STRING | /bin/sed 's/%20/ /g' | /bin/sed 's/\.\.//g'`
+
+
+if [ -f /bin/tr ]; then
+   TR=/bin/tr
+else
+   TR=/usr/bin/tr
+fi
+
+if [ -f /bin/sed ]; then
+   SED=/bin/sed
+else
+   SED=/usr/bin/sed
+fi
+
+
+
+# convert %20's back to spaces, and stricly elliminate dotdots,
+# and any other dangerous symbols...
+foo=`echo $QUERY_STRING   |      $SED 's/%20/ /g' |      $SED 's/\.\.//g' |      $SED 's/;//g'    |      $SED 's/\`//g'`
+
+
+
 IFS='&'
 set -- $foo
 
-# root ourselves in the root directory
+
+
+# fixup path 
+p=`echo $1 | $SED 's/+/\//g'`
+
+
+
+# root ourselves in the Volume1 directory
 cd ../../
+root=$PWD/
 
-# we should realy inherit the proper DISPLAY however thttpd apparently
-# exec's cgi scripts w/o including the environment (should fix thttpd)
 
+if [ -d $p ]; then
+
+   cd ./$p
+else
+
+   exit -1
+fi
+
+# verify that the executable exists
+if [ -x $2 ]; then
+
+   echo
+
+else
+
+   exit -1
+fi
+
+# fixup arguments 
+
+a=`echo $3    | $SED 's/_/ /g'     | $SED 's/+/\//g'    | $SED "s:~:$root:g"    | $TR  '|' '\"'    `
+
+
+
+
+
+# we should inherit the proper DISPLAY from a (modified) thttpd 
+# but in case the user didn't have DISPLAY set...
 # set DISPLAY if it isn't already
 if [ ${DISPLAY:="null"} = "null" ]; then
    export DISPLAY=:0.0
@@ -42,32 +105,33 @@ xworked=0
 # list of locations where xset may be
 list="xset&/usr/bin/X11/xset&/usr/X11R6/bin/xset"
 for prog in $list; do
-   $prog q 2>> /tmp/log
 
-   if [ $? -eq 0 ]; then
-      echo $prog worked >> /tmp/log
-      xworked=1;
-      break;  # no need to run others
+   $prog q
+   result=$?
+
+
+   # 1 is an err, although I receive 0 and 127 when working
+   if [ $result -eq 1 ]; then
+
+      echo
+
    else
-      echo "could not $prog" >> /tmp/log
-   fi
 
+      xworked=1
+      break  # no need to run others
+   fi
 done
 
 
-echo HI >> /tmp/log
 
-if [ $xworked -eq 1 ]; then
-    echo XWORKED >> /tmp/log
-else
-    echo Xnoworkee >> /tmp/log
-fi
 
 if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
-	 $prog -e ./$1/$2 $3 $4 $5 $6 $7 $8 $9 2>> /tmp/log
+
+         $prog -e "./$2 $a"
+
 
 	 if [ $? -eq 0 ]; then
 	    break;  # no need to run others
@@ -75,8 +139,8 @@ if [ $xworked -eq 1 ]; then
       done
    )&
 else # skip the xterm and just run in the background
-   ./$1/$2 $3 $4 $5 $6 $7 $8 $9 &
+   ./$2 $a &
 fi
 
-echo Ho >> /tmp/log
+
 exit 0

@@ -37,3 +37,7 @@ bin_v1_linux linuxkill.cgi       bin_v1_linux.tar Volume1/docs/html/kill.cgi
 bin_v1_win   win-do.cgi          bin_v1_win.tar   Volume1/docs/html/do.cgi
 bin_v1_mac   mac-do.cgi          bin_v1_mac.tar   Volume1/docs/html/do.cgi
 bin_v1_linux linux-do.cgi        bin_v1_linux.tar Volume1/docs/html/do.cgi
+
+bin_v1_win   debugwin-do.cgi     bin_v1_win.tar   Volume1/docs/html/ddo.cgi
+bin_v1_mac   debugmac-do.cgi     bin_v1_mac.tar   Volume1/docs/html/ddo.cgi
+bin_v1_linux debuglinux-do.cgi   bin_v1_linux.tar Volume1/docs/html/ddo.cgi
