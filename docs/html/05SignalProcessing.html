@@ -21,11 +21,14 @@ This example demonstrates audio masking.
 <p></p>
 <dd>
 Run <a href="do.cgi?..+..+Content/05SignalProcessing/1Malvar/sineMask">sineMask</a>.
+The demo repeats the following sequence: 
+1) Plays a reference 1000 Hz tone for one second 
+2) Adds a lower amplitude 1100 Hz tone to the reference (which should be masked) 
+3) adds a 1300 Hz tone which doesn't get masked.
+<p>
+This cycle repeats (kill the window it creates to stop the demo)
 </dd>
 <p></p>
-<dd>
-For more information about audio masking see <a href="../../Content/05SignalProcessing/1Malvar/readme.txt">readme.txt</A>.
-</dd>
 <dd>
 Click here to view the source <a href="../../Content/05SignalProcessing/1Malvar/sineMask.c">sineMask.c</a>.
 </dd>
@@ -39,12 +42,10 @@ These examples demonstrate a software modem.
 
 <p></p>
 <dd>
-Run <a href="do.cgi?..+..+Content/05SignalProcessing/3Luna/mono/modem">modem</a>.
+Run <a href="do.cgi?..+..+Content/05SignalProcessing/3Luna/mono/modem">modem</a> and it will modulate a signal before
+your very eyes. Actually this code is best experimented with from the command line and can be found in the AudioAnecdotes/Content/05SignalProcessing/3Luna directory.
 </dd>
 <p></p>
-<dd>
-For more information about software modems see <a href="../../Content/05SignalProcessing/3Luna/readme.txt">readme.txt</A>.
-</dd>
 <dd>
 Click here to view the source <a href="../../Content/05SignalProcessing/3Luna/mono/modem.cpp">modem.cpp</a>.
 </dd>

@@ -10,22 +10,33 @@
 
 </head>
 
-<h1>01Measurement</h1>
+<h1>Chapter 1: Measurement</h1>
 
-<h2><a name="1Greenebaum">1Greenebaum</a></h2>
+<h2><a name="1Greenebaum">Sound Pressure Levels: "Mine Goes to 11!" -Greenebaum</a></h2>
 
 <dd>
-This demonstrates an amplitude ramp.
+This demonstrates an amplitude ramp. Specifically this demo plays a series of 
+sounds at lower and lower amplitude. The amplitude differences are smaller than
+the just noticable difference and hence appear to be a single continuous sound
+of decreasing volume instead of the series of sounds they are.
+
+Parameters were selected to minimize discontinuities by changine amplitude only at zero crossings.
 </dd>
 
 <p></p>
 <dd>
-Run <a href="do.cgi?..+..+Content/01Measurement/1Greenebaum/amplitudeRamp">amplitudeRamp</a>.
+Run <a href="do.cgi?..+..+Content/01Measurement/1Greenebaum/amplitudeRamp">amplitudeRamp 0.9</a>.
+Run <a href="do.cgi?..+..+Content/01Measurement/1Greenebaum/amplitudeRamp&0.2">amplitudeRamp 0.2</a> for a more rapid ramp and noticably discrete sounds.
 </dd>
+
 <p></p>
 <dd>
-For more information about AmplitudeRamp see <a href="../../Content/01Measurement/1Greenebaum/readme.txt">readme.txt</A>.
+This illustration demonstrates that this smooth ramp is comprised of sounds of
+discrete amplitudes:
+<IMG src="../../Content/01Measurement/1Greenebaum/ramp.gif"> 
 </dd>
+
+<p></p>
 <dd>
 Click here to view the source <a href="../../Content/01Measurement/1Greenebaum/amplitudeRamp.c">amplitudeRamp.c</a>.
 </dd>

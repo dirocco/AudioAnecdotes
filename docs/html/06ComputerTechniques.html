@@ -20,12 +20,11 @@ This example demonstrates audio passthrough using different interfaces.
 
 <p></p>
 <dd>
-Run <a href="do.cgi?..+..+Content/06ComputerTechniques/1Greenebaum-API/passthru">passthru</a>.
+Run <a href="do.cgi?..+..+Content/06ComputerTechniques/1Greenebaum-API/passthru">passthru</a>. It simply
+copies audio input to audio output to demonstrate different audio programming interfaces. The program will
+run indefinitely (kill the window that pops up to stop this application)
 </dd>
-<p></p>
-<dd>
-For more information about audio interfaces see <a href="../../Content/06ComputerTechniques/1Greenebaum-API/readme.txt">readme.txt</A>.
-</dd>
+
 <p></p>
 <dd>
 Click here to view the source <a href="../../Content/06ComputerTechniques/1Greenebaum-API/passthru.c">passthru.c</a>.
@@ -46,15 +45,24 @@ This example demonstrates ramptest.
 
 <p></p>
 <dd>
-Run <a href="do.cgi?..+..+Content/06ComputerTechniques/2Greenebaum-Test/ramptest">ramptest</a>.
+The Ramp Test is best experimented with from the command line.  Bring a command line shell up then cd to the
+AudioAnecdotes/Content/06ComputerTechniques/2Greenebaum-Test directory. This demo uses standard I/O to simulate 
+audio because most standard PC's lack digital I/O required for this test. <p>
+rampout creates a sawtooth signal that ramptest analyzes for error.  The most simple way to run the test is to pipe the 
+output of rampout to ramptest: rampout | ramptest <p>
+Data files with typical errors have been provided for instruction.  Those may be run against ramptes by redirection:
+ramptest < rampdata1
+
+
 </dd>
 <p></p>
-<dd>
-For more information about quantifying audio performance see <a href="../../Content/06ComputerTechniques/2Greenebaum-Test/readme.txt">readme.txt</A>.
-</dd>
 <p></p>
 <dd>
+Click here to view the source <a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampout.c">rampout.c</a>.
 Click here to view the source <a href="../../Content/06ComputerTechniques/2Greenebaum-Test/ramptest.c">ramptest.c</a>.
+Click here to view the data files <a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata1.c">rampdata1</a>,
+<a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata2.c">rampdata2</a>,
+<a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata3.c">rampdata3</a>.
 </dd>
 <p></p>
 
@@ -76,10 +84,6 @@ Play <a href="do.cgi?..+..+Content/06ComputerTechniques/3Greenebaum-Files/play&.
 </dd>
 <dd>
 Play <a href="do.cgi?..+..+Content/06ComputerTechniques/3Greenebaum-Files/play&..+..+Content/06ComputerTechniques/3Greenebaum-Files/test.au">test.au</a>.
-</dd>
-<p></p>
-<dd>
-For more information about audio file formats see <a href="../../Content/06ComputerTechniques/3Greenebaum-Files/readme.txt">readme.txt</A>.
 </dd>
 <p></p>
 <dd>

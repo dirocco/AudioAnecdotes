@@ -1,4 +1,4 @@
-body { background: navy; }
+body { font-size: 11px; color: white; background: navy; }
 
 h1 { color: white; }
 h2 { color: white; }
@@ -37,6 +37,7 @@ IMG
 
 .KID
 {	
+	color: #C0C0C0
 	MARGIN-LEFT: 15px;
 	CURSOR: hand;
 	TEXT-INDENT: -10px;
