@@ -3,7 +3,12 @@ src_v1 02Perception.html         src_v1.tar Volume1/docs/html/02Perception.html
 src_v1 03Recording.html          src_v1.tar Volume1/docs/html/03Recording.html
 src_v1 04Synthesis.html          src_v1.tar Volume1/docs/html/04Synthesis.html
 src_v1 05SignalProcessing.html   src_v1.tar Volume1/docs/html/05SignalProcessing.html
-src_v1 06ComputerTechniques.html src_v1.tar Volume1/docs/html/06ComputerTechniques.html
+
+# src_v1 06ComputerTechniques.html src_v1.tar Volume1/docs/html/06ComputerTechniques.html
+bin_v1_win   06win.html          bin_v1_win.tar   Volume1/docs/html/06ComputerTechniques.html
+bin_v1_mac   06unix.html         bin_v1_mac.tar   Volume1/docs/html/06ComputerTechniques.html
+bin_v1_linux 06unix.html         bin_v1_linux.tar Volume1/docs/html/06ComputerTechniques.html
+
 src_v1 07ComputerTools.html      src_v1.tar Volume1/docs/html/07ComputerTools.html
 src_v1 08HumanExperience.html    src_v1.tar Volume1/docs/html/08HumanExperience.html
 src_v1 main.html                 src_v1.tar Volume1/docs/html/main.html

@@ -217,6 +217,41 @@ most simple way to run the test is to pipe the output of rampout to ramptest: <o
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-left:1.0in'><span style='font-family:"Courier New"'>
+
+
+#ifdef WINDOWS
+
+<a target="output" href="do.cgi?docs+html&rampout.bat">rampout | ramptest</a>
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Data
+files with typical errors have been provided for instruction. Those may be run
+against ramptes by redirection: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:"Courier New"'>
+<a target="output" href="do.cgi?docs+html&rampdata1.bat">ramptest &lt; rampdata1</a>
+<a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata1">(view rampdata1)</a>
+
+
+<o:p></o:p></span></p>
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:"Courier New"'>
+
+<a target="output" href="do.cgi?docs+html&rampdata2.bat">ramptest &lt; rampdata2</a>
+<a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata2">(view rampdata2)</a>
+
+<o:p></o:p></span></p>
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:"Courier New"'>
+
+<a target="output" href="do.cgi?docs+html&rampdata3.bat">ramptest &lt; rampdata3</a>
+
+#else
+
 <a target="output" href="do.cgi?docs+html&rampout.sh">rampout | ramptest</a>
 <o:p></o:p></span></p>
 
@@ -245,6 +280,12 @@ against ramptes by redirection: <o:p></o:p></span></p>
 <p class=MsoNormal style='margin-left:1.0in'><span style='font-family:"Courier New"'>
 
 <a target="output" href="do.cgi?docs+html&rampdata3.sh">ramptest &lt; rampdata3</a>
+
+
+#endif
+
+
+
 <a href="../../Content/06ComputerTechniques/2Greenebaum-Test/rampdata3">(view rampdata3)</a>
 
 <o:p></o:p></span></p>

@@ -3,7 +3,8 @@ TOPDIR=../..
 CPP=cpp -traditional -P -C -fpreprocessed
 
 TARGETS=linux-do.cgi win-do.cgi mac-do.cgi \
-debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi
+debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi \
+06win.html 06unix.html
 
 dist:
 	$(TOPDIR)/bin/tbmaker $(TYPE) $(TOPDIR)/distro/ $(TOPDIR)/dirt/
@@ -28,5 +29,12 @@ win-do.cgi: do.cgi
 mac-do.cgi: do.cgi
 	$(CPP) do.cgi -D MAC -D UNIX > mac-do.cgi
 
+06win.html: 06ComputerTechniques.html
+	$(CPP) 06ComputerTechniques.html -D WINDOWS > 06win.html
+
+06unix.html: 06ComputerTechniques.html
+	$(CPP) 06ComputerTechniques.html > 06unix.html
+
 clean:
 	rm -f linux-do.cgi win-do.cgi mac-do.cig
+
