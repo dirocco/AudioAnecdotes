@@ -79,8 +79,9 @@ main()
 	 case EATSILENCE: // wait for a nonzero value
 	    runCount = 1;
 	    if(received==1) {
+	       silentCount--; // one of the zeros was actually signal
 	       printf("signal found at sample %d (after %d silent samples)\n", 
-		     sampleCount-1, silentCount-1);
+		     sampleCount-1, silentCount);
 	       state = ESTABLISHRUN;
 	       runCount = 2; // we had at least one zero to get to this state
 	    } else if(received) {
