@@ -14,17 +14,17 @@ including the PABLIO audio library</title>
  <o:DocumentProperties>
   <o:Author>Ken Greenebaum</o:Author>
   <o:LastAuthor>Ken Greenebaum</o:LastAuthor>
-  <o:Revision>3</o:Revision>
-  <o:TotalTime>398</o:TotalTime>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>401</o:TotalTime>
   <o:Created>2003-11-14T12:41:00Z</o:Created>
-  <o:LastSaved>2003-11-14T12:47:00Z</o:LastSaved>
+  <o:LastSaved>2003-11-15T07:11:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>372</o:Words>
-  <o:Characters>2122</o:Characters>
+  <o:Words>392</o:Words>
+  <o:Characters>2239</o:Characters>
   <o:Company>SWORKS</o:Company>
-  <o:Lines>17</o:Lines>
-  <o:Paragraphs>4</o:Paragraphs>
-  <o:CharactersWithSpaces>2490</o:CharactersWithSpaces>
+  <o:Lines>18</o:Lines>
+  <o:Paragraphs>5</o:Paragraphs>
+  <o:CharactersWithSpaces>2626</o:CharactersWithSpaces>
   <o:Version>11.5606</o:Version>
  </o:DocumentProperties>
 </xml><![endif]--><!--[if gte mso 9]><xml>
@@ -44,14 +44,6 @@ including the PABLIO audio library</title>
 </xml><![endif]-->
 <style>
 <!--
- /* Font Definitions */
- @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;
-	mso-font-charset:2;
-	mso-generic-font-family:auto;
-	mso-font-pitch:variable;
-	mso-font-signature:0 268435456 0 0 -2147483648 0;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{mso-style-parent:"";
@@ -90,32 +82,6 @@ span.GramE
 	mso-paper-source:0;}
 div.Section1
 	{page:Section1;}
- /* List Definitions */
- @list l0
-	{mso-list-id:318928519;
-	mso-list-type:hybrid;
-	mso-list-template-ids:-912078274 1290173124 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
-@list l0:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:1.5in;
-	mso-level-number-position:left;
-	margin-left:1.5in;
-	text-indent:-.25in;
-	font-family:Symbol;
-	color:windowtext;}
-@list l0:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:1.5in;
-	mso-level-number-position:left;
-	margin-left:1.5in;
-	text-indent:-.25in;
-	font-family:"Courier New";}
-ol
-	{margin-bottom:0in;}
-ul
-	{margin-bottom:0in;}
 -->
 </style>
 <!--[if gte mso 10]>
@@ -170,8 +136,8 @@ style='font-size:12.0pt;font-family:Arial'>Caliper<o:p></o:p></span></b></p>
 Arial'> is a utility developed for <i style='mso-bidi-font-style:normal'>Audio
 Anecdotes </i>that provides interactive tuning of parameters.<span
 style='mso-spacerun:yes'>  </span>Control is provided by means of keyboard
-input and does not require a GUI. This facilitates dynamic interaction without
-complicating simple command line example programs. Basically </span>caliper<span
+input and does not require a GUI. This facilitates dynamic interaction without complicating
+simple command line example programs. Basically </span>caliper<span
 style='font-family:Arial'> makes it extremely easy to re-run any command line
 program tuning and fine-tuning multiple floating point parameters to the
 program’s command line.<o:p></o:p></span></p>
@@ -182,8 +148,8 @@ program’s command line.<o:p></o:p></span></p>
 Arial'> based examples are automatically run in a terminal window by clicking
 on them in <i style='mso-bidi-font-style:normal'>Audio Anecdotes’ </i>tour. The
 following commands may be used to control the program being run by </span>caliper<span
-style='font-family:Arial'> (these single character commands take effect immediately
-without requiring enter to be pressed):<o:p></o:p></span></p>
+style='font-family:Arial'> (these single character commands take effect
+immediately without requiring enter to be pressed):<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -413,26 +379,32 @@ Arial'><o:p></o:p></span></p>
 style='font-family:Arial'><span style='mso-tab-count:1'>          </span>string
 containing the command </span>caliper <span style='font-family:Arial'>is to run
 in </span><span class=SpellE>printf</span> <span style='font-family:Arial'>format
-with %f controlling where each controllable <span
-style='mso-spacerun:yes'> </span>parameter should be located (be sure to quote
-this string on the command line).<o:p></o:p></span></p>
+with %f controlling where each controllable<span style='mso-spacerun:yes'> 
+</span>parameter should be located (be sure to quote this string on the command
+line).<o:p></o:p></span></p>
 
 <p class=MsoPlainText style='margin-left:.5in'><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText style='margin-left:.5in'>-<span class=SpellE>i</span><span
-style='font-family:Arial'><span style='mso-tab-count:1'>        </span><span
-style='mso-tab-count:1'>            </span>optional argument controlling the initial
-value of each parameter (argument should be followed by a white-space delimited
-list of floating point values corresponding to the initial value of each
-variable)<o:p></o:p></span></p>
+style='font-family:Arial'><span style='mso-tab-count:2'>                    </span>optional
+argument controlling the initial value of each parameter (argument should be
+followed by a white-space delimited list of floating point values corresponding
+to the initial value of each variable)<o:p></o:p></span></p>
 
 <p class=MsoPlainText style='margin-left:.5in'><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText style='margin-left:.5in'>-f<span style='font-family:Arial'><span
-style='mso-tab-count:1'>        </span><span style='mso-tab-count:1'>            </span>optional
-argument controlling the default fractional state of the default change magnitude
-of each parameter (followed by a list of 1 or 0 values to enable or disable fraction
-mode for each variable)<o:p></o:p></span></p>
+style='mso-tab-count:2'>                    </span>optional argument
+controlling the default fractional state of the default change magnitude of
+each parameter (followed by a list of 1 or 0 values to enable or disable
+fraction mode for each variable)<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin-left:.5in'><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoPlainText style='margin-left:.5in'>-m<span style='mso-tab-count:
+2'>          </span><span style='font-family:Arial'>optional argument
+controlling the default change magnitude of each parameter (followed by a list
+of integer values between 0 and 9)<o:p></o:p></span></p>
 
 <p class=MsoPlainText style='margin-left:.5in'><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
