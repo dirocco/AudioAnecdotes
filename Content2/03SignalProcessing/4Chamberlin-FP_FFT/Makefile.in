@@ -10,7 +10,7 @@
 #
 
 CC = @CC@
-CFLAGS = @CFLAGS@ -I. -c
+CFLAGS = @CFLAGS@ -D DEBUG -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
 EXEEXT=@EXEEXT@
@@ -21,6 +21,6 @@ LOCALLINK=@LOCALLINK@
 
 
 
-SOURCES = fp_fft.c
+CPPSOURCES = fp_fft2.cpp
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
