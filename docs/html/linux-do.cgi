@@ -4,6 +4,13 @@
 # cgi script on the server. Security is maintained by making all paths
 # relative to a designated root directory and dissallowing ..'s
 #
+# 3 parameters (path, program, and arguments) are passed to do.cgi
+# via the QUERY_STRING environment variable
+# Parameters are delimited by ampersands
+# Within the path slashes are encoded using plus signs
+# Within the parameter list, parameters are delimited using underscores
+# Ex: <a href="do.cgi?Content+02Perception+2DiFillipo&clickfusion&-f_0">
+#
 # NOTE: we have a problem that when run from thttpd as a shell script
 #  some xservers won't allos us to connect to the :0.0 display
 #  we probe and detect this and just don't run our command in an
@@ -21,16 +28,56 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
-foo=`echo $QUERY_STRING | /bin/sed 's/%20/ /g' | /bin/sed 's/\.\.//g'`
+# echo QUERY_STRING:$QUERY_STRING >> /tmp/log
+
+# convert %20's back to spaces, and stricly elliminate dotdots,
+# and any other dangerous symbols...
+foo=`echo $QUERY_STRING   | \
+     /bin/sed 's/%20/ /g' | \
+     /bin/sed 's/\.\.//g' | \
+     /bin/sed 's/;//g'    | \
+     /bin/sed 's/\`//g'`
+
+# echo QUERY_STRING:$foo >> /tmp/log
+
 IFS='&'
 set -- $foo
 
-# root ourselves in the root directory
+# echo path:[$1]  prog:[$2]  args[$3] >> /tmp/log
+
+# fixup path 
+p=`echo $1 | /bin/sed 's/+/\//g'`
+# echo p:[$p] >> /tmp/log
+
+# root ourselves in the Volume1 directory
 cd ../../
+# echo pwd:$PWD >> /tmp/log
 
-# we should realy inherit the proper DISPLAY however thttpd apparently
-# exec's cgi scripts w/o including the environment (should fix thttpd)
+if [ -d $p ]; then
+   # echo $p exists >> /tmp/log
+   cd ./$p
+   # echo pwd:$PWD >> /tmp/log
+else
+   # echo $p does not exist >> /tmp/log
+   exit -1
+fi
 
+# verify that the executable exists
+if [ -x $2 ]; then
+   # echo $2 exists >> /tmp/log
+   echo
+else
+   # echo $2 does not exist >> /tmp/log
+   exit -1
+fi
+
+# fixup arguments 
+a=`echo $3 | /bin/sed 's/_/ /g'`
+# echo a:[$a] >> /tmp/log
+
+
+# we should inherit the proper DISPLAY from a (modified) thttpd 
+# but in case the user didn't have DISPLAY set...
 # set DISPLAY if it isn't already
 if [ ${DISPLAY:="null"} = "null" ]; then
    export DISPLAY=:0.0
@@ -45,29 +92,27 @@ for prog in $list; do
    $prog q 2>> /tmp/log
 
    if [ $? -eq 0 ]; then
-      echo $prog worked >> /tmp/log
+      # echo $prog worked >> /tmp/log
       xworked=1;
       break;  # no need to run others
-   else
-      echo "could not $prog" >> /tmp/log
+   # else
+      # echo "could not $prog" >> /tmp/log
    fi
 
 done
 
 
-echo HI >> /tmp/log
-
-if [ $xworked -eq 1 ]; then
-    echo XWORKED >> /tmp/log
-else
-    echo Xnoworkee >> /tmp/log
-fi
+# if [ $xworked -eq 1 ]; then
+#     echo XWORKED >> /tmp/log
+# else
+#     echo Xnoworkee >> /tmp/log
+# fi
 
 if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
-	 $prog -e ./$1/$2 $3 $4 $5 $6 $7 $8 $9 2>> /tmp/log
+         $prog -e "./$2 $a" 2>> /tmp/log
 
 	 if [ $? -eq 0 ]; then
 	    break;  # no need to run others
@@ -75,8 +120,7 @@ if [ $xworked -eq 1 ]; then
       done
    )&
 else # skip the xterm and just run in the background
-   ./$1/$2 $3 $4 $5 $6 $7 $8 $9 &
+   ./$2 $a &
 fi
 
-echo Ho >> /tmp/log
 exit 0
