@@ -12,6 +12,7 @@ src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
 src_v1 build.html                src_v1.tar Volume1/docs/html/build.html
 src_v1 contacts.html             src_v1.tar Volume1/docs/html/contacts.html
 src_v1 update.html               src_v1.tar Volume1/docs/html/update.html
+src_v1 caliper.html              src_v1.tar Volume1/docs/html/caliper.html
 
 src_v1 rampout.sh                src_v1.tar Volume1/docs/html/rampout.sh
 src_v1 rampdata1.sh              src_v1.tar Volume1/docs/html/rampdata1.sh
