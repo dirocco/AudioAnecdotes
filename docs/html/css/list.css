@@ -7,6 +7,7 @@ a         { color: #815849; }
 a:link    { color: #815849; }
 a:visited { color: #683D2D; }
 a:hover   { color: #683D2D; }
+a:active  { color: RED;     }
 a.CURLIST { background: #EBC086 }
 
 .LIST
