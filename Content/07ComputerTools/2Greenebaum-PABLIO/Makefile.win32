@@ -1,0 +1,28 @@
+# Generated automatically from Makefile.in by configure.
+#
+# Example Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+CC = cl
+CFLAGS = -Zi -I/cygwin/home/hgood/aadevtree/include -I.
+LDFLAGS = -link -DEBUG -LIBPATH:/cygwin/home/hgood/aadevtree/lib
+LIBS = libpablio.a winmm.lib
+LOCALCLEAN = 
+EXEEXT=.exe
+OBJEXT=o
+TOOLROOT=
+LOCALOPT=
+LOCALLINK=
+
+SOURCES = \
+	passthru.c \
+	sine.c
+
+include /home/hgood/aadevtree/include/make-includes/build.leaf.make.inc
