@@ -15,6 +15,6 @@ echo
 foo=`echo $QUERY_STRING | tr '&' ' ' | tr '+' '/'`
 echo $foo
 
-/cygdrive/c/windows/system32/cmd.exe /c start $foo
+cmd.exe /c start $foo
 
 exit 0
