@@ -29,6 +29,11 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
+#ifdef DEBUG
+touch /tmp/log
+chmod 666 /tmp/log
+#endif
+
 if [ -f /bin/tr ]; then
    TR=/bin/tr
 else
@@ -41,7 +46,9 @@ else
    SED=/usr/bin/sed
 fi
 
+#ifdef DEBUG
 echo QUERY_STRING:$QUERY_STRING >> /tmp/log
+#endif
 
 # convert %20's back to spaces, and stricly elliminate dotdots,
 # and any other dangerous symbols...
@@ -51,43 +58,61 @@ foo=`echo $QUERY_STRING   | \
      $SED 's/;//g'    | \
      $SED 's/\`//g'`
 
+#ifdef DEBUG
 echo QUERY_STRING:$foo >> /tmp/log
+#endif
 
 IFS='&'
 set -- $foo
 
+#ifdef DEBUG
 echo path:[$1]  prog:[$2]  args[$3] >> /tmp/log
+#endif
 
 # fixup path 
 p=`echo $1 | $SED 's/+/\//g'`
+
+#ifdef DEBUG
 echo p:[$p] >> /tmp/log
+#endif
 
 # root ourselves in the Volume1 directory
 cd ../../
-echo pwd:$PWD >> /tmp/log
 root=$PWD/
+#ifdef DEBUG
 echo root:$root >> /tmp/log
+#endif
 
 if [ -d $p ]; then
+#ifdef DEBUG
    echo $p exists >> /tmp/log
+#endif
    cd ./$p
-   echo pwd:$PWD >> /tmp/log
 else
+#ifdef DEBUG
    echo $p does not exist >> /tmp/log
+#endif
    exit -1
 fi
 
 # verify that the executable exists
 if [ -x $2 ]; then
+#ifdef DEBUG
    echo $2 exists >> /tmp/log
+#else
    echo
+#endif
 else
+#ifdef DEBUG
    echo $2 does not exist >> /tmp/log
+#endif
    exit -1
 fi
 
 # fixup arguments 
+#ifdef DEBUG
 echo pre-arg:$3 >> /tmp/log
+#endif
 a=`echo $3 \
    | $SED 's/_/ /g'  \
    | $SED 's/+/\//g' \
@@ -95,7 +120,11 @@ a=`echo $3 \
    | $TR  '|' '\"' \
    `
 
+#ifdef DEBUG
 echo a:[$a] >> /tmp/log
+#endif
+
+#ifdef UNIX
 
 # we should inherit the proper DISPLAY from a (modified) thttpd 
 # but in case the user didn't have DISPLAY set...
@@ -110,36 +139,50 @@ xworked=0
 # list of locations where xset may be
 list="xset&/usr/bin/X11/xset&/usr/X11R6/bin/xset"
 for prog in $list; do
+#ifdef DEBUG
    echo trying:$prog >> /tmp/log
+#endif
    $prog q
    result=$?
+#ifdef DEBUG
    echo tried:$prog $result  >> /tmp/log
+#endif
 
    # 1 is an err, although I receive 0 and 127 when working
    if [ $result -eq 1 ]; then
+#ifdef DEBUG
       echo "could not $prog" >> /tmp/log
+#else
+      echo
+#endif
    else
+#ifdef DEBUG
       echo $prog worked >> /tmp/log
+#endif
       xworked=1
       break  # no need to run others
    fi
 done
 
-echo "off bottom" >> /tmp/log
 
-
+#ifdef DEBUG
 if [ $xworked -eq 1 ]; then
     echo XWORKED >> /tmp/log
 else
     echo Xnoworkee >> /tmp/log
 fi
+#endif
 
 if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
+#ifdef DEBUG
          echo run:$prog -e "./$2 $a" >> /tmp/log
          $prog -e "./$2 $a" 2>> /tmp/log
+#else
+         $prog -e "./$2 $a"
+#endif
 
 	 if [ $? -eq 0 ]; then
 	    break;  # no need to run others
@@ -149,5 +192,17 @@ if [ $xworked -eq 1 ]; then
 else # skip the xterm and just run in the background
    ./$2 $a &
 fi
+#else
+
+doit=`/bin/cygpath --sysdir`/cmd
+if [ -f $doit ]; then
+   $doit /c start .\\$2 $a
+else
+   echo nothere
+   doit=`/bin/cygpath --windir`/command
+   $doit /c start .\\$2 $a
+fi
+
+#endif 
 
 exit 0
