@@ -7,7 +7,8 @@
 
 #subdirectories of the directory
 SUBDIRS=Example \
-	David_Thiel
+	David_Thiel \
+	Perry_Cook
 
 #the path to the directory which contains configure for this directory
 CONFIGROOT=.

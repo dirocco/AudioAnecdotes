@@ -13,24 +13,12 @@ CC = @CC@
 CFLAGS = @CFLAGS@ -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
+LOCALCLEAN = 
+EXEEXT=@EXEEXT@
+OBJEXT=@OBJEXT@
 
+SOURCES = \
+	passthru.c \
+	sine.c
 
-TESTS = \
-	passthru \
-	sine
-
-all: tests
-
-tests: $(TESTS)
-
-$(TESTS):%: Makefile %.c
-	$(CC) -o $@ $(CFLAGS) $*.c $(LDFLAGS) $(LIBS)
-
-clean:
-	echo No intermediate files here 
-
-distclean: clean
-	$(RM) -f $(TESTS)
-
-%.o: %.c Makefile $(PAINC)
-	$(CC) -c $(CFLAGS) $< -o $@
+include @MAKEINCLUDESDIR@/build.leaf.make.inc

@@ -13,13 +13,14 @@ CC = @CC@
 CFLAGS = @CFLAGS@ -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
-LOCALCLEAN = 
+LOCALCLEAN = mandolin.raw
 EXEEXT=@EXEEXT@
 OBJEXT=@OBJEXT@
 
 SOURCES = \
-	RockGuitar.c \
-	pa_multiwave.c \
-	FilteredNoise3.c
+	mandolin.c \
+	mass_spring.c \
+	multi2.c \
+	string.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
