@@ -1,25 +1,25 @@
-Value	Code				Format
+Value	Code					Format
 
-0	SND_FORMAT_UNSPECIFIED		unspecified format 
-1	SND_FORMAT_MULAW_8		8-bit mu-law samples 
-2	SND_FORMAT_LINEAR_8		8-bit linear samples 
-3	SND_FORMAT_LINEAR_16		16-bit linear samples 
-4	SND_FORMAT_LINEAR_24		24-bit linear samples 
-5	SND_FORMAT_LINEAR_32		32-bit linear samples 
-6	SND_FORMAT_FLOAT		floating-point samples 
-7	SND_FORMAT_DOUBLE		double-precision float samples 
-8	SND_FORMAT_INDIRECT		fragmented sampled data 
-9	SND_FORMAT_NESTED		          ? 
-10	SND_FORMAT_DSP_CORE		DSP program 
-11	SND_FORMAT_DSP_DATA_8		8-bit fixed-point samples 
-12	SND_FORMAT_DSP_DATA_16		16-bit fixed-point samples 
-13	SND_FORMAT_DSP_DATA_24		24-bit fixed-point samples 
-14	SND_FORMAT_DSP_DATA_32		32-bit fixed-point samples 
+0	SND_FORMAT_UNSPECIFIED			unspecified format 
+1	SND_FORMAT_MULAW_8			8-bit mu-law samples 
+2	SND_FORMAT_LINEAR_8			8-bit linear samples 
+3	SND_FORMAT_LINEAR_16			16-bit linear samples 
+4	SND_FORMAT_LINEAR_24			24-bit linear samples 
+5	SND_FORMAT_LINEAR_32			32-bit linear samples 
+6	SND_FORMAT_FLOAT			floating-point samples 
+7	SND_FORMAT_DOUBLE			double-precision float samples 
+8	SND_FORMAT_INDIRECT			fragmented sampled data 
+9	SND_FORMAT_NESTED				? 
+10	SND_FORMAT_DSP_CORE			DSP program 
+11	SND_FORMAT_DSP_DATA_8			8-bit fixed-point samples 
+12	SND_FORMAT_DSP_DATA_16			16-bit fixed-point samples 
+13	SND_FORMAT_DSP_DATA_24			24-bit fixed-point samples 
+14	SND_FORMAT_DSP_DATA_32			32-bit fixed-point samples 
 15	        ?	
-16	SND_FORMAT_DISPLAY		non-audio display data 
-17	SND_FORMAT_MULAW_SQUELCH	          ? 
-18	SND_FORMAT_EMPHASIZED		16-bit linear with emphasis 
-19	SND_FORMAT_COMPRESSED		16-bit linear with compression 
+16	SND_FORMAT_DISPLAY			non-audio display data 
+17	SND_FORMAT_MULAW_SQUELCH			? 
+18	SND_FORMAT_EMPHASIZED			16-bit linear with emphasis 
+19	SND_FORMAT_COMPRESSED			16-bit linear with compression 
 20	SND_FORMAT_COMPRESSED_EMPHASIZED	A combination of the two above 
-21	SND_FORMAT_DSP_COMMANDS		Music Kit DSP commands 
-22	SND_FORMAT_DSP_COMMANDS_SAMPLES	          ?
+21	SND_FORMAT_DSP_COMMANDS			Music Kit DSP commands 
+22	SND_FORMAT_DSP_COMMANDS_SAMPLES	          	?
