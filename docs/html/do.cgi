@@ -78,7 +78,7 @@ echo p:[$p] >> /tmp/log
 
 # root ourselves in the Volume1 directory
 cd ../../
-root=$PWD/
+root=`/bin/pwd`/
 #ifdef DEBUG
 echo root:$root >> /tmp/log
 #endif
