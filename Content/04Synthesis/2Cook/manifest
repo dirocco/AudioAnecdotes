@@ -1,3 +1,15 @@
-cygwin mandolin.exe dist-cygwing.tar authors/Perry_Cook/mandolin.exe 
-cygwin mass_spring.exe dist-cygwing.tar authors/Perry_Cook/mass_spring.exe 
-cygwin string.exedist-cygwing.tar authors/Perry_Cook/string.exe
+src_v1 mandolin.c src_v1.tar AudioAnecdotesV1/04Cook/mandolin.c
+src_v1 mass_spring.c src_v1.tar AudioAnecdotesV1/04Cook/mass_spring.c
+src_v1 string.c src_v1.tar AudioAnecdotesV1/04Cook/string.c
+
+bin_v1_win mandolin.exe bin_v1_win.tar AudioAnecdotesV1/04Cook/mandolin.exe
+bin_v1_win mass_spring.exe bin_v1_win.tar AudioAnecdotesV1/04Cook/mass_spring.exe
+bin_v1_win string.exe bin_v1_win.tar AudioAnecdotesV1/04Cook/string.exe
+
+bin_v1_mac mandolin.exe bin_v1_mac.tar AudioAnecdotesV1/04Cook/mandolin.exe
+bin_v1_mac mass_spring.exe bin_v1_mac.tar AudioAnecdotesV1/04Cook/mass_spring.exe
+bin_v1_mac string.exe bin_v1_mac.tar AudioAnecdotesV1/04Cook/string.exe
+
+bin_v1_linux mandolin.exe bin_v1_linux.tar AudioAnecdotesV1/04Cook/mandolin.exe
+bin_v1_linux mass_spring.exe bin_v1_linux.tar AudioAnecdotesV1/04Cook/mass_spring.exe
+bin_v1_linux string.exe bin_v1_linux.tar AudioAnecdotesV1/04Cook/string.exe
