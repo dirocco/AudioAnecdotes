@@ -20,3 +20,6 @@ src_v1 readshorts.m   src_v1.tar AudioAnecdotesV1/Authors/07ComputerTools/1Rutsc
 src_v1 span.m         src_v1.tar AudioAnecdotesV1/Authors/07ComputerTools/1Rutschman/span.m 
 src_v1 tone.m         src_v1.tar AudioAnecdotesV1/Authors/07ComputerTools/1Rutschman/tone.m 
 src_v1 unbias.m       src_v1.tar AudioAnecdotesV1/Authors/07ComputerTools/1Rutschman/unbias.m
+
+# we need to build octave then build the figures!
+^ src_v1 unbias.m     src_v1.tar AudioAnecdotesV1/Authors/07ComputerTools/1Rutschman/*.ps
