@@ -1,6 +1,7 @@
 src_v2       Makefile.in  src_v2.tar       Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/Makefile.in
 src_v2       config.mak   src_v2.tar       Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/config.mak
 src_v2       pcmsound.cpp src_v2.tar       Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/pcmsound.cpp
+src_v2       pcmsound.h   src_v2.tar       Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/pcmsound.h
 
 bin_v2_win   pcmsound.exe bin_v2_win.tar   Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/pcmsound.exe
 bin_v2_mac   pcmsound     bin_v2_mac.tar   Volume2/Content2/05ComputerTechniques/2Greenebaum-CountInFrames/pcmsound
