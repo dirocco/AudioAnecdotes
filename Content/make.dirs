@@ -5,16 +5,13 @@
 #
 
 CHILDDIRS= \
-	   01Greenebaum-SPL\
-	   02DiFillipo-Latency\
-	   04Cook\
-	   04Thiel\
-	   05Luna\
-	   05Malvar\
-	   06Greenebaum-API\
-	   06Greenebaum-Files\
-	   06Greenebaum-Test\
-	   07Eleftheriadis\
-	   07Greenebaum-PABLIO\
-	   07Rutschman\
-	   Phil_Burk
+	01Measurement \
+	02Perception \
+	03Recording \
+	04Synthesis \
+	05SignalProcessing \
+	06ComputerTechniques \
+	07ComputerTools \
+	08HumanExperience \
+	Example \
+	Future
