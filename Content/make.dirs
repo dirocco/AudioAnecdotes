@@ -3,9 +3,9 @@
 #
 
 CHILDDIRS= \
-	   Ben_Luna\
 	   David_Thiel\
            Example\
+           Flavor\
 	   Ken_Greenebaum\
 	   Perry_Cook\
 	   Phil_Burk\

@@ -1,0 +1,45 @@
+#
+# Example Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+CC = @CC@
+CFLAGS = @CFLAGS@ -I.
+LDFLAGS = @LDFLAGS@
+LIBS = -lflavor -lpablio @LIBS@ 
+LOCALCLEAN = 
+EXEEXT=@EXEEXT@
+OBJEXT=@OBJEXT@
+TOOLROOT=@TOOLROOT@
+LOCALOPT=@LOCALOPT@
+LOCALLINK=@LOCALLINK@
+
+# Parameters
+
+CXX      = c++
+CPPFLAGS = @DEFS@ 
+
+# Dependencies
+
+all: play
+
+play: audio.h play.o audio.o
+	$(CXX) -o $@ $(LDFLAGS) play.o audio.o $(LIBS)
+
+audio.h audio.cpp play.cpp: FL/audio.fl
+	flavorc -p -a 256 FL/audio.fl
+
+clean:
+	rm -f audio.h *.o play play.exe
+
+.SUFFIXES: .o .c .cpp .h
+
+.cpp.o:
+	$(CXX) -c -o $@ $(CFLAGS) $(CPPFLAGS) $<
+
