@@ -1,5 +1,6 @@
 src_v2       Makefile.in	src_v2.tar       Volume2/Content2/04Spatialization/2Pulkki/Makefile.in
 src_v2       config.mak		src_v2.tar       Volume2/Content2/04Spatialization/2Pulkki/config.mak
+src_v2       vbap.h	        src_v2.tar       Volume2/Content2/04Spatialization/2Pulkki/vbap.h
 src_v2       vbap-stream.c	src_v2.tar       Volume2/Content2/04Spatialization/2Pulkki/vbap-stream.c
 src_v2     speaker-file.txt src_v2.tar       Volume2/Content2/04Spatialization/2Pulkki/speaker-file.txt
 
