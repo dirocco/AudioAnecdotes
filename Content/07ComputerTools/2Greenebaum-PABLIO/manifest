@@ -1,11 +1,10 @@
+src_v1 config.mak src_v1.tar AudioAnecdotesV1/00Example/config.mak
+src_v1 makefile.in src_v1.tar AudioAnecdotesV1/00Example/makefile.in
 src_v1 passthru.c src_v1.tar AudioAnecdotesV1/00Example/passthru.c
 src_v1 sine.c src_v1.tar AudioAnecdotesV1/00Example/sine.c
-
 bin_v1_win passthru.exe bin_v1_win.tar AudioAnecdotesV1/00Example/passthru.exe
+bin_v1_mac passthru bin_v1_mac.tar AudioAnecdotesV1/00Example/passthru
+bin_v1_linux passthru bin_v1_linux.tar AudioAnecdotesV1/00Example/passthru
 bin_v1_win sine.exe bin_v1_win.tar AudioAnecdotesV1/00Example/sine.exe
-
-bin_v1_mac passthru.exe bin_v1_mac.tar AudioAnecdotesV1/00Example/passthru.exe
-bin_v1_mac sine.exe bin_v1_mac.tar AudioAnecdotesV1/00Example/sine.exe
-
-bin_v1_linux passthru.exe bin_v1_linux.tar AudioAnecdotesV1/00Example/passthru.exe
-bin_v1_linux sine.exe bin_v1_linux.tar AudioAnecdotesV1/00Example/sine.exe
+bin_v1_mac sine bin_v1_mac.tar AudioAnecdotesV1/00Example/sine
+bin_v1_linux sine bin_v1_linux.tar AudioAnecdotesV1/00Example/sine

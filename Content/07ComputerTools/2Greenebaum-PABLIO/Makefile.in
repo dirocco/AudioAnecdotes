@@ -22,6 +22,7 @@ LOCALLINK=@LOCALLINK@
 
 SOURCES = \
 	passthru.c \
-	sine.c
+	sine.c \
+	sine_simple.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
