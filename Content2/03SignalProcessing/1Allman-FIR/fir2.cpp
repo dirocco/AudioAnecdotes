@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
    fclose(file);
 
    samples.resize(coeff.size()); // size sample FIFO to filter order
-printf("size: %d\n", coeff.size());
+   //printf("size: %d\n", coeff.size());
 
    //InitRingBuffer(samples);
 
@@ -69,7 +69,6 @@ printf("size: %d\n", coeff.size());
    for(int n = coeff.size(); n; n--) { //flush input samples all the way through the filter
 	output = FIR_filter(0.0, samples, coeff);
 	printf("%f\n", output);
-	n--;
    }
 }
 
