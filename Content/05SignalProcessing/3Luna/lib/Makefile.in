@@ -30,6 +30,8 @@ CPPSOURCES = \
 	FormatSink.cpp 
 
 libsm.a: $(OBJS)
-	ld -o libsm.a $(OBJS) $(LDFLAGS) $(LIBS) $(LOCALOPT) $(LOCALLINK) 
+# 	ld -o libsm.a $(OBJS) $(LDFLAGS) $(LIBS) $(LOCALOPT) $(LOCALLINK) 
+
+EXECS=
 
 include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
