@@ -211,7 +211,7 @@ fi
 #ifdef MAC
 if [ -f /usr/bin/osascript ]; then
 echo `pwd`/$2 $a >> $SCRIPT
-   osascript -e 'tell application "Terminal" to do script "./$2 $a;exit"'
+   osascript -e "tell application \"Terminal\" to do script \"`pwd`/$2 $a;exit\""
 else 
    echo did not find /usr/bin/osascript exiting 
    exit 252
