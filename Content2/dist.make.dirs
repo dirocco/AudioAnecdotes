@@ -3,8 +3,11 @@
 #
 
 CHILDDIRS= \
+	media \
 	02Synthesis \
 	03SignalProcessing \
 	04Spatialization \
 	05ComputerTechniques \
-	06ComputerTools
+	06ComputerTools \
+        07MusicTheory \
+	09Nature
