@@ -1,9 +1,11 @@
-src_v1 amproc.m src_v1.tar AudioAnecdotesV1/Authors/05Malvar/amproc.m
-src_v1 hthres.m src_v1.tar AudioAnecdotesV1/Authors/05Malvar/hthres.m
-src_v1 thrabs.m src_v1.tar AudioAnecdotesV1/Authors/05Malvar/thrabs.m
-src_v1 sineMask.c src_v1.tar AudioAnecdotesV1/content/05Malvar/sineMask.c
-src_v1 Makefile.in src_v1.tar AudioAnecdotesV1/content/05Malvar/Makefile.in
-src_v1 config.mak src_v1.tar AudioAnecdotesV1/content/05Malvar/config.mak
-bin_v1_win sineMask.exe bin_v1_win.tar AudioAnecdotesV1/content/05Malvar/sineMask.exe
-bin_v1_mac sineMask bin_v1_mac.tar AudioAnecdotesV1/content/05Malvar/sineMask
-bin_v1_linux sineMask bin_v1_linux.tar AudioAnecdotesV1/content/05Malvar/sineMask
+src_v1       amproc.m     src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/amproc.m
+src_v1       hthres.m     src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/hthres.m
+src_v1       thrabs.m     src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/thrabs.m
+
+src_v1       sineMask.c   src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/sineMask.c
+src_v1       Makefile.in  src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/Makefile.in
+src_v1       config.mak   src_v1.tar       AudioAnecdotesV1/Authors/05Malvar/config.mak
+
+bin_v1_win   sineMask.exe bin_v1_win.tar   AudioAnecdotesV1/Authors/05Malvar/sineMask.exe
+bin_v1_mac   sineMask     bin_v1_mac.tar   AudioAnecdotesV1/Authors/05Malvar/sineMask
+bin_v1_linux sineMask     bin_v1_linux.tar AudioAnecdotesV1/Authors/05Malvar/sineMask
