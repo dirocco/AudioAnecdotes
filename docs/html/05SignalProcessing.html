@@ -1,56 +1,211 @@
-<html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
-
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="05SignalProcessing_files/filelist.xml">
 <title>Chapter 5: Signal Processing</title>
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-
-<link type="text/css" rel="stylesheet" href="./css/text.css">
-
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ken Greenebaum</o:Author>
+  <o:LastAuthor>Ken Greenebaum</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>15</o:TotalTime>
+  <o:Created>2003-10-27T00:15:00Z</o:Created>
+  <o:LastSaved>2003-10-27T00:30:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>198</o:Words>
+  <o:Characters>1134</o:Characters>
+  <o:Company>SWORKS</o:Company>
+  <o:Lines>9</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1330</o:CharactersWithSpaces>
+  <o:Version>10.4219</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:.85in;
+	mso-margin-bottom-alt:auto;
+	margin-left:12.2pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:.85in;
+	mso-margin-bottom-alt:auto;
+	margin-left:24.45pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:15.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:.85in;
+	mso-margin-bottom-alt:auto;
+	margin-left:36.7pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{font-family:Verdana;
+	mso-ascii-font-family:Verdana;
+	mso-hansi-font-family:Verdana;
+	color:blue;
+	mso-text-animation:none;
+	text-decoration:underline;
+	text-underline:single;
+	text-decoration:none underline;
+	text-line-through:none;}
+a:visited, span.MsoHyperlinkFollowed
+	{font-family:Verdana;
+	mso-ascii-font-family:Verdana;
+	mso-hansi-font-family:Verdana;
+	color:purple;
+	mso-text-animation:none;
+	text-decoration:underline;
+	text-underline:single;
+	text-decoration:none underline;
+	text-line-through:none;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:.85in;
+	mso-margin-bottom-alt:auto;
+	margin-left:.85in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
 </head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
 
 <h1><a href="../../Content/05SignalProcessing">Chapter 5: Signal Processing</a></h1>
 
-<h2><a href="../../Content/05SignalProcessing/1Malvar" name="1Malvar">Audio Masking in Audio Compression - Malvar</a></h2>
+<h2><a name=1Malvar></a><a href="../../Content/05SignalProcessing/1Malvar"><span
+style='mso-bookmark:1Malvar'>Audio Masking in Audio Compression - Malvar</span><span
+style='mso-bookmark:1Malvar'></span></a><span style='mso-bookmark:1Malvar'></span></h2>
 
-<dd>
-This example demonstrates audio masking.
-</dd>
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>This
+example demonstrates audio masking.<o:p></o:p></span></p>
 
-<p></p>
-<dd>
-Run <a href="do.cgi?..+..+Content/05SignalProcessing/1Malvar/sineMask">sineMask</a>.
-The demo repeats the following sequence: 
-1) Plays a reference 1000 Hz tone for one second.
-2) Adds a lower amplitude 1100 Hz tone to the reference
-(which should be masked).
-3) Adds a 1300 Hz tone which doesn't get masked.
-<dd>
-This cycle repeats (kill the window it creates to stop the demo).
-</dd>
-<p></p>
-<dd>
-Click here to view the source <a href="../../Content/05SignalProcessing/1Malvar/sineMask.c">sineMask.c</a>.
-</dd>
-<p></p>
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
-<h2><a href="../../Content/05SignalProcessing/3Luna" name="3Luna">A Framework for Software Modem Experimentaion - Luna</a></h2>
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Run
+<a href="do.cgi%3f..+..+Content/05SignalProcessing/1Malvar/sineMask">sineMask</a>.
+The demo repeats the following sequence: <o:p></o:p></span></p>
 
-<dd>
-These examples demonstrate a software modem.
-</dd>
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:Verdana'>1)
+Plays a reference 1000 Hz tone for one second. <o:p></o:p></span></p>
 
-<p></p>
-<dd>
-Run <a href="do.cgi?..+..+Content/05SignalProcessing/3Luna/mono/modem">modem</a> and it will modulate a signal before
-your very eyes. Actually this code is best experimented with from the command line and can be found in the <a href="../../Content/05SignalProcessing/3Luna">AudioAnecdotes/Content/05SignalProcessing/3Luna</a> directory.
-</dd>
-<p></p>
-<dd>
-Click here to view the source <a href="../../Content/05SignalProcessing/3Luna/mono/modem.cpp">modem.cpp</a>.
-</dd>
-<p></p>
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:Verdana'>2)
+Adds a lower amplitude 1100 Hz tone to the reference (which should be masked). <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:1.0in'><span style='font-family:Verdana'>3)
+Adds a 1300 Hz tone which doesn't get masked. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>This
+cycle repeats (kill the window it creates to stop the demo).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
+here to view the source <a
+href="../../Content/05SignalProcessing/1Malvar/sineMask.c">sineMask.c</a>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name=3Luna></a><a href="../../Content/05SignalProcessing/3Luna"><span
+style='mso-bookmark:3Luna'>A Framework for Software Modem Experimentaion - Luna</span><span
+style='mso-bookmark:3Luna'></span></a><span style='mso-bookmark:3Luna'></span></h2>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>These
+examples demonstrate a software modem. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Run
+<a href="do.cgi%3f..+..+Content/05SignalProcessing/3Luna/mono/modem">modem</a>
+and it will modulate a signal before your very eyes. Actually this code is best
+experimented with from the command line and can be found in the <a
+href="../../Content/05SignalProcessing/3Luna">AudioAnecdotes/Content/05SignalProcessing/3Luna</a>
+directory. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
+here to view the source <a
+href="../../Content/05SignalProcessing/3Luna/mono/modem.cpp">modem.cpp</a>. <o:p></o:p></span></p>
+
+</div>
 
 </body>
 
