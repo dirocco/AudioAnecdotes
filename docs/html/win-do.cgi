@@ -18,18 +18,18 @@ foo=`echo $QUERY_STRING | /bin/sed 's/%20/ /g' | /bin/sed 's/\.\.//g'`
 
 IFS='&'
 set -- $foo
-cd ../../Content/0$1
+cd ../../
 #pwd
 
 doit=`/bin/cygpath --sysdir`/cmd
-#echo $doit /c .\\$2 $3 $4 $5
+#echo $doit /c .\\$1\\$2 $3 $4 $5
 if [ -f $doit ]; then
    echo foundit
-   $doit /c start .\\$2 $3 $4 $5
+   $doit /c start .\\$1\\$2 $3 $4 $5
 else
    echo nothere
    doit=`/bin/cygpath --windir`/command
-   $doit /c start .\\$2 $3 $4 $5
+   $doit /c start .\\$1\\$2 $3 $4 $5
 fi
 
 exit 0
