@@ -12,7 +12,11 @@ src_v2 nofir				src_v2.tar Volume2/docs/html2/nofir
 src_v2 nofir.bat			src_v2.tar Volume2/docs/html2/nofir.bat
 src_v2 fir				src_v2.tar Volume2/docs/html2/fir
 src_v2 fir.bat				src_v2.tar Volume2/docs/html2/fir.bat
+src_v2 ifir				src_v2.tar Volume2/docs/html2/ifir
+src_v2 ifir.bat				src_v2.tar Volume2/docs/html2/ifir.bat
 src_v2 iir				src_v2.tar Volume2/docs/html2/iir
+src_v2 iiir				src_v2.tar Volume2/docs/html2/iiir
+src_v2 iiir.bat				src_v2.tar Volume2/docs/html2/iiir.bat
 src_v2 iir.bat				src_v2.tar Volume2/docs/html2/iir.bat
 src_v2 fp_fft				src_v2.tar Volume2/docs/html2/fp_fft
 src_v2 fp_fft.bat			src_v2.tar Volume2/docs/html2/fp_fft.bat
