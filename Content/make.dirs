@@ -7,7 +7,6 @@
 CHILDDIRS= \
 	01Measurement \
 	02Perception \
-	03Recording \
 	04Synthesis \
 	05SignalProcessing \
 	06ComputerTechniques \
