@@ -1,5 +1,5 @@
 src_v1		config.mak	  src_v1.tar		AudioAnecdotesV1/Example/config.mak
-src_v1		makefile.in	  src_v1.tar		AudioAnecdotesV1/Example/makefile.in
+src_v1		Makefile.in	  src_v1.tar		AudioAnecdotesV1/Example/Makefile.in
 src_v1		passthru.c	  src_v1.tar		AudioAnecdotesV1/Example/passthru.c
 src_v1		passthru_simple.c src_v1.tar		AudioAnecdotesV1/Example/passthru_simple.c
 src_v1		sine.c		  src_v1.tar		AudioAnecdotesV1/Example/sine.c
