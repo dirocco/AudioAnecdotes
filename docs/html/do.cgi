@@ -221,11 +221,11 @@ if [ -f $SCRIPT ]; then
 fi
 
 echo "#!/bin/sh"    > $SCRIPT
-echo `pwd`.\\$2 $a >> $SCRIPT
+echo `pwd`/$2 $a   >> $SCRIPT
 chmod 555 $SCRIPT
 
-open $SCRIPT
-#rm -f $SCRIPT
+open  $SCRIPT
+rm -f $SCRIPT
 #endif 
 
 exit 0
