@@ -1,0 +1,74 @@
+dnl
+dnl PortAudio configure.in script
+dnl
+dnl H. Gregory Silber on 1/14/03
+dnl 
+dnl Based on Original code by: Dominic Mazzoni
+dnl
+
+dnl Require autoconf >= 2.13
+AC_PREREQ(2.13)
+
+dnl Init autoconf and make sure configure is being called
+dnl from the right directory (for autoconf executed by configure)
+AC_INIT
+
+dnl Checks for programs
+AC_PROG_CC
+AC_PROG_LIBTOOL
+
+dnl Some substitution variables
+AC_SUBST(MAKEINCLUDESDIR)
+
+dnl need to compute the top of the build tree $srcdir is --srcdir of 
+dnl configure options
+case $srcdir in
+	.)
+		my_abs_topdir=`cd .. && pwd` ;;
+	*)  
+		my_abs_topdir=`cd $srcdir/.. && pwd` ;;
+esac
+		
+dnl set our top level lib and include directories and add them to the
+dnl compiler flags
+LDFLAGS="$LDFLAGS -L$my_abs_topdir/lib"
+CFLAGS="$CFLAGS -I$my_abs_topdir/include"
+
+dnl Set the directory for make include files
+MAKEINCLUDESDIR="$my_abs_topdir/include/make-includes"
+
+dnl Determine the host operating system / platform
+case "${host_os}" in
+  darwin* )
+        dnl Mac OS X configuration
+        LIBS="-framework CoreAudio -lm";
+        ;;
+
+  mingw* )
+        dnl MingW configuration
+        LIBS="-lwinmm -lm";
+        ;;
+
+  cygwin* )
+        dnl Cygwin configuration
+
+        LIBS="-lwinmm -lm";
+        ;;
+
+  *)
+        dnl Unix OSS configuration
+
+   	AC_CHECK_LIB(pthread, pthread_create,
+                ,
+        AC_MSG_ERROR([libpthread not found!]))
+
+        LIBS="-lm -lpthread";
+esac
+
+AC_OUTPUT([Makefile])
+
+echo ""
+echo "Finished global configuration."
+
+echo ""
+

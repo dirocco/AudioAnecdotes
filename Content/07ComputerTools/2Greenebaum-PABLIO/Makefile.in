@@ -1,5 +1,5 @@
 #
-# Pablio Makefile.in
+# Example Makefile.in
 #
 # By: H. Gregory Silber
 #
@@ -9,31 +9,22 @@
 #	DIRECTLY BENEATH THIS MESSAGE
 #
 
-PREFIX = @prefix@
 CC = @CC@
-CFLAGS = @CFLAGS@ -I. -I../../../include 
+CFLAGS = @CFLAGS@ -I.
+LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
-AR = @AR@
-RANLIB = @RANLIB@
-INSTALL = @INSTALL@
-SHARED_FLAGS = @SHARED_FLAGS@
-DLL_LIBS = @DLL_LIBS@
 
 
 TESTS = \
-	../bin/test_rw \
-	../bin/test_rw_echo \
-	../bin/test_w_saw8 \
-	../bin/test_w_saw \
-	../bin/passthru \
-	../bin/sine
+	passthru \
+	sine
 
 all: tests
 
 tests: $(TESTS)
 
-$(TESTS): ../bin/%: Makefile %.c
-	$(CC) -o $@ $(CFLAGS) $*.c -L../../../lib $(LIBS)
+$(TESTS):%: Makefile %.c
+	$(CC) -o $@ $(CFLAGS) $*.c $(LDFLAGS) $(LIBS)
 
 clean:
 	echo No intermediate files here 
