@@ -31,10 +31,6 @@ PSFILES  = $(addsuffix .ps, $(FIGURES))
 EPSFILES = $(addsuffix .eps,$(FIGURES))
 PDFFILES = $(addsuffix .pdf,$(FIGURES))
 
-
-DISSABLED:
-	@echo dissabled until we build octave and get the example working
-
 .PHONY: all ps eps pdf clean clean_all
 
 all : ps eps pdf
@@ -51,7 +47,8 @@ clean_all : clean
 	rm -f $(PNGFILES) $(EPSFILES) $(PDFFILES)
 
 $(PSFILES)  : makesamples.m
-	echo 'makesamples("ps","postscript");' | octave
+	(export OCTAVE_PATH=.:../../../src/octave-2.1.50/scripts/general:../../../src/octave-2.1.50/scripts/strings:../../../src/octave-2.1.50/scripts/plot; \
+	echo 'makesamples("ps","postscript");' | octave)
 
 $(PNGFILES) : makesamples.m
 	echo 'makesamples("png","png color small");' | octave
