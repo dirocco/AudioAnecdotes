@@ -10,8 +10,12 @@ CHILDDIRS= \
            Example\
 	   Phil_Burk\
 
+#	01Greenebaum-SPL\
+#	02DiFillipo-Latency\
 #	05Luna\
 #	05Malvar
+#	06Greenebaum-API\
 #	06Greenebaum-Files
+#	06Greenebaum-Test\
 #	07Eleftheriadis
 #	07Rutschman
