@@ -16,50 +16,61 @@ typedef deque<float> 	RingBuffer;
 typedef vector<float> 	CoefBuffer;
 
 const int 	BUFFERSIZE = 64;
-const char * 	InputFile  = "coefs.txt";
 
 
-float 	FIR_filter	(float newsample, RingBuffer &samples, CoefBuffer &coeff);
-bool 	InitBuffers	(RingBuffer &rb, CoefBuffer &cb);
+float 	FIR_filter(float newsample, RingBuffer &samples, CoefBuffer &coeff);
+bool 	InitBuffers(RingBuffer &rb, CoefBuffer &cb);
 
 /*-----------------------------------------
 Inputs:
 	Series of fir coefficients from file
 	sample data set from standard in
 Outputs:
-	filtered samples to file
-	(?)filtered sampples to PABLIO
+	filtered samples to stdout
 *///---------------------------------------
-int main()
+int main(int argc, char *argv[])
 {
    float seq[3]	    = {0.5, 1.0,-2.0};
 
    RingBuffer samples;
    CoefBuffer coeff;
+
+   if(argc!=2) {
+      printf("Usage: %s coef-file < samples\n", argv[0]);
+      exit(-1);
+   }
  
-   if(!InitBuffers(samples, coeff)) return !EXIT_SUCCESS;
+   FILE * file = fopen(argv[1], "rt");
+   if(!file) {
+      fprintf(stderr, "failed to open file: %s\n", argv[1]);
+      exit(-1);
+   }
+   
+   char string[BUFFERSIZE];
+   while(fgets(string, BUFFERSIZE, file))
+      coeff.push_back(atof(string));
+   fclose(file);
+
+   samples.resize(coeff.size()); // size sample FIFO to filter order
+printf("size: %d\n", coeff.size());
+
+   //InitRingBuffer(samples);
+
 
    float output	    		= 0.0; //variable to store output of FIR in
-   char buffer[BUFFERSIZE]  	= {0}; //Holds an ASCII string read in from stdin
 
    //read samples in from stdin
-   while(fgets(buffer, BUFFERSIZE, stdin))
-   {
-	output = FIR_filter(atof(buffer), samples, coeff);
+   while(fgets(string, BUFFERSIZE, stdin)) {
+	output = FIR_filter(atof(string), samples, coeff);
 	printf("%f\n", output);		
    }
 
-   int n = coeff.size();   //delay built up in the system
 
-   //flush samples after we have finished getting our input
-   while(n > 0 ) //should execute n-1 times
-   {
+   for(int n = coeff.size(); n; n--) { //flush input samples all the way through the filter
 	output = FIR_filter(0.0, samples, coeff);
 	printf("%f\n", output);
 	n--;
    }
-
-   return EXIT_SUCCESS;
 }
 
 
@@ -82,51 +93,23 @@ int main()
 ************************************************************/
 float FIR_filter(float newsample, RingBuffer &samples, CoefBuffer &coeff)
 {
-	//shift the register
-	samples.pop_back();
-	samples.push_front(newsample);
+   //shift the register
+   samples.pop_back();
+   samples.push_front(newsample);
 
-	float output;
+#ifdef DEBUG
+   printf("got %f - ", newsample);
+   for(int i = 0; i < samples.size(); i++)
+      printf("%f ",samples[i]);
+   printf("\n");
+#endif
 
-	//start at the end
-	int rindex ;
-	for(rindex= coeff.size() -1; rindex >=0; rindex--)
-		output += samples[rindex] * coeff[rindex];
-	
-	return output;
-}
+   float output=0.0;
 
+   //start at the end
+   int rindex ;
+   for(rindex= coeff.size() -1; rindex >=0; rindex--)
+      output += samples[rindex] * coeff[rindex];
 
-void ReadCoefsFromFile(FILE * file, CoefBuffer & cbuf) 
-{
-	int i;
-	char buffer[BUFFERSIZE] = {0};
-
-
-	while(fgets(buffer, BUFFERSIZE, file))
-		cbuf.push_back(atof(buffer));
-}
-
-
-
-void InitRingBuffer(RingBuffer &rb)
-{
-	for(int i = 0; i < rb.size(); i++)
-		rb[i] = 0.0;
-}
-
-bool InitBuffers(RingBuffer &rb, CoefBuffer &cb)
-{
-
-   FILE * file = fopen(InputFile, "rt");
-   if(!file) return false;
-   
-   ReadCoefsFromFile(file, cb);
-   fclose(file);
-
-   rb.resize(cb.size());
-
-   InitRingBuffer(rb);
-   
-   return true;
+   return output;
 }
