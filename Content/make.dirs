@@ -5,11 +5,11 @@
 CHILDDIRS= \
 	   04Cook\
 	   04Thiel\
-	   05Luna\
            Example\
 	   Ken_Greenebaum\
 	   Phil_Burk\
 
+#	05Luna\
 #	05Malvar
 #	06Greenebaum-Files
 #	07Eleftheriadis
