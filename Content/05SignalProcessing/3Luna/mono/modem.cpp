@@ -446,6 +446,8 @@ int main(int argc, char *argv[])
 	   xmitCount, correct, incorrect);
     printf("Error rate = %f\n", incorrect/float(xmitCount));
 
+getchar();
+
     return 0;
 } // main()
 
