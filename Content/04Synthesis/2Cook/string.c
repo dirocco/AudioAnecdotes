@@ -49,6 +49,5 @@ int main(void) {
 
    if (bufferIndex > 0)
       WriteAudioStream(outStream, buffer, bufferIndex+1);
-      
-   return 0;
+   CloseAudioStream(outStream);
 }
