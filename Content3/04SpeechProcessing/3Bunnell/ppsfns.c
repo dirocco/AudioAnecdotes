@@ -76,7 +76,10 @@
 
 #define TRUE 1
 #define FALSE 0
+
+#if !defined M_PI
 #define M_PI 3.1415927
+#endif
 
 short DC = 0;
 static VOICING *vData;
