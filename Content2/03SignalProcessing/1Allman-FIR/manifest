@@ -3,7 +3,7 @@ src_v2       config.mak  	src_v2.tar       Volume2/Content2/03SignalProcessing/1
 src_v2       fir.c       	src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/fir.c
 src_v2       fir2.cpp    	src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/fir2.cpp
 src_v2       rawfile2stream.cpp src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/awfile2streamfir2.cpp
-src_v2       playstream.cpp 	src_v2.tar     	 Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream.cpp
+src_v2       playstream.c 	src_v2.tar     	 Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream.c
 src_v2       coefs.txt 		src_v2.tar   	 Volume2/Content2/03SignalProcessing/1Allman-FIR/coefs.txt
 src_v2       README 		src_v2.tar    	 Volume2/Content2/03SignalProcessing/1Allman-FIR/README
 bin_v2_win   fir.exe     	bin_v2_win.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/fir.exe
