@@ -7,6 +7,11 @@ USHORT add(USHORT value1, USHORT value2)
 return((USHORT) (value1 + value2));
 }
 
+USHORT sub(USHORT value1, USHORT value2)
+{
+return((USHORT) (value1 - value2));
+}
+
 
 main()
 {
@@ -20,12 +25,20 @@ main()
    unsigned int silentCount        = 0;
    unsigned int runCount           = 0;
    unsigned int sampleCount        = -1; // so the first sample will be 0
-   unsigned int discontinuityCount = 0;
 
    // err tracking
    unsigned int lastRunSample      = 0;
    unsigned int lastRunValue       = 0;
    unsigned int zeroCount          = 0;
+
+   // statistics
+   unsigned int discontinuityCount = 0;
+   unsigned int droppedInstances   = 0;
+   unsigned int wrongInstances     = 0;
+   unsigned int insertedInstances  = 0;
+   unsigned int indeterminateInstances = 0;
+   USHORT firstSample;
+   unsigned int firstValue;
 
    int    SignalCount = 0;  
 
@@ -85,8 +98,10 @@ main()
 	       runCount = 1; // reset count (any sample is a run of 1)
 	    else if (++runCount > RUNTHRESHOLD) {
 	       state = RUNESTABLISHED;
-	       printf("  %d sample run found beggining at sample %d\n", 
-		     runCount, sampleCount - runCount + 1);
+	       firstSample = sampleCount - runCount + 1;
+	       firstValue  = add(received, -1 * (runCount-1));
+	       printf("  (%d threshold) sample run found beggining at ", runCount);
+	       printf("sample %d (value %d)\n", firstSample, firstValue);
 	    }
 	 break;
 
@@ -96,10 +111,12 @@ main()
 	    if(received == expected)
 	       runCount++;
 	    else {
-	       // lastRunValue  = add(expected, -1);
 	       lastRunValue  = lastReceived;
 	       lastRunSample = sampleCount;
+	       indeterminateInstances++;
 	       state = REESTABLISHRUN;
+	       discontinuityCount++;
+	       zeroCount = (lastReceived == 0)?1:0;
 	       printf("  %d run ended at sample %d (expected %d, received %d)\n",
 		     runCount, sampleCount, expected, received);
 	       runCount = 1; // reset count (any sample is a run of 1)
@@ -112,9 +129,35 @@ main()
 	    if(received != expected)
 	       runCount = 1; // reset count (any sample is a run of 1)
 	    else if (++runCount > RUNTHRESHOLD) {
+	       unsigned int newRun = sampleCount - runCount + 1;
+	       unsigned int anomalyLength = newRun - lastRunSample;
+	       USHORT firstRunValue = add(received, -1 * (runCount-1));
+
 	       state = RUNESTABLISHED;
-	       printf("  %d sample run found beggining at sample %d\n", 
-		     runCount, sampleCount - runCount + 1);
+	       printf("  %d sample run found beggining at ", runCount);
+	       printf("sample %d (value %d)\n",
+		  sampleCount - runCount + 1, firstRunValue);
+	       printf("  %d sample anomaly since last run\n", anomalyLength);
+
+	       printf("signal resumed ");
+	       if(firstRunValue == add(lastRunValue, anomalyLength+1)) {
+		  wrongInstances++;
+		  indeterminateInstances--;
+		  printf("in temporal sync\n");
+	       } else { // loss of temporal sync
+		  if(firstRunValue == add(lastRunValue, 1))
+		     printf("where it left off (lost temporal sync)\n");
+		  else if(anomalyLength==0) {
+		     droppedInstances++;
+		     indeterminateInstances--;
+		     printf("immediately skipping %d samples (lost temporal sync)\n",
+			   sub(firstRunValue, lastRunValue+1));
+		  } else {
+		     insertedInstances++;
+		     indeterminateInstances--;
+		     printf("in a random place (lost temporal sync)\n");
+		  }
+	       }
 	    }
 	 break;
 
@@ -123,7 +166,7 @@ main()
 	 break;
 
 	 default:
-	    printf("I fell and I can't get up\n");
+	    printf("Reached undefined state, %d, exiting\n", state);
 	    exit(-1);
 	 break;
       }
@@ -131,6 +174,13 @@ main()
    printf("Satistics:\n");
    printf("  %d total samples received\n", sampleCount);
    printf("  %d silent samples before signal\n", silentCount);
-   printf("  first run %s with zero\n", (1)?"started":"didn't start");// XXX
-   printf("  %d discontinuities\n", discontinuityCount);
+   printf("  signal begun at sample %d, value %d\n", firstSample, firstValue);
+   // printf("  first run %s with zero\n", (1)?"started":"didn't start");// XXX
+   printf("  %d discontinuities (", discontinuityCount);
+   printf("%d instances of dropped samples, ", droppedInstances);
+   printf("%d instances of incorrect samples, ", wrongInstances);
+   printf("%d instances of inserted samples, ", insertedInstances);
+   printf("%d instances of indeterminite error)\n", indeterminateInstances);
+   printf("Ended %s in sync\n",
+	 (lastReceived==add(firstValue, sub(sampleCount, firstSample))) ?"":"not");
 }
