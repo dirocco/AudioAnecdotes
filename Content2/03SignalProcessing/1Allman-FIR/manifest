@@ -3,12 +3,19 @@ src_v2       config.mak  	src_v2.tar       Volume2/Content2/03SignalProcessing/1
 src_v2       fir.c       	src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/fir.c
 src_v2       fir2.cpp    	src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/fir2.cpp
 src_v2       rawfile2stream.cpp src_v2.tar       Volume2/Content2/03SignalProcessing/1Allman-FIR/awfile2streamfir2.cpp
+src_v2       playstream.cpp 	src_v2.tar     	 Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream.cpp
+src_v2       coefs.txt 		src_v2.tar   	 Volume2/Content2/03SignalProcessing/1Allman-FIR/coefs.txt
+src_v2       README 		src_v2.tar    	 Volume2/Content2/03SignalProcessing/1Allman-FIR/README
 bin_v2_win   fir.exe     	bin_v2_win.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/fir.exe
 bin_v2_win   fir2.exe    	bin_v2_win.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/fir2.exe
 bin_v2_win   rawfile2stream.exe bin_v2_win.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/rawfile2stream.exe
+bin_v2_win   playstream.exe 	bin_v2_win.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream.exe
 bin_v2_mac   fir         	bin_v2_mac.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/fir
 bin_v2_mac   fir2        	bin_v2_mac.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/fir2
 bin_v2_mac   rawfile2stream     bin_v2_mac.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/rawfile2stream
+bin_v2_mac   playstream     	bin_v2_mac.tar   Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream
 bin_v2_linux fir         	bin_v2_linux.tar Volume2/Content2/03SignalProcessing/1Allman-FIR/fir
 bin_v2_linux fir2        	bin_v2_linux.tar Volume2/Content2/03SignalProcessing/1Allman-FIR/fir2
 bin_v2_linux rawfile2stream     bin_v2_linux.tar Volume2/Content2/03SignalProcessing/1Allman-FIR/rawfile2stream
+bin_v2_linux playstream     	bin_v2_linux.tar Volume2/Content2/03SignalProcessing/1Allman-FIR/playstream
+coefs.txt README
