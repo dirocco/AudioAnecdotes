@@ -28,20 +28,20 @@ function IMG_click(elIMG)
 		elDiv = elIMG.parentNode;
             if (elDiv.className == "PARENT-HIDDEN") {
     	
-            elIMG.setAttribute('src','./images/minus.gif');
+            elIMG.setAttribute('src','../html/images/minus.gif');
             childs = elDiv.getElementsByTagName("DIV");
             childs[0].className = "SHOWN";
             elDiv.className = "PARENT-SHOWN";
 
             childs = childs[0].getElementsByTagName("DIV");
             childs = childs[0].getElementsByTagName("IMG");
-            /* childs[0].setAttribute('src','./images/square.gif'); */
+            /* childs[0].setAttribute('src','../html/images/square.gif'); */
 		}
 		else if (elDiv.className == "PARENT-SHOWN") {
             childs = elDiv.getElementsByTagName("DIV");
 			childs[0].className = "HIDDEN";
 			elDiv.className = "PARENT-HIDDEN";
-			elIMG.setAttribute('src','./images/plus.gif');
+			elIMG.setAttribute('src','../html/images/plus.gif');
 		}
 	}
 }
