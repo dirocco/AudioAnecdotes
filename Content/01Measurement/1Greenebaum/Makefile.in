@@ -21,6 +21,13 @@ LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
 SOURCES = \
-	amplitudeRamp.c
+	amplitudeRamp.c \
+	chirp1.c \
+	chirp2.c \
+	click.c \
+	click2.c \
+	trigger.c \
+	newtrigger.c \
+#	time.cpp 
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
