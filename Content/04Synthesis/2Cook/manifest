@@ -1,12 +1,17 @@
 src_v1		Makefile.in	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/Makefile.in
 src_v1		config.mak	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/config.mak
 src_v1		mandolin.c	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/mandolin.c
+src_v1		clarinet.c	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/clarinet.c
 src_v1		mass_spring.c	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/mass_spring.c
 src_v1		string.c	src_v1.tar	 AudioAnecdotesV1/Authors/04Cook/string.c
 
 bin_v1_win	mandolin.exe	bin_v1_win.tar	 AudioAnecdotesV1/Authors/04Cook/mandolin.exe
 bin_v1_mac	mandolin	bin_v1_mac.tar	 AudioAnecdotesV1/Authors/04Cook/mandolin
 bin_v1_linux	mandolin	bin_v1_linux.tar AudioAnecdotesV1/Authors/04Cook/mandolin
+
+bin_v1_win	clarinet.exe	bin_v1_win.tar	 AudioAnecdotesV1/Authors/04Cook/clarinet.exe
+bin_v1_mac	clarinet	bin_v1_mac.tar	 AudioAnecdotesV1/Authors/04Cook/clarinet
+bin_v1_linux	clarinet	bin_v1_linux.tar AudioAnecdotesV1/Authors/04Cook/clarinet
 
 bin_v1_win	mass_spring.exe	bin_v1_win.tar	 AudioAnecdotesV1/Authors/04Cook/mass_spring.exe
 bin_v1_mac	mass_spring	bin_v1_mac.tar	 AudioAnecdotesV1/Authors/04Cook/mass_spring
