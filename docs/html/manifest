@@ -19,3 +19,7 @@ src_v1 css/list.css              src_v1.tar Volume1/docs/html/css/list.css
 src_v1 css/text.css              src_v1.tar Volume1/docs/html/css/text.css
 
 src_v1 js/listtoc.js             src_v1.tar Volume1/docs/html/js/listtoc.js
+
+bin_v1_win   win-do.cgi          bin_v1_win.tar   Volume1/docs/html/do.cgi
+bin_v1_mac   mac-do.cgi          bin_v1_mac.tar   Volume1/docs/html/do.cgi
+bin_v1_linux linux-do.cgi        bin_v1_linux.tar Volume1/docs/html/do.cgi
