@@ -31,4 +31,6 @@ CPPSOURCES = \
 
 EXECS=modem$(EXEEXT)
 
+LOCALCLEAN= modem@EXEEXT@ modem.@OBJEXT@
+
 include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
