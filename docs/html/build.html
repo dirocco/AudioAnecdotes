@@ -107,12 +107,12 @@ style='font-size:12.0pt;font-family:Arial'>Building Audio&nbsp;Anecdotes<o:p></o
 <p class=MsoPlainText><span style='font-family:Arial'>This document describes
 how to build <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
 example code including the PABLIO audio library. This document assumes that the
-source code has already been installed to a writeable file-system on your
-computer from the CD using either the provided installer or the manual tarball
+source code has already been installed to a writeable filesystem on your
+computer from the CD using either the provided installer or the manual <i>tarball</i>
 installation method and that a POSIX tool chain is available on your machine
-(Linux and MacOSX distributions include these tools, for Windows the Cygwin
+(Linux and MacOSX distributions include these tools. For Windows the Cygwin
 environment is distributed on the <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
-CD and is installed by default)<o:p></o:p></span></p>
+CD and is installed by default).<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -120,24 +120,45 @@ CD and is installed by default)<o:p></o:p></span></p>
 style='font-family:Arial'>Audio&nbsp;Anecdotes</span></i><span
 style='font-family:Arial'>’ build process is a traditional recursive build
 making use of make and GNU Autotools to provide an automatic build on our
-supported platforms: (Windows/Cygwin, Linux and MacOSX).<span
+supported platforms: (Windows/Cygwin, Linux, and MacOSX).<span
 style='mso-spacerun:yes'>  </span><i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
 and PABLIO source code is largely portable and will likely build on other
 platforms. <span class=SpellE>PortAudio</span>, our audio portability layer, is
-platform specific but has been ported to a variety of popular platforms. For a
-complete build two sequential traversals (a configuration traversal and a build
-traversal) are made, both are initiated by the top level Makefile.<span
+platform-specific but has been ported to a variety of popular platforms. For a
+complete build, two sequential traversals (a configuration traversal and a build
+traversal) are made; both are initiated by the top-level Makefile.<span
 style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
+
+
+
+
+
 <p class=MsoPlainText><span style='font-family:Arial'>The first traversal is
-controlled by the config.mak files found in each directory.<span
-style='mso-spacerun:yes'>  </span>These makefiles (called config.mak so as not
+controlled by the 
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>config.mak</span></p>
+
+ files found in each directory.<span
+style='mso-spacerun:yes'>  </span>
+These makefiles (called 
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>config.mak</span></p>
+
+ so as not
 to conflict with the makefiles used in the second traversal) are responsible
 for calling the configure scripts which determine the nature of the platform
-you are running (the compiler used, filename extensions for objects, .etc) and
-use this information to translate the generic Makefile.in files to Makefiles
+you are running (the compiler used, filename extensions for objects, etc.) and
+use this information to translate the generic 
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>Makefile.in</span></p>
+
+ files to makefiles
 specific to your platform.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
@@ -145,24 +166,37 @@ specific to your platform.<o:p></o:p></span></p>
 <p class=MsoPlainText><span style='font-family:Arial'>The second traversal then
 recursively calls these makefiles created in the first stage to first build the
 <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i> examples.<span
-style='mso-spacerun:yes'>  </span>The build traversal first creates libraries
-in the src directory and then the audio examples in Content. <o:p></o:p></span></p>
+style='mso-spacerun:yes'>  </span>
+The build traversal first creates libraries
+in the 
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>src</span></p>
+
+ directory and then the audio examples in 
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>Content</span></p>
+
+. 
+<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>Building is simple: In
-your favorite command shell (via cygwin on Windows), <span class=SpellE>cd</span>
+your favorite command shell (via Cygwin on Windows), <span class=SpellE>cd</span>
 to the directory you installed <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
-to and then simply type make in the VOLUME directory everything should build
+to and then simply type make in the VOLUME directory; everything should build
 automatically:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-1'>            </span></span><span class=SpellE><span class=GramE>cd</span></span>
+1'>            </span></sp
+an><span class=SpellE><span class=GramE>cd</span></span>
 /usr/local/AudioAnecdotes/VOLUME</p>
-<p class=MsoPlainText><span style='mso-tab-count:1'>      </span><span
-class=GramE>make</span></p>
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>make</span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -182,7 +216,7 @@ removed using the following command:<o:p></o:p></span></p>
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>The distribution may be
-clobbered (All temporary files, executables and copied headers will be removed)
+clobbered (all temporary files, executables, and copied headers will be removed)
 by using the following command:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
@@ -202,8 +236,14 @@ successful build is completed or the CD is re-installed!<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>To get rid of Makefiles
-(generated from Makefile.in files):<o:p></o:p></span></p>
+<p class=MsoPlainText><span style='font-family:Arial'>To get rid of makefiles
+(generated from 
+
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>Makefile.in</span></p>
+
+ files):<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -228,21 +268,36 @@ build environment configuration:<o:p></o:p></span></p>
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>Examples are distributed
-in source form to encourage the reader to experiment with the code. Consequently
-the above mentioned commands will also work in each ‘leaf’ directory.<span
-style='mso-spacerun:yes'>  </span>For instance the user would type make in a
+in source form to encourage the reader to experiment with the code. 
+Consequently, 
+the above mentioned commands will also work in each <i>leaf</i> directory.<span
+style='mso-spacerun:yes'>  </span>
+For instance, the user would type 
+
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>make</span></p>
+
+ in a
 directory where a source file was modified to cause the executable to be
-automatically rebuilt. The user is responsible for understanding the inter
-directory dependencies if they wish to build in specific directories only.<span
-style='mso-spacerun:yes'>  </span>Issuing make at the top level, volume1,
+automatically rebuilt. Users are responsible for understanding the 
+interdirectory dependencies if they wish to build in specific directories 
+only.<span
+style='mso-spacerun:yes'>  </span>Issuing make at the top-level, volume1,
 directory is always safe if a little slower.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'>Commands that control
 configuration may also be individually issued in directories other than the top
-level; however they need to explicitly specify the config.mak file explicitly
-as in the following examples.<o:p></o:p></span></p>
+level; however, they need to explicitly specify the 
+
+
+<p class=MsoPlainText><span style='mso-tab-count:1'>      
+</span> <span class=GramE>config.mak</span></p>
+
+
+ file as in the following examples.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
@@ -255,16 +310,19 @@ environment:<o:p></o:p></span></p>
 1'>            </span></span><span class=GramE>make</span> -f config.mak</p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-2'>                        </span>This will build configure scripts if
-necessary<o:p></o:p></span></p>
+2'>                        </span>
+This will build configure scripts if necessary,<o:p></o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'><span style='mso-tab-count:
-2'>                        </span><span class=GramE>run</span> them build
-makefiles in all relevant subdirectories<o:p></o:p></span></p>
+<p class=MsoPlainText>
+<span style='font-family:Arial'>
+<span style='mso-tab-count:
+2'>                        
+</span><span class=GramE>run</span> 
+them, and build makefiles in all relevant subdirectories.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoPlainText><span style='font-family:Arial'>To remove all Makefiles
+<p class=MsoPlainText><span style='font-family:Arial'>To remove all makefiles
 in the build environment:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
@@ -298,15 +356,15 @@ normal'>Audio&nbsp;Anecdotes</i> build process:<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><a
 href="http://www.amazon.com/exec/obidos/ASIN/0937175900/sworksstoryworks">Managing
-Projects With make</a>, Andrew <span class=SpellE>Oram</span> and Steve
-Talbott, 1991 O’Reilly and Associates<o:p></o:p></span></p>
+Projects with make</a>, Andrew <span class=SpellE>Oram</span> and Steve
+Talbott, 1991, O’Reilly and Associates.<o:p></o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoPlainText><span style='font-family:Arial'><a
 href="http://www.amazon.com/exec/obidos/ASIN/1578701902/sworksstoryworks">GNU
 AUTOCONF, AUTOMAKE, and LIBTOOL</a>, Gary V. Vaughan, Ben Elliston, Tom <span
-class=SpellE>Tromey</span>, and Ian Lance Taylor, 2001 New Riders<o:p></o:p></span></p>
+class=SpellE>Tromey</span>, and Ian Lance Taylor, 2001, New Riders.<o:p></o:p></span></p>
 
 </div>
 
