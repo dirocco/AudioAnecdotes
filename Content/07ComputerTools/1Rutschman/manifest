@@ -21,5 +21,11 @@ src_v1 span.m         src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/span
 src_v1 tone.m         src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/tone.m 
 src_v1 unbias.m       src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/unbias.m
 
-# we need to build octave then build the figures!
-^ src_v1 unbias.m     src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/*.ps
+# we build octave then build the figures!
+src_v1 difference.pdf        src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/difference.pdf
+src_v1 error-accurate.pdf    src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/error-accurate.pdf
+src_v1 error-noisy.pdf       src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/error-noisy.pdf
+src_v1 rounding-accurate.pdf src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/rounding-accurate.pdf
+src_v1 rounding-noisy.pdf    src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/rounding-noisy.pdf
+src_v1 sample1.pdf           src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/sample1.pdf
+src_v1 sample2.pdf           src_v1.tar Volume1/Content/07ComputerTools/1Rutschman/sample2.pdf
