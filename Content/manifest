@@ -1,4 +1,5 @@
 src_v1 configure	src_v1.tar Volume1/Content/configure
+src_v1 install-sh    	src_v1.tar Volume1/Content/install-sh
 src_v1 Makefile.in	src_v1.tar Volume1/Content/Makefile.in
 src_v1 config.mak	src_v1.tar Volume1/Content/config.mak
 src_v1 dist.make.dirs	src_v1.tar Volume1/Content/make.dirs
