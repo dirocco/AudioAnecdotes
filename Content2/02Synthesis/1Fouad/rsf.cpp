@@ -6,10 +6,14 @@
 using std::list;
 #include "pablio.h"
 
+#define HERTZ 44100
+
+//Prototypes --------------------------------------------------
 //functions taken from Fouad's Spatialization Article
 void Gain(float *in, int size, float *gain, int nch, float *out);
 void Pan1D(float *in, int size, float azim, float range, float *out);
 
+//type definitions --------------------------------------------
 typedef short sample;
 
 struct frame
@@ -18,7 +22,15 @@ struct frame
 	//could be more
 };
 
+//quickie helper functions ------------------------------------
+inline float	HertzToSec(int hz)		{return hz/(float)HERTZ;}
+inline int		SecToHertz(float sec)	{return (int)(sec*HERTZ);} 
+inline float	frand()					{return (rand()%4096) / 4096.0f;}
+
+
+//Objects -----------------------------------------------------
 struct SoundInstance;
+
 //Structure that encapsulates a sound file loaded
 // into memory for use in our demo
 struct RawSound
@@ -210,33 +222,44 @@ frame GetThisFrame()
 	return ret;
 }
 
+//The struct that encapsulates the data that determines when a
+// sound fires.
 struct statmodel
 {
-	int nextactivate;
-	int jitter;
-	int offset;
-	int period;
+	float nextactivate;	//The next time that we will hear the sound
 
-	statmodel(int j, int o, int p): jitter(j), offset(o), period(p)
+	float timejitter;	//a random push that makes our period less obvious
+	float timeoffset;	//the offset of the first sample
+	float timeperiod;	//how often in general the sound gets triggered
+
+	int n;				//how many times this sound has played
+
+	statmodel(float j, float o, float p): timejitter(j), timeoffset(o), timeperiod(p)
 	{
+		n =0;
 		nextactivate = 0;
 		calcnextactive();
 	}
 	
 	void calcnextactive()
 	{
-		int temp = period + offset - jitter + rand()%(2*jitter);
-		if(temp < 0 ) temp = 0;
+		float temp = /*n*/timeperiod /*+ timeoffset*/ - timejitter + (frand()*2.0*timejitter);
+		if(temp < 0.0 ) temp = 0.0;
 		nextactivate += temp;
+		//n++;
 	}
 };
 
-void UpdateStats(int currenttime, RawSound &rsnd, statmodel &stat)
+//Check if its time to create another sound, and if so, do the
+// parameterization to make it slightly different than before.
+void UpdateStats(float currenttime, RawSound &rsnd, statmodel &stat)
 {
 	//update statistical models
-	if(currenttime >= stat.nextactivate)
+	int temp = SecToHertz(stat.nextactivate);
+	if(currenttime >=  temp)
 	{
 		SoundInstance * adding = rsnd.MakeInstance();
+
 		//place the sound somewhere in a 2d planar box from -100 to 100	
 		adding->vx = -100 + rand()%200;
 		adding->vy = -100 + rand()%200;	
@@ -244,12 +267,12 @@ void UpdateStats(int currenttime, RawSound &rsnd, statmodel &stat)
 		//pitchshift to create variations in the sound.
 		// the random math is an attempt to try to keep
 		// the 'val' numbers clustered around zero
-		float val = (rand()%4096) / 4096.0f;	// range of   0 <-> 1
-		val -= 0.5f;			// range of -.5 <-> .5
+		float val	= frand();	// range of   0 <-> 1
+		val			-= 0.5f;	// range of -.5 <-> .5
 		val = val * val * val;	// -.125 <-> .125
 
 		//if val is clustered around 0, playrate should be clustered around 1
-		adding->playrate = 1.0 + val;
+		adding->playrate = 1.0;// + val;
 
 		//add it to the queue to be played immediately
 		q.push_back(adding);
@@ -265,8 +288,6 @@ int main(int argc, char ** argv)
 	PABLIO_Stream *pstream;
 	unsigned int	frameswritten =0;	//our default timer
 
-//	SoundQueue		q;
-
 	//the queue from which to push and pop sounds	
 	RawSound		gullsnd;
 	RawSound		wavesnd;
@@ -274,23 +295,26 @@ int main(int argc, char ** argv)
 	gullsnd.Load("seagull.raw");
 	wavesnd.Load("wave.raw");
 
-	OpenAudioStream( &pstream, 44100, paInt16, PABLIO_WRITE | PABLIO_STEREO );
+	OpenAudioStream( &pstream, HERTZ, paInt16, PABLIO_WRITE | PABLIO_STEREO );
 
-	statmodel gullmodel(10000, 5000, 20000);
-	statmodel wavemodel(20000, 0, 10000);
+	//---				jitter, initial, period
+	statmodel gullmodel(0.25,	0.125,	1.0);
+	statmodel wavemodel(0.25,	0.0,	0.125);
+
+	SoundInstance *snd = wavesnd.MakeInstance();
 
 	while(1)//(!done)
 	{
-		UpdateStats(frameswritten, gullsnd, gullmodel);
+ 		UpdateStats(frameswritten, gullsnd, gullmodel);
 		UpdateStats(frameswritten, wavesnd, wavemodel);
 
-		//write out soundfiles
+		//write out sound samples
 		frame writeout = GetThisFrame();
-		//printf("(%d, %d)\n", writeout.l, writeout.r);
 		WriteAudioStream( pstream, &writeout, 1 );
 		frameswritten++;
 	}
 
+	//cleanup code that doesn't really get called.
 	CloseAudioStream( pstream );
 	gullsnd.Release();
 	wavesnd.Release();
