@@ -49,6 +49,11 @@ void play(Bitstream *bs, Audio *audio)
     case 2: flags |= PABLIO_STEREO; break;
     }
 
+printf("\n\n****\n");
+printf("bytesPerSample: %d, samplesPerFrame: %d\n",
+    audio->sound->bytesPerSample, audio->sound->samplesPerFrame);
+printf("\n\n");
+
     unsigned char *data = new unsigned char[NUM_FRAMES*
         audio->sound->samplesPerFrame*audio->sound->bytesPerSample];
 
@@ -113,7 +118,7 @@ int main(int argc, char *argv[])
         audio.get(bs);
         if (bs.geterror() != E_NONE) {
             fprintf(stderr, "%s: Error: %s\n", argv[2], bs.getmsg());
-            exit(1);
+            //exit(1);
         }
 #endif
 
