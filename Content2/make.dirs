@@ -8,5 +8,5 @@ CHILDDIRS= \
 	02Synthesis \
 	03SignalProcessing \
 	04Spatialization \
-	05ComputerTechniques
-
+	05ComputerTechniques \
+	06ComputerTools
