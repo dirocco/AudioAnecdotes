@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 echo "Server: thttpd/2.20c 21nov01"
 echo "Content-type: text/plain"
