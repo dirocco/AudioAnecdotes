@@ -1,0 +1,19 @@
+Hi All, Happy Holidays! 
+
+The book’s CD effort has been slow for a little while with folk busy with the holidays or traveling.  I have been busy working with our authors and completing my own articles. I am hoping to crank the energy level on the CD effort soon after the New Year.
+
+In the mean time I have run across autopackage project, http://autopackage.org, and think this might help us distribute and install our code on our various platforms.
+
+Basically it seems to create an archive and wrap it in a shell script. I don’t think it is an RPM replacement but might be perfect for our needs.
+
+Anybody have experience w/this?  Or want to give it a try and provide feedback? This could also easily be overkill but at least it could provide a skeleton installer script we could pair down as needed…
+
+ 
+
+-Ken
+
+ 
+
+From the webpage:
+
+An autopackage (a .package file) contains all the files needed for the package in a distribution neutral format with special control files inside, wrapped in a tarball with a stub script appended to the beginning. In order to install a .package file, you run it, and the scripts then check your system for the autopackage tools and offers to download them if they're not present. It'll then boot the front end of your choice and begin doing the things that installers do - check for dependencies, ask questions, even do things like present EULAs and perform copy-protection checks. Finally, you can uninstall or repair a package with the "package uninstall" or "package verify" commands.

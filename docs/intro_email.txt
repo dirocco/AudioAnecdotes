@@ -1,0 +1,39 @@
+Hi everybody,
+
+ 
+
+I have been mulling over the installation process and decided to record my ideas and share them.  I would like to get the CD developer’s tree build, manifest/package, installation and building process in place ASAP so we can get down to the meat and potatoes of porting and developing killer examples for the book.
+Hope everyone can read Word Documents (I like refining my thoughts using an outline editor)
+Please ‘capital R’ the group (anybody know what I am talking about) with comments as everybody on the CC: line has expressed interest in making the Audio Anecdotes CD the most useful possible.
+
+Let me introduce everyone:
+
+- Greg Silber is an old friend finishing a PhD @udel.edu in AI/natural language/automatic summarization.  He is our resident Windows expert (yes, I know I spent many years at MSFT, but truth is I was working on an unusual research project and Greg has slung more MFC than I ever will)
+
+- Heather Holcombe is the Editorial assistant at AK Peters in charge of our book.
+
+- Kelley Guiney is my assistant and editor.  She keeps us all on track, honest, and writing something that resembles proper English. Kelley will probably be contacting all of you to make sure we have you folk in our contributor’s database + will solicit bios and digital photos.
+
+- Ronen Barzel is a member of our editorial team.  He is a Pixar CG guy and edits the journal of graphics tools,  which means he has done this all before and actually knows what he is doing!  We are very happy to have him on our team.
+
+- Darren Gibbs is a veteran of 3DO and Apple and has contributed to many audio projects including PortAudio the audio portability layer we built PABLIO on top of
+
+- Phil Burk and Ross Bencina created PortAudio and implemented PABLIO for us. They have also contributed articles to the book and are deeply involved in the audio community
+
+- Phil Rutschman is among other things a DSP fellow and Apple enthusiast.  Until Darren signed on he was our only Mac developer.  Thus far Phil has helped extend our Autotools build to MacOSX and has been porting our author’s MATLAB code to Octave (which we are re-distributing on the CD!)
+
+- Ben Luna is a friend and colleague of mine from Microsoft.  Ben wrote and developed the instrumented MODEM anecdote and code.
+
+- David Thiel was my audio mentor at Microsoft.  Dave contributed an anecdote describing and re-implementing some of the low cost synthesis techniques he innovated in standup games like Q*bert from the bad old days.
+
+- Ken Cam is a new friend I met at a Microsoft usability test.  He is finishing a PhD@u.washington.edu
+
+- Peter Randlette is a professor at Evergreen very interested in ensuring that our book and CD reach and help the widest audience possible and not just UNIX geeks like me.
+
+I will probably formalize this into a mailing list on SWORKS sometime soon but for now lets keep it informal.  Be sure to yell at me if I left someone off this list or if you would like to be removed from the list.
+
+The CD bits are being kept on a CVS repository at SWORKS.  If you want to get your hands dirty you will need CVS access.  Let me know and I will setup a login for you + help you get CVS running on your platform.
+
+ 
+
+ 
