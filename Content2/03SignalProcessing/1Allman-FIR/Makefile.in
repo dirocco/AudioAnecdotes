@@ -21,7 +21,7 @@ LOCALLINK=@LOCALLINK@
 
 
 
-SOURCES = fir.c playstream.c
-CPPSOURCES = fir2.cpp rawfile2stream.cpp
+SOURCES = fir.c
+CPPSOURCES = fir2.cpp
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
