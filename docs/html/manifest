@@ -12,13 +12,27 @@ bin_v1_linux 06unix.html         bin_v1_linux.tar Volume1/docs/html/06ComputerTe
 src_v1 07ComputerTools.html      src_v1.tar Volume1/docs/html/07ComputerTools.html
 src_v1 08HumanExperience.html    src_v1.tar Volume1/docs/html/08HumanExperience.html
 src_v1 main.html                 src_v1.tar Volume1/docs/html/main.html
+
 src_v1 head.html                 src_v1.tar Volume1/docs/html/head.html
+src_v2 head.html                 src_v2.tar Volume2/docs/html/head.html
+
 src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
+src_v2 menu.html                 src_v2.tar Volume2/docs/html/menu.html
+
 src_v1 build.html                src_v1.tar Volume1/docs/html/build.html
+src_v2 build.html                src_v2.tar Volume2/docs/html/build.html
+
 src_v1 contacts.html             src_v1.tar Volume1/docs/html/contacts.html
+src_v2 contacts.html             src_v2.tar Volume2/docs/html/contacts.html
+
 src_v1 update.html               src_v1.tar Volume1/docs/html/update.html
+src_v2 update.html               src_v2.tar Volume2/docs/html/update.html
+
 src_v1 caliper.html              src_v1.tar Volume1/docs/html/caliper.html
+src_v2 caliper.html              src_v2.tar Volume2/docs/html/caliper.html
+
 src_v1 dummy.html                src_v1.tar Volume1/docs/html/dummy.html
+src_v2 dummy.html                src_v2.tar Volume2/docs/html/dummy.html
 
 src_v1 rampout.sh                src_v1.tar Volume1/docs/html/rampout.sh
 src_v1 rampdata1.sh              src_v1.tar Volume1/docs/html/rampdata1.sh
@@ -31,91 +45,66 @@ src_v1 rampdata2.bat             src_v1.tar Volume1/docs/html/rampdata2.bat
 src_v1 rampdata3.bat             src_v1.tar Volume1/docs/html/rampdata3.bat
 
 src_v1 images/minus.gif          src_v1.tar Volume1/docs/html/images/minus.gif
+src_v2 images/minus.gif          src_v2.tar Volume2/docs/html/images/minus.gif
+
 src_v1 images/plus.gif           src_v1.tar Volume1/docs/html/images/plus.gif
+src_v2 images/plus.gif           src_v2.tar Volume2/docs/html/images/plus.gif
+
 src_v1 images/solid.gif          src_v1.tar Volume1/docs/html/images/solid.gif
+src_v2 images/solid.gif          src_v2.tar Volume2/docs/html/images/solid.gif
+
 src_v1 images/square.gif         src_v1.tar Volume1/docs/html/images/square.gif
+src_v2 images/square.gif         src_v2.tar Volume2/docs/html/images/square.gif
+
 src_v1 images/title02.gif        src_v1.tar Volume1/docs/html/images/title02.gif
+src_v2 images/title02.gif        src_v2.tar Volume2/docs/html/images/title02.gif
+
 
 src_v1 css/list.css              src_v1.tar Volume1/docs/html/css/list.css
+src_v2 css/list.css              src_v2.tar Volume2/docs/html/css/list.css
+
 src_v1 css/text.css              src_v1.tar Volume1/docs/html/css/text.css
+src_v2 css/text.css              src_v2.tar Volume2/docs/html/css/text.css
+
 
 src_v1 js/listtoc.js             src_v1.tar Volume1/docs/html/js/listtoc.js
+src_v2 js/listtoc.js             src_v2.tar Volume2/docs/html/js/listtoc.js
+
 
 bin_v1_win   windowskill.cgi     bin_v1_win.tar   Volume1/docs/html/kill.cgi
+bin_v2_win   windowskill.cgi     bin_v2_win.tar   Volume2/docs/html/kill.cgi
+
 bin_v1_mac   mackill.cgi         bin_v1_mac.tar   Volume1/docs/html/kill.cgi
+bin_v2_mac   mackill.cgi         bin_v2_mac.tar   Volume2/docs/html/kill.cgi
+
 bin_v1_linux linuxkill.cgi       bin_v1_linux.tar Volume1/docs/html/kill.cgi
+bin_v2_linux linuxkill.cgi       bin_v2_linux.tar Volume2/docs/html/kill.cgi
+
 
 bin_v1_win   win-do.cgi          bin_v1_win.tar   Volume1/docs/html/nddo.cgi
+bin_v2_win   win-do.cgi          bin_v2_win.tar   Volume2/docs/html/nddo.cgi
+
 bin_v1_mac   mac-do.cgi          bin_v1_mac.tar   Volume1/docs/html/nddo.cgi
+bin_v2_mac   mac-do.cgi          bin_v2_mac.tar   Volume2/docs/html/nddo.cgi
+
 bin_v1_linux linux-do.cgi        bin_v1_linux.tar Volume1/docs/html/nddo.cgi
+bin_v2_linux linux-do.cgi        bin_v2_linux.tar Volume2/docs/html/nddo.cgi
+
 
 bin_v1_win   debugwin-do.cgi     bin_v1_win.tar   Volume1/docs/html/ddo.cgi
+bin_v2_win   debugwin-do.cgi     bin_v2_win.tar   Volume2/docs/html/ddo.cgi
 bin_v1_mac   debugmac-do.cgi     bin_v1_mac.tar   Volume1/docs/html/ddo.cgi
+bin_v2_mac   debugmac-do.cgi     bin_v2_mac.tar   Volume2/docs/html/ddo.cgi
 bin_v1_linux debuglinux-do.cgi   bin_v1_linux.tar Volume1/docs/html/ddo.cgi
+bin_v2_linux debuglinux-do.cgi   bin_v2_linux.tar Volume2/docs/html/ddo.cgi
+
 
 # running/shipping debug version for now
 bin_v1_win   debugwin-do.cgi     bin_v1_win.tar   Volume1/docs/html/do.cgi
-bin_v1_mac   debugmac-do.cgi     bin_v1_mac.tar   Volume1/docs/html/do.cgi
-bin_v1_linux debuglinux-do.cgi   bin_v1_linux.tar Volume1/docs/html/do.cgi
-
-
-^ For now install the same stuff for volume2 (but soon it all changed)!! 
-src_v2 01Measurement.html        src_v2.tar Volume2/docs/html/01Measurement.html
-src_v2 02Perception.html         src_v2.tar Volume2/docs/html/02Perception.html
-src_v2 03Recording.html          src_v2.tar Volume2/docs/html/03Recording.html
-src_v2 04Synthesis.html          src_v2.tar Volume2/docs/html/04Synthesis.html
-src_v2 05SignalProcessing.html   src_v2.tar Volume2/docs/html/05SignalProcessing.html
-
-# src_v2 06ComputerTechniques.html src_v2.tar Volume2/docs/html/06ComputerTechniques.html
-bin_v2_win   06win.html          bin_v2_win.tar   Volume2/docs/html/06ComputerTechniques.html
-bin_v2_mac   06unix.html         bin_v2_mac.tar   Volume2/docs/html/06ComputerTechniques.html
-bin_v2_linux 06unix.html         bin_v2_linux.tar Volume2/docs/html/06ComputerTechniques.html
-
-src_v2 07ComputerTools.html      src_v2.tar Volume2/docs/html/07ComputerTools.html
-src_v2 08HumanExperience.html    src_v2.tar Volume2/docs/html/08HumanExperience.html
-src_v2 main.html                 src_v2.tar Volume2/docs/html/main.html
-src_v2 head.html                 src_v2.tar Volume2/docs/html/head.html
-src_v2 menu.html                 src_v2.tar Volume2/docs/html/menu.html
-src_v2 build.html                src_v2.tar Volume2/docs/html/build.html
-src_v2 contacts.html             src_v2.tar Volume2/docs/html/contacts.html
-src_v2 update.html               src_v2.tar Volume2/docs/html/update.html
-src_v2 caliper.html              src_v2.tar Volume2/docs/html/caliper.html
-src_v2 dummy.html                src_v2.tar Volume2/docs/html/dummy.html
-
-src_v2 rampout.sh                src_v2.tar Volume2/docs/html/rampout.sh
-src_v2 rampdata1.sh              src_v2.tar Volume2/docs/html/rampdata1.sh
-src_v2 rampdata2.sh              src_v2.tar Volume2/docs/html/rampdata2.sh
-src_v2 rampdata3.sh              src_v2.tar Volume2/docs/html/rampdata3.sh
-
-src_v2 rampout.bat               src_v2.tar Volume2/docs/html/rampout.bat
-src_v2 rampdata1.bat             src_v2.tar Volume2/docs/html/rampdata1.bat
-src_v2 rampdata2.bat             src_v2.tar Volume2/docs/html/rampdata2.bat
-src_v2 rampdata3.bat             src_v2.tar Volume2/docs/html/rampdata3.bat
-
-src_v2 images/minus.gif          src_v2.tar Volume2/docs/html/images/minus.gif
-src_v2 images/plus.gif           src_v2.tar Volume2/docs/html/images/plus.gif
-src_v2 images/solid.gif          src_v2.tar Volume2/docs/html/images/solid.gif
-src_v2 images/square.gif         src_v2.tar Volume2/docs/html/images/square.gif
-src_v2 images/title02.gif        src_v2.tar Volume2/docs/html/images/title02.gif
-
-src_v2 css/list.css              src_v2.tar Volume2/docs/html/css/list.css
-src_v2 css/text.css              src_v2.tar Volume2/docs/html/css/text.css
-
-src_v2 js/listtoc.js             src_v2.tar Volume2/docs/html/js/listtoc.js
-
-bin_v2_win   windowskill.cgi     bin_v2_win.tar   Volume2/docs/html/kill.cgi
-bin_v2_mac   mackill.cgi         bin_v2_mac.tar   Volume2/docs/html/kill.cgi
-bin_v2_linux linuxkill.cgi       bin_v2_linux.tar Volume2/docs/html/kill.cgi
-
-bin_v2_win   win-do.cgi          bin_v2_win.tar   Volume2/docs/html/nddo.cgi
-bin_v2_mac   mac-do.cgi          bin_v2_mac.tar   Volume2/docs/html/nddo.cgi
-bin_v2_linux linux-do.cgi        bin_v2_linux.tar Volume2/docs/html/nddo.cgi
-
-bin_v2_win   debugwin-do.cgi     bin_v2_win.tar   Volume2/docs/html/ddo.cgi
-bin_v2_mac   debugmac-do.cgi     bin_v2_mac.tar   Volume2/docs/html/ddo.cgi
-bin_v2_linux debuglinux-do.cgi   bin_v2_linux.tar Volume2/docs/html/ddo.cgi
-
-# running/shipping debug version for now
 bin_v2_win   debugwin-do.cgi     bin_v2_win.tar   Volume2/docs/html/do.cgi
+
+bin_v1_mac   debugmac-do.cgi     bin_v1_mac.tar   Volume1/docs/html/do.cgi
 bin_v2_mac   debugmac-do.cgi     bin_v2_mac.tar   Volume2/docs/html/do.cgi
+
+bin_v1_linux debuglinux-do.cgi   bin_v1_linux.tar Volume1/docs/html/do.cgi
 bin_v2_linux debuglinux-do.cgi   bin_v2_linux.tar Volume2/docs/html/do.cgi
