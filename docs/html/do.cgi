@@ -173,16 +173,15 @@ fi
 #endif
 
 IFS='|'
-
 if [ $xworked -eq 1 ]; then
-   list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
+   list="xterm|/usr/bin/X11/xterm|/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
 #ifdef DEBUG
-         echo run:$prog -e "./$2 $a" >> /tmp/log
-         $prog -e "./$2 $a" 2>> /tmp/log
+         echo run:$prog -e ./$2 $a >> /tmp/log
+         $prog -e ./$2 $a 2>> /tmp/log
 #else
-         $prog -e "./$2 $a"
+         $prog -e ./$2 $a
 #endif
 
 	 if [ $? -eq 0 ]; then
@@ -195,6 +194,7 @@ else # skip the xterm and just run in the background
 fi
 #else
 
+IFS='|'
 doit=`/bin/cygpath --sysdir`/cmd
 if [ -f $doit ]; then
    $doit /c start .\\$2 $a
