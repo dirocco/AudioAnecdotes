@@ -35,7 +35,7 @@ function IMG_click(elIMG)
 
             childs = childs[0].getElementsByTagName("DIV");
             childs = childs[0].getElementsByTagName("IMG");
-            childs[0].setAttribute('src','./images/square.gif');
+            /* childs[0].setAttribute('src','./images/square.gif'); */
 		}
 		else if (elDiv.className == "PARENT-SHOWN") {
             childs = elDiv.getElementsByTagName("DIV");
