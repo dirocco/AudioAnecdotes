@@ -5,31 +5,38 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
 <meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 10">
-<meta name=Originator content="Microsoft Word 10">
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
 <link rel=File-List href="05SignalProcessing_files/filelist.xml">
 <title>Chapter 5: Signal Processing</title>
 <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>Ken Greenebaum</o:Author>
   <o:LastAuthor>Ken Greenebaum</o:LastAuthor>
-  <o:Revision>1</o:Revision>
-  <o:TotalTime>15</o:TotalTime>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>27</o:TotalTime>
   <o:Created>2003-10-27T00:15:00Z</o:Created>
-  <o:LastSaved>2003-10-27T00:30:00Z</o:LastSaved>
+  <o:LastSaved>2003-11-15T10:00:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>198</o:Words>
-  <o:Characters>1134</o:Characters>
+  <o:Words>294</o:Words>
+  <o:Characters>1681</o:Characters>
   <o:Company>SWORKS</o:Company>
-  <o:Lines>9</o:Lines>
-  <o:Paragraphs>2</o:Paragraphs>
-  <o:CharactersWithSpaces>1330</o:CharactersWithSpaces>
-  <o:Version>10.4219</o:Version>
+  <o:Lines>14</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1972</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
  </o:DocumentProperties>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <w:WordDocument>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
   <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
  </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
 </xml><![endif]-->
 <style>
 <!--
@@ -90,9 +97,7 @@ a:link, span.MsoHyperlink
 	color:blue;
 	mso-text-animation:none;
 	text-decoration:underline;
-	text-underline:single;
-	text-decoration:none underline;
-	text-line-through:none;}
+	text-underline:single;}
 a:visited, span.MsoHyperlinkFollowed
 	{font-family:Verdana;
 	mso-ascii-font-family:Verdana;
@@ -100,9 +105,7 @@ a:visited, span.MsoHyperlinkFollowed
 	color:purple;
 	mso-text-animation:none;
 	text-decoration:underline;
-	text-underline:single;
-	text-decoration:none underline;
-	text-line-through:none;}
+	text-underline:single;}
 p
 	{mso-margin-top-alt:auto;
 	margin-right:.85in;
@@ -137,7 +140,10 @@ div.Section1
 	mso-para-margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Times New Roman";}
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
 </style>
 <![endif]-->
 </head>
@@ -148,9 +154,8 @@ div.Section1
 
 <h1><a href="../../Content/05SignalProcessing">Chapter 5: Signal Processing</a></h1>
 
-<h2><a name=1Malvar></a><a href="../../Content/05SignalProcessing/1Malvar"><span
-style='mso-bookmark:1Malvar'>Audio Masking in Audio Compression - Malvar</span><span
-style='mso-bookmark:1Malvar'></span></a><span style='mso-bookmark:1Malvar'></span></h2>
+<h2><a href="../../Content/05SignalProcessing/1Malvar">Audio Masking in Audio
+Compression - Malvar</a><a name=1Malvar></a></h2>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>This
 example demonstrates audio masking.<o:p></o:p></span></p>
@@ -158,7 +163,7 @@ example demonstrates audio masking.<o:p></o:p></span></p>
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Run
-<a href="do.cgi?Content/05SignalProcessing/1Malvar&sineMask">sineMask</a>.
+<a href="do.cgi%3fContent/05SignalProcessing/1Malvar&amp;sineMask">sineMask</a>.
 The demo repeats the following sequence: <o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-left:1.0in'><span style='font-family:Verdana'>1)
@@ -177,6 +182,15 @@ cycle repeats (kill the window it creates to stop the demo).<o:p></o:p></span></
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Run
+<a href="docs/html/do.cgi%3fContent/05SignalProcessing/1Malvar&amp;sineMask&amp;-i">caliper
+&quot;sineMask %f %f&quot; -i 1100 0.2 -f 0 1 -m 2 1</a> to run sineMask in the
+&#8220;<a href="caliper.html">caliper</a>&#8221; adjustment tool to experiment
+with what frequencies and amplitudes you can hear and which are masked by the
+1000 Hz tone.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
+
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
 here to view the source <a
 href="../../Content/05SignalProcessing/1Malvar/sineMask.c">sineMask.c</a>. <o:p></o:p></span></p>
@@ -184,28 +198,23 @@ href="../../Content/05SignalProcessing/1Malvar/sineMask.c">sineMask.c</a>. <o:p>
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
-here to view the MatLab code <a
-href="../../Content/05SignalProcessing/1Malvar/amproc.m">amproc.m</a>. <o:p></o:p></span></p>
-<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
-here to view the MatLab code <a
-href="../../Content/05SignalProcessing/1Malvar/hthres.m">hthres.m</a>. <o:p></o:p></span></p>
-<p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Click
-here to view the MatLab code <a
+the following links to view the MatLab code modeling hearing theasholds: <a
+href="../../Content/05SignalProcessing/1Malvar/amproc.m">amproc.m</a>, <a
+href="../../Content/05SignalProcessing/1Malvar/hthres.m">hthres.m</a>, and <a
 href="../../Content/05SignalProcessing/1Malvar/thrabs.m">thrabs.m</a>. <o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
-<h2><a name=3Luna></a><a href="../../Content/05SignalProcessing/3Luna"><span
-style='mso-bookmark:3Luna'>A Framework for Software Modem Experimentation - Luna</span><span
-style='mso-bookmark:3Luna'></span></a><span style='mso-bookmark:3Luna'></span></h2>
+<h2><a href="../../Content/05SignalProcessing/3Luna">A Framework for Software
+Modem Experimentation - Luna</a><a name=3Luna></a></h2>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>These
-examples demonstrate a software modem. <o:p></o:p></span></p>
+example demonstrates a software modem. <o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='font-family:Verdana'>Run
-<a href="do.cgi?Content/05SignalProcessing/3Luna/mono&modem">modem</a>
+<a href="do.cgi%3fContent/05SignalProcessing/3Luna/mono&amp;modem">modem</a>
 and it will modulate a signal before your very eyes. Actually this code is best
 experimented with from the command line and can be found in the <a
 href="../../Content/05SignalProcessing/3Luna">AudioAnecdotes/Content/05SignalProcessing/3Luna</a>
