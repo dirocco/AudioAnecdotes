@@ -4,7 +4,6 @@ main()
 {
    typedef unsigned short USHORT;
 
-   char state = 0;
    USHORT count = 0;
    int result;
 
@@ -14,6 +13,10 @@ main()
    int    ErrorCount = 0;
    USHORT Expected;
 
+
+   enum {START, WAITFORSIGNAL, RECEIVEDSIGNAL, ESTABLISHRUN, 
+                               RUNESTABLISHED, ERROR } states;
+   states state;
 
    while(1) 
    {
@@ -28,33 +31,33 @@ main()
 
       switch(state) 
       {
-	 case 0:  // wait for (nonzero) signal
+	 case START:  // wait for (nonzero) signal
 	    if (Received) 
             {
                count++;
 	       printf("found signal at sample %d\n", count-2);
-	       state = 1;
+	       state = RECEIVEDSIGNAL;
 	    }
             else
             {
-               state = 0;  // redundant, added for clarity.
+               state = WAITFORSIGNAL;  // redundant, added for clarity.
                count = 0;  // redundant, added for clarity.
             }
 	    break;
 
-	 case 1: 
+	 case WAITFORSIGNAL: 
 
             Expected =  ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
 
 	    if(Received == Expected)
             {
-	       printf("state 1: %d %d %d ", Received, LastReceived, 
+	       printf("%d %d %d ", Received, LastReceived, 
                           (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
 	       printf("received expected value at %d\n", Total - 1);
                // if we meet the theshold then transition to state 2
                if ( ++count > THRESHOLD)
                {
-                  state = 3;
+                  state = RUNESTABLISHED;
                   break;
                }
 
@@ -68,15 +71,15 @@ main()
 	       printf("state 1: %d %d %d ", Received, LastReceived, 
                           (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
 	       printf("Received unexpected value at %d\n", Total - 1);
-               state = 2;
+               state = ERROR;
             }
 	    break;
 
 		 
-	 case 2: 
+	 case ERROR: 
 
             ErrorCount++;
-            printf("state 2: error detected\n");
+            printf("error detected\n");
 
   // not sure what to do here ... talk to ken again about
   // which errors to handle
@@ -85,7 +88,7 @@ main()
             
 	    break;
 
-	 case 3: 
+	 case ESTABLISHRUN: 
             Expected =  ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
 	    printf("state 3: %d %d %d ", Received, LastReceived, 
                           (USHORT) ((USHORT) LastReceived+ (USHORT) 1));
@@ -93,12 +96,12 @@ main()
 	    if(Received == Expected)
             {
               count++;
-              state = 3;  // redundant but included for clarity
+              state = ESTABLISHRUN;  // redundant but included for clarity
             }
             else 
             {
               count = 0;
-              state = 1;
+              state = WAITFORSIGNAL;
             } 
 
 	    break;
