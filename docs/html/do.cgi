@@ -192,8 +192,9 @@ if [ $xworked -eq 1 ]; then
 else # skip the xterm and just run in the background
    ./$2 $a &
 fi
-#else
+#endif
 
+#ifdef WINDOWS
 IFS='|'
 doit=`/bin/cygpath --sysdir`/cmd
 if [ -f $doit ]; then
@@ -205,7 +206,26 @@ else
    doit=`/bin/cygpath --windir`/command
    $doit /c start .\\$2 $a
 fi
+#endif 
 
+#ifdef MAC
+# no terminal -e command to run a command w/arguments
+# so create and open a file instead
+SCRIPT=/tmp/script.command
+
+# for security ensure there isn't a pre-existing file
+rm -f $SCRIPT
+if [ -f $SCRIPT ]; then
+   echo failed to remove existing $SCRIPT exiting
+   exit 252
+fi
+
+echo "#!/bin/sh"    > $SCRIPT
+echo `pwd`.\\$2 $a >> $SCRIPT
+chmod 555 $SCRIPT
+
+open $SCRIPT
+#rm -f $SCRIPT
 #endif 
 
 exit 0
