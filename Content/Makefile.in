@@ -9,9 +9,6 @@
 #	DIRECTLY BENEATH THIS MESSAGE
 #
 
-CHILDDIRS= Example\
-	   David_Thiel\
-	   Perry_Cook\
-	   Phil_Burk
+include make.dirs
 
 include @MAKEINCLUDESDIR@/build.root.make.inc

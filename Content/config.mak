@@ -6,10 +6,7 @@
 #
 
 #subdirectories of the directory
-SUBDIRS=Example \
-	David_Thiel \
-	Perry_Cook \
-	Phil_Burk
+include make.dirs
 
 #the path to the directory which contains configure for this directory
 CONFIGROOT=.
