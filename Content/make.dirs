@@ -3,10 +3,15 @@
 #
 
 CHILDDIRS= \
-	   David_Thiel\
+	   04Thiel\
+	   05Luna\
            Example\
            Flavor\
 	   Ken_Greenebaum\
 	   Perry_Cook\
 	   Phil_Burk\
 
+#	05Malvar
+#	06Greenebaum-Files
+#	07Eleftheriadis
+#	07Rutschman

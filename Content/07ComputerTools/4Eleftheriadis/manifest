@@ -1,4 +1,3 @@
-src_v1 au_snd_format.txt src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/au_snd_format.txt
-src_v1 data_packing.c src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/data_packing.c 
-src_v1 hellobits.c src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/hellobits.c 
-src_v1 snippets.c src_v1.tar AudioAnecdotesV1/06Greenebaum-Files/snippets.c 
+src_v1 data_packing.c src_v1.tar AudioAnecdotesV1/07Eleftheriadis/data_packing.c 
+src_v1 hellobits.c src_v1.tar AudioAnecdotesV1/07Eleftheriadis/hellobits.c 
+src_v1 snippets.c src_v1.tar AudioAnecdotesV1/07Eleftheriadis/snippets.c 
