@@ -1,3 +1,35 @@
+// Takes a stream of floating point samples from stdin applies panning function
+// then outputs stereo multiplexed signal on stdout
+
+#include <stdio.h>
+#include <stdlib.h> // atof()
+
+#define PI 3.14159265
+#define PI_2 PI/2.0
+#define TWO_PI 2.0*PI
+#define TORAD PI/180.0
+
+// Gain applies up to 8 gain values to an input waveform generating
+// between 1 and 8 channels of output audio.
+void Gain(float *in, int size, float *gain, int nch, float *out)
+{	
+    static float storeGains[8] = {	0.0, 0.0, 0.0, 0.0, 
+						0.0, 0.0, 0.0, 0.0};
+    float deltaGains[8];
+    float *outptr = out;
+    int i,j;
+
+    for (i=0; i<nch; i++)
+        deltaGains[i] = (gain[i] - storeGains[i]) / size;
+
+    for (i=0; i<size; i++)
+        for (j=0; j<nch; j++) {
+            *outptr++ = in[i] * storeGains[j];
+		storeGains[j] += deltaGains[j];
+	}
+}
+
+
 // Balance pans a source along an axis connecting left and right 
 // speakers using a linear gain curve.
 void Balance(float *mono, int size, float bal, float *stereo)
@@ -29,11 +61,6 @@ void Balance(float *mono, int size, float bal, float *stereo)
 
 // Pan1D pans a source along an axis connecting two speakers using a 
 // constant intensity gain curve.
-#define PI 3.14159265
-#define PI_2 PI/2.0
-#define TWO_PI 2.0*PI
-#define TORAD PI/180.0
-
 void Pan1D(float *in, int size, float azim, float range, float *out)
 {
     float gain[2];
@@ -71,26 +98,6 @@ void Pan1D(float *in, int size, float azim, float range, float *out)
     Gain(in, size, gain, 2, out);
 }
 
-// Gain applies up to 8 gain values to an input waveform generating
-// between 1 and 8 channels of output audio.
-void Gain(float *in, int size, float *gain, int nch, float *out)
-{	
-    static float storeGains[8] = {	0.0, 0.0, 0.0, 0.0, 
-						0.0, 0.0, 0.0, 0.0};
-    float deltaGains[8];
-    float *outptr = out;
-    int i,j;
-
-    for (i=0; i<nch; i++)
-        deltaGains[i] = (gain[i] - storeGains[i]) / size;
-
-    for (i=0; i<size; i++)
-        for (j=0; j<nch; j++)
-        {
-            *outptr++ = in[i] * storeGains[j];
-		storeGains[j] += deltaGains[j];
-	  }
-}
 
 // ********************************************************************
 
@@ -134,4 +141,78 @@ void Pan2D(float *in, int size, float azim, float range, float *out)
     Gain(in, size, gains, 4, out);
 }	
 
-// ********************************************************************
+
+void usage(char *name)
+{
+   fprintf(stderr, "usage: %s g|b|1|2 [balance] | [azimuth range]\n", name);
+   fprintf(stderr, "(g)ain, (b)alance, (1)D pan, (2)D pan (pan requires azimuth and range\n");
+   exit(-1);
+}
+
+
+int main(int argc, char *argv[])
+{
+   float inSample[1], outSample[4];
+   enum Mode {BALANCE, PAN1D, GAIN, PAN2D} mode;
+   float bal, azim, range; // parameters
+   float value[2];
+
+   if(argc < 2) {
+      usage(argv[0]); // this calls exit
+   }
+   else {
+      int required=0;
+      switch (*argv[1]) {
+	 case 'g': required=1; mode=GAIN;    break;
+	 case 'b': required=1; mode=BALANCE; break;
+	 case '1': required=2; mode=PAN1D;   break;
+	 case '2': required=2; mode=PAN2D;   break;
+	 default:
+	    fprintf(stderr, "unknown argument %s\n");
+	    usage(argv[0]);
+      }
+
+      printf("argc=%d, required=%d\n", argc, required);
+
+      if(argc!=(required+2)) {
+	 fprintf(stderr, "%s %s requires %d arguments\n", 
+	       argv[0], argv[1], required);
+	 usage(argv[0]); // this calls exit
+      } 
+
+      int i;
+      for(i=1; i <= required; i++) {
+	 value[i-required]=atof(argv[i-required+2]);
+	 fprintf(stderr, "got (%s)=%f\n", argv[i-required+2], value[i-required]);
+      }
+
+      switch(mode)  {
+	 case BALANCE:fprintf(stderr, "Balance %f\n", value[0]); break;
+	 case GAIN:   fprintf(stderr, "GAIN %f\n",    value[0]); break;
+	 case PAN1D:  fprintf(stderr, "PAN1D azimuth:%f range:%f\n", 
+			    value[0], value[1]); break;
+	 case PAN2D:  fprintf(stderr, "PAN2D azimuth:%f range:%f\n", 
+			    value[0], value[1]); break;
+	 default: break;
+      }
+		  
+      while(scanf("%f\n", inSample)==1) {
+	 switch(mode)  {
+	    case BALANCE: 
+	       Balance(inSample, 1, value[0],          outSample);
+	       printf("%f\n%f\n", outSample[0],  outSample[1]); break;
+	    case PAN1D:
+	       Pan1D(inSample, 1,   value[0], value[1], outSample);
+	       printf("%f\n%f\n", outSample[0],  outSample[1]); break;
+	    case GAIN:
+	       Gain(inSample, 1,    &value[0], 1,       outSample);
+	       printf("%f\n", outSample[0]); break;
+	    case PAN2D:     
+	       Pan2D(inSample, 1,   value[0], value[1], outSample);
+	       printf("%f\n%f\n%f\n%f\n", 
+		  outSample[0], outSample[1], outSample[2], outSample[3]); break;
+	    default: break;
+	 }
+      }
+   }
+}
