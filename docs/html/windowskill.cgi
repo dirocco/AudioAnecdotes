@@ -12,6 +12,6 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
-sh -c "../../serv.sh -m -q"
+sh -c "../../serv.sh -w -q"
 
 exit 0
