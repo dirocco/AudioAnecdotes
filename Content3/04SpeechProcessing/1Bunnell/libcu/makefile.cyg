@@ -1,0 +1,49 @@
+#------------------------------------------------------------------------
+# Makefile for libcu under cygwin
+#------------------------------------------------------------------------
+CC = gcc
+CFLAGS = -O3 -I/usr/local/include -DDLL_PREFIX="" -D_LE_MACHINE
+SHARED_FLAGS = -shared
+LIBDIR = /usr/local/lib
+SYSDIR = /usr/local/bin
+DLLFILE = libcu.dll
+STUBLIB = libcu.dll.a
+STATLIB = libcu.a
+RL = ranlib
+
+
+
+#------------------------------------------------------------------------
+# Remaining definitions apply to all machines
+#------------------------------------------------------------------------
+ 
+SRCDSP = allocsp.c dcs.c defext.c jscat.c log2.c pearsn.c \
+	prompt.c rflio.c stddev.c strpad.c uatola.c unpack.c \
+	net_subs.c setext.c stripext.c
+
+OBJS = allocsp.o dcs.o defext.o jscat.o log2.o pearsn.o prompt.o rflio.o \
+	stddev.o strpad.o uatola.o unpack.o net_subs.o setext.o stripext.o
+
+all: $(DLLFILE) $(STUBLIB) $(STATLIB)
+
+$(STATLIB): $(OBJS)
+	ar ruv $(STATLIB) $(OBJS)
+	$(RL) $(STATLIB)
+
+lib.def: $(OBJS)
+	dlltool --export-all-symbols -z lib.def $(OBJS)
+
+$(DLLFILE): $(OBJS)
+	$(CC) $(SHARED_FLAGS) -o $(DLLFILE) $(OBJS)
+
+$(STUBLIB): lib.def $(DLLFILE)
+	dlltool --def lib.def --dllname $(DLLFILE) --output-lib $(STUBLIB)
+
+install: $(STATLIB) $(DLLFILE) $(STUBLIB)
+	cp $(STATLIB) $(STUBLIB) $(LIBDIR)/
+	cp $(DLLFILE) $(SYSDIR)/
+
+clean:
+	rm -f $(OBJS)
+	rm -f $(STATLIB) $(DLLFILE) $(STUBLIB)
+	rm -f lib.def

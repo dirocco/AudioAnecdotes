@@ -1,0 +1,44 @@
+#------------------------------------------------------------------------
+# iX86 Linux: Uncomment these for compilation on Linux
+#------------------------------------------------------------------------
+CC = gcc
+FFLAGS = -O4 -I/vol/spl/include
+CFLAGS = -O6 -I/vol/spl/include -DDLL_PREFIX="" -D_LE_MACHINE
+LIBDIR = /vol/spl/linux/lib
+DYN_LIB = libcu.so.1.2
+DYN_FLAGS =  -shared -Wl,-soname,libcu.so.1
+RL = ranlib
+
+
+
+#------------------------------------------------------------------------
+# Remaining definitions apply to all machines
+#------------------------------------------------------------------------
+ 
+SRCDSP = allocsp.c dcs.c defext.c jscat.c log2.c opnsig.c pearsn.c \
+	prompt.c rflio.c stddev.c strpad.c uatola.c unpack.c \
+	net_subs.c setext.c
+
+
+OBJDSP = allocsp.o dcs.o defext.o jscat.o log2.o opnsig.o pearsn.o \
+	prompt.o rflio.o stddev.o strpad.o uatola.o unpack.o \
+	net_subs.o  setext.o
+
+
+
+all: libcu.a $(DYN_LIB)
+
+libcu.a: $(OBJDSP)
+	ar ruv libcu.a $(OBJDSP)
+	$(RL) libcu.a
+
+$(DYN_LIB): $(OBJDSP)
+	gcc $(DYN_FLAGS) -o $(DYN_LIB) $(OBJDSP)
+
+install: libcu.a $(DYN_LIB)
+	cp libcu.a $(LIBDIR)/
+	cp $(DYN_LIB) $(LIBDIR)/
+
+clean:
+	/bin/rm -f $(OBJDSP) libcu.a $(DYN_LIB)
+

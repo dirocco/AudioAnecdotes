@@ -1,0 +1,39 @@
+#------------------------------------------------------------------------
+# Win95 Defines: Uncomment these for compilation with gcc in Win95
+#------------------------------------------------------------------------
+CC = gcc
+CFLAGS = -march=i486 -O6 -I/include -D_LE_MACHINE -DDLL_PREFIX=""
+LIBDIR = /lib
+DYN_LIB =
+DYN_FLAGS =
+RL = ranlib
+
+#------------------------------------------------------------------------
+# Remaining definitions apply to all machines
+#------------------------------------------------------------------------
+ 
+SRCDSP = allocsp.c dcs.c defext.c jscat.c log2.c opnsig.c pearsn.c \
+	prompt.c rflio.c stddev.c strpad.c uatola.c unpack.c net_subs.c \
+	setext.c
+
+OBJDSP = allocsp.o dcs.o defext.o jscat.o log2.o opnsig.o pearsn.o \
+	prompt.o rflio.o stddev.o strpad.o uatola.o unpack.o net_subs.o \
+	setext.o
+
+
+all: libcu.a $(DYN_LIB)
+
+libcu.a: $(OBJDSP)
+	ar ruv libcu.a $(OBJDSP)
+	$(RL) libcu.a
+
+$(DYN_LIB): $(OBJDSP)
+	ld $(DYN_FLAGS) -o $(DYN_LIB) $(OBJDSP)
+
+install: libcu.a $(DYN_LIB)
+	cp libcu.a $(LIBDIR)/
+	cp $(DYN_LIB) $(LIBDIR)/
+
+clean:
+	/bin/rm -f $(OBJDSP) libcu.a $(DYN_LIB)
+
