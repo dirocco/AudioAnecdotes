@@ -21,6 +21,6 @@ LOCALLINK=@LOCALLINK@
 
 
 
-SOURCES = define_loudspeakers.c
+SOURCES = vbap.c
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
