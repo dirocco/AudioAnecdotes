@@ -20,7 +20,7 @@ debugwin-do.cgi: do.cgi
 	$(CPP) do.cgi -D DEBUG -D WINDOWS > debugwin-do.cgi
 
 debugmac-do.cgi: do.cgi
-	$(CPP) do.cgi -D DEBUG -D MAC -D UNIX > debugmac-do.cgi
+	$(CPP) do.cgi -D DEBUG -D MAC > debugmac-do.cgi
 
 linux-do.cgi: do.cgi
 	$(CPP) do.cgi -D LINUX -D UNIX > linux-do.cgi
@@ -29,7 +29,7 @@ win-do.cgi: do.cgi
 	$(CPP) do.cgi -D WINDOWS > win-do.cgi
 
 mac-do.cgi: do.cgi
-	$(CPP) do.cgi -D MAC -D UNIX > mac-do.cgi
+	$(CPP) do.cgi -D MAC > mac-do.cgi
 
 06win.html: 06ComputerTechniques.html
 	$(CPP) 06ComputerTechniques.html -D WINDOWS > 06win.html
