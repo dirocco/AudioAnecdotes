@@ -1,5 +1,3 @@
-# REMEMBER TO KEEP DIST.MAKE.DIRS up to date!! That is the file
-# that controls what gets built on the distribution!!
 #
 # make.dirs : holds a list of directories to be built
 #
@@ -10,5 +8,4 @@ CHILDDIRS= \
 	04Synthesis \
 	05SignalProcessing \
 	06ComputerTechniques \
-	07ComputerTools \
-	Future
+	07ComputerTools
