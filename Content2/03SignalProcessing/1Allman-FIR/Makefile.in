@@ -22,5 +22,6 @@ LOCALLINK=@LOCALLINK@
 
 
 SOURCES = fir.c
+CPPSOURCES = fir2.cpp
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
