@@ -5,6 +5,6 @@
 #
 
 CHILDDIRS= \
-	2Greenebaum-CountInFrmaes \
+	2Greenebaum-CountInFrames \
 	3Greenebaum-RingBuffer
 
