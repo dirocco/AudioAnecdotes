@@ -48,7 +48,7 @@ clean_all : clean
 
 $(PSFILES)  : makesamples.m
 	(export OCTAVE_PATH=.:../../../src/octave-2.1.50/scripts/general:../../../src/octave-2.1.50/scripts/strings:../../../src/octave-2.1.50/scripts/plot; \
-	echo 'makesamples("ps","postscript");' | octave)
+	echo 'makesamples("ps","postscript");' | ../../../bin/octave)
 
 $(PNGFILES) : makesamples.m
 	echo 'makesamples("png","png color small");' | octave
