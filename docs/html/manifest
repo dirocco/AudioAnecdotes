@@ -1,0 +1,21 @@
+src_v1 01Measurement.html        src_v1.tar Volume1/docs/html/01Measurement.html
+src_v1 02Perception.html         src_v1.tar Volume1/docs/html/02Perception.html
+src_v1 03Recording.html          src_v1.tar Volume1/docs/html/03Recording.html
+src_v1 04Synthesis.html          src_v1.tar Volume1/docs/html/04Synthesis.html
+src_v1 05SignalProcessing.html   src_v1.tar Volume1/docs/html/05SignalProcessing.html
+src_v1 06ComputerTechniques.html src_v1.tar Volume1/docs/html/06ComputerTechniques.html
+src_v1 07ComputerTools.html      src_v1.tar Volume1/docs/html/07ComputerTools.html
+src_v1 08HumanExperience.html    src_v1.tar Volume1/docs/html/08HumanExperience.html
+src_v1 main.html                 src_v1.tar Volume1/docs/html/main.html
+src_v1 head.html                 src_v1.tar Volume1/docs/html/head.html
+src_v1 menu.html                 src_v1.tar Volume1/docs/html/menu.html
+
+src_v1 images/minus.gif          src_v1.tar Volume1/docs/html/images/minus.gif
+src_v1 images/plus.gif           src_v1.tar Volume1/docs/html/images/plus.gif
+src_v1 images/solid.gif          src_v1.tar Volume1/docs/html/images/solid.gif
+src_v1 images/title02.gif        src_v1.tar Volume1/docs/html/images/title02.gif
+
+src_v1 css/list.css              src_v1.tar Volume1/docs/html/css/list.css
+src_v1 css/text.css              src_v1.tar Volume1/docs/html/css/text.css
+
+src_v1 js/listtoc.js             src_v1.tar Volume1/docs/html/js/listtoc.js
