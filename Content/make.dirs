@@ -2,9 +2,11 @@
 # make.dirs : holds a list of directories to be built
 #
 
-CHILDDIRS= Example\
+CHILDDIRS= \
+	   Ben_Luna\
 	   David_Thiel\
+           Example\
 	   Ken_Greenebaum\
 	   Perry_Cook\
-	   Phil_Burk
+	   Phil_Burk\
 
