@@ -92,7 +92,7 @@ void vbap(double gains[MAX_CHANNELS], LS_DATA *ls_data, int azi, int ele)
 
 
 
-main() 
+int main (int argc, char **argv)
 {
   LS_DATA ls_data;
   double gains[MAX_CHANNELS];
@@ -103,12 +103,34 @@ main()
 
   int i,j,k;
 
+  if(argc != 2) {
+	printf("Usage: %s speaker-file\n", argv[0]);
+	exit(-1);
+  }
+
+  FILE * filein = fopen(argv[1], "rb");
+
+  if( !filein ) {
+    printf("failed to open %s\n", argv[0]);
+	exit(-1);
+  }
+
   // this should be specified in speaker file
   int numchannels = 8; /* change this according your output device*/
   int ls_set_dim = 3;
   int ls_num = 8;
   int ls_dirs[MAX_FIELD_AM]={-30,0,  30,0, -45,45,  45,45,  -90,0, 
 			     90,0,  180,0,  180,45};
+  fscanf(filein, "%d", &ls_set_dim);
+  fscanf(filein, "%d", &ls_num);
+  // printf("%d\n", ls_set_dim);
+  // printf("%d\n", ls_num);
+  for (i = 0; i < ls_num;  i++)
+    fscanf(filein, "%d,%d", &ls_dirs[2*i],&ls_dirs[2*i+1]);
+  // for (i = 0; i < ls_num;  i++)
+  //   printf("%d,%d ", ls_dirs[2*i],ls_dirs[2*i+1]);
+
+  fclose(filein);
 
   /* defining loudspeaker data */
   define_loudspeakers(&ls_data, ls_set_dim, ls_num, ls_dirs);
