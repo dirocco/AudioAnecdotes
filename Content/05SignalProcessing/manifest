@@ -1,3 +1,3 @@
-src_v1 Makefile.in	src_v1.tar AudioAnecdotesV1/Authors/05SignalProcessing/Makefile.in
-src_v1 config.mak	src_v1.tar AudioAnecdotesV1/Authors/05SignalProcessing/config.mak
-src_v1 make.dirs	src_v1.tar AudioAnecdotesV1/Authors/05SignalProcessing/make.dirs
+src_v1 Makefile.in	src_v1.tar Volume1/Authors/05SignalProcessing/Makefile.in
+src_v1 config.mak	src_v1.tar Volume1/Authors/05SignalProcessing/config.mak
+src_v1 make.dirs	src_v1.tar Volume1/Authors/05SignalProcessing/make.dirs

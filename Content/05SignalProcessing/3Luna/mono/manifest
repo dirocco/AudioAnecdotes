@@ -1,7 +1,7 @@
-src_v1       Makefile.in src_v1.tar     AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/Makefile.in
-src_v1       config.mak  src_v1.tar     AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/config.mak
-src_v1       modem.cpp   src_v1.tar     AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/modem.cpp
+src_v1       Makefile.in src_v1.tar     Volume1/Authors/05SignalProcessing/3Luna/mono/Makefile.in
+src_v1       config.mak  src_v1.tar     Volume1/Authors/05SignalProcessing/3Luna/mono/config.mak
+src_v1       modem.cpp   src_v1.tar     Volume1/Authors/05SignalProcessing/3Luna/mono/modem.cpp
 
-bin_v1_win   modem.exe   bin_v1_win.tar   AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/modem.exe
-bin_v1_mac   modem	 bin_v1_mac.tar   AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/modem
-bin_v1_linux modem	 bin_v1_linux.tar AudioAnecdotesV1/Authors/05SignalProcessing/3Luna/mono/modem
+bin_v1_win   modem.exe   bin_v1_win.tar   Volume1/Authors/05SignalProcessing/3Luna/mono/modem.exe
+bin_v1_mac   modem	 bin_v1_mac.tar   Volume1/Authors/05SignalProcessing/3Luna/mono/modem
+bin_v1_linux modem	 bin_v1_linux.tar Volume1/Authors/05SignalProcessing/3Luna/mono/modem

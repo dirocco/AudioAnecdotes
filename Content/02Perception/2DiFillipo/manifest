@@ -1,12 +1,12 @@
-src_v1       clickfusion.c   src_v1.tar       AudioAnecdotesV1/Authors/02Perception/2DiFillipo/clickfusion.c
-src_v1       sidetone.c      src_v1.tar       AudioAnecdotesV1/Authors/02Perception/2DiFillipo/sidetone.c
-src_v1       Makefile.in     src_v1.tar       AudioAnecdotesV1/Authors/02Perception/2DiFillipo/Makefile.in
-src_v1       config.mak      src_v1.tar       AudioAnecdotesV1/Authors/02Perception/2DiFillipo/config.mak
+src_v1       clickfusion.c   src_v1.tar       Volume1/Authors/02Perception/2DiFillipo/clickfusion.c
+src_v1       sidetone.c      src_v1.tar       Volume1/Authors/02Perception/2DiFillipo/sidetone.c
+src_v1       Makefile.in     src_v1.tar       Volume1/Authors/02Perception/2DiFillipo/Makefile.in
+src_v1       config.mak      src_v1.tar       Volume1/Authors/02Perception/2DiFillipo/config.mak
 
-bin_v1_win   clickfusion.exe bin_v1_win.tar   AudioAnecdotesV1/Authors/02Perception/2DiFillipo/clickfusion.exe
-bin_v1_mac   clickfusion     bin_v1_mac.tar   AudioAnecdotesV1/Authors/02Perception/2DiFillipo/clickfusion
-bin_v1_linux clickfusion     bin_v1_linux.tar AudioAnecdotesV1/Authors/02Perception/2DiFillipo/clickfusion
+bin_v1_win   clickfusion.exe bin_v1_win.tar   Volume1/Authors/02Perception/2DiFillipo/clickfusion.exe
+bin_v1_mac   clickfusion     bin_v1_mac.tar   Volume1/Authors/02Perception/2DiFillipo/clickfusion
+bin_v1_linux clickfusion     bin_v1_linux.tar Volume1/Authors/02Perception/2DiFillipo/clickfusion
 
-bin_v1_win   sidetone.exe    bin_v1_win.tar   AudioAnecdotesV1/Authors/02Perception/2DiFillipo/sidetone.exe
-bin_v1_mac   sidetone        bin_v1_mac.tar   AudioAnecdotesV1/Authors/02Perception/2DiFillipo/sidetone
-bin_v1_linux sidetone        bin_v1_linux.tar AudioAnecdotesV1/Authors/02Perception/2DiFillipo/sidetone
+bin_v1_win   sidetone.exe    bin_v1_win.tar   Volume1/Authors/02Perception/2DiFillipo/sidetone.exe
+bin_v1_mac   sidetone        bin_v1_mac.tar   Volume1/Authors/02Perception/2DiFillipo/sidetone
+bin_v1_linux sidetone        bin_v1_linux.tar Volume1/Authors/02Perception/2DiFillipo/sidetone

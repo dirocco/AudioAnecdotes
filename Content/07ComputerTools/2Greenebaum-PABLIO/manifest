@@ -1,14 +1,14 @@
-src_v1		config.mak	  src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/config.mak
-src_v1		Makefile.in	  src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/Makefile.in
-src_v1		passthru.c	  src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru.c
-src_v1		passthru_simple.c src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru_simple.c
-src_v1		sine.c		  src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine.c
-src_v1		sine_simple.c	  src_v1.tar		AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine_simple.c
+src_v1		config.mak	  src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/config.mak
+src_v1		Makefile.in	  src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/Makefile.in
+src_v1		passthru.c	  src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru.c
+src_v1		passthru_simple.c src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru_simple.c
+src_v1		sine.c		  src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine.c
+src_v1		sine_simple.c	  src_v1.tar		Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine_simple.c
 
-bin_v1_win	passthru.exe	  bin_v1_win.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru.exe
-bin_v1_mac	passthru	  bin_v1_mac.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru
-bin_v1_linux	passthru	  bin_v1_linux.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru
+bin_v1_win	passthru.exe	  bin_v1_win.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru.exe
+bin_v1_mac	passthru	  bin_v1_mac.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru
+bin_v1_linux	passthru	  bin_v1_linux.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/passthru
 
-bin_v1_win	sine.exe	  bin_v1_win.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine.exe
-bin_v1_mac	sine		  bin_v1_mac.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine
-bin_v1_linux	sine		  bin_v1_linux.tar	AudioAnecdotesV1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine
+bin_v1_win	sine.exe	  bin_v1_win.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine.exe
+bin_v1_mac	sine		  bin_v1_mac.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine
+bin_v1_linux	sine		  bin_v1_linux.tar	Volume1/Authors/07ComputerTools/2Greenebaum-PABLIO/sine
