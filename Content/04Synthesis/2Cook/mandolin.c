@@ -26,7 +26,6 @@ int main(void) {
    float fnoise;
    short output,output2;
    short temp,slope;
-   FILE *fileOut = fopen("mandolin.raw","wb");
    short buffer[NUM_FRAMES];
    PABLIO_Stream *outStream;
 
@@ -65,7 +64,6 @@ int main(void) {
 	 }
 	 output += mandoBodyDelays[0] * mandoBodyCoeffs[0];
 	 mandoBodyDelays[0] = output;
-	 fwrite(&output,2,1,fileOut);
 	 buffer[bufferIndex++] = output;
 	 if (bufferIndex >= NUM_FRAMES){
 	    WriteAudioStream(outStream, buffer, bufferIndex+1);
@@ -76,6 +74,4 @@ int main(void) {
    if (bufferIndex > 0)
       WriteAudioStream(outStream, buffer, bufferIndex+1);
    CloseAudioStream(outStream);
-   fclose(fileOut);
-   return 0;
 }
