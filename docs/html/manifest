@@ -25,6 +25,11 @@ src_v1 rampdata1.sh              src_v1.tar Volume1/docs/html/rampdata1.sh
 src_v1 rampdata2.sh              src_v1.tar Volume1/docs/html/rampdata2.sh
 src_v1 rampdata3.sh              src_v1.tar Volume1/docs/html/rampdata3.sh
 
+src_v1 rampout.bat               src_v1.tar Volume1/docs/html/rampout.bat
+src_v1 rampdata1.bat             src_v1.tar Volume1/docs/html/rampdata1.bat
+src_v1 rampdata2.bat             src_v1.tar Volume1/docs/html/rampdata2.bat
+src_v1 rampdata3.bat             src_v1.tar Volume1/docs/html/rampdata3.bat
+
 src_v1 images/minus.gif          src_v1.tar Volume1/docs/html/images/minus.gif
 src_v1 images/plus.gif           src_v1.tar Volume1/docs/html/images/plus.gif
 src_v1 images/solid.gif          src_v1.tar Volume1/docs/html/images/solid.gif
