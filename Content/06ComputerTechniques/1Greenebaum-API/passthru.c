@@ -9,8 +9,8 @@ int main(void)
 {
    PABLIO_Stream *inStream, *outStream;
 
-   OpenAudioStream(&inStream,  22050, paInt16, PABLIO_READ);
-   OpenAudioStream(&outStream, 22050, paInt16, PABLIO_WRITE);
+   OpenAudioStream(&inStream,  44100, paInt16, PABLIO_MONO|PABLIO_READ);
+   OpenAudioStream(&outStream, 44100, paInt16, PABLIO_MONO|PABLIO_WRITE);
 
    while(1) { // pass audio in to audio out one buffer at a time forever
               // using blocking read and write calls which provide flow control
