@@ -31,6 +31,7 @@ AC_ARG_WITH([toolroot],[  --with-toolroot[=DIR]   Use DIR as the root for all to
 
 dnl Some substitution variables
 AC_SUBST(MAKEINCLUDESDIR)
+AC_SUBST(BINDIR)
 AC_SUBST(TOOLROOT)
 AC_SUBST(LOCALOPT)
 AC_SUBST(LOCALLINK)
@@ -53,6 +54,8 @@ dnl set our top level lib and include directories and add them to the
 dnl compiler flags
 LDFLAGS="$LDFLAGS -L$my_abs_topdir/lib"
 CFLAGS="$CFLAGS -I$my_abs_topdir/include"
+
+BINDIR="$my_abs_topdir/bin"
 
 dnl Set the directory for make include files
 MAKEINCLUDESDIR="$my_abs_topdir/include/make-includes"

@@ -32,4 +32,4 @@ include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
 play.o: audio.h
 
 audio.h audio.cpp: FL/audio.fl
-	../../bin/flavorc -p -a 256 FL/audio.fl
+	@BINDIR@/flavorc -p -a 256 FL/audio.fl
