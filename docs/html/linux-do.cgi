@@ -72,7 +72,7 @@ else
 fi
 
 # fixup arguments 
-a=`echo $3 | /bin/sed 's/_/ /g'`
+a=`echo $3 | /bin/sed 's/_/ /g | /bin/sed 's/+/\//g'`
 # echo a:[$a] >> /tmp/log
 
 
