@@ -10,7 +10,7 @@
 # Within the path slashes are encoded using plus signs
 # Within the parameter list, parameters are delimited using underscores
 # and a tilde substituted to the root directory AudioAnecdotes/Volume1
-# Ex: <a href="do.cgi?~Content+02Perception+2DiFillipo&clickfusion&-f_0">
+# Ex: <a href="do.cgi?bin&caliper&~Content+02Perception+2DiFillipo&clickfusion_-f_0|-f|1|-i|0.7|-m|1">
 #
 # NOTE: we have a problem that when run from thttpd as a shell script
 #  some xservers won't allos us to connect to the :0.0 display
@@ -117,7 +117,6 @@ a=`echo $3 \
    | $SED 's/_/ /g'  \
    | $SED 's/+/\//g' \
    | $SED "s:~:$root:g" \
-   | $TR  '|' '\"' \
    `
 
 #ifdef DEBUG
@@ -173,6 +172,8 @@ else
 fi
 #endif
 
+IFS='|'
+
 if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
@@ -198,7 +199,9 @@ doit=`/bin/cygpath --sysdir`/cmd
 if [ -f $doit ]; then
    $doit /c start .\\$2 $a
 else
-   echo nothere
+#ifdef DEBUG
+   echo "cmd nothere" >> /tmp/log
+#endif
    doit=`/bin/cygpath --windir`/command
    $doit /c start .\\$2 $a
 fi
