@@ -1,0 +1,9 @@
+#
+# make.dirs : holds a list of directories to be built
+#
+
+CHILDDIRS= Example\
+	   David_Thiel\
+	   Perry_Cook\
+	   Phil_Burk
+
