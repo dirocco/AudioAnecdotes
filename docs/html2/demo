@@ -1,0 +1,5 @@
+#!/bin/sh
+echo Running demo...
+cd ../../src/synthesis/projects/demo
+demo $1 -or < scores/$2.ski
+exit

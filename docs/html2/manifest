@@ -16,3 +16,8 @@ src_v2 iir				src_v2.tar Volume2/docs/html2/iir
 src_v2 iir.bat				src_v2.tar Volume2/docs/html2/iir.bat
 src_v2 fp_fft				src_v2.tar Volume2/docs/html2/fp_fft
 src_v2 fp_fft.bat			src_v2.tar Volume2/docs/html2/fp_fft.bat
+src_v2 sox				src_v2.tar Volume2/docs/html2/sox
+src_v2 sox.bat				src_v2.tar Volume2/docs/html2/sox.bat
+src_v2 demo				src_v2.tar Volume2/docs/html2/demo
+src_v2 demo.bat				src_v2.tar Volume2/docs/html2/demo.bat
+src_v2 demo2.bat			src_v2.tar Volume2/docs/html2/demo2.bat
