@@ -178,11 +178,8 @@ int main(int argc, char* argv[]) {
    unsigned char	WaveINDEX;
    unsigned char        temp1 = 255;
    signed char temp2;
-   int           bufferIndex = 0;
-   unsigned char buffer[NUM_FRAMES];
+   short buffer[NUM_FRAMES];
    PABLIO_Stream *outStream;
-   int           OutputFormat;
-
 
    if (argc != 2){
      //printf("RockGuitar: Needs number 0-5\n");
@@ -191,7 +188,7 @@ int main(int argc, char* argv[]) {
    temp2 = temp1;
    //wave table data for note synthesizer has the routine variables as its origin
    WaveRAM = &TuneSelection;
-   OpenAudioStream(&outStream, SAMPLE_RATE, paUInt8, PABLIO_WRITE|PABLIO_MONO);
+   OpenAudioStream(&outStream, SAMPLE_RATE, paInt16, PABLIO_WRITE|PABLIO_MONO);
    printf("Starting Synthesis!\n");
    //client input, tune selector Jukebox
    TuneSelection = (unsigned char) atoi (argv[1]);
@@ -234,13 +231,8 @@ int main(int argc, char* argv[]) {
    	    //power of two mixing
    	    NoteAndBDOutput += NoteSynthOutput >> 1;
 	    //write 8 bit unsigned raw Output to file for 6000 kHz playback sampling rate
-	    OutputFormat = NoteAndBDOutput;
-//printf("%d %d\n",count, NoteAndBDOutput);
-	    buffer[bufferIndex++] = (char)NoteAndBDOutput;
-	    if (bufferIndex >= NUM_FRAMES){
-	       WriteAudioStream(outStream, buffer, NUM_FRAMES);
-	       bufferIndex = 0;
-	    }   
+	    buffer[0] =  (short)((NoteAndBDOutput - 0x7F)<<8);
+	    WriteAudioStream(outStream, buffer, 1);
 
    	    //scale tick to provide tempo control
    	    OverFlow = TempoCounter;
@@ -263,13 +255,6 @@ int main(int argc, char* argv[]) {
       //get next script element		
       CurrentNoteEvent = TuneScripts[TuneSelection][ScriptIndex++];	
    } //end of CurrentNoteEvent != 0xff
-   //printf("Synthesis Finished\n");
-
-   buffer[bufferIndex++] = (char) OutputFormat;
-   if (bufferIndex != 0){
-      WriteAudioStream(outStream, buffer, bufferIndex+1);
-      bufferIndex = 0;
-   }  
    CloseAudioStream(outStream);
 return 0;
 }
