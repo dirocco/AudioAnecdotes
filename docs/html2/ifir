@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo Running fir2 coefs.txt interactively (kill this window to end)
+../../Content2/03SignalProcessing/1Allman-FIR/fir2 ../../Content2/03SignalProcessing/1Allman-FIR/coefs.txt
