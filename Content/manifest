@@ -1,3 +1,3 @@
-src_v1 configure src_v1.tar AudioAnecdotesV1/configure
-src_v1 Makefile.in src_v1.tar AudioAnecdotesV1/Makefile.in
-src_v1 config.mak src_v1.tar AudioAnecdotesV1/config.mak
+src_v1 configure src_v1.tar AudioAnecdotesV1/Authors/configure
+src_v1 Makefile.in src_v1.tar AudioAnecdotesV1/Authors/Makefile.in
+src_v1 config.mak src_v1.tar AudioAnecdotesV1/Authors/config.mak
