@@ -10,14 +10,14 @@ float buffer[NUM_FRAMES];
 int main(void)
 {
    PABLIO_Stream  *outStream;
-   double theta, delta = FREQUENCY * 2.0 * 3.1415 / (double)SAMPLE_RATE;
+   double theta = 0.0, delta = FREQUENCY * 2.0 * 3.1415 / (double)SAMPLE_RATE;
    int x; 
 
    OpenAudioStream(&outStream, SAMPLE_RATE, paFloat32, PABLIO_WRITE|PABLIO_MONO);
 
    while(1) {  // synthesize and output samples forever
       for(x= 0; x<NUM_FRAMES; x++) { // synthesize a buffer full of samples
-           buffer[x++] = sin(theta); // ugly, I know...
+           buffer[x] = sin(theta); // ugly, I know...
            theta+= delta;
       }
 
