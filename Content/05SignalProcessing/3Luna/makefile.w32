@@ -1,0 +1,194 @@
+#
+# Visual C++ makefile for modem
+#
+
+# change CFLAGS and LFLAGS macros to use either OPT_CFLAGS and
+# OPT_LFLAGS or DBG_CFLAGS and DBG_LFLAGS if you want optimized or
+# debug builds
+
+CC=cl.exe
+LINKER=link.exe
+OPT_CFLAGS=/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /YX /FD /c 
+#DBG_CFLAGS=/nologo /MLd /W3 /Gm /GR /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FAs /Fa /FR /YX /Fo /Fd /FD /GZ /c
+DBG_CFLAGS=/nologo /MLd /W3 /Gm /GR /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FAs /Fa /FR /YX /Fo /Fd /FD /GZ /c
+OPT_LFLAGS=user32.lib /nologo /subsystem:console /incremental:no 
+DBG_LFLAGS=user32.lib /nologo /subsystem:console /incremental:yes /debug 
+#CFLAGS=$(OPT_CFLAGS)
+#LFLAGS=$(OPT_LFLAGS)
+CFLAGS=$(DBG_CFLAGS)
+LFLAGS=$(DBG_LFLAGS)
+
+OBJS= \
+	"FormatSource.obj" \
+	"PulseModulate.obj" \
+	"BaseBandModulate.obj" \
+	"AWGNChannel.obj" \
+	"BaseBandDemodulate.obj" \
+	"FormatSink.obj" \
+	"GnuplotDriver.obj"
+
+# add at a later time
+#	"BandPassModulate.obj" \
+
+
+SRCS= \
+	"GnuplotDriver.cpp" \
+	"FormatSource.cpp" \
+	"PulseModulate.cpp" \
+	"BaseBandModulate.cpp" \
+	"AWGNChannel.cpp" \
+	"BaseBandDemodulate.cpp" \
+	"FormatSink.cpp" \
+	"modem.cpp"
+
+# add at a later time
+#	"BandPassModulate.cpp" \
+
+DATADIR=data
+
+modem     : modem.exe modulator.exe channel.exe demodulator.exe system.h
+
+modem.exe : modem.obj $(OBJS) $(DATADIR) system.h
+	$(LINKER) $(LFLAGS) modem.obj $(OBJS)
+
+modulator.exe : $(OBJS) modulator.obj system.h
+	$(LINKER) $(LFLAGS) modulator.obj $(OBJS)
+
+modulator.obj : modulator.cpp
+	$(CC) $(CFLAGS) modulator.cpp
+
+channel.exe : $(OBJS) channel.obj system.h
+	$(LINKER) $(LFLAGS) channel.obj $(OBJS)
+
+channel.obj : channel.cpp
+	$(CC) $(CFLAGS) channel.cpp
+
+demodulator.exe : $(OBJS) demodulator.obj system.h
+	$(LINKER) $(LFLAGS) demodulator.obj $(OBJS)
+
+demodulator.obj : demodulator.cpp
+	$(CC) $(CFLAGS) demodulator.cpp
+
+GnuplotDriver.obj : GnuplotDriver.cpp GnuplotDriver.h
+	$(CC) $(CFLAGS) GnuplotDriver.cpp
+
+FormatSource.obj : FormatSource.cpp FormatSource.h
+	$(CC) $(CFLAGS) FormatSource.cpp
+
+PulseModulate.obj : PulseModulate.cpp PulseModulate.h
+	$(CC) $(CFLAGS) PulseModulate.cpp
+
+BaseBandModulate.obj : BaseBandModulate.cpp BaseBandModulate.h
+	$(CC) $(CFLAGS) BaseBandModulate.cpp
+
+AWGNChannel.obj : AWGNChannel.cpp AWGNChannel.h
+	$(CC) $(CFLAGS) AWGNChannel.cpp
+
+BaseBandDemodulate.obj : BaseBandDemodulate.cpp BaseBandDemodulate.h
+	$(CC) $(CFLAGS) BaseBandDemodulate.cpp
+
+#BandPassModulate.obj : BandPassModulate.cpp BandPassModulate.h
+#	$(CC) $(CFLAGS) BandPassModulate.cpp
+
+FormatSink.obj : FormatSink.cpp FormatSink.h
+	$(CC) $(CFLAGS) FormatSink.cpp
+
+modem.obj : modem.cpp
+	$(CC) $(CFLAGS) modem.cpp
+
+$(DATADIR) :
+    if not exist $(DATADIR)/$(NULL) mkdir $(DATADIR)
+
+clean :
+	-@erase "*.asm"
+	-@erase "*.obj"
+	-@erase "*.idb"
+	-@erase "*.ilk"
+	-@erase "*.pdb"
+	-@erase "*.pch"
+	-@erase "*.sbr"
+	-@erase "modem.exe"
+
+# utility programs
+filewrite.exe : filewrite.obj
+	$(LINKER) $(LFLAGS) ..\pablio0.1\lib\pablio.lib filewrite.obj
+
+filewrite.obj : filewrite.c
+	$(CC) $(CFLAGS) filewrite.c
+
+filegainadj.exe : filegainadj.obj
+	$(LINKER) $(LFLAGS) ..\pablio0.1\lib\pablio.lib filegainadj.obj
+
+filegainadj.obj : filegainadj.c
+	$(CC) $(CFLAGS) filegainadj.c
+
+pa_lib.obj: pa_common\pa_lib.c
+	$(CC) $(CFLAGS) pa_common\pa_lib.c
+
+pa_win_wmme.obj: pa_win_wmme/pa_win_wmme.c
+	$(CC) $(CFLAGS) pa_win_wmme/pa_win_wmme.c
+
+# patest_saw.exe
+patest_saw.exe: patest_saw.obj pa_lib.obj pa_win_wmme.obj
+	$(LINKER) $(LFLAGS) winmm.lib patest_saw.obj pa_lib.obj pa_win_wmme.obj
+
+patest_saw.obj: pa_tests\patest_saw.c
+	$(CC) $(CFLAGS) pa_tests\patest_saw.c
+
+# patest_pink.exe
+patest_pink.exe: patest_pink.obj pa_lib.obj pa_win_wmme.obj
+	$(LINKER) $(LFLAGS) winmm.lib patest_pink.obj pa_lib.obj pa_win_wmme.obj
+
+patest_pink.obj: pa_tests\patest_pink.c
+	$(CC) $(CFLAGS) pa_tests\patest_pink.c
+
+# patest_many.exe
+patest_many.exe: patest_many.obj pa_lib.obj pa_win_wmme.obj
+	$(LINKER) $(LFLAGS) winmm.lib patest_many.obj pa_lib.obj pa_win_wmme.obj
+
+patest_many.obj: pa_tests\patest_many.c
+	$(CC) $(CFLAGS) pa_tests\patest_many.c
+
+# patest_sine.exe
+patest_sine.exe: patest_sine.obj pa_lib.obj pa_win_wmme.obj
+	$(LINKER) $(LFLAGS) winmm.lib patest_sine.obj pa_lib.obj pa_win_wmme.obj
+
+patest_sine.obj: pa_tests\patest_sine.c
+	$(CC) $(CFLAGS) pa_tests\patest_sine.c
+
+# test_w_saw.exe
+test_w_saw.exe: test_w_saw.obj pa_lib.obj pablio.obj ringbuffer.obj
+	$(LINKER) $(LFLAGS) winmm.lib test_w_saw.obj pa_lib.obj pa_win_wmme.obj pablio.obj ringbuffer.obj
+
+test_w_saw.obj: pablio\test_w_saw.c
+	$(CC) $(CFLAGS) pablio\test_w_saw.c
+
+pablio.obj: pablio\pablio.c
+	$(CC) $(CFLAGS) pablio\pablio.c
+
+ringbuffer.obj: pablio\ringbuffer.c
+	$(CC) $(CFLAGS) pablio\ringbuffer.c
+
+
+# test_rw.exe
+test_rw.exe: test_rw.obj pa_lib.obj pablio.obj ringbuffer.obj  pablio\test_rw.c
+	$(LINKER) $(LFLAGS) winmm.lib test_rw.obj pa_lib.obj pa_win_wmme.obj pablio.obj ringbuffer.obj
+
+test_rw.obj: pablio\test_rw.c
+	$(CC) $(CFLAGS) pablio\test_rw.c
+
+# test_rw_echo.exe
+test_rw_echo.exe: test_rw_echo.obj pa_lib.obj pablio.obj ringbuffer.obj
+	$(LINKER) $(LFLAGS) winmm.lib test_rw_echo.obj pa_lib.obj pa_win_wmme.obj pablio.obj ringbuffer.obj
+
+test_rw_echo.obj: pablio\test_rw_echo.c
+	$(CC) $(CFLAGS) pablio\test_rw_echo.c
+
+# fileplay.exe
+fileplay.exe : fileplay.obj 
+	$(LINKER) $(LFLAGS) fileplay.obj  winmm.lib portaudio.lib pablio.lib
+
+fileplay.obj : fileplay.c
+	$(CC) $(CFLAGS) fileplay.c
+
+

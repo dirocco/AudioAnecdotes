@@ -1,0 +1,42 @@
+#
+# posix makefile for modem
+#
+
+CC		= g++
+LD		= g++
+CDEBUGFLAGS 	= -g
+LIBS 		= -lm
+INCLUDES	= -I.
+DEPENDCFLAGS = $(CFLAGS)
+CFLAGS 	= $(CDEBUGFLAGS) $(EXTRA_CFLAGS) $(INCLUDES)
+LDFLAGS	= $(CDEBUGFLAGS) $(LIBS)
+EXE		= .exe
+DATADIR	= data
+TARGETS	= modem$(EXE) modulator$(EXE) demodulator$(EXE) channel$(EXE)
+
+all: $(TARGETS) $(DATADIR)
+
+#
+# list of object files needed to build server
+#
+OBJS = AWGNChannel.o FormatSink.o PulseModulate.o BaseBandDemodulate.o \
+	FormatSource.o BaseBandModulate.o GnuplotDriver.o
+
+modem$(EXE): modem.o $(OBJS)
+	$(LD) -o $@ $(LDFLAGS) modem.o $(OBJS)
+
+modulator$(EXE): modulator.o $(OBJS)
+	$(LD) -o $@ $(LDFLAGS) modulator.o $(OBJS)
+
+demodulator$(EXE): demodulator.o $(OBJS)
+	$(LD) -o $@ $(LDFLAGS) demodulator.o $(OBJS)
+
+channel$(EXE): channel.o $(OBJS)
+	$(LD) -o $@ $(LDFLAGS) channel.o $(OBJS)
+
+$(DATADIR):
+	mkdir $(DATADIR)
+
+clean: 
+	rm -f $(OBJS) modulator.o demodulator.o channel.o modem.o $(TARGETS)
+	rm -rf $(DATADIR)
