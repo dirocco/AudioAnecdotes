@@ -49,8 +49,8 @@ clean_all : clean
 	rm -f $(PNGFILES) $(EPSFILES) $(PDFFILES)
 
 $(PSFILES)  : makesamples.m
-	- (export OCTAVE_PATH=.:../../../src/octave-2.1.50/scripts/general:../../../src/octave-2.1.50/scripts/strings:../../../src/octave-2.1.50/scripts/plot; \
-	- echo 'makesamples("ps","postscript");' | $(OCTAVE))
+	- (export OCTAVE_PATH=.:../../../src/octave-2.1.64/scripts/general:../../../src/octave-2.1.64/scripts/strings:../../../src/octave-2.1.64/scripts/plot:../../../src/octave-2.1.64/scripts/deprecated; \
+	echo 'makesamples("ps","postscript");' | $(OCTAVE))
 
 $(PNGFILES) : makesamples.m
 	- echo 'makesamples("png","png color small");' | $(OCTAVE)
