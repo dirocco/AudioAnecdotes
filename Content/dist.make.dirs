@@ -1,15 +1,16 @@
+# REMEMBER TO KEEP DIST.MAKE.DIRS up to date!! That is the file
+# that controls what gets built on the distribution!!
 #
 # make.dirs : holds a list of directories to be built
 #
 
 CHILDDIRS= \
-	   04Cook\
-	   04Thiel\
-           Example\
-
-# Put these in one the code builds
-#	05Luna\
-#	05Malvar
-#	06Greenebaum-Files
-#	07Eleftheriadis
-#	07Rutschman
+	01Measurement \
+	02Perception \
+	04Synthesis \
+	05SignalProcessing \
+	06ComputerTechniques \
+	07ComputerTools \
+	08HumanExperience \
+	Example \
+	Future
