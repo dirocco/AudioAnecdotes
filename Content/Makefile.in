@@ -11,6 +11,7 @@
 
 CHILDDIRS= Example\
 	   David_Thiel\
-	   Perry_Cook
+	   Perry_Cook\
+	   Phil_Burk
 
 include @MAKEINCLUDESDIR@/build.root.make.inc
