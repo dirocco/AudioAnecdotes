@@ -5,33 +5,41 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
 <meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 10">
-<meta name=Originator content="Microsoft Word 10">
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
 <link rel=File-List href="main_files/filelist.xml">
 <title>Audio Anecdotes Volume 1</title>
 <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>Ken Greenebaum</o:Author>
   <o:LastAuthor>Ken Greenebaum</o:LastAuthor>
-  <o:Revision>1</o:Revision>
-  <o:TotalTime>12</o:TotalTime>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>39</o:TotalTime>
   <o:Created>2003-10-27T01:46:00Z</o:Created>
-  <o:LastSaved>2003-10-27T01:59:00Z</o:LastSaved>
+  <o:LastSaved>2003-12-04T00:50:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>151</o:Words>
-  <o:Characters>863</o:Characters>
+  <o:Words>271</o:Words>
+  <o:Characters>1547</o:Characters>
   <o:Company>SWORKS</o:Company>
-  <o:Lines>7</o:Lines>
-  <o:Paragraphs>2</o:Paragraphs>
-  <o:CharactersWithSpaces>1012</o:CharactersWithSpaces>
-  <o:Version>10.4219</o:Version>
+  <o:Lines>12</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1815</o:CharactersWithSpaces>
+  <o:Version>11.5703</o:Version>
  </o:DocumentProperties>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <w:WordDocument>
+  <w:Zoom>115</w:Zoom>
   <w:SpellingState>Clean</w:SpellingState>
   <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
   <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
  </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
 </xml><![endif]-->
 <style>
 <!--
@@ -92,9 +100,7 @@ a:link, span.MsoHyperlink
 	color:blue;
 	mso-text-animation:none;
 	text-decoration:underline;
-	text-underline:single;
-	text-decoration:none underline;
-	text-line-through:none;}
+	text-underline:single;}
 a:visited, span.MsoHyperlinkFollowed
 	{font-family:Verdana;
 	mso-ascii-font-family:Verdana;
@@ -102,9 +108,7 @@ a:visited, span.MsoHyperlinkFollowed
 	color:purple;
 	mso-text-animation:none;
 	text-decoration:underline;
-	text-underline:single;
-	text-decoration:none underline;
-	text-line-through:none;}
+	text-underline:single;}
 p
 	{mso-margin-top-alt:auto;
 	margin-right:.85in;
@@ -145,7 +149,10 @@ div.Section1
 	mso-para-margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Times New Roman";}
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
 </style>
 <![endif]-->
 </head>
@@ -155,52 +162,111 @@ div.Section1
 <div class=Section1>
 
 <p align=center style='text-align:center'><b>Welcome to the Audio Anecdotes
-Volume 1 tour<o:p></o:p></b></p>
+Volume 1 Tour<o:p></o:p></b></p>
 
-<p>This tour explored much of the content installed from the <i
-style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i> CD however to get
-full value from the CD please explore the actual source code, build and make
-changes to the code.<o:p></o:p></p>
+<p><span style='font-size:10.0pt'>This tour explores much of the content
+installed from the <i style='mso-bidi-font-style:normal'>Audio&nbsp;Anecdotes</i>
+CD however to get full value from the CD please explore the actual source code,
+build and make changes to the code. <o:p></o:p></span></p>
 
-<p>The tour requires <span class=SpellE>aathttpd</span> to be running so that
-demos may be run. <span class=SpellE><span class=GramE>tour.bat</span></span>
-or <span class=SpellE>tour.sh</span> start <span class=SpellE>aathttpd</span>, or
-<span class=SpellE>aathttpd</span> may be run manually from the volume1
-directory:</p>
+<p><span style='font-size:10.0pt'>This tour is not intended to stand alone but
+rather to compliment the book, <u>Audio Anecdotes: Tools, Tips, and Techniques
+for Digital Audio</u>, ISBN: <span style='color:#000066'>ISBN: 1-56881-104-7.
+Please refer to the book for a detailed explanation of the examples provided
+here.</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The tour will not operate correctly by
+directly opening the </span><span style='font-size:10.0pt;font-family:"Courier New"'>tour.html</span><span
+style='font-size:10.0pt'> <span class=GramE>file,</span> rather it must be
+served from </span><span class=SpellE><span style='font-size:10.0pt;font-family:
+"Courier New"'>aathttpd</span></span><span style='font-size:10.0pt'> so that the
+executable demos may be run. </span><span class=SpellE><span class=GramE><span
+style='font-size:10.0pt;font-family:"Courier New"'>tour.bat</span></span></span><span
+style='font-size:10.0pt'> or </span><span class=SpellE><span style='font-size:
+10.0pt;font-family:"Courier New"'>tour.sh</span></span><span style='font-size:
+10.0pt;font-family:"Courier New"'> &#8211;w </span><span style='font-size:10.0pt'>(or
+</span><span style='font-size:10.0pt;font-family:"Courier New"'>&#8211;l</span><span
+style='font-size:10.0pt'> on Linux) start </span><span class=SpellE><span
+style='font-size:10.0pt;font-family:"Courier New"'>aathttpd</span></span><span
+style='font-size:10.0pt'> automatically.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>Alternately </span><span class=SpellE><span
+style='font-size:10.0pt;font-family:"Courier New"'>aathttpd</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'> </span><span
+style='font-size:10.0pt'>may be run manually from the </span><span
+style='font-size:10.0pt;font-family:"Courier New"'>AudioAnecdotes/Volume1</span><span
+style='font-size:10.0pt'> directory:<o:p></o:p></span></p>
 
 <p style='margin-left:1.0in'><span class=SpellE><span class=GramE><span
-style='font-family:"Courier New"'>cd</span></span></span><span
-style='font-family:"Courier New"'> AudioAnecdotes/Volume1<o:p></o:p></span></p>
+style='font-size:10.0pt;font-family:"Courier New"'>cd</span></span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'> AudioAnecdotes/Volume1<o:p></o:p></span></p>
 
-<p style='margin-left:1.0in'><span style='font-family:"Courier New"'>.\bin\<span
+<p style='margin-left:1.0in'><span style='font-size:10.0pt;font-family:"Courier New"'>.\bin\<span
 class=SpellE>aathttpd</span> -p 8085 -D -<span class=GramE>d .</span> -c
 &quot;**.<span class=SpellE>cgi</span>&quot;<o:p></o:p></span></p>
 
-<p style='margin-left:1.0in'><span style='font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+<p style='margin-left:1.0in'><span style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
 
-<p>Use a web browser of your choice with the following <span class=SpellE><span
-class=GramE>url</span></span>:</p>
+<p><span style='font-size:10.0pt'>Then use a web browser of your choice to view
+the tour using the <span class=GramE>url</span>: </span><span style='font-size:
+10.0pt;font-family:"Courier New"'>http://localhost:8085/tour.html<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>On windows:<o:p></o:p></span></p>
+
+<p style='margin-left:1.0in'><span class=GramE><span style='font-size:10.0pt;
+font-family:"Courier New"'>start</span></span><span style='font-size:10.0pt;
+font-family:"Courier New"'>-&gt;run<o:p></o:p></span></p>
 
 <p style='margin-left:1.0in'><span class=SpellE><span class=GramE><span
-style='font-family:"Courier New"'>iexplore</span></span></span><span
-style='font-family:"Courier New"'> http://localhost:8085/tour.html<o:p></o:p></span></p>
+style='font-size:10.0pt;font-family:"Courier New"'>iexplore</span></span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'>
+http://localhost:8085/tour.html<o:p></o:p></span></p>
 
-<p><o:p>&nbsp;</o:p></p>
+<p><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
-<p>---------------- COPYRIGHT NOTICE ---------------- </p>
+<p><span class=SpellE><span class=GramE><span style='font-size:10.0pt;
+font-family:"Courier New"'>aathttpd</span></span></span><span style='font-size:
+10.0pt'> will be automatically shut down if the tour is stopped using the red
+exit link on the tour&#8217;s menu bar. Alternately the </span><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>aathttpd</span></span><span
+style='font-size:10.0pt'> process may be killed manually.<o:p></o:p></span></p>
 
-<p>Except where noted, Copyright (c) 2003 Ken&nbsp;Greenebaum and contributing
-Author(s) who grant non-exclusive use under the BSD License. No warranty is
-expressed or implied. </p>
+<p><span style='font-size:10.0pt'>On UNIX (Mac OSX, Linux):<o:p></o:p></span></p>
 
-<p>This code may be used for any purpose as long as the following statement is
-prominently displayed: </p>
+<p style='margin-left:1.0in'><span class=SpellE><span class=GramE><span
+style='font-size:10.0pt;font-family:"Courier New"'>killall</span></span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'> <span class=SpellE>aathttpd</span><o:p></o:p></span></p>
 
-<p class=MsoNormal style='margin-top:0in;margin-right:.85in;margin-bottom:0in;
-margin-left:.5in;margin-bottom:.0001pt'><span style='font-family:Verdana;
-color:black'>This product includes code from Audio Anecdotes, Volume1, edited
-by Ken Greenebaum and Ronen Barzel, <span class=GramE>published</span> by A&nbsp;K&nbsp;Peters,
-2003. <o:p></o:p></span></p>
+<p><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p><span style='font-size:10.0pt'>On Windows:<o:p></o:p></span></p>
+
+<p style='margin-left:1.0in'><span style='font-size:10.0pt'>Press </span><span
+style='font-size:10.0pt;font-family:"Courier New"'>Ctrl-Alt-Del </span><span
+style='font-size:10.0pt'>to start the task monitor<o:p></o:p></span></p>
+
+<p style='margin-left:1.0in'><span style='font-size:10.0pt'>Then highlight the </span><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>aathttpd</span></span><span
+style='font-size:10.0pt'> process and press &#8220;End Process&#8221;</span><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p style='text-align:justify'><span style='font-size:10.0pt'>----------------
+COPYRIGHT NOTICE ---------------- <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>Except where noted, Copyright (c) 2003
+Ken&nbsp;Greenebaum and contributing Author(s) who grant non-exclusive use
+under the BSD License. No warranty is expressed or implied. <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>This code may be used for any purpose as long
+as the following statement is prominently displayed: <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:.85in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-align:center'><span
+style='font-size:10.0pt;font-family:Verdana;color:black'>This product includes
+code from Audio Anecdotes, Volume1, edited by Ken Greenebaum and Ronen Barzel, <span
+class=GramE>published</span> by A&nbsp;K&nbsp;Peters, 2003.<o:p></o:p></span></p>
 
 </div>
 
