@@ -9,7 +9,8 @@
 # Parameters are delimited by ampersands
 # Within the path slashes are encoded using plus signs
 # Within the parameter list, parameters are delimited using underscores
-# Ex: <a href="do.cgi?Content+02Perception+2DiFillipo&clickfusion&-f_0">
+# and a tilde substituted to the root directory AudioAnecdotes/Volume1
+# Ex: <a href="do.cgi?~Content+02Perception+2DiFillipo&clickfusion&-f_0">
 #
 # NOTE: we have a problem that when run from thttpd as a shell script
 #  some xservers won't allos us to connect to the :0.0 display
@@ -28,55 +29,73 @@ echo "Content-length: 7"
 echo "Location: "$HTTP_REFERER
 echo
 
-# echo QUERY_STRING:$QUERY_STRING >> /tmp/log
+if [ -f /bin/tr ]; then
+   TR=/bin/tr
+else
+   TR=/usr/bin/tr
+fi
+
+if [ -f /bin/sed ]; then
+   SED=/bin/sed
+else
+   SED=/usr/bin/sed
+fi
+
+echo QUERY_STRING:$QUERY_STRING >> /tmp/log
 
 # convert %20's back to spaces, and stricly elliminate dotdots,
 # and any other dangerous symbols...
 foo=`echo $QUERY_STRING   | \
-     /bin/sed 's/%20/ /g' | \
-     /bin/sed 's/\.\.//g' | \
-     /bin/sed 's/;//g'    | \
-     /bin/sed 's/\`//g'`
+     $SED 's/%20/ /g' | \
+     $SED 's/\.\.//g' | \
+     $SED 's/;//g'    | \
+     $SED 's/\`//g'`
 
-# echo QUERY_STRING:$foo >> /tmp/log
+echo QUERY_STRING:$foo >> /tmp/log
 
 IFS='&'
 set -- $foo
 
-# echo path:[$1]  prog:[$2]  args[$3] >> /tmp/log
+echo path:[$1]  prog:[$2]  args[$3] >> /tmp/log
 
 # fixup path 
-p=`echo $1 | /bin/sed 's/+/\//g'`
-# echo p:[$p] >> /tmp/log
+p=`echo $1 | $SED 's/+/\//g'`
+echo p:[$p] >> /tmp/log
 
 # root ourselves in the Volume1 directory
 cd ../../
-# echo pwd:$PWD >> /tmp/log
+echo pwd:$PWD >> /tmp/log
+root=$PWD/
+echo root:$root >> /tmp/log
 
 if [ -d $p ]; then
-   # echo $p exists >> /tmp/log
+   echo $p exists >> /tmp/log
    cd ./$p
-   # echo pwd:$PWD >> /tmp/log
+   echo pwd:$PWD >> /tmp/log
 else
-   # echo $p does not exist >> /tmp/log
+   echo $p does not exist >> /tmp/log
    exit -1
 fi
 
 # verify that the executable exists
 if [ -x $2 ]; then
-   # echo $2 exists >> /tmp/log
+   echo $2 exists >> /tmp/log
    echo
 else
-   # echo $2 does not exist >> /tmp/log
+   echo $2 does not exist >> /tmp/log
    exit -1
 fi
 
 # fixup arguments 
-a=`echo $3 | /bin/sed 's/_/ /g | \
-             /bin/sed 's/+/\//g' \
-             /bin/sed 's/|/\"/g' `
-# echo a:[$a] >> /tmp/log
+echo pre-arg:$3 >> /tmp/log
+a=`echo $3 \
+   | $SED 's/_/ /g'  \
+   | $SED 's/+/\//g' \
+   | $SED "s:~:$root:g" \
+   | $TR  '|' '\"' \
+   `
 
+echo a:[$a] >> /tmp/log
 
 # we should inherit the proper DISPLAY from a (modified) thttpd 
 # but in case the user didn't have DISPLAY set...
@@ -91,29 +110,35 @@ xworked=0
 # list of locations where xset may be
 list="xset&/usr/bin/X11/xset&/usr/X11R6/bin/xset"
 for prog in $list; do
-   $prog q 2>> /tmp/log
+   echo trying:$prog >> /tmp/log
+   $prog q
+   result=$?
+   echo tried:$prog $result  >> /tmp/log
 
-   if [ $? -eq 0 ]; then
-      # echo $prog worked >> /tmp/log
-      xworked=1;
-      break;  # no need to run others
-   # else
-      # echo "could not $prog" >> /tmp/log
+   # 1 is an err, although I receive 0 and 127 when working
+   if [ $result -eq 1 ]; then
+      echo "could not $prog" >> /tmp/log
+   else
+      echo $prog worked >> /tmp/log
+      xworked=1
+      break  # no need to run others
    fi
-
 done
 
+echo "off bottom" >> /tmp/log
 
-# if [ $xworked -eq 1 ]; then
-#     echo XWORKED >> /tmp/log
-# else
-#     echo Xnoworkee >> /tmp/log
-# fi
+
+if [ $xworked -eq 1 ]; then
+    echo XWORKED >> /tmp/log
+else
+    echo Xnoworkee >> /tmp/log
+fi
 
 if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
+         echo run:$prog -e "./$2 $a" >> /tmp/log
          $prog -e "./$2 $a" 2>> /tmp/log
 
 	 if [ $? -eq 0 ]; then
