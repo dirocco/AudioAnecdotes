@@ -1,0 +1,84 @@
+# please edit the following lines to match those on your system
+CC     = /usr/bin/gcc                # path to the compiler of your choice
+# CC     = /usr/bin/gcc                # path to the compiler of your choice
+LINK   = /usr/bin/ld                 # path to the linker of your choice
+STDINC = /usr/include                # path to the system's headers directory
+LIB    = /usr/lib                    # path to the system's library directory
+TOOLS  = /usr/bin                    # path to your optional tools directory
+RM     = /usr/bin/rm                 # path to your optional tools directory
+
+
+# no edits are needed past this comment
+TARGETS= interface.exe RockGuitar.exe FilteredNoise3.exe multi2.exe sine.exe 
+
+OTHERTARGETS=	 gplot.exe \
+         speechactdect.exe \
+         sineLR.exe  popsicle.exe\
+	 passthru.exe explosion.exe wav.exe aiff.c
+
+default: $(TARGETS)
+
+interface.exe: interface.c
+	$(CC) -g interface.c -I ../include ../lib/pablio.lib -lcurses -o interface.exe
+
+RockGuitar.exe: RockGuitar.c
+	$(CC) -g RockGuitar.c -I ../include ../lib/pablio.lib -o RockGuitar.exe
+
+FilteredNoise3.exe: FilteredNoise3.c
+	$(CC) -g FilteredNoise3.c -I ../include ../lib/pablio.lib -o FilteredNoise3.exe
+
+multi2.exe: multi2.c
+	$(CC) -g multi2.c -I ../include ../lib/pablio.lib -o multi2.exe
+
+popsicle.exe: popsicle.o
+	$(LINK) -LIBPATH$(LIB) popsicle.o ../lib/pablio.lib
+
+explosion.exe: explosion.o
+	$(LINK) -LIBPATH$(LIB) explosion.o ../lib/pablio.lib
+
+explosion.o: explosion.c
+	$(CC) -c -I $(STDINC) -I ../include explosion.c 
+
+passthru.exe: passthru.o
+	$(LINK) -LIBPATH$(LIB) passthru.o ../lib/pablio.lib
+
+passthru.o: passthru.c
+	$(CC) -c -I $(STDINC) -I ../include passthru.c 
+
+sine.exe: sine.c
+	$(CC) sine.c -I ../include -lm ../lib/pablio.lib -o sine.exe
+
+
+sineLR.exe: sineLR.o
+	$(LINK) -LIBPATH$(LIB) sineLR.o ../lib/pablio.lib
+
+sineLR.o: sineLR.c
+	$(CC) -c -I $(STDINC) -I ../include sineLR.c
+
+gplot.exe: gplot.o
+	$(LINK) -LIBPATH$(LIB) gplot.o ../lib/pablio.lib
+
+popsicle.o: popsicle.c
+	$(CC) -c -I $(STDINC) -I ../include popsicle.c
+ 
+gplot.o: gplot.c
+	$(CC) -c -I $(STDINC) -I ../include gplot.c
+ 
+speechactdect.exe: speechactdect.o
+	$(LINK) -LIBPATH$(LIB) speechactdect.o ../lib/pablio.lib
+
+speechactdect.o: speechactdect.c
+	$(CC) -c -I $(STDINC) -I ../include speechactdect.c
+
+wav.exe: wav.o
+	$(LINK) -LIBPATH$(LIB) wav.o ../lib/pablio.lib
+
+wav.o: wav.c
+	$(CC) -c -I $(STDINC) -I ../include wav.c 
+
+clean: 
+	$(RM) *.o *.obj
+
+clobber: clean
+	$(RM) $(TARGETS)
+	$(RM) *.exe
