@@ -1,0 +1,76 @@
+body { background: navy; }
+
+h1 { color: white; }
+h2 { color: white; }
+
+a         { color: white; }
+a:link    { color: white; }
+a:visited { color: yellow; }
+a:hover   { color: yellow; }
+a.CURLIST { background: navy }
+
+.LIST
+{
+	MARGIN-LEFT: 15px;
+	CURSOR: hand;
+	TEXT-INDENT: -15px;
+}
+
+.PARENT-SHOWN
+{	
+	MARGIN-LEFT: 15px;
+	CURSOR: hand;
+	TEXT-INDENT: -15px;
+}
+
+IMG
+{
+	
+}
+
+.PARENT-HIDDEN
+{	
+	MARGIN-LEFT: 15px;
+	CURSOR: hand;
+	TEXT-INDENT: -15px;
+}
+
+.KID
+{	
+	MARGIN-LEFT: 15px;
+	CURSOR: hand;
+	TEXT-INDENT: -10px;
+}
+
+#TOP
+{
+	FONT-WEIGHT: BOLD;
+}
+
+.TOPLIST
+{
+	MARGIN-LEFT: 5px;
+	TEXT-INDENT: -5px;
+}
+
+UL
+{
+    MARGIN-TOP: 5px;
+    CURSOR: default;
+    LEFT: 0px;
+}
+
+.LISTIMAGE
+{
+    margin-left: -6; 
+}
+
+.HIDDEN
+{
+	DISPLAY: none;
+}
+
+.SHOWN
+{
+	DISPLAY: list;
+}
