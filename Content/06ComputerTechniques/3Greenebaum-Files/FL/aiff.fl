@@ -155,7 +155,6 @@ class AIFF {
 			break;
 		case SSND_ID:
 			SoundChunk ckSound;
-			isInvalid_id = 1;
 			break;
         case MARK_ID:
         case INST_ID:
@@ -173,5 +172,5 @@ class AIFF {
 		default:
             isInvalid_id = 1;
 		}
-	} while(isInvalid_id != 1);
+	} while(isInvalid_id != 1 && id != SSND_ID);
 }

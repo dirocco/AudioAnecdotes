@@ -112,7 +112,6 @@ class WAV {
 			break;
 		case DATA_ID:
 			DataChunk ckData;
-            isInvalid_id = 1;
 			break;
         case FACT_ID:
 			FactChunk ckFact;
@@ -123,5 +122,5 @@ class WAV {
 		default:
             isInvalid_id = 1;
 		}
-	} while(isInvalid_id != 1);
+	} while(isInvalid_id != 1 && id != DATA_ID);
 }

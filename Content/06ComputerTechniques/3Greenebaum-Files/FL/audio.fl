@@ -72,9 +72,9 @@ class Audio {
     case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
         AU au;
 
-		if (au.hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_32)
+		if (au.hd.dataFormat == SND_FORMAT_LINEAR_32)
         	sound.bytesPerSample = 4;
-		else if (au.hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_16)
+		else if (au.hd.dataFormat == SND_FORMAT_LINEAR_16)
         	sound.bytesPerSample = 2;
 		else
         	sound.bytesPerSample = 1;

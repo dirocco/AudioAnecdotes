@@ -29,15 +29,29 @@
 %pragma trace
 
 
-/* Define the encoding fields */
-const signed int AUDIO_FILE_ENCODING_MULAW_8   = 1;   /* 8-bit ISDN u-law */
-const signed int AUDIO_FILE_ENCODING_LINEAR_8  = 2;   /* 8-bit linear PCM */
-const signed int AUDIO_FILE_ENCODING_LINEAR_16 = 3;   /* 16-bit linear PCM */
-const signed int AUDIO_FILE_ENCODING_LINEAR_24 = 4;   /* 24-bit linear PCM */
-const signed int AUDIO_FILE_ENCODING_LINEAR_32 = 5;   /* 32-bit linear PCM */
-const signed int AUDIO_FILE_ENCODING_FLOAT     = 6;   /* 32-bit IEEE floating point */
-const signed int AUDIO_FILE_ENCODING_DOUBLE    = 7;   /* 64-bit IEEE floating point */
-
+const int SND_FORMAT_UNSPECIFIED		   = 0;  // unspecified format 
+const int SND_FORMAT_MULAW_8			   = 1;  // 8-bit mu-law samples 
+const int SND_FORMAT_LINEAR_8			   = 2;  // 8-bit linear samples 
+const int SND_FORMAT_LINEAR_16			   = 3;  // 16-bit linear samples 
+const int SND_FORMAT_LINEAR_24			   = 4;  // 24-bit linear samples 
+const int SND_FORMAT_LINEAR_32			   = 5;  // 32-bit linear samples 
+const int SND_FORMAT_FLOAT				   = 6;  // floating-point samples 
+const int SND_FORMAT_DOUBLE				   = 7;  // double-precision float samples 
+const int SND_FORMAT_INDIRECT			   = 8;  // fragmented sampled data 
+const int SND_FORMAT_NESTED				   = 9;  // ? 
+const int SND_FORMAT_DSP_CORE			   = 10; // DSP program 
+const int SND_FORMAT_DSP_DATA_8			   = 11; // 8-bit fixed-point samples 
+const int SND_FORMAT_DSP_DATA_16		   = 12; // 16-bit fixed-point samples 
+const int SND_FORMAT_DSP_DATA_24		   = 13; // 24-bit fixed-point samples 
+const int SND_FORMAT_DSP_DATA_32		   = 14; // 32-bit fixed-point samples 
+// const int ?								   = 15; // ?
+const int SND_FORMAT_DISPLAY			   = 16; // non-audio display data 
+const int SND_FORMAT_MULAW_SQUELCH		   = 17; // ? 
+const int SND_FORMAT_EMPHASIZED			   = 18; // 16-bit linear with emphasis 
+const int SND_FORMAT_COMPRESSED			   = 19; // 16-bit linear with compression 
+const int SND_FORMAT_COMPRESSED_EMPHASIZED = 20; // A combination of the two above 
+const int SND_FORMAT_DSP_COMMANDS		   = 21; // Music Kit DSP commands 
+const int SND_FORMAT_DSP_COMMANDS_SAMPLES  = 22; // ?
 
 /*
  * Header
