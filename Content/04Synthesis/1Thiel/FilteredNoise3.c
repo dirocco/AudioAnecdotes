@@ -18,13 +18,13 @@ int NewPointerIncrement(unsigned short *PointerIncrement,
    *PointerIncrement -= *SlopeDecrement;
    if ( *PointerIncrement > 0x0080) {
       //do it
-   if( (*Direction) == 1 ) {
-	 *Direction = -1;   // goin down
-	 *SlopeTarget = (rand() & 0x7e);
-      } else {
-	 *Direction = 1;   // goin up
-	 *SlopeTarget = (rand() & 0x7e) + 0x80;
-	 }
+      if( (*Direction) == 1 ) {
+	    *Direction = -1;   // goin down
+	    *SlopeTarget = (rand() & 0x7e);
+	 } else {
+	    *Direction = 1;   // goin up
+	    *SlopeTarget = (rand() & 0x7e) + 0x80;
+	    }
    } else {
       return (0); // we are done
    }
@@ -39,18 +39,15 @@ int main(int argc, char* argv[])
    unsigned short WavePointer;
    unsigned char  SlopeDecrement;
    unsigned short OverFlowShort;
-   unsigned char  temp;
    int Direction;
    unsigned char  SlopeTarget;
    int NotDone;
-   float volumeMultiplier = 1.0;
 
    // PABLIO stuff
-   unsigned char buffer[NUM_FRAMES];
-   int bufferIndex= 0;
+   short buffer[NUM_FRAMES];
    PABLIO_Stream *outStream;
 
-   OpenAudioStream(&outStream, SAMPLE_RATE, paUInt8, PABLIO_WRITE|PABLIO_MONO);
+   OpenAudioStream(&outStream, SAMPLE_RATE, paInt16, PABLIO_WRITE|PABLIO_MONO);
 
    //first time initialization
 
@@ -85,38 +82,20 @@ int main(int argc, char* argv[])
 	                                  &Direction, &SlopeTarget);
 	 }
       // simulate volume hardware
-      temp = WavePointer >> 8;
-      //simulate 8 bit unsigned DAC
-      buffer[bufferIndex++] = (char) (temp * volumeMultiplier);	
-
-      if (bufferIndex >= NUM_FRAMES){
-	 WriteAudioStream(outStream, buffer, NUM_FRAMES);
-	 bufferIndex = 0;
-      }
+      buffer[0] = (short)(WavePointer - 0x7FFF);
+      WriteAudioStream(outStream, buffer, 1);
    }
 
    //fix up Wave Pointer so that we ramp gently to 0 of a signed converter
+   Direction = (WavePointer > 0x8000) ? -1 : 1;
 
-   if (WavePointer != 0x8000){
-      Direction = (WavePointer > 0x8000 ? -1 : 1);
+   while((Direction * WavePointer) < (Direction * 0x8000)) {
+      WavePointer += Direction * 0x0030;
+      buffer[0]=  (short)(WavePointer - 0x7FFF);
+      WriteAudioStream(outStream, buffer, 1);
+   }
 
-      while((Direction * WavePointer) > (Direction * 0x8000)) {
-	 WavePointer += Direction * 0x0030;
-	 temp = WavePointer >> 8;
-	 buffer[bufferIndex++] = (char) (temp * volumeMultiplier);	
-	 if (bufferIndex >= NUM_FRAMES){
-	    WriteAudioStream(outStream, buffer, NUM_FRAMES);
-	    bufferIndex = 0;
-	 }
-      }
-   }
-   printf("Synthesis done, exiting.\n");
-   if (bufferIndex != 0){
-      WriteAudioStream(outStream, buffer, NUM_FRAMES);
-      bufferIndex = 0;
-   }
    CloseAudioStream(outStream);
 
    return 0;
 }
-
