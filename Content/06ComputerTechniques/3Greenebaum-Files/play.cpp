@@ -147,14 +147,6 @@ int main(int argc, char *argv[])
             sound.framesPerSecond = (unsigned int) ConvertFromIeeeExtended(audio.aiff->ckCommon->sampleRate);
             sound.bytes = audio.aiff->ckSound->ckSize;
             sound.data  = audio.aiff->ckSound->data;	// big-endian
-#if defined (__CYGWIN__)
-            if (sound.bytesPerSample == 2) // HACK until flavor files fixed
-            for (int i = 0; i < sound.bytes; i += 2) {
-                char data = *((char *) sound.data + i);
-                *((char *) sound.data + i) = *((char *) sound.data + i + 1);
-                *((char *) sound.data + i + 1) = data;
-            }
-#endif
             break;
 
         case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
@@ -177,14 +169,6 @@ int main(int argc, char *argv[])
             sound.framesPerSecond = audio.au->hd->samplingRate;
             sound.bytes = audio.au->hd->dataSize;
             sound.data  = audio.au->data;				// big-endian
-#if defined (__CYGWIN__)
-            if (sound.bytesPerSample == 2) // HACK until flavor files fixed
-            for (int i = 0; i < sound.bytes; i += 2) {
-                char data = *((char *) sound.data + i);
-                *((char *) sound.data + i) = *((char *) sound.data + i + 1);
-                *((char *) sound.data + i + 1) = data;
-            }
-#endif
             break;
 
         case 0x52494646:    // "RIFF"   -- WAV Format
@@ -194,14 +178,6 @@ int main(int argc, char *argv[])
             sound.framesPerSecond = audio.wav->ckFormat->samplesPerSec;
             sound.bytes = audio.wav->ckData->ckSize;
             sound.data  = audio.wav->ckData->data;		// little-endian
-#if ! defined (__CYGWIN__)
-            if (sound.bytesPerSample == 2) // HACK until flavor files fixed
-            for (int i = 0; i < sound.bytes; i += 2) {
-                char data = *((char *) sound.data + i);
-                *((char *) sound.data + i) = *((char *) sound.data + i + 1);
-                *((char *) sound.data + i + 1) = data;
-            }
-#endif
             break;
 
         default:            // Raw Format
@@ -210,6 +186,18 @@ int main(int argc, char *argv[])
         }
 
         // printf("%d %d %d %d\n", sound.bytesPerSample,sound.samplesPerFrame,sound.framesPerSecond, sound.bytes);
+
+        // pack the 4 bytes per sample data into the right number of bytes
+        for (int i = 0,j = 0; i < sound.bytes; i += sound.bytesPerSample, j++) {
+            void *data = (char *) sound.data + i;
+            int sample = *((int  *) sound.data + j);
+            if (sound.bytesPerSample == 1)
+                *((char *) data) = (char) sample;
+            else if (sound.bytesPerSample == 2)
+                *((short *) data) = (short) sample;
+            else if (sound.bytesPerSample == 4)
+                *((int *) data) = (int) sample;
+        }
 
         play(&sound);
     }

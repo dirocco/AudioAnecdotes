@@ -73,9 +73,16 @@ class FormatChunk extends BaseChunk {
 
 /////////////////////////////////////
 // Data Chunk
-class DataChunk extends BaseChunk {
+class DataChunk(unsigned int bitsPerSample) {
 %pragma array=10000000, notrace
-	char(8)                 data[ckSize];
+	signed int(32)          ckID;
+	little signed int(32)   ckSize;
+	if (bitsPerSample == 32)
+		little int(32)          data[ckSize/4];
+	else if (bitsPerSample == 16)
+		little int(16)          data[ckSize/2];
+	else
+		little int(8)           data[ckSize];
 }
 
 /////////////////////////////////////
@@ -99,6 +106,7 @@ class MssdChunk extends BaseChunk {
 class WAV {
 	// Read the riff, format and data chunks and consume the rest
 	bit isInvalid_id = 0;
+ 	unsigned int bitsPerSample = 8;
 	do {
 		// Read ahead
 		signed int(32)* id;
@@ -109,9 +117,10 @@ class WAV {
 			break;
 		case FORMAT_ID:
 			FormatChunk ckFormat;
+			bitsPerSample = ckFormat.bitsPerSample;
 			break;
 		case DATA_ID:
-			DataChunk ckData;
+			DataChunk ckData(bitsPerSample);
 			break;
         case FACT_ID:
 			FactChunk ckFact;

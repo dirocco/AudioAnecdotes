@@ -29,6 +29,16 @@
 %pragma trace
 
 
+/* Define the encoding fields */
+const signed int AUDIO_FILE_ENCODING_MULAW_8   = 1;   /* 8-bit ISDN u-law */
+const signed int AUDIO_FILE_ENCODING_LINEAR_8  = 2;   /* 8-bit linear PCM */
+const signed int AUDIO_FILE_ENCODING_LINEAR_16 = 3;   /* 16-bit linear PCM */
+const signed int AUDIO_FILE_ENCODING_LINEAR_24 = 4;   /* 24-bit linear PCM */
+const signed int AUDIO_FILE_ENCODING_LINEAR_32 = 5;   /* 32-bit linear PCM */
+const signed int AUDIO_FILE_ENCODING_FLOAT     = 6;   /* 32-bit IEEE floating point */
+const signed int AUDIO_FILE_ENCODING_DOUBLE    = 7;   /* 64-bit IEEE floating point */
+
+
 /*
  * Header
  *
@@ -51,5 +61,10 @@ class AU {
     Header hd;
   
 %pragma array=10000000, notrace
-	char(8) data[hd.dataSize];
+    if (hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_32)
+        int(32) data[hd.dataSize/4];
+    else if (hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_16)
+        int(16) data[hd.dataSize/2];
+    else
+        int(8)  data[hd.dataSize];
 }
