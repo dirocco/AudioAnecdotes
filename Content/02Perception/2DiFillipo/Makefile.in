@@ -21,7 +21,7 @@ LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
 SOURCES = \
-	amplitudeRamp.c
+	clickfusion.c
 
 CHILDDIRS =
 
