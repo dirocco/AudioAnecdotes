@@ -1,13 +1,13 @@
-body { font-size: 11px; color: white; background: navy; }
+body { font-size: 12px; color: #815849; background: #EBC086; }
 
-h1 { color: white; }
-h2 { color: white; }
+h1 { color: #815849; }
+h2 { color: #815849; }
 
-a         { color: white; }
-a:link    { color: white; }
-a:visited { color: yellow; }
-a:hover   { color: yellow; }
-a.CURLIST { background: navy }
+a         { color: #815849; }
+a:link    { color: #815849; }
+a:visited { color: #683D2D; }
+a:hover   { color: #683D2D; }
+a.CURLIST { background: #EBC086 }
 
 .LIST
 {
