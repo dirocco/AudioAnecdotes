@@ -11,5 +11,4 @@ CHILDDIRS= \
 	05SignalProcessing \
 	06ComputerTechniques \
 	07ComputerTools \
-	Example \
 	Future
