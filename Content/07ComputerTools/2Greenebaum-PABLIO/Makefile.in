@@ -1,0 +1,45 @@
+#
+# Pablio Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+PREFIX = @prefix@
+CC = @CC@
+CFLAGS = @CFLAGS@ -I. -I../../../include 
+LIBS = -lpablio @LIBS@ 
+AR = @AR@
+RANLIB = @RANLIB@
+INSTALL = @INSTALL@
+SHARED_FLAGS = @SHARED_FLAGS@
+DLL_LIBS = @DLL_LIBS@
+
+
+TESTS = \
+	../bin/test_rw \
+	../bin/test_rw_echo \
+	../bin/test_w_saw8 \
+	../bin/test_w_saw \
+	../bin/passthru \
+	../bin/sine
+
+all: tests
+
+tests: $(TESTS)
+
+$(TESTS): ../bin/%: Makefile %.c
+	$(CC) -o $@ $(CFLAGS) $*.c -L../../../lib $(LIBS)
+
+clean:
+	echo No intermediate files here 
+
+distclean: clean
+	$(RM) -f $(TESTS)
+
+%.o: %.c Makefile $(PAINC)
+	$(CC) -c $(CFLAGS) $< -o $@
