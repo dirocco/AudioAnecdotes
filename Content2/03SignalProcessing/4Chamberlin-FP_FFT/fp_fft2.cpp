@@ -68,11 +68,13 @@ int main(int argc, char *argv[])
    do {
       char string[BUFFERSIZE];
       if (DIR > 0) {
-         bzero(samples, sizeof(samples));
+         // bzero(samples, sizeof(samples));
+         memset(samples, 0, sizeof(samples));
          for (i=0; fgets(string, BUFFERSIZE, stdin) && i < WINDOWSIZE; i++)
             sscanf(string,"%f\n",&samples[i]);
          if (COMPLEX) {
-            bzero(zeroes, sizeof(zeroes));
+            // bzero(zeroes, sizeof(zeroes));
+            memset(zeroes, 0, sizeof(zeroes));
             CFFT(FFTORDER, DIR, samples, zeroes);
             RealT(FFTORDER, samples, zeroes);
             for (j = 0; j < i/2+1; j++)
@@ -85,9 +87,11 @@ int main(int argc, char *argv[])
          }
       }
       else {
-         bzero(samples, sizeof(samples));
+         // bzero(samples, sizeof(samples));
+         memset(samples, 0, sizeof(samples));
          if (COMPLEX) {
-            bzero(zeroes, sizeof(zeroes));
+            // bzero(zeroes, sizeof(zeroes));
+            memset(zeroes, 0, sizeof(zeroes));
             for (j=0; fgets(string, BUFFERSIZE, stdin) && j < WINDOWSIZE/2+1; j++)
                sscanf(string,"%f %f\n",&samples[j],&zeroes[j]);
             CplxT(FFTORDER, samples, zeroes);
