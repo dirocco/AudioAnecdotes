@@ -95,7 +95,7 @@ void RingBuffer::status()
 }
 
 
-void main() 
+int main() 
 {
    RingBuffer rb(5, 3);
    char string[100];
@@ -131,4 +131,6 @@ void main()
    rb.push(5);
    rb.status();
 #endif
+
+   return 0;
 }
