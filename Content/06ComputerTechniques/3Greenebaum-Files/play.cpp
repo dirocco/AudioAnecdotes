@@ -28,30 +28,57 @@
 
 #include "pablio.h"
 
+#define NUM_FRAMES 1000
 
-void play(PCMsound *sound, void *data)
+
+void play(Bitstream *bs, Audio *audio)
 {
     PABLIO_Stream  *outStream;
     PaSampleFormat format;
     long flags = PABLIO_WRITE;
     int x;
 
-    switch (sound->bytesPerSample) {
+    switch (audio->sound->bytesPerSample) {
     case 1: format = paInt8;  break;
     case 2: format = paInt16; break;
     case 4: format = paInt32; break;
     }
 
-    switch (sound->samplesPerFrame) {
+    switch (audio->sound->samplesPerFrame) {
     case 1: flags |= PABLIO_MONO;   break;
     case 2: flags |= PABLIO_STEREO; break;
     }
 
-    OpenAudioStream(&outStream, sound->framesPerSecond, format, flags);
+    unsigned char *data = new unsigned char[NUM_FRAMES*
+        audio->sound->samplesPerFrame*audio->sound->bytesPerSample];
 
-    WriteAudioStream(outStream, data, sound->bytes / (sound->bytesPerSample*sound->samplesPerFrame)); 
+    OpenAudioStream(&outStream, audio->sound->framesPerSecond, format, flags);
+
+    SampleData sample;
+
+    int totalFrames = audio->sound->bytes /
+        (audio->sound->bytesPerSample*audio->sound->samplesPerFrame);
+    for (int i = 0; i < totalFrames; i += NUM_FRAMES) {
+        int numFrames =
+            i + NUM_FRAMES <= totalFrames ? NUM_FRAMES : totalFrames - i;
+        for (int j = 0; j < audio->sound->samplesPerFrame*numFrames; j++) {
+            sample.get(*bs,audio);
+
+            // pack the 4 bytes per sample data into the right number of bytes
+            if (audio->sound->bytesPerSample == 1)
+                *((char *) data + j) = (char) sample.data;
+            else if (audio->sound->bytesPerSample == 2)
+                *((short *) data + j) = (short) sample.data;
+            else if (audio->sound->bytesPerSample == 4)
+                *((int *) data + j) = (int) sample.data;
+        }
+
+        WriteAudioStream(outStream, data, numFrames);
+    }
 
     CloseAudioStream(outStream);
+
+    delete[] data;
 }
 
 
@@ -95,24 +122,7 @@ int main(int argc, char *argv[])
 		printf("frames per second: %d\n", audio.sound->framesPerSecond);
 		printf("bytes of data:     %d\n", audio.sound->bytes);
 
-        SampleData sample;
-        void *data = (void *) new char[audio.sound->bytes];
-
-        // pack the 4 bytes per sample data into the right number of bytes
-        for (int i = 0; i < audio.sound->bytes / audio.sound->bytesPerSample; i++) {
-            sample.get(bs,&audio);
-
-            if (audio.sound->bytesPerSample == 1)
-                *((char *) data + i) = (char) sample.data;
-            else if (audio.sound->bytesPerSample == 2)
-                *((short *) data + i) = (short) sample.data;
-            else if (audio.sound->bytesPerSample == 4)
-                *((int *) data + i) = (int) sample.data;
-        }
-
-        play(audio.sound, data);
-
-        delete[] (char *) data;
+        play(&bs,&audio);
     }
 
     // Done
