@@ -26,56 +26,11 @@
 // Include the Flavor-generated files
 #include "audio.h"
 
-
 #include "pablio.h"
 
 
-/****************************************************************
- * Extended precision IEEE floating-point conversion routine.
- ****************************************************************/
-
-double ConvertFromIeeeExtended(ExtendedFloat *sampleRate)
+void play(PCMsound *sound, unsigned char *data)
 {
-    double f;
-
-    if (sampleRate->exponent == 0 &&
-        sampleRate->mantissa_hi == 0 && sampleRate->mantissa_lo == 0) {
-        f = 0;
-    }
-    else {
-        if (sampleRate->exponent == 0x7FFF) {    /* Infinity or NaN */
-            f = HUGE_VAL;
-        }
-        else {
-            int exp = sampleRate->exponent - 16383;
-
-#define UnsignedToFloat(u) (((double)((long)(u - 2147483647L - 1))) + 2147483648.0)
-
-            f  = ldexp(UnsignedToFloat(sampleRate->mantissa_hi), exp-=31);
-            f += ldexp(UnsignedToFloat(sampleRate->mantissa_lo), exp-=32);
-        }
-    }
-
-    if (sampleRate->sign)
-        return -f;
-    else
-        return f;
-}
-
-
-struct PCMsound {
-    unsigned char bytesPerSample;	// both quantization and packing
-    unsigned char samplesPerFrame;	// muliplexing (1 mono, 2 stereo, etc.)
-    unsigned int  framesPerSecond;	// confusingly referred to (in other APIs)
-									// as samplerate
-    // describe the buffer
-    unsigned long bytes;			// size of buffer in bytes
-    void* data;
-};
-
-void play(PCMsound *sound)
-{
-    unsigned char *data = (unsigned char *) sound->data;
     PABLIO_Stream  *outStream;
     PaSampleFormat format;
     long flags = PABLIO_WRITE;
@@ -94,7 +49,7 @@ void play(PCMsound *sound)
 
     OpenAudioStream(&outStream, sound->framesPerSecond, format, flags);
 
-    WriteAudioStream(outStream, sound->data, sound->bytes / (sound->bytesPerSample*sound->samplesPerFrame)); 
+    WriteAudioStream(outStream, data, sound->bytes / (sound->bytesPerSample*sound->samplesPerFrame)); 
 
     CloseAudioStream(outStream);
 }
@@ -137,47 +92,20 @@ int main(int argc, char *argv[])
         }
 #endif
 
-        PCMsound sound;
+        unsigned char *data;
 
         switch (audio.magic) {
 
         case 0x464F524D:    // "FORM"   -- AIFF/AIFC Format
-            sound.bytesPerSample  = audio.aiff->ckCommon->sampleSize >> 3;
-            sound.samplesPerFrame = audio.aiff->ckCommon->numChannels;
-            sound.framesPerSecond = (unsigned int) ConvertFromIeeeExtended(audio.aiff->ckCommon->sampleRate);
-            sound.bytes = audio.aiff->ckSound->ckSize;
-            sound.data  = audio.aiff->ckSound->data;	// big-endian
+            data = (unsigned char *) audio.aiff->ckSound->data;
             break;
 
         case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
-            switch(audio.au->hd->dataFormat) {
-
-/* Define the encoding fields */
-#define AUDIO_FILE_ENCODING_MULAW_8   (1)   /* 8-bit ISDN u-law */  
-#define AUDIO_FILE_ENCODING_LINEAR_8  (2)   /* 8-bit linear PCM */  
-#define AUDIO_FILE_ENCODING_LINEAR_16 (3)   /* 16-bit linear PCM */  
-#define AUDIO_FILE_ENCODING_LINEAR_24 (4)   /* 24-bit linear PCM */   
-#define AUDIO_FILE_ENCODING_LINEAR_32 (5)   /* 32-bit linear PCM */   
-#define AUDIO_FILE_ENCODING_FLOAT     (6)   /* 32-bit IEEE floating point */   
-#define AUDIO_FILE_ENCODING_DOUBLE    (7)	/* 64-bit IEEE floating point */   
-
-            case AUDIO_FILE_ENCODING_LINEAR_8:  sound.bytesPerSample = 1; break;
-            case AUDIO_FILE_ENCODING_LINEAR_16: sound.bytesPerSample = 2; break;
-            case AUDIO_FILE_ENCODING_LINEAR_32: sound.bytesPerSample = 4; break;
-            }
-            sound.samplesPerFrame = audio.au->hd->channelCount;
-            sound.framesPerSecond = audio.au->hd->samplingRate;
-            sound.bytes = audio.au->hd->dataSize;
-            sound.data  = audio.au->data;				// big-endian
+            data = (unsigned char *) audio.au->data;
             break;
 
         case 0x52494646:    // "RIFF"   -- WAV Format
-
-            sound.bytesPerSample  = audio.wav->ckFormat->bitsPerSample >> 3;
-            sound.samplesPerFrame = audio.wav->ckFormat->channels;
-            sound.framesPerSecond = audio.wav->ckFormat->samplesPerSec;
-            sound.bytes = audio.wav->ckData->ckSize;
-            sound.data  = audio.wav->ckData->data;		// little-endian
+            data = (unsigned char *) audio.wav->ckData->data;
             break;
 
         default:            // Raw Format
@@ -185,21 +113,24 @@ int main(int argc, char *argv[])
             exit(1);
         }
 
-        // printf("%d %d %d %d\n", sound.bytesPerSample,sound.samplesPerFrame,sound.framesPerSecond, sound.bytes);
+		printf("bytes per sample:  %d\n", audio.sound->bytesPerSample);
+		printf("samples per frame: %d\n", audio.sound->samplesPerFrame);
+		printf("frames per second: %d\n", audio.sound->framesPerSecond);
+		printf("bytes of data:     %d\n", audio.sound->bytes);
 
         // pack the 4 bytes per sample data into the right number of bytes
-        for (int i = 0,j = 0; i < sound.bytes; i += sound.bytesPerSample, j++) {
-            void *data = (char *) sound.data + i;
-            int sample = *((int  *) sound.data + j);
-            if (sound.bytesPerSample == 1)
-                *((char *) data) = (char) sample;
-            else if (sound.bytesPerSample == 2)
-                *((short *) data) = (short) sample;
-            else if (sound.bytesPerSample == 4)
-                *((int *) data) = (int) sample;
+        for (int i = 0,j = 0; i < audio.sound->bytes; i += audio.sound->bytesPerSample, j++) {
+            void *dest = (char *) data + i;
+            int sample = *((int  *) data + j);
+            if (audio.sound->bytesPerSample == 1)
+                *((char *) dest) = (char) sample;
+            else if (audio.sound->bytesPerSample == 2)
+                *((short *) dest) = (short) sample;
+            else if (audio.sound->bytesPerSample == 4)
+                *((int *) dest) = (int) sample;
         }
 
-        play(&sound);
+        play(audio.sound, data);
     }
 
     // Done

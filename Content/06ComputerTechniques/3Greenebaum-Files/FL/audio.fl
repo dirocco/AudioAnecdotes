@@ -35,23 +35,62 @@
 %pragma trace
 
 
+class PCMsound {
+    unsigned char bytesPerSample;   // both quantization and packing
+    unsigned char samplesPerFrame;  // muliplexing (1 mono, 2 stereo, etc.)
+    unsigned int  framesPerSecond;  // confusingly referred to (in other APIs)
+                                    // as samplerate
+    // describe the buffer
+    unsigned long bytes;            // size of buffer in bytes
+};
+
+
 /*
  * Audio
  *
  */
 class Audio {
     unsigned int(32)* magic;
+
+    PCMsound sound;
     
     switch (magic) 
     {
     case 0x464F524D:    // "FORM"   -- AIFF/AIFC Format
         AIFF aiff;
+
+		sound.bytesPerSample  = aiff.ckCommon.sampleSize >> 3;
+		sound.samplesPerFrame = aiff.ckCommon.numChannels;
+		// Convert an 80 bit IEEE Standard 754 floating point number to an int
+		unsigned int  mantissa = aiff.ckCommon.sampleRate.mantissa_hi;
+		unsigned char exponent = 30 - (aiff.ckCommon.sampleRate.exponent & 0xff);
+		mantissa >>= exponent;
+		sound.framesPerSecond = mantissa;
+
+		sound.bytes = aiff.ckSound.ckSize;
         break;
     case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
         AU au;
+
+		if (au.hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_32)
+        	sound.bytesPerSample = 4;
+		else if (au.hd.dataFormat == AUDIO_FILE_ENCODING_LINEAR_16)
+        	sound.bytesPerSample = 2;
+		else
+        	sound.bytesPerSample = 1;
+		sound.samplesPerFrame = au.hd.channelCount;
+		sound.framesPerSecond = au.hd.samplingRate;
+
+		sound.bytes = au.hd.dataSize;
         break;
     case 0x52494646:    // "RIFF"   -- WAV Format
         WAV wav;
+
+        sound.bytesPerSample  = wav.ckFormat.bitsPerSample >> 3;
+        sound.samplesPerFrame = wav.ckFormat.channels;
+		sound.framesPerSecond = wav.ckFormat.samplesPerSec;
+
+		sound.bytes = wav.ckData.ckSize;
         break;
     default:            // Raw Format
         Raw8 raw;
