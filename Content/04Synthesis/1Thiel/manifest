@@ -1,0 +1,4 @@
+common Makefile common.tar Makefile 
+cygwin FilteredNoise3.exe dist-cygwin.tar authors/David_Thiel/FilteredNoise3.exe 
+cygwin RockGuitar.exe dist-cygwin.tar authors/David_Thiel/RockGuitar.exe 
+cygwin multi2.exe dist-cygwin.tar authors/David_Thiel/multi2.exe
