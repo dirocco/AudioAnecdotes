@@ -34,21 +34,20 @@ href="../../Content2/02Synthesis/1Fouad/rsf.c">rsf.c</a>.
 <h2><a href="../../Content2/02Synthesis/2Burk" name="2Burk">Band Limited Oscillators using Wave Table Synthesis - Burk</a></h2>
 
 <dd>
-These examples demonstrate band limited oscillators using wave table synthesis.
+This first example,
+Play <a href="../html/do.cgi?Content2+02Synthesis+2Burk&pa_multiwave&-d">pa_multiwave non-band-limited</a>, demonstrates the problems inherent in a naive
+sawtooth implementation.  Notice the aliasing that becomes obvious as the 
+sawtooth is ramped to higher frequencies. Near the end of the example the aliasing is so bad it dominates the intended signal. 
+<p> The next example,
+Play <a href="../html/do.cgi?Content2+02Synthesis+2Burk&pa_multiwave&-q">pa_multiwave band-limited</a>,
+ executes the same sawtooth ramp but with bandwidth limiting enabled. The aliasing of the first example should be gone. </p>
 </dd>
 
 <p></p>
-<dd>
-Play <a href="../html/do.cgi?Content2+02Synthesis+2Burk&pa_multiwave&-d">pa_multiwave non-band-limited</a>.
-</dd>
-<dd>
-Play <a href="../html/do.cgi?Content2+02Synthesis+2Burk&pa_multiwave&-q">pa_multiwave band-limited</a>.
-</dd>
-<p></p>
 
 <p></p>
 <dd>
-Click here to view the source <a
+Click here to view the source code (for both examples):  <a
 href="../../Content2/02Synthesis/2Burk/pa_multiwave.c">pa_multiwave.c</a>.
 </dd>
 
