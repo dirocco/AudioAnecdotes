@@ -2,6 +2,9 @@ src_v1       ramptest.c   src_v1.tar       Volume1/Content/06ComputerTechniques/
 src_v1       rampout.c    src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/rampout.c
 src_v1       Makefile.in  src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/Makefile.in
 src_v1       config.mak   src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/config.mak
+src_v1       rampdata1    src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/rampdata1
+src_v1       rampdata2    src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/rampdata2
+src_v1       rampdata3    src_v1.tar       Volume1/Content/06ComputerTechniques/2Greenebaum-Test/rampdata3
 
 bin_v1_win   ramptest.exe bin_v1_win.tar   Volume1/Content/06ComputerTechniques/2Greenebaum-Test/ramptest.exe
 bin_v1_mac   ramptest     bin_v1_mac.tar   Volume1/Content/06ComputerTechniques/2Greenebaum-Test/ramptest
