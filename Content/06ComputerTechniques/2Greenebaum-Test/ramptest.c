@@ -1,18 +1,26 @@
 #define RUNTHRESHOLD 2
+typedef enum boolean {FALSE, TRUE} boolean;
+typedef unsigned short USHORT;
+
+USHORT add(USHORT value1, USHORT value2)
+{
+return((USHORT) (value1 + value2));
+}
+
 
 main()
 {
-   typedef unsigned short USHORT;
-
    USHORT count = 0;        // length of the current run
    int result;              // used to test result of scanf
 
-   USHORT received = 0;     // stores value received from input stream
+   USHORT received     = 0; // stores value received from input stream
    USHORT LastReceived = 0; // stores previous value received
+   USHORT expected     = 0; // value expected to be seen in input stream
 
-   unsigned int silentCount = 0;
-   unsigned int runCount    = 0;
-   unsigned int sampleCount = 0;
+   unsigned int silentCount        = 0;
+   unsigned int runCount           = 0;
+   unsigned int sampleCount        = 0;
+   unsigned int discontinuityCount = 0;
 
    int    SignalCount = 0;  
    int    Total = 0;        // total number of input values read
@@ -20,7 +28,6 @@ main()
    int    ErrorCountRepeatedValue = 0;
    int    ErrorCountSkippedValue  = 0;
    int    ErrorCountWrongValue    = 0;
-   USHORT expected;         // value expected to be seen in input stream
 
 
    typedef enum {
@@ -29,25 +36,25 @@ main()
       RECEIVEDSIGNAL,    // state that indicates a signal is detected
       ESTABLISHRUN, 
       RUNESTABLISHED, 
-      ERROR 
+      REESTABLISHRUN,
+      ERROR,
+      EOF
    } states ;
 
    states state = START;
 
-   while(1) {
-      if (state != ERROR) {
-	 LastReceived = received;
-         result = scanf("%d", &received);
-         if (result != 1) {
-            printf("scanf didn't return 1\n");
-            break;
-         }
-         sampleCount++;
-      }
+   boolean done = FALSE;
+   while(!done) {
+      LastReceived = received;
+      result = scanf("%d", &received);
+      if(result == 1)
+	 sampleCount++;
+      else
+	 state = EOF;
 
       switch(state) {
 	 case START: // first value should be 0 (silence or beggining of ramp)
-	    if(received) {
+	    if(received!=0) {
 	       printf("signal didn't begin with 0 as expected (rather we received %d at sample 0)\n",
 		     received);
 	       state = ESTABLISHRUN;
@@ -58,10 +65,12 @@ main()
 	 break;
 
 	 case EATSILENCE: // wait for a nonzero value
+	    runCount = 1;
 	    if(received==1) {
 	       printf("signal found at sample %d (after %d silent samples)\n", 
 		     sampleCount-2, silentCount-1);
 	       state = ESTABLISHRUN;
+	       runCount = 2; // we had at least one zero to get to this state
 	    } else if(received) {
 	       printf("signal found at sample %d (after %d silent samples)\n", 
 		     sampleCount-1, silentCount);
@@ -71,32 +80,32 @@ main()
 	 break;
 
 	 case ESTABLISHRUN: // wait for incrementing values
-            expected = ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
+            expected = add(LastReceived, 1);
 
 	    if(received != expected)
-	       runCount = 0; // reset count
+	       runCount = 1; // reset count (any sample is a run of 1)
 	    else if (++runCount > RUNTHRESHOLD) {
 	       state = RUNESTABLISHED;
-	       printf("Run found beggining at sample %d\n", 
-		     sampleCount - RUNTHRESHOLD);
+	       printf("  %d sample run found beggining at sample %d\n", 
+		     runCount, sampleCount - runCount);
 	    }
 	 break;
 
 	 case RUNESTABLISHED:
-            expected = ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
+            // expected = ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
+            expected = add(LastReceived, 1);
 
 	    if(received == expected)
 	       runCount++;
 	    else {
-	       state = ERROR;
+	       state = REESTABLISHRUN;
 	       printf("%d run ended at sample %d (expected %d, received %d)\n",
 		     runCount, sampleCount, expected, received);
 	    }
-
 	 break;
 
-
-
+	 case REESTABLISHRUN:
+	 break;
 
 	 case ERROR: 
             // here if received != expected (which is LastReceived + 1)
@@ -124,12 +133,22 @@ main()
             state = ESTABLISHRUN;
 	    break;
 
+	 case EOF:
+	    done = TRUE;
+	 break;
+
 	 default:
 	    printf("I fell and I can't get up\n");
 	    exit(-1);
 	 break;
       }
    }
+   printf("Satistics:\n");
+   printf("  %d total samples received\n", sampleCount);
+   printf("  %d silent samples before signal\n", silentCount);
+   printf("  first run %s with zero\n", (1)?"started":"didn't start");// XXX
+   printf("  %d discontinuities\n", discontinuityCount);
+
    printf("Detected %d errors.\n", ErrorCount);
    printf("Detected %d missing values.\n", ErrorCountSkippedValue);
    printf("Detected %d repeated values.\n", ErrorCountRepeatedValue);
