@@ -24,6 +24,8 @@ SOURCES =
 
 CHILDDIRS =
 
+OCTAVE=../../../bin/octave
+
 FIGURES = sample1 sample2 difference error-noisy error-accurate rounding-noisy rounding-accurate
 
 PNGFILES = $(addsuffix .png,$(FIGURES))
@@ -47,18 +49,18 @@ clean_all : clean
 	rm -f $(PNGFILES) $(EPSFILES) $(PDFFILES)
 
 $(PSFILES)  : makesamples.m
-	(export OCTAVE_PATH=.:../../../src/octave-2.1.50/scripts/general:../../../src/octave-2.1.50/scripts/strings:../../../src/octave-2.1.50/scripts/plot; \
-	echo 'makesamples("ps","postscript");' | ../../../bin/octave)
+	- (export OCTAVE_PATH=.:../../../src/octave-2.1.50/scripts/general:../../../src/octave-2.1.50/scripts/strings:../../../src/octave-2.1.50/scripts/plot; \
+	- echo 'makesamples("ps","postscript");' | $(OCTAVE))
 
 $(PNGFILES) : makesamples.m
-	echo 'makesamples("png","png color small");' | octave
+	- echo 'makesamples("png","png color small");' | $(OCTAVE)
 
 %.pdf : %.ps
 	rm -f $@
-	ps2pdf $< $@
+	- ps2pdf $< $@
 
 %.eps : %.ps
 	rm -f $@
-	ps2epsi $< $@
+	- ps2epsi $< $@
 
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
