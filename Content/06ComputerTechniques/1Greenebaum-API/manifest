@@ -8,9 +8,9 @@ bin_v1_win   passthru.exe                  bin_v1_win.tar   AudioAnecdotesV1/Aut
 bin_v1_mac   passthru                      bin_v1_mac.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru
 bin_v1_linux passthru                      bin_v1_linux.tar AudioAnecdotesV1/Authors/06Greenebaum-API/passthru
 
-bin_v1_win   passthru-wav.exe              bin_v1_win.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav.exe
-bin_v1_mac   passthru-wav                  bin_v1_mac.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav
-bin_v1_linux passthru-wav                  bin_v1_linux.tar AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav
+
+# we really should be able to build waveio passthru-wav.exe under cygwin...
+^ bin_v1_win   passthru-wav.exe              bin_v1_win.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav.exe
 
 bin_v1_win   passthru-wav-instrumented.exe bin_v1_win.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav-instrumented.exe
 bin_v1_mac   passthru-wav-instrumented     bin_v1_mac.tar   AudioAnecdotesV1/Authors/06Greenebaum-API/passthru-wav-instrumented
