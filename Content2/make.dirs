@@ -5,6 +5,7 @@
 #
 
 CHILDDIRS= \
+	media \
 	02Synthesis \
 	03SignalProcessing \
 	04Spatialization \
