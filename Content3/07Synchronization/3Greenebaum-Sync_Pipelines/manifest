@@ -1,0 +1,100 @@
+src_v1 amplitudeRamp.c src_v1.tar Volume1/Content/00Greenebaum/amplitudeRamp.c
+src_v1 newtrigger.c src_v1.tar Volume1/Content/00Greenebaum/newtrigger.c
+src_v1 trigger.c src_v1.tar Volume1/Content/00Greenebaum/trigger.c
+src_v1 chirp1.c src_v1.tar Volume1/Content/00Greenebaum/chirp1.c
+src_v1 chirp2.c src_v1.tar Volume1/Content/00Greenebaum/chirp2.c
+src_v1 chirp3.c src_v1.tar Volume1/Content/00Greenebaum/chirp3.c
+src_v1 click.c src_v1.tar Volume1/Content/00Greenebaum/click.c
+src_v1 click2.c src_v1.tar Volume1/Content/00Greenebaum/click2.c
+
+src_v1 caliper/caliper.c src_v1.tar Volume1/Content/00Greenebaum/caliper/caliper.c
+src_v1 caliper/sine.c src_v1.tar Volume1/Content/00Greenebaum/caliper/sine.c
+
+src_v1 countinframes/pcmsound.h src_v1.tar Volume1/Content/00Greenebaum/countinframes/pcmsound.h
+src_v1 countinframes/pcmsound.cc src_v1.tar Volume1/Content/00Greenebaum/countinframes/pcmsound.cc
+src_v1 countinframes/main.cc src_v1.tar Volume1/Content/00Greenebaum/countinframes/main.cc
+
+src_v1 helloworld/passthru-wav-instrumented.c src_v1.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav-instrumented.c
+src_v1 helloworld/passthru-wav.c src_v1.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav.c
+src_v1 helloworld/passthru.c src_v1.tar Volume1/Content/00Greenebaum/helloworld/passthru.c
+
+src_v1 ringbuffer/ringbuffer.h src_v1.tar Volume1/Content/00Greenebaum/ringbuffer/ringbuffer.h
+src_v1 ringbuffer/rb.cpp src_v1.tar Volume1/Content/00Greenebaum/ringbuffer/rb.cpp
+
+src_v1 test/rampdata1 src_v1.tar Volume1/Content/00Greenebaum/test/rampdata1
+src_v1 test/rampdata2 src_v1.tar Volume1/Content/00Greenebaum/test/rampdata2
+src_v1 test/rampdata3 src_v1.tar Volume1/Content/00Greenebaum/test/rampdata3
+src_v1 test/rampout.c src_v1.tar Volume1/Content/00Greenebaum/test/rampout.c
+src_v1 test/ramptest.c src_v1.tar Volume1/Content/00Greenebaum/test/ramptest.c
+
+# exe
+
+bin_v1_win amplitudeRamp.exe bin_v1_win.tar Volume1/Content/00Greenebaum/amplitudeRamp.exe
+bin_v1_win newtrigger.exe bin_v1_win.tar Volume1/Content/00Greenebaum/newtrigger.exe
+bin_v1_win trigger.exe bin_v1_win.tar Volume1/Content/00Greenebaum/trigger.exe
+bin_v1_win chirp1.exe bin_v1_win.tar Volume1/Content/00Greenebaum/chirp1.exe
+bin_v1_win chirp2.exe bin_v1_win.tar Volume1/Content/00Greenebaum/chirp2.exe
+bin_v1_win chirp3.exe bin_v1_win.tar Volume1/Content/00Greenebaum/chirp3.exe
+bin_v1_win click.exe bin_v1_win.tar Volume1/Content/00Greenebaum/click.exe
+bin_v1_win click2.exe bin_v1_win.tar Volume1/Content/00Greenebaum/click2.exe
+
+bin_v1_mac amplitudeRamp bin_v1_mac.tar Volume1/Content/00Greenebaum/amplitudeRamp
+bin_v1_mac newtrigger bin_v1_mac.tar Volume1/Content/00Greenebaum/newtrigger
+bin_v1_mac trigger bin_v1_mac.tar Volume1/Content/00Greenebaum/trigger
+bin_v1_mac chirp1 bin_v1_mac.tar Volume1/Content/00Greenebaum/chirp1
+bin_v1_mac chirp2 bin_v1_mac.tar Volume1/Content/00Greenebaum/chirp2
+bin_v1_mac chirp3 bin_v1_mac.tar Volume1/Content/00Greenebaum/chirp3
+bin_v1_mac click bin_v1_mac.tar Volume1/Content/00Greenebaum/click
+bin_v1_mac click2 bin_v1_mac.tar Volume1/Content/00Greenebaum/click2
+
+bin_v1_linux amplitudeRamp bin_v1_linux.tar Volume1/Content/00Greenebaum/amplitudeRamp
+bin_v1_linux newtrigger bin_v1_linux.tar Volume1/Content/00Greenebaum/newtrigger
+bin_v1_linux trigger bin_v1_linux.tar Volume1/Content/00Greenebaum/trigger
+bin_v1_linux chirp1 bin_v1_linux.tar Volume1/Content/00Greenebaum/chirp1
+bin_v1_linux chirp2 bin_v1_linux.tar Volume1/Content/00Greenebaum/chirp2
+bin_v1_linux chirp3 bin_v1_linux.tar Volume1/Content/00Greenebaum/chirp3
+bin_v1_linux click bin_v1_linux.tar Volume1/Content/00Greenebaum/click
+bin_v1_linux click2 bin_v1_linux.tar Volume1/Content/00Greenebaum/click2
+
+bin_v1_win caliper/caliper.exe bin_v1_win.tar Volume1/Content/00Greenebaum/caliper/caliper.exe
+bin_v1_win caliper/sine.exe bin_v1_win.tar Volume1/Content/00Greenebaum/caliper/sine.exe
+
+bin_v1_mac caliper/caliper bin_v1_mac.tar Volume1/Content/00Greenebaum/caliper/caliper
+bin_v1_mac caliper/sine bin_v1_mac.tar Volume1/Content/00Greenebaum/caliper/sine
+
+bin_v1_linux caliper/caliper bin_v1_linux.tar Volume1/Content/00Greenebaum/caliper/caliper
+bin_v1_linux caliper/sine bin_v1_linux.tar Volume1/Content/00Greenebaum/caliper/sine
+
+bin_v1_win countinframes/pcmsound.exe bin_v1_win.tar Volume1/Content/00Greenebaum/countinframes/pcmsound.exe
+bin_v1_win countinframes/main.exe bin_v1_win.tar Volume1/Content/00Greenebaum/countinframes/main.exe
+
+bin_v1_mac countinframes/pcmsound bin_v1_mac.tar Volume1/Content/00Greenebaum/countinframes/pcmsound
+bin_v1_mac countinframes/main bin_v1_mac.tar Volume1/Content/00Greenebaum/countinframes/main
+
+bin_v1_linux countinframes/pcmsound bin_v1_linux.tar Volume1/Content/00Greenebaum/countinframes/pcmsound
+bin_v1_linux countinframes/main bin_v1_linux.tar Volume1/Content/00Greenebaum/countinframes/main
+
+bin_v1_win helloworld/passthru-wav-instrumented.exe bin_v1_win.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav-instrumented.exe
+bin_v1_win helloworld/passthru-wav.exe bin_v1_win.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav.exe
+bin_v1_win helloworld/passthru.exe bin_v1_win.tar Volume1/Content/00Greenebaum/helloworld/passthru.exe
+
+bin_v1_mac helloworld/passthru-wav-instrumented bin_v1_mac.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav-instrumented
+bin_v1_mac helloworld/passthru-wav bin_v1_mac.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav
+bin_v1_mac helloworld/passthru bin_v1_mac.tar Volume1/Content/00Greenebaum/helloworld/passthru
+
+bin_v1_linux helloworld/passthru-wav-instrumented bin_v1_linux.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav-instrumented
+bin_v1_linux helloworld/passthru-wav bin_v1_linux.tar Volume1/Content/00Greenebaum/helloworld/passthru-wav
+bin_v1_linux helloworld/passthru bin_v1_linux.tar Volume1/Content/00Greenebaum/helloworld/passthru
+
+bin_v1_win ringbuffer/rb.exe bin_v1_win.tar Volume1/Content/00Greenebaum/ringbuffer/rb.exe
+bin_v1_mac ringbuffer/rb bin_v1_mac.tar Volume1/Content/00Greenebaum/ringbuffer/rb
+bin_v1_linux ringbuffer/rb bin_v1_linux.tar Volume1/Content/00Greenebaum/ringbuffer/rb
+
+bin_v1_win test/rampout.exe bin_v1_win.tar Volume1/Content/00Greenebaum/test/rampout.exe
+bin_v1_win test/ramptest.exe bin_v1_win.tar Volume1/Content/00Greenebaum/test/ramptest.exe
+
+bin_v1_mac test/rampout bin_v1_mac.tar Volume1/Content/00Greenebaum/test/rampout
+bin_v1_mac test/ramptest bin_v1_mac.tar Volume1/Content/00Greenebaum/test/ramptest
+
+bin_v1_linux test/rampout bin_v1_linux.tar Volume1/Content/00Greenebaum/test/rampout
+bin_v1_linux test/ramptest bin_v1_linux.tar Volume1/Content/00Greenebaum/test/ramptest
