@@ -22,6 +22,7 @@ LOCALLINK=@LOCALLINK@
 
 SOURCES = \
 	passthru.c \
+	passthru_simple.c \
 	sine.c \
 	sine_simple.c
 
