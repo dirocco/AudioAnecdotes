@@ -22,14 +22,14 @@ cd ../../
 #pwd
 
 doit=`/bin/cygpath --sysdir`/cmd
-#echo $doit /c .\\$1\\$2 $3 $4 $5
+#echo $doit /c .\\$1\\$2 $3 $4 $5 $6 $7 $8 $9
 if [ -f $doit ]; then
    echo foundit
-   $doit /c start .\\$1\\$2 $3 $4 $5
+   $doit /c start .\\$1\\$2 $3 $4 $5 $6 $7 $8 $9
 else
    echo nothere
    doit=`/bin/cygpath --windir`/command
-   $doit /c start .\\$1\\$2 $3 $4 $5
+   $doit /c start .\\$1\\$2 $3 $4 $5 $6 $7 $8 $9
 fi
 
 exit 0

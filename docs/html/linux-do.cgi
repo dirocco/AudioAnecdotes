@@ -67,7 +67,7 @@ if [ $xworked -eq 1 ]; then
    list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
-	 $prog -e ./$1/$2 $3 $4 $5 2>> /tmp/log
+	 $prog -e ./$1/$2 $3 $4 $5 $6 $7 $8 $9 2>> /tmp/log
 
 	 if [ $? -eq 0 ]; then
 	    break;  # no need to run others
@@ -75,7 +75,7 @@ if [ $xworked -eq 1 ]; then
       done
    )&
 else # skip the xterm and just run in the background
-   ./$1/$2 $3 $4 $5 &
+   ./$1/$2 $3 $4 $5 $6 $7 $8 $9 &
 fi
 
 echo Ho >> /tmp/log
