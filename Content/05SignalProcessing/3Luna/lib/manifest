@@ -1,3 +1,5 @@
+src_v1 Makefile.in            src_v1.tar Volume1/Content/05SignalProcessing/3Luna/lib/Makefile.in
+src_v1 config.mak             src_v1.tar Volume1/Content/05SignalProcessing/3Luna/lib/config.mak
 src_v1 AWGNChannel.cpp        src_v1.tar Volume1/Content/05SignalProcessing/3Luna/lib/AWGNChannel.cpp 
 src_v1 AWGNChannel.h          src_v1.tar Volume1/Content/05SignalProcessing/3Luna/lib/AWGNChannel.h 
 src_v1 BaseBandDemodulate.cpp src_v1.tar Volume1/Content/05SignalProcessing/3Luna/lib/BaseBandDemodulate.cpp 
