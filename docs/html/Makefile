@@ -8,10 +8,10 @@ TARGETS=linux-do.cgi win-do.cgi mac-do.cgi \
 debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi \
 06win.html 06unix.html
 
+all: $(TARGETS)
+
 dist:
 	$(TOPDIR)/bin/tbmaker $(TYPE) $(TOPDIR)/distro/ $(TOPDIR)/dirt/
-
-all: $(TARGETS)
 
 debuglinux-do.cgi: do.cgi
 	$(CPP) do.cgi -D DEBUG -D LINUX -D UNIX > debuglinux-do.cgi
