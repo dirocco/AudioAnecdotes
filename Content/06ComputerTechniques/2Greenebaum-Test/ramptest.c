@@ -14,20 +14,20 @@ main()
    int result;              // used to test result of scanf
 
    USHORT received     = 0; // stores value received from input stream
-   USHORT LastReceived = 0; // stores previous value received
+   USHORT lastReceived = 0; // stores previous value received
    USHORT expected     = 0; // value expected to be seen in input stream
 
    unsigned int silentCount        = 0;
    unsigned int runCount           = 0;
-   unsigned int sampleCount        = 0;
+   unsigned int sampleCount        = -1; // so the first sample will be 0
    unsigned int discontinuityCount = 0;
 
+   // err tracking
+   unsigned int lastRunSample      = 0;
+   unsigned int lastRunValue       = 0;
+   unsigned int zeroCount          = 0;
+
    int    SignalCount = 0;  
-   int    Total = 0;        // total number of input values read
-   int    ErrorCount = 0;   // total number of errors detected
-   int    ErrorCountRepeatedValue = 0;
-   int    ErrorCountSkippedValue  = 0;
-   int    ErrorCountWrongValue    = 0;
 
 
    typedef enum {
@@ -37,7 +37,6 @@ main()
       ESTABLISHRUN, 
       RUNESTABLISHED, 
       REESTABLISHRUN,
-      ERROR,
       EOF
    } states ;
 
@@ -45,8 +44,8 @@ main()
 
    boolean done = FALSE;
    while(!done) {
-      LastReceived = received;
-      result = scanf("%d", &received);
+      lastReceived = received;
+      result = scanf("  %d", &received);
       if(result == 1)
 	 sampleCount++;
       else
@@ -68,70 +67,56 @@ main()
 	    runCount = 1;
 	    if(received==1) {
 	       printf("signal found at sample %d (after %d silent samples)\n", 
-		     sampleCount-2, silentCount-1);
+		     sampleCount-1, silentCount-1);
 	       state = ESTABLISHRUN;
 	       runCount = 2; // we had at least one zero to get to this state
 	    } else if(received) {
 	       printf("signal found at sample %d (after %d silent samples)\n", 
-		     sampleCount-1, silentCount);
+		     sampleCount, silentCount);
 	       state = ESTABLISHRUN;
 	    } else
 	       silentCount++;
 	 break;
 
 	 case ESTABLISHRUN: // wait for incrementing values
-            expected = add(LastReceived, 1);
+            expected = add(lastReceived, 1);
 
 	    if(received != expected)
 	       runCount = 1; // reset count (any sample is a run of 1)
 	    else if (++runCount > RUNTHRESHOLD) {
 	       state = RUNESTABLISHED;
 	       printf("  %d sample run found beggining at sample %d\n", 
-		     runCount, sampleCount - runCount);
+		     runCount, sampleCount - runCount + 1);
 	    }
 	 break;
 
 	 case RUNESTABLISHED:
-            // expected = ((USHORT) ((USHORT) LastReceived + (USHORT) 1));
-            expected = add(LastReceived, 1);
+            expected = add(lastReceived, 1);
 
 	    if(received == expected)
 	       runCount++;
 	    else {
+	       // lastRunValue  = add(expected, -1);
+	       lastRunValue  = lastReceived;
+	       lastRunSample = sampleCount;
 	       state = REESTABLISHRUN;
-	       printf("%d run ended at sample %d (expected %d, received %d)\n",
+	       printf("  %d run ended at sample %d (expected %d, received %d)\n",
 		     runCount, sampleCount, expected, received);
+	       runCount = 1; // reset count (any sample is a run of 1)
 	    }
 	 break;
 
-	 case REESTABLISHRUN:
+	 case REESTABLISHRUN: // wait for run then determine what went wrong
+            expected = add(lastReceived, 1);
+
+	    if(received != expected)
+	       runCount = 1; // reset count (any sample is a run of 1)
+	    else if (++runCount > RUNTHRESHOLD) {
+	       state = RUNESTABLISHED;
+	       printf("  %d sample run found beggining at sample %d\n", 
+		     runCount, sampleCount - runCount + 1);
+	    }
 	 break;
-
-	 case ERROR: 
-            // here if received != expected (which is LastReceived + 1)
-
-            ErrorCount++;
-            printf("error detected: Received=%d LastReceived=%d expected=%d\n",
-                    received, LastReceived, expected);
-
-            // determine which kind of error
-
-            if (received == LastReceived)
-               // received the same value as PREVIOUS value
-               ErrorCountRepeatedValue++;
-      
-            else if (received > LastReceived + 1)
-               // (received - LastReceived) samples were skipped 
-               ErrorCountSkippedValue++;
-
-            else // sample is unexpected, but less than expected
-                 // sample is less than or equal too the expected
-
-               ErrorCountWrongValue++;
-
-            // reset and try again
-            state = ESTABLISHRUN;
-	    break;
 
 	 case EOF:
 	    done = TRUE;
@@ -148,9 +133,4 @@ main()
    printf("  %d silent samples before signal\n", silentCount);
    printf("  first run %s with zero\n", (1)?"started":"didn't start");// XXX
    printf("  %d discontinuities\n", discontinuityCount);
-
-   printf("Detected %d errors.\n", ErrorCount);
-   printf("Detected %d missing values.\n", ErrorCountSkippedValue);
-   printf("Detected %d repeated values.\n", ErrorCountRepeatedValue);
-   printf("Detected %d incorrect values.\n", ErrorCountWrongValue);
 }
