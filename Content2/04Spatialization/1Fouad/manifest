@@ -1,4 +1,4 @@
-src_v2       makefile.in        src_v2.tar       Volume2/Content2/04Spatialization/1Fouad/makefile.in
+src_v2       Makefile.in        src_v2.tar       Volume2/Content2/04Spatialization/1Fouad/Makefile.in
 src_v2       config.mak         src_v2.tar       Volume2/Content2/04Spatialization/1Fouad/config.mak
 src_v2       spatialization.c   src_v2.tar       Volume2/Content2/04Spatialization/1Fouad/spatialization.c
 bin_v2_win   spatialization.exe bin_v2_win.tar   Volume2/Content2/04Spatialization/1Fouad/spatialization.exe
