@@ -43,4 +43,6 @@ int main(int argc, char *argv[])
       // blocking write provides flow control
       WriteAudioStream(outStream, buffer, NUM_FRAMES); 
    }
+
+   CloseAudioStream(outStream);
 }
