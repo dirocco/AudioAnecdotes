@@ -1,6 +1,7 @@
 src_v1       amplitudeRamp.c   src_v1.tar       Volume1/Content/01Measurement/1Greenebaum/amplitudeRamp.c
 src_v1       Makefile.in       src_v1.tar       Volume1/Content/01Measurement/1Greenebaum/Makefile.in
 src_v1       config.mak        src_v1.tar       Volume1/Content/01Measurement/1Greenebaum/config.mak
+src_v1       ramp.gif          src_v1.tar       Volume1/Content/01Measurement/1Greenebaum/ramp.gif
 
 bin_v1_win   amplitudeRamp.exe bin_v1_win.tar   Volume1/Content/01Measurement/1Greenebaum/amplitudeRamp.exe
 bin_v1_mac   amplitudeRamp     bin_v1_mac.tar   Volume1/Content/01Measurement/1Greenebaum/amplitudeRamp
