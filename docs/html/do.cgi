@@ -209,23 +209,13 @@ fi
 #endif 
 
 #ifdef MAC
-# no terminal -e command to run a command w/arguments
-# so create and open a file instead
-SCRIPT=/tmp/script.command
-
-# for security ensure there isn't a pre-existing file
-rm -f $SCRIPT
-if [ -f $SCRIPT ]; then
-   echo failed to remove existing $SCRIPT exiting
+if [ -f /usr/bin/osascript ]; then
+echo `pwd`/$2 $a >> $SCRIPT
+   osascript -e 'tell application "Terminal" to do script "./$2 $a;exit"'
+else 
+   echo did not find /usr/bin/osascript exiting 
    exit 252
 fi
-
-echo "#!/bin/sh"    > $SCRIPT
-echo `pwd`/$2 $a   >> $SCRIPT
-chmod 555 $SCRIPT
-
-open  $SCRIPT
-rm -f $SCRIPT
 #endif 
 
 exit 0
