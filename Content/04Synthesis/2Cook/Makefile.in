@@ -24,6 +24,7 @@ LOCALLINK=@LOCALLINK@
 
 SOURCES = \
 	mandolin.c \
+	clarinet.c \
 	mass_spring.c \
 	string.c
 
