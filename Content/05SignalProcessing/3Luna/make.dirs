@@ -3,5 +3,6 @@
 #
 
 CHILDDIRS= \
+	lib \
 	mono \
 	poly
