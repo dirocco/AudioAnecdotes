@@ -9,4 +9,5 @@ CHILDDIRS= \
 	03SignalProcessing \
 	04Spatialization \
 	05ComputerTechniques \
-	06ComputerTools
+	06ComputerTools \
+	09Nature
