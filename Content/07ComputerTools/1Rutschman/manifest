@@ -1,5 +1,6 @@
 src_v1 config.mak     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/config.mak
 src_v1 Makefile.in    src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/Makefile.in
+src_v1 floatdata.txt  src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/floatdata.txt
 src_v1 clip.m         src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/clip.m 
 src_v1 compare.m      src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/compare.m 
 src_v1 deltamod.m     src_v1.tar AudioAnecdotesV1/Authors/07Rutschman/deltamod.m 
