@@ -1,0 +1,37 @@
+#
+# Example Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+CC = @CC@
+CFLAGS = @CFLAGS@ -I.
+LDFLAGS = @LDFLAGS@
+LIBS = -lpablio @LIBS@ 
+
+
+TESTS = \
+	RockGuitar \
+	pa_multiwave \
+	FilteredNoise3
+
+all: tests
+
+tests: $(TESTS)
+
+$(TESTS):%: Makefile %.c
+	$(CC) -o $@ $(CFLAGS) $*.c $(LDFLAGS) $(LIBS)
+
+clean:
+	echo No intermediate files here 
+
+distclean: clean
+	$(RM) -f $(TESTS)
+
+%.o: %.c Makefile $(PAINC)
+	$(CC) -c $(CFLAGS) $< -o $@
