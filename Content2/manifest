@@ -1,0 +1,7 @@
+src_v2 configure	src_v2.tar Volume2/Content/configure
+src_v2 config.sub	src_v2.tar Volume2/Content/config.sub
+src_v2 config.guess	src_v2.tar Volume2/Content/config.guess
+src_v2 install-sh    	src_v2.tar Volume2/Content/install-sh
+src_v2 Makefile.in	src_v2.tar Volume2/Content/Makefile.in
+src_v2 config.mak	src_v2.tar Volume2/Content/config.mak
+src_v2 dist.make.dirs	src_v2.tar Volume2/Content/make.dirs

@@ -92,7 +92,7 @@ output= 	coeff[0+coeff_offset]*input[0] 				/* B0 * x[0]	*/
 - coeff[4+coeff_offset]*delayline[3+delay_offset];		/* -A2 * y[-2]	*/
 
 delayline[3+delay_offset] = delayline[2+delay_offset];	/* increment output delay line */
-elayline[2+delay_offset] = output;
+delayline[2+delay_offset] = output;
 delayline[1+delay_offset] = delayline[0+delay_offset];	/* increment input delay line */
 delayline[0+delay_offset] = input[0];
 input[0] = output;				/* store new input in case filter order > 2 */	}

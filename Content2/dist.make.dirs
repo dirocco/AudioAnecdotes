@@ -1,0 +1,10 @@
+#
+# make.dirs : holds a list of directories to be built
+#
+
+CHILDDIRS= \
+	02Synthesis \
+	03SignalProcessing \
+	04Spatialization \
+	05ComputerTechniques
+

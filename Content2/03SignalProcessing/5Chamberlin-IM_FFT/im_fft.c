@@ -1,3 +1,4 @@
+#include <stdio.h>
 // ******************************************************************
 // Function 1. Cosine Table Creator for ICFFT, IRealT, and ICplxT
 
