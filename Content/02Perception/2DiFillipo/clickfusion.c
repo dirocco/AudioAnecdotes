@@ -3,50 +3,49 @@
 // play two clicks close together
 // until they fuse into one sound
 
+#include "stdlib.h"
 #include "pablio.h"
 
 #define SAMPLE_RATE 44100
 
 float buffer[SAMPLE_RATE];
 
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
     PABLIO_Stream *outStream;
-    float delta = 1.0;
-    int sampleLength;
     int i;
 
-    if (argc > 1)
-        delta = atof(argv[1]);
-    if (delta > 1.0) delta = 1.0;
-    if (delta < 0.0) delta = 0.0;
+   OpenAudioStream(&outStream, SAMPLE_RATE, paFloat32,
+      PABLIO_WRITE|PABLIO_MONO);
 
-    sampleLength = delta * SAMPLE_RATE;
+    if(argc==2) {
+       double delta = atof(argv[1]); 
+       long numsamples = (long)(delta * (double)SAMPLE_RATE);
 
-    for (i = 0; i < sampleLength; i++)
-        buffer[i] = 1.0;
+       // output waveform programmaticaly since delta could exceed buffer
+       buffer[0] = 1.0;
+       while(numsamples--)
+	  WriteAudioStream(outStream, buffer, 1);
 
-    OpenAudioStream(&outStream, SAMPLE_RATE, paFloat32,
-        PABLIO_WRITE|PABLIO_MONO);
+    } else if(argc==1) {
+       int sampleRate = SAMPLE_RATE;
 
-    // synthesize and output samples
-    if (delta == 1.0) {
-        // default: loop delta from 1 second down to 0
-        while (sampleLength > 0) {
-            printf("sample rate %5d (%f seconds)\n", sampleLength, delta);
+       for (i = 0; i < SAMPLE_RATE; i++)
+	   buffer[i] = 1.0;
 
-            WriteAudioStream(outStream, &buffer, sampleLength);
+       // synthesize and output samples
+       while (sampleRate > 50) {
+	   printf("%5f seconds (%5d samples) between clicks\n",
+	       (float) sampleRate/SAMPLE_RATE, sampleRate);
 
-            delta *= 0.5;
-            sampleLength = delta * SAMPLE_RATE;
+	   WriteAudioStream(outStream, &buffer, sampleRate);
 
-            sleep(2);
-        }
-    }
-    else {
-        printf("sample rate %5d (%f seconds)\n", sampleLength, delta);
+	   sampleRate *= 0.5;
 
-        WriteAudioStream(outStream, &buffer, sampleLength);
+	   sleep(2);
+       }
+    } else {
+       printf("usage %s [time delay in seconds]\n", argv[0]);
     }
 
     CloseAudioStream(outStream);
