@@ -180,8 +180,23 @@ CD however to get full value from the CD please explore the actual source code,
 build and make changes to the code. <o:p></o:p></span></p>
 
 <p><span style='font-size:10.0pt'>This tour is not intended to stand alone but
-rather to compliment the book, <u>Audio Anecdotes: Tools, Tips, and Techniques
-for Digital Audio</u>, ISBN: <span style='color:#000066'>ISBN: 1-56881-104-7.
+rather to compliment the book, 
+
+#ifdef CD1
+<u>Audio Anecdotes: Tools, Tips, and Techniques for Digital Audio</u>,
+#endif
+#ifdef CD2
+<u>Audio Anecdotes Volume 2: Tools, Tips, and Techniques for Digital Audio</u>,
+#endif
+
+#ifdef CD1
+ISBN: <span style='color:#000066'>ISBN: 1-56881-104-7.
+#endif
+#ifdef CD2
+ISBN: <span style='color:#000066'>ISBN: 1-56881-214-0.
+#endif
+
+
 Please refer to the book for a detailed explanation of the examples provided
 here.</span><o:p></o:p></span></p>
 
@@ -196,7 +211,9 @@ style='font-size:10.0pt'> or </span><span class=SpellE><span style='font-size:
 10.0pt;font-family:"Courier New"'>tour.sh</span></span><span style='font-size:
 10.0pt;font-family:"Courier New"'> &#8211;w </span><span style='font-size:10.0pt'>(or
 </span><span style='font-size:10.0pt;font-family:"Courier New"'>&#8211;l</span><span
-style='font-size:10.0pt'> on Linux) start </span><span class=SpellE><span
+style='font-size:10.0pt'> on Linux,
+</span><span style='font-size:10.0pt;font-family:"Courier New"'>&#8211;m</span><span
+style='font-size:10.0pt'> on Mac OS X) start </span><span class=SpellE><span
 style='font-size:10.0pt;font-family:"Courier New"'>aathttpd</span></span><span
 style='font-size:10.0pt'> automatically.<o:p></o:p></span></p>
 
@@ -275,7 +292,13 @@ style='font-size:10.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
 <p style='text-align:justify'><span style='font-size:10.0pt'>----------------
 COPYRIGHT NOTICE ---------------- <o:p></o:p></span></p>
 
-<p><span style='font-size:10.0pt'>Except where noted, Copyright (c) 2003
+<p><span style='font-size:10.0pt'>Except where noted, Copyright (c) 
+#ifdef CD1
+2003
+#endif
+#ifdef CD2
+2004
+#endif
 Ken&nbsp;Greenebaum and contributing Author(s) who grant non-exclusive use
 under the BSD License. No warranty is expressed or implied. <o:p></o:p></span></p>
 
@@ -291,7 +314,16 @@ code from Audio Anecdotes, Volume1, edited by Ken Greenebaum and Ronen Barzel, <
 #ifdef CD2
 code from Audio Anecdotes, Volume2, edited by Ken Greenebaum and Ronen Barzel, <span
 #endif
-class=GramE>published</span> by A&nbsp;K&nbsp;Peters, 2003.<o:p></o:p></span></p>
+class=GramE>published</span> by A&nbsp;K&nbsp;Peters, 
+
+#ifdef CD1
+2003.
+#endif
+#ifdef CD2
+2004.
+#endif
+
+<o:p></o:p></span></p>
 
 </div>
 
