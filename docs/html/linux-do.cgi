@@ -30,8 +30,11 @@ cd ../../Content/0$1
 
 # we should realy inherit the proper DISPLAY however thttpd apparently
 # exec's cgi scripts w/o including the environment (should fix thttpd)
-export DISPLAY=:0.0
-# export DISPLAY=192.82.204.39:0.0
+
+# set DISPLAY if it isn't already
+if [ ${DISPLAY:="null"} = "null" ]; then
+   export DISPLAY=:0.0
+fi
 
 # probe to see if we can access the xserver by calling xset q
 xworked=0
