@@ -30,4 +30,19 @@ SOURCES = \
 	newtrigger.c \
 #	time.cpp 
 
+CHILDDIRS = \
+	test
+
 include @MAKEINCLUDESDIR@/build.leaf.make.inc
+
+makechildren: $(CHILDDIRS)
+	#
+
+FORCE:
+	# alsways build subdirs
+
+$(CHILDDIRS): FORCE
+	$(MAKE) -C $@ $(COMD)
+
+%:
+	$(MAKE) makechildren COMD=$*
