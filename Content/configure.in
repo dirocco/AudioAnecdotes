@@ -68,7 +68,7 @@ dnl Determine the host operating system / platform
 case "${host_os}" in
   darwin* )
         dnl Mac OS X configuration
-        LIBS="-framework CoreAudio -lm";
+        LIBS="-framework CoreAudio -framework AudioToolbox -lm";
         ;;
 
   mingw* )
