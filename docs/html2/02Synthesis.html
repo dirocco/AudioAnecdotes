@@ -16,7 +16,26 @@
 
 <p></p>
 <dd>
-Play <a href="../html/do.cgi?Content2+02Synthesis+1Fouad&rsf">rsf</a>.
+This simple example creates the ambience of a seashore using only the following
+two short audio files:
+<a href=../html/do.cgi?bin&playraw&~Content2+02Synthesis+1Fouad+wave.raw>wave.raw</a>,
+<a href=../html/do.cgi?bin&playraw&~Content2+02Synthesis+1Fouad+seagull.raw>seagull.wav</a>.
+
+<p> The following code sets the timing for the gull and wave sounds: </p>
+
+<dd>
+<tt><pre>
+<p>                            jitter, initial, period</p>
+<p>        statmodel gullmodel(  0.25,   0.125,  1.000);</p>
+<p>        statmodel wavemodel(  0.25,   0.000,  0.125);</p>
+</pre></tt>
+</dd>
+</p>
+
+
+<p>
+Play <a href="../html/do.cgi?Content2+02Synthesis+1Fouad&rsf">rsf</a> random sound field demo.
+</p>
 </dd>
 <p></p>
 
