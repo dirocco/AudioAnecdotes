@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 1997-2001 Alexandros Eleftheriadis, Yuntai Kyong and 
+ * Danny Hong
+ *
+ * This file is part of Flavor, developed at Columbia University
+ * (www.ee.columbia.edu/flavor)
+ *
+ * Flavor is free software; you can redistribute it and/or modify
+ * it under the terms of the Flavor Artistic License as described in
+ * the file COPYING.txt. 
+ *
+ */
+
+/* 
+ * Authors:
+ * Danny Hong <danny@ee.columbia.edu>
+ *
+ */
+ 
+
+/*
+ * RAW Audio File Format
+ *
+ * This example reads audio files in the raw audio formats.
+ *
+ */
+
+
+%pragma trace
+
+
+/*
+ * Raw8
+ *
+ * 8 bit raw data
+ */
+class Raw8 {
+    while (1 == 1) {
+        bit(8) data;
+    }
+}
+
+/*
+ * Raw16
+ *
+ * 16 bit raw data
+ */
+class Raw16 {
+    while (1 == 1) {
+        bit(16) data;
+    }
+}
+
+/*
+ * Raw16Little
+ *
+ * 16 bit raw data (in little-endian byte-ordering)
+ */
+class Raw16Little {
+    while (1 == 1) {
+        little bit(16) data;
+    }
+}

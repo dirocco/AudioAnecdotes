@@ -1,0 +1,179 @@
+/*
+ * Copyright (c) 1997-2001 Alexandros Eleftheriadis, Yuntai Kyong and 
+ * Danny Hong
+ *
+ * This file is part of Flavor, developed at Columbia University
+ * (www.ee.columbia.edu/flavor)
+ *
+ * Flavor is free software; you can redistribute it and/or modify
+ * it under the terms of the Flavor Artistic License as described in
+ * the file COPYING.txt. 
+ *
+ */
+
+/* 
+ * Authors:
+ * Danny Hong <danny@ee.columbia.edu>
+ *
+ */
+ 
+
+/*
+ * AIFF/AIFC File Format
+ *
+ * This example reads audio files in the Audio Interchange File Format
+ * or in the AIFC format. This example uses FORM AIFF/AIFC and it only 
+ * reads the 2 required chunks: Common Chunk and Sound Data Chunk. Other
+ * chunks are simply ignored.
+ *
+ */
+
+
+%pragma trace
+
+
+const signed int FORM_ID	= 0x464F524D;	// "FORM" in big-endian form
+const signed int COMM_ID	= 0x434F4D4D;	// "COMM" in big-endian form
+const signed int SSND_ID	= 0x53534E44;	// "SSND" in big-endian form
+
+const signed int AIFF_ID    = 0x41494646;   // "AIFF" in big-endian form
+const signed int AIFC_ID    = 0x41494643;   // "AIFC" in big-endian form
+
+const signed int MARK_ID	= 0x4D41524B;	// "MARK" in big-endian form
+const signed int INST_ID	= 0x494E5354;	// "INST" in big-endian form
+const signed int COMT_ID	= 0x434F4D54;	// "COMT" in big-endian form
+const signed int NAME_ID	= 0x4E414D45;	// "NAME" in big-endian form
+const signed int AUTH_ID	= 0x41555448;	// "AUTH" in big-endian form
+const signed int COPY_ID	= 0x28632920;	// "(c) " in big-endian form
+const signed int ANNO_ID	= 0x414E4E4F;	// "ANNO" in big-endian form
+const signed int AESD_ID	= 0x41455344;	// "AESD" in big-endian form
+const signed int MIDI_ID	= 0x4D494449;	// "MIDI" in big-endian form
+const signed int APPL_ID	= 0x4150504C;	// "APPL" in big-endian form
+
+// For AIFC only
+const signed int FVER_ID    = 0x46564552;   // "FVER" in big-endian form
+
+/* 
+ * ExtendedFloat 
+ *
+ * IEEE 80-bit floating point
+ *
+ */
+class ExtendedFloat {
+    bit(1)              sign;
+    unsigned int(15)    exponent;
+    unsigned int(32)    mantissa_hi;
+    unsigned int(32)    mantissa_lo;
+}
+
+/*
+ * PString
+ * 
+ * Pascal-style string, a one-byte count followed by that many text bytes.
+ * The total number of bytes in this data type should be even. If not, a 
+ * pad byte is added. However, the pad byte is not reflected in the count.
+ *
+ */
+class PString {
+    unsigned int(8)     count;
+    if ((count % 2) == 0) {
+        char(8)         text[count+1];
+    }
+    else {
+        char(8)         text[count];
+    }
+}
+
+/*
+ * Common Chunk 
+ * 
+ * Describes fundamental parameters of the waveform data.
+ *
+ */
+class CommonChunk {
+    int(32)             ckID            = COMM_ID;
+    int(32)             ckSize;
+   
+    int(16)             numChannels;
+    unsigned int(32)    numSampleFrames;
+    int(16)             sampleSize;
+    ExtendedFloat       sampleRate;
+}
+
+class AIFCCommonChunkExt {
+    int(32)             compressionType;
+    PString             compressionName;
+}
+
+/*
+ * Sound Data Chunk 
+ * 
+ * Contains the actual data.
+ *
+ */
+class SoundChunk {
+    int(32)             ckID            = SSND_ID;
+    int(32)             ckSize;
+    
+%pragma array=10000000, notrace
+	char(8)             data[ckSize];
+}
+
+%pragma trace
+
+/*
+ * Other Chunk
+ *
+ */
+class OtherChunk {
+    int(32)             ckID;
+    int(32)             ckSize;
+%g{
+	_F_bs.skipbits(8*ckSize);
+%g}
+}
+
+%pragma trace
+
+/*
+ * AIFF/AIFC File (FORM AIFF/AIFC File)
+ *
+ */
+class AIFF {
+    int(32)             ckID            = FORM_ID;
+    int(32)             ckSize;
+    int(32)             formType;
+
+	bit isInvalid_id = 0;
+	do {
+		// Read ahead
+		signed int(32)* id;
+		switch (id)
+		{
+		case COMM_ID:
+			CommonChunk ckCommon;
+            if (formType == AIFC_ID) {
+                AIFCCommonChunkExt ckCommonExt;
+            } 
+			break;
+		case SSND_ID:
+			SoundChunk ckSound;
+			break;
+        case MARK_ID:
+        case INST_ID:
+        case COMT_ID:
+        case NAME_ID:
+        case AUTH_ID:
+        case COPY_ID:
+        case ANNO_ID:
+        case AESD_ID:
+        case MIDI_ID:
+        case APPL_ID:
+        case FVER_ID:
+            OtherChunk ckOther;
+            break;
+		default:
+            isInvalid_id = 1;
+		}
+	} while(isInvalid_id != 1);
+}

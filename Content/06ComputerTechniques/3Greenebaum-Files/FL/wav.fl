@@ -1,0 +1,126 @@
+/*
+ * Copyright (c) 1997-2001 Alexandros Eleftheriadis, Yuntai Kyong and 
+ * Danny Hong
+ *
+ * This file is part of Flavor, developed at Columbia University
+ * (www.ee.columbia.edu/flavor)
+ *
+ * Flavor is free software; you can redistribute it and/or modify
+ * it under the terms of the Flavor Artistic License as described in
+ * the file COPYING.txt. 
+ *
+ */
+
+/* 
+ * Authors:
+ * Marios Athineos <marios@ee.columbia.edu>
+ * Danny Hong <danny@ee.columbia.edu>
+ *
+ */
+ 
+
+/*
+ * Wav File Format
+ *
+ * This example reads minimal wav files. We assume the file contains
+ * A RIFF WAVE chunk, a Format chunk and a Sound data chunk. There is
+ * also a "fact" chunk and this is ignored for the purpose of this example.
+ *
+ */
+
+
+%pragma trace
+
+
+const signed int RIFF_ID	= 0x52494646;	// "RIFF" in big-endian form
+const signed int FORMAT_ID	= 0x666d7420;	// "fmt " in big-endian form
+const signed int DATA_ID	= 0x64617461;	// "data" in big-endian form
+const signed int FACT_ID	= 0x66616374;	// "fact" in big-endian form
+const signed int WAVE_ID	= 0x57415645;	// "WAVE" in big-endian form
+const signed int MSSD_ID	= 0x4d737364;	// "Mssd" in big-endian form
+
+const signed int PCM_TAG	= 0x1;
+
+
+/////////////////////////////////////
+// Base Chunk
+class BaseChunk {
+	signed int(32)          ckID;
+	little signed int(32)   ckSize;
+}
+
+/////////////////////////////////////
+// RIFF Chunk
+class RIFFChunk extends BaseChunk {
+	// We only handle WAVE files
+	signed int(32)          riffType         = WAVE_ID;
+} 
+
+/////////////////////////////////////
+// Format Chunk
+class FormatChunk extends BaseChunk {
+	// We only handle PCM coded data
+	little signed int(16)   formatTag       = PCM_TAG;
+	little unsigned int(16) channels;
+	little unsigned int(32) samplesPerSec;
+	little unsigned int(32) avgBytesPerSec;
+	little unsigned int(16) blockAlign;
+	little unsigned int(16) bitsPerSample;
+%g{
+	_F_bs.skipbits(8*(ckSize-16));
+%g}
+}
+
+/////////////////////////////////////
+// Data Chunk
+class DataChunk extends BaseChunk {
+%pragma array=10000000, notrace
+	char(8)                 data[ckSize];
+}
+
+/////////////////////////////////////
+// Fact Chunk
+class FactChunk extends BaseChunk {
+%g{
+	_F_bs.skipbits(8*ckSize);
+%g}
+}
+
+/////////////////////////////////////
+// Mssd Chunk
+class MssdChunk extends BaseChunk {
+%g{
+	_F_bs.skipbits(8*ckSize);
+%g}
+}
+
+/////////////////////////////////////
+// WAV File
+class WAV {
+	// Read the riff, format and data chunks and consume the rest
+	bit isInvalid_id = 0;
+	do {
+		// Read ahead
+		signed int(32)* id;
+		switch (id)
+		{
+		case RIFF_ID:
+			RIFFChunk ckRiff;
+			break;
+		case FORMAT_ID:
+			FormatChunk ckFormat;
+			break;
+		case DATA_ID:
+			DataChunk ckData;
+			break;
+        case FACT_ID:
+			FactChunk ckFact;
+			break;
+        case MSSD_ID:
+			MssdChunk ckMssd;
+			break;
+		default:
+            isInvalid_id = 1;
+		}
+	} while(isInvalid_id != 1);
+}

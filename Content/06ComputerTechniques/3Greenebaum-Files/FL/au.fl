@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 1997-2001 Alexandros Eleftheriadis, Yuntai Kyong and 
+ * Danny Hong
+ *
+ * This file is part of Flavor, developed at Columbia University
+ * (www.ee.columbia.edu/flavor)
+ *
+ * Flavor is free software; you can redistribute it and/or modify
+ * it under the terms of the Flavor Artistic License as described in
+ * the file COPYING.txt. 
+ *
+ */
+
+/* 
+ * Authors:
+ * Danny Hong <danny@ee.columbia.edu>
+ *
+ */
+ 
+
+/*
+ * AU File Format
+ *
+ * This example reads audio files in the NeXT/Sun audio formats.
+ *
+ */
+
+
+%pragma trace
+
+
+/*
+ * Header
+ *
+ */
+class Header {
+    char(8) magic[4]        = ".snd";
+    int(32) dataLocation;
+    int(32) dataSize;
+    int(32) dataFormat;
+    int(32) samplingRate;
+    int(32) channelCount;
+    char(8) info[dataLocation-24];  // Min size is 4
+}
+
+/*
+ * AU File (NeXT/Sun Audio File)
+ *
+ */
+class AU {
+    Header hd;
+  
+%pragma array=10000000, notrace
+	char(8) data[hd.dataSize];
+}

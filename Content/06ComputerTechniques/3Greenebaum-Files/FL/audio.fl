@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 1997-2001 Alexandros Eleftheriadis, Yuntai Kyong and 
+ * Danny Hong
+ *
+ * This file is part of Flavor, developed at Columbia University
+ * (www.ee.columbia.edu/flavor)
+ *
+ * Flavor is free software; you can redistribute it and/or modify
+ * it under the terms of the Flavor Artistic License as described in
+ * the file COPYING.txt. 
+ *
+ */
+
+/* 
+ * Authors:
+ * Danny Hong <danny@ee.columbia.edu>
+ *
+ */
+ 
+
+/*
+ * Audio Parser
+ *
+ * This example looks at magic numbers to determine an audio file 
+ * format, and then, uses appropriate parser to read through the format.
+ *
+ */
+
+%import "aiff.fl"
+%import "au.fl"
+%import "wav.fl"
+%import "raw.fl"
+
+
+%pragma trace
+
+
+/*
+ * Audio
+ *
+ */
+class Audio {
+    unsigned int(32)* magic;
+    
+    switch (magic) 
+    {
+    case 0x464F524D:    // "FORM"   -- AIFF/AIFC Format
+        AIFF aiff;
+        break;
+    case 0x2E736E64:    // ".snd"   -- NeXT/Sun Format
+        AU au;
+        break;
+    case 0x52494646:    // "RIFF"   -- WAV Format
+        WAV wav;
+        break;
+    default:            // Raw Format
+        Raw8 raw;
+    }
+}
