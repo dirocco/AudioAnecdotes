@@ -15,6 +15,11 @@ echo
 foo=`echo $QUERY_STRING | tr '&' ' ' | tr '+' '/'`
 echo $foo
 
-cmd.exe /c start $foo
+cmd /c start $foo
+
+if [ $? -ne 0 ]; then
+   # hmm, cmd didn't work? Try command!
+   command /c start $foo
+fi
 
 exit 0
