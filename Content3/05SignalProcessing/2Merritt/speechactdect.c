@@ -1,7 +1,5 @@
 #include <math.h>     // sin()
 #include "pablio.h"
-#include <fstream.h>
-#include <iostream.h>
 
 #define SAMPLE_RATE  8000
 #define FREQUENCY     440.0
