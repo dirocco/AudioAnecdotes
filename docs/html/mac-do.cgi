@@ -40,7 +40,7 @@ fi
 xworked=0
 
 # list of locations where xset may be
-list="xset /usr/bin/X11/xset /usr/X11R6/bin/xset"
+list="xset&/usr/bin/X11/xset&/usr/X11R6/bin/xset"
 for prog in $list; do
    $prog q 2>> /tmp/log
 
@@ -64,7 +64,7 @@ else
 fi
 
 if [ $xworked -eq 1 ]; then
-   list="xterm /usr/bin/X11/xterm /usr/X11R6/bin/xterm"
+   list="xterm&/usr/bin/X11/xterm&/usr/X11R6/bin/xterm"
    (
       for prog in $list; do
 	 $prog -e ./$2 $3 $4 $5 2>> /tmp/log
