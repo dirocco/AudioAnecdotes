@@ -9,8 +9,8 @@
 CHILDDIRS=lib mono poly
 
 #the path to the directory which contains configure for this directory
-CONFIGROOT=..
+CONFIGROOT=../..
 
 #includes for a configure child
-include ../../include/make-includes/config.make.inc
-include ../../include/make-includes/config.child.make.inc
+include ../../../include/make-includes/config.make.inc
+include ../../../include/make-includes/config.child.make.inc
