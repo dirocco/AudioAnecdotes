@@ -20,6 +20,6 @@ TOOLROOT=@TOOLROOT@
 LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
-EXECS=rb$(EXEEXT)
+CPPSOURCES=rb.cpp
 
-include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
+include @MAKEINCLUDESDIR@/build.leaf.make.inc
