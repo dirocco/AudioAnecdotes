@@ -10,7 +10,7 @@
 #
 
 CC = @CC@
-CFLAGS = @CFLAGS@ -I. -c
+CFLAGS = @CFLAGS@ -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
 LOCALCLEAN = 
