@@ -1,17 +1,5 @@
 TOPDIR=..
-CHILDDIRS = html
-
-makechildren: $(CHILDDIRS)
-        if [ "$(COMD)" = "dist" ]; then  $(TOPDIR)/bin/tbmaker $(TYPE) $(TOPDIR)/distro/ $(TOPDIR)/dirt/
 
 dist:
 	$(TOPDIR)/bin/tbmaker $(TYPE) $(TOPDIR)/distro/ $(TOPDIR)/dirt/
-
-FORCE:
-        #Subdirectories must always be built
-
-$(CHILDDIRS): FORCE
-        $(MAKE) -C $@ $(COMD) TOPDIR=$(TOPDIR)
-
-%:
-        $(MAKE) makechildren COMD=$* TOPDIR=$(TOPDIR)
+	$(MAKE) -C html $(COMD) TOPDIR=$(TOPDIR)
