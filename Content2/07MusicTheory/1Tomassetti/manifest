@@ -1,0 +1,7 @@
+src_v2       Makefile.in 	src_v2.tar       Volume2/Content2/07MusicTheory/1Tomassetti/Makefile.in
+src_v2       config.mak  	src_v2.tar       Volume2/Content2/07MusicTheory/1Tomassetti/config.mak
+src_v2       scales.c       	src_v2.tar       Volume2/Content2/07MusicTheory/1Tomassetti/scales.c
+
+bin_v2_win   scales.exe     	bin_v2_win.tar   Volume2/Content2/07MusicTheory/1Tomassetti/scales.exe
+bin_v2_mac   scales         	bin_v2_mac.tar   Volume2/Content2/07MusicTheory/1Tomassetti/scales
+bin_v2_linux scales         	bin_v2_linux.tar Volume2/Content2/07MusicTheory/1Tomassetti/scales
