@@ -6,8 +6,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <dmedia/audio.h>
-#include <dmedia/audiofile.h>
+#include <pablio.h>
 #include "vbap.h"
 
 

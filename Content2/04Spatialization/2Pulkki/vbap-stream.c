@@ -95,28 +95,21 @@ void vbap(double gains[MAX_CHANNELS], LS_DATA *ls_data, int azi, int ele)
 main() 
 {
   LS_DATA ls_data;
-  FILE *fp;
   double gains[MAX_CHANNELS];
+
+  // these 2 should be set on commandline
   int azimuth=0;
   int elevation=20;
-  double *gainptr, *outptr, *inptr, gain;
-  double out[BUFFER_LENGTH][MAX_CHANNELS];
-
-  double in[BUFFER_LENGTH]={1.0, 2.0, 3.0, 4.0, 0.0, 1.0, 2.0, 3.0, 4.0, -2.0}; 
-  int num_of_buffers=1; /* just an example*/
 
   int i,j,k;
+
+  // this should be specified in speaker file
   int numchannels = 8; /* change this according your output device*/
   int ls_set_dim = 3;
   int ls_num = 8;
   int ls_dirs[MAX_FIELD_AM]={-30,0,  30,0, -45,45,  45,45,  -90,0, 
 			     90,0,  180,0,  180,45};
-  if((fp=fopen("loudspeaker_set_matrices_2D","r"))==NULL){
-    fprintf(stderr,"Could not loudspeaker data file");
-    exit(0);
-  }
 
-  
   /* defining loudspeaker data */
   define_loudspeakers(&ls_data, ls_set_dim, ls_num, ls_dirs);
      /* ls_data is a struct containing matrices etc
@@ -129,38 +122,18 @@ main()
      /* gain factors for virtual source in direction
      (int azimuth, int elevation) */
   vbap(gains, &ls_data, azimuth, elevation);  
-     /* panning monophonic stream  float *in 
-     to multiple outputs           float *out[]
-     with gain factors             float *gains  */
   
+  float sample;
+  while(scanf("%f\n", &sample)==1) {
+    printf("got %f\n", sample);
 
-  printf("\nAudio to be panned: \n");
-  for(i=0;i<BUFFER_LENGTH;i++)
-    printf("%f ", in[i]);
-  printf("\n\n");
-
-  printf("Resulting channels: \n");
-  for(j=0;j<num_of_buffers;j++){
-    gainptr=gains;
     for (k=0; k<numchannels; k++){
       printf("%d: ",k+1);
-      outptr= out[k];          /* outptr points to current output channel */
-      inptr = in;           /* inptr points to audio to be panned  */
-      gain = *gainptr++;       /* gain factor for this channel (loudspeaker)*/
-      if(gain != 0.0) 
-	for (i=0; i<BUFFER_LENGTH; ++i)    /* panning */ 
-	  printf("%f ",*outptr++ = *inptr++ * gain); 
-      else                     /* no output to this channel */
-	for (i=0; i<BUFFER_LENGTH; ++i)
-	  *outptr++ = 0.0; 
-      printf("\n");
+      printf("%f ", sample * gains[k]); 
     }
+    printf("\n");
   }
 }
-
-
-
-
 
 void define_loudspeakers(LS_DATA *ls_data, int ls_set_dim, int ls_num, int ls_dirs[MAX_FIELD_AM])
      /* Inits the loudspeaker data. Calls choose_ls_tuplets or _triplets
@@ -431,7 +404,7 @@ float vec_angle(cart_vec v1, cart_vec v2)
 
 float vec_length(cart_vec v1)
 {
-  return (fsqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z));
+  return (sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z));
 }
 
 float vec_prod(cart_vec v1, cart_vec v2)
