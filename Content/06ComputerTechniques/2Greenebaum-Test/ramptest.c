@@ -32,14 +32,17 @@ main()
 
    while(1) 
    {
-      LastReceived = Received;
-      result = scanf("%d", &Received);
-      if (result != 1)
+      if (state != ERROR)
       {
-        printf("scanf didn't return 1\n");
-        break;
+         LastReceived = Received;
+         result = scanf("%d", &Received);
+         if (result != 1)
+         {
+            printf("scanf didn't return 1\n");
+            break;
+         }
+         Total++;
       }
-      Total++;
 
       switch(state) 
       {
@@ -72,15 +75,6 @@ main()
 	       printf("WAITFORSIG received %d, lastreceived %d, expected %d ", 
                                 Received, LastReceived, Expected);
 	       printf("received expected value at %d\n", Total - 1);
-
-               // if we meet the theshold then transition to state 2
-
-//               disable threshold logic for now
-//               if (++count > THRESHOLD)
-//               {
-//                  state = RUNESTABLISHED;
-//                  break;
-//               }
 
                count++;
                state = ESTABLISHRUN;  // redundant, here for consistency
@@ -121,7 +115,8 @@ main()
             // here if Received != Expected (which is LastReceived + 1)
 
             ErrorCount++;
-            printf("error detected\n");
+            printf("error detected: Received=%d LastReceived=%d Expected=%d\n",
+                    Received, LastReceived, Expected);
 
             // determine which kind of error
 
@@ -129,11 +124,13 @@ main()
                // received the same value as PREVIOUS value
                ErrorCountRepeatedValue++;
       
-            if (Received > LastReceived + 1)
+            else if (Received > LastReceived + 1)
                // (Received - LastReceived) samples were skipped 
                ErrorCountSkippedValue++;
 
             else // sample is unexpected, but less than expected
+                 // sample is less than or equal too the expected
+
                ErrorCountWrongValue++;
 
             // reset and try again
