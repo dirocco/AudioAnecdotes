@@ -10,7 +10,7 @@
 #
 
 CC = @CC@
-CFLAGS = @CFLAGS@ -I.
+CFLAGS = @CFLAGS@ -D debug -I.
 LDFLAGS = @LDFLAGS@
 LIBS = -lpablio @LIBS@ 
 EXEEXT=@EXEEXT@
