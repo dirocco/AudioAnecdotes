@@ -6,7 +6,7 @@
 #
 
 #subdirectories of the directory
-CHILDDIRS=
+CHILDDIRS=mono poly
 
 #the path to the directory which contains configure for this directory
 CONFIGROOT=..

@@ -9,13 +9,13 @@ CHILDDIRS= \
 	   02DiFillipo-Latency\
 	   04Cook\
 	   04Thiel\
+	   05Luna\
 	   05Malvar\
 	   06Greenebaum-API\
+	   06Greenebaum-Files\
 	   06Greenebaum-Test\
 	   07Greenebaum-PABLIO\
 	   Phil_Burk
 
-#	05Luna
-#	06Greenebaum-Files\
 #	07Eleftheriadis
 #	07Rutschman
