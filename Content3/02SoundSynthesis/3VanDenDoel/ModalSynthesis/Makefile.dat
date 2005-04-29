@@ -1,0 +1,2 @@
+collide.exe: collide.cpp Makefile.dat
+	g++ -o collide.exe collide.cpp -I/home/howardg/aadevtree2/include -L/home/howardg/aadevtree2/lib -L. -lpablio -lWINMM
