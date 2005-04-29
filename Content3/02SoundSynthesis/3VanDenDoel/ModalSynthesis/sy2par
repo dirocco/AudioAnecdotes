@@ -1,0 +1,68 @@
+#!/usr/bin/perl
+@lines = <STDIN>;
+chop @lines;
+$l = 0;
+if ($lines[$l++] eq "nactive_freq:") {
+    $nactive_freq = $lines[$l++];
+}
+if ($lines[$l++] eq "n_freq:") {
+    $n_freq = $lines[$l++];
+}
+if ($lines[$l++] eq "n_points:") {
+    $n_points = $lines[$l++];
+}
+if ($lines[$l] eq "frequency_scale:" || $lines[$l] == "freq_scale:" || $lines[$l] eq "fs:") {
+    $l++;
+    $frequency_scale = $lines[$l++];
+}
+if ($lines[$l] eq "damping_scale:" || $lines[$l] eq "ds:") {
+    $l++;
+    $damping_scale = $lines[$l++];
+}
+if ($lines[$l] eq "amplitude_scale:" || $lines[$l] == "ampl_scale:" || $lines[$l] eq "as:") {
+    $l++;
+    $amplitude_scale = $lines[$l++];
+}
+if ($lines[$l++] eq "frequencies:") {
+    for ($i = 0; $i < $n_freq; $i++) {
+        $frequencies[$i] = $frequency_scale*$lines[$l++];
+    }
+}
+if ($lines[$l++] eq "dampings:") {
+    for ($i = 0; $i < $n_freq; $i++) {
+        $dampings[$i] = $damping_scale*$lines[$l++];
+    }
+}
+$maxamp = 0;
+if ($lines[$l++] eq "amplitudes[point][freq]:") {
+    for ($j = 0; $j < $n_points; $j++) {
+	$amp = 0;
+        for ($i = 0; $i < $n_freq; $i++) {
+	    $amplitudes[$j * $n_freq + $i] = $amplitude_scale*$lines[$l++];
+	    $amp += $amplitudes[$j * $n_freq + $i];
+	}
+        if ($amp gt $maxamp) {
+	    $maxamp = $amp;
+	}
+    }
+}
+# print "nactive_freq: $nactive_freq\n";
+# print "n_freq: $n_freq\n";
+# print "n_points: $n_points\n";
+# print "frequency_scale: $frequency_scale\n";
+# print "damping_scale: $damping_scale\n";
+# print "amplitude_scale: $amplitude_scale\n";
+# print "maxamp: $maxamp\n";
+# print "amplitudes\tdampings\tfrequencies:\n";
+for ($i = 0; $i < $nactive_freq; $i++) {
+    $a = $amplitudes[$i]/$maxamp;
+    print "$a\t$dampings[$i]\t$frequencies[$i]\n";
+}
+print "points:\n";
+for ($i; $i < $nactive_freq * $n_points; $i++) {
+    $a = $amplitudes[$i]/$maxamp;
+    print "$a\n";
+}
+if ($lines[$l] ne "END") {
+    print STDERR "conversion error: $lines[$l] at END\n";
+}
