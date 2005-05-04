@@ -24,7 +24,7 @@
 #ifndef INCLUDED_HACKEDUPPARAMETERSEQUENCER_H
 #define INCLUDED_HACKEDUPPARAMETERSEQUENCER_H
 
-#include <iostreams>
+#include <iostream>
 #include <fstream>
 #include <limits>
 #include <string>

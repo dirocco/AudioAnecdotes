@@ -24,9 +24,9 @@
 #ifndef INCLUDED_RAISEDCOSINEBELLENVELOPE_H
 #define INCLUDED_RAISEDCOSINEBELLENVELOPE_H
 
-#include <ctype>
+#include <ctype.h>
 #include <cassert>
-#include <math>
+#include <cmath>
 
 /*
     RaisedCosineBellEnvelope models GrainEnvelopeT (see Grain.h)

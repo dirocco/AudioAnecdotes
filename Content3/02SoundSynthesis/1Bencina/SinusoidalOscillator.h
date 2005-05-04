@@ -24,7 +24,7 @@
 #ifndef INCLUDED_SINUSOIDALOSCILLATOR_H
 #define INCLUDED_SINUSOIDALOSCILLATOR_H
 
-#include <math>
+#include <cmath>
 
 class SinusoidalOscillator{
 public:

@@ -25,7 +25,7 @@
 #define INCLUDED_SINUSOIDALFMOSCILLATOR_H
 
 #include <limits>
-#include <math>
+#include <cmath>
 
 /*
     A sinusoidal fm oscillator using an integer phasor and

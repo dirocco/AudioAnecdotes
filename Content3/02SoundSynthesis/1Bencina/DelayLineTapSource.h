@@ -24,7 +24,7 @@
 #ifndef INCLUDED_DELAYLINETAPSOURCE_H
 #define INCLUDED_DELAYLINETAPSOURCE_H
 
-#include <ctype>
+#include <ctype.h>
 
 #include "DelayLine.h"
 

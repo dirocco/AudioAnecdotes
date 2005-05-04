@@ -24,7 +24,7 @@
 #ifndef INCLUDED_FOFENVELOPE_H
 #define INCLUDED_FOFENVELOPE_H
 
-#include <math>
+#include <cmath>
 
 #include "RaisedCosineBellEnvelope.h"
 #include "ExponentialEnvelope.h"

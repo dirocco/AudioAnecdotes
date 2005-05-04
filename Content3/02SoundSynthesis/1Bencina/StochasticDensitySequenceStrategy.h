@@ -24,8 +24,8 @@
 #ifndef INCLUDED_STOCHASTICDENSITYSEQUENCESTRATEGY_H
 #define INCLUDED_STOCHASTICDENSITYSEQUENCESTRATEGY_H
 
-#include <math>
-#include <ctype>
+#include <cmath>
+#include <ctype.h>
 
 #include "Random.h"
 

@@ -25,7 +25,7 @@
 #define INCLUDED_DELAYLINE_H
 
 #include <cassert>
-#include <math>
+#include <cmath>
 
 /*
     Not the most efficient DelayLine imaginable. The Tap could use
@@ -66,7 +66,7 @@ public:
         double readIndex_;
         double increment_;
 	};
-    friend FixedRateTap;
+    friend class FixedRateTap;
 
 
 	DelayLine( unsigned long maximumDelaySamples )

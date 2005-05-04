@@ -40,7 +40,7 @@
     required by EnvelopeComposer's constructor
 */         
 
-template< class EnvelopeT1, class EnvelopeT2, template<class T> class BinOp=std::multiplies >
+template< class EnvelopeT1, class EnvelopeT2, class BinOp=std::multiplies<float> >
 class EnvelopeComposer{
 public:
     typedef EnvelopeT1 envelope1_type;
@@ -54,7 +54,7 @@ public:
 
 
     float operator*() const {
-        return composition_type<float>()( *e1_, *e2_ );
+        return composition_type()( *e1_, *e2_ );
     }
     
     EnvelopeComposer& advance(){

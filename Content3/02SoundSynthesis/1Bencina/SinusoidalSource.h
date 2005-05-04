@@ -24,7 +24,7 @@
 #ifndef INCLUDED_SINUSOIDALSOURCE_H
 #define INCLUDED_SINUSOIDALSOURCE_H
 
-#include <ctype>
+#include <ctype.h>
 
 #include "SinusoidalOscillator.h"
 

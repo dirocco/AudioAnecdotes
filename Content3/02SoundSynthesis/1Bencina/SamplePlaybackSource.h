@@ -24,7 +24,7 @@
 #ifndef INCLUDED_SAMPLEPLAYBACKSOURCE_H
 #define INCLUDED_SAMPLEPLAYBACKSOURCE_H
 
-#include <ctype>
+#include <ctype.h>
 
 #include "Sample.h"
 

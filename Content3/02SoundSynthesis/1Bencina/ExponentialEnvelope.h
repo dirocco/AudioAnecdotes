@@ -24,7 +24,7 @@
 #ifndef INCLUDED_EXPONENTIALENVELOPE_H
 #define INCLUDED_EXPONENTIALENVELOPE_H
 
-#include <math>
+#include <cmath>
 
 /*
     ExponentialEnvelope models GrainEnvelopeT (see Grain.h)

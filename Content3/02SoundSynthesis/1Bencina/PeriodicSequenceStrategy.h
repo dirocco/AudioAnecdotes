@@ -24,7 +24,7 @@
 #ifndef INCLUDED_PERIODICSEQUENCESTRATEGY_H
 #define INCLUDED_PERIODICSEQUENCESTRATEGY_H
 
-#include <ctype>
+#include <ctype.h>
 
 /*
     PeriodicSequenceStrategy models SequenceStrategy (see Scheduler.h)

@@ -24,7 +24,7 @@
 #ifndef INCLUDED_TRAPEZOIDALENVELOPE_H
 #define INCLUDED_TRAPEZOIDALENVELOPE_H
 
-#include <ctype>
+#include <ctype.h>
 #include <cassert>
 
 /*

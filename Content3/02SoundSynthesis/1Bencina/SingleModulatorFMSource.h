@@ -24,7 +24,7 @@
 #ifndef INCLUDED_SINGLEMODULATORFMSOURCE_H
 #define INCLUDED_SINGLEMODULATORFMSOURCE_H
 
-#include <ctype>
+#include <ctype.h>
 
 #include "SinusoidalOscillator.h"
 #include "SinusoidalFMOscillator.h"

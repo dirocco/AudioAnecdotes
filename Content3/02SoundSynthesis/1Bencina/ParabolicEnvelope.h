@@ -24,7 +24,7 @@
 #ifndef INCLUDED_PARABOLICENVELOPE_H
 #define INCLUDED_PARABOLICENVELOPE_H
 
-#include <ctype>
+#include <ctype.h>
 #include <cassert>
 
 /*
