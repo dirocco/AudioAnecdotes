@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <cstring>
+//#include <cstring>
 // Uncomment next #include for use under MacOS with Metrowerks C compiler.
 //#include <console.h>
 
