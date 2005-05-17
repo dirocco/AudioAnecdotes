@@ -1,0 +1,123 @@
+dnl
+dnl PortAudio configure.in script
+dnl
+dnl H. Gregory Silber on 1/14/03
+dnl 
+dnl Based on Original code by: Dominic Mazzoni
+dnl
+
+dnl Require autoconf >= 2.13
+AC_PREREQ(2.13)
+
+dnl Init autoconf and make sure configure is being called
+dnl from the right directory (for autoconf executed by configure)
+AC_INIT
+
+dnl Checks for programs
+AC_PROG_CC
+AC_PROG_LIBTOOL
+
+dnl Add additional help strings
+AC_ARG_ENABLE([use-static],[  --enable-use-static     Use static libraries to build executables (Default=NO)],
+        buildwithstatic=$enableval,buildwithstatic=no)
+if [[ "$buildwithstatic" = "yes" ]] ; then
+        AC_MSG_RESULT([Setting builds to use static libraries]);
+        LDFLAGS="$LDFLAGS --static";
+else
+        AC_MSG_RESULT([Setting builds to use shared libraries]);
+fi
+
+AC_ARG_WITH([toolroot],[  --with-toolroot[=DIR]   Use DIR as the root for all tools],ac_toolroot=$withval,ac_toolroot=[])
+
+dnl Some substitution variables
+AC_SUBST(MAKEINCLUDESDIR)
+AC_SUBST(BINDIR)
+AC_SUBST(TOOLROOT)
+AC_SUBST(LOCALOPT)
+AC_SUBST(LOCALLINK)
+AC_SUBST(LOCALDLINK)
+AC_SUBST(DLLTOOL)
+AC_SUBST(SHARED_LIB_CONDITIONAL)
+AC_SUBST(STATIC_LIB_CONDITIONAL)
+
+DLLTOOL=dlltool
+dnl need to compute the top of the build tree $srcdir is --srcdir of 
+dnl configure options
+case $srcdir in
+	.)
+		my_abs_topdir=`cd .. && pwd` ;;
+	*)  
+		my_abs_topdir=`cd $srcdir/.. && pwd` ;;
+esac
+		
+dnl set our top level lib and include directories and add them to the
+dnl compiler flags
+LDFLAGS="$LDFLAGS -L$my_abs_topdir/lib"
+CFLAGS="$CFLAGS -I$my_abs_topdir/include"
+
+BINDIR="$my_abs_topdir/bin"
+
+dnl Set the directory for make include files
+MAKEINCLUDESDIR="$my_abs_topdir/include/make-includes"
+dnl By default, we build a shared library with no post processing
+SHARED_LIB_CONDITIONAL=buildsharedlib
+STATIC_LIB_CONDITIONAL=buildstaticlib
+
+
+dnl Determine the host operating system / platform
+case "${host_os}" in
+  darwin* )
+        dnl Mac OS X configuration
+        LIBS="-framework CoreAudio -framework AudioToolbox -lm";
+        ;;
+
+  mingw* )
+        dnl MingW configuration
+        dnl ON mingw, we must build a dll, which requires additional work
+        SHARED_LIB_CONDITIONAL=builddll
+        LIBS="-lwinmm -lm";
+        ;;
+
+  cygwin* )
+        dnl Cygwin configuration
+        dnl ON cygwin, we must build a dll, which requires additional work
+        SHARED_LIB_CONDITIONAL=builddll
+        LIBS="-lwinmm -lm";
+	if [[ "$ac_toolroot" != "" ]] ; then
+        	AC_MSG_RESULT([Setting toolroot to $ac_toolroot]);
+		TOOLROOT="$ac_toolroot";
+                LOCALOPT="-nostdinc -nostdlib -I$TOOLROOT/usr/include -I$TOOLROOT/usr/lib/gcc-lib/i686-pc-cygwin/3.2/include -L$TOOLROOT/usr/lib -B$TOOLROOT/lib/"
+		LOCALLINK="$TOOLROOT/usr/lib/crt0.o -lcygwin -lkernel32";
+		LOCALLINK="-lcygwin -lkernel32";
+		DLLTOOL="$TOOLROOT/usr/bin/dlltool"
+		CC="$TOOLROOT/usr/bin/$CC";
+		AR="$TOOLROOT/$AR";
+		RANLIB=$TOOLROOT/usr/bin/$RANLIB; 
+	fi
+        ;;
+
+  *)
+        dnl Unix OSS configuration
+
+   	AC_CHECK_LIB(pthread, pthread_create,
+                ,
+        AC_MSG_ERROR([libpthread not found!]))
+
+        LIBS="-lm -lpthread";
+esac
+
+if [[ $enable_static = "no" ]] ; then
+        STATIC_LIB_CONDITIONAL=""
+fi
+
+if [[ $enable_shared = "no" ]] ; then
+        SHARED_LIB_CONDITIONAL=""
+fi
+
+AC_OUTPUT([Makefile])
+
+echo ""
+echo "Finished global configuration."
+
+echo ""
+
