@@ -2,25 +2,25 @@
 # Makefile for PitchShift under cygwin
 #------------------------------------------------------------------------
 CC = gcc
-CFLAGS = -O3 -DDLL_PREFIX="" -D_LE_MACHINE
-LIBDIR = /usr/local/lib
-BINDIR = /usr/local/bin
-
+INCL = ../4Bunnell
+CFLAGS = -O3 -D_LE_MACHINE -I $(INCL)
 #------------------------------------------------------------------------
 # Remaining definitions apply to all machines
 #------------------------------------------------------------------------
  
-SRCS = PitchShift.c psola.c ppsfns.c voicingVerify.c spenvel.c ptracks.c
+SRCS = PitchShift.c psola.c ppsfns.c voicingVerify.c spenvel.c ptracks.c \
+	fp_fft.c unpack.c
 
-OBJS = PitchShift.o psola.o ppsfns.o voicingVerify.o spenvel.o ptracks.o
+OBJS = PitchShift.o psola.o ppsfns.o voicingVerify.o spenvel.o ptracks.o \
+	fp_fft.o unpack.o
 
-all: PitchShift.exe
+all: PitchShift
 
-PitchShift.exe: $(OBJS)
-	$(CC) -o PitchShift.exe -L $(LIBDIR) $(OBJS) -lm -lcu -lcwav -lcdsp
+PitchShift: $(OBJS) ../4Bunnell/libcwav.a
+	$(CC) -o PitchShift -L ../4Bunnell/ $(OBJS) -lm -lcwav
 
-install: PitchShift.exe
-	cp PitchShift.exe $(BINDIR)/
+../4Bunnell/libcwav.a:
+	make -C ../4Bunnell -f makefile.lnx
 
 clean:
 	rm -f $(OBJS)

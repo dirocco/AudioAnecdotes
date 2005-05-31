@@ -17,11 +17,12 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
+#ifdef MSC
 #include <io.h>
+#endif
 #include <fcntl.h>
 #include "wiodef.h"
 #include "dsp.h"
-#include "libcu.h"
 #include "spenvel.h"
 #include "pps.h"
 
