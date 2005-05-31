@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------------
  * Name		TimeScale - Compress or Expand the time-scale of a waveform
  *
- * Synopsis	TimeScale -sc:ff [-opt:par] input[.WAV] output[.WAV]
+ * Synopsis	TimeScale -tsc:ff [-opt:par] input[.WAV] output[.WAV]
  *		Required args:
  *		  input     input waveform file (RIFF or ASEL)
  *		  output    input waveform file (RIFF or ASEL)
@@ -10,18 +10,18 @@
  *			    values > 1.0 produce expansion.
  *
  * 		Optional args:
- * 		  -min:mm   Minimum pitch period length in msec [6]
+ * 		  -min:mm   Minimum pitch period length in msec [4]
  *		  -max:mm   Maximum pitch period length in msec [12]
  * 		  -lap:nn   Number of overlapping samples for gating from 
- *			    one period to the next [16]
+ *			    one period to the next [32]
  *
  * Description
  *		Copies input to output while applying the time compression
- *		or expansion determined by -sc, the scaling factor. If
- *		-sc is < 1.0, the output file will be a compressed version
- *		of the input (e.g., -sc:0.5 corresponds to a factor of 2
- *		compression). If -sc is > 1.0, the output is expanded from
- *		the input (e.g., -sc:2.0 is a factor of two expansion).
+ *		or expansion determined by -tsc, the scaling factor. If
+ *		-tsc is < 1.0, the output file will be a compressed version
+ *		of the input (e.g., -tsc:0.5 corresponds to a factor of 2
+ *		compression). If -tsc is > 1.0, the output is expanded from
+ *		the input (e.g., -tsc:2.0 is a factor of two expansion).
  *
  * --------------------------------------------------------------------------
  */
@@ -45,6 +45,17 @@ char *cmdfiles[3] = {"", "", ""};
 
 int BestPt(int n, short *data, float cut);
 
+void Usage() {
+  printf("Usage: TimeScale -tsc:ff [-opt:par] <input[.wav]> <output[.wav]>\n");
+  printf("       -tsc:ff -- scale factor 0.0 < ff < MAX_FLOAT. If ff < 1.0\n");
+  printf("                  time scale is compressed. If ff > 1.0 time scale\n");
+  printf("                  is expanded\n");
+  printf("       -min:ms -- Minimum pitch period length in msec\n");
+  printf("       -max:ms -- Maximum pitch period length in msec\n");
+  printf("       -lap:ns -- Number of overlap samples to minimize transients\n");
+  exit(1);
+}
+
 int main(int argc, char **argv)
 {
     int lap, nout, j, nwork, nin;
@@ -57,6 +68,13 @@ int main(int argc, char **argv)
     char wavout[129], wavin[129];
     WVFILE *wfp;
     WDB wdb;
+
+/*
+ * Trap bad command
+ */
+    if (argc < 3)
+      Usage();
+
 /* 
  * Check for command line args
  */

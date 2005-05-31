@@ -2,25 +2,24 @@
 # Makefile for PitchShift under cygwin
 #------------------------------------------------------------------------
 CC = gcc
-CFLAGS = -O3 -DDLL_PREFIX="" -D_LE_MACHINE
-LIBDIR = /usr/local/lib
-BINDIR = /usr/local/bin
+INCL = ../4Bunnell
+CFLAGS = -O3 -I $(INCL) -D_LE_MACHINE
 
 #------------------------------------------------------------------------
 # Remaining definitions apply to all machines
 #------------------------------------------------------------------------
  
-SRCS = TimeScale.c lowpass.c bestpt.c
+SRCS = TimeScale.c lowpass.c bestpt.c unpack.c fp_fft.c
 
-OBJS = TimeScale.o lowpass.o bestpt.o
+OBJS = TimeScale.o lowpass.o bestpt.o unpack.o fp_fft.o
 
-all: TimeScale.exe
+all: TimeScale
 
-TimeScale.exe: $(OBJS)
-	$(CC) -o TimeScale.exe -L $(LIBDIR) $(OBJS) -lm -lcu -lcwav -lcdsp
+TimeScale: $(OBJS) ../4Bunnell/libcwav.a
+	$(CC) -o TimeScale -L../4Bunnell $(OBJS) -lcwav -lm
 
-install: TimeScale.exe
-	cp TimeScale.exe $(BINDIR)/
+../4Bunnell/libcwav.a:
+	make -C ../4Bunnell -f makefile.lnx
 
 clean:
 	rm -f $(OBJS)
