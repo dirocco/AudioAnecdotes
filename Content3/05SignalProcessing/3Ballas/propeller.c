@@ -30,7 +30,7 @@ void	four1(double *data, int nn, int isign);
 short get_AIFF_sound_data(char *filename, short *buffer, int buffer_size);
 // Uncomment next line if this code will be compiled and used on an Intel-based
 //  computer.
-//void reorder_short(short *i); 
+void reorder_short(short *i); 
 void initialize_arrays(void);
 
 int main (int argc, char *argv[])
@@ -301,7 +301,7 @@ short get_AIFF_sound_data(char *filename, short *buffer, int buffer_size)
     short i, isAIFF = 0;
     long length = 0;
     
-    infile = fopen(filename, "r");
+    infile = fopen(filename, "rb");
     
     if (infile == NULL) {
 		printf("Error opening %s for input\n", filename);
@@ -365,7 +365,7 @@ short get_AIFF_sound_data(char *filename, short *buffer, int buffer_size)
     }
 
     // Now reopen infile... and read it into WaveArray using i as file pos...
-    infile = fopen(filename, "r");
+    infile = fopen(filename, "rb");
     if (infile == NULL) {
         printf("Error opening %s for input\n", filename);
         return -1;
@@ -387,7 +387,9 @@ short get_AIFF_sound_data(char *filename, short *buffer, int buffer_size)
         
         // Uncomment next line when compiling classifier on computers using
         //  an Intel processor.
-        //for(i = 0, i < length; i++) reorder_short(buffer + i);
+#ifdef _X86_
+        for(i = 0; i < length; i++) reorder_short(buffer + i);
+#endif
     }
     
     fclose(infile);
@@ -399,6 +401,7 @@ short get_AIFF_sound_data(char *filename, short *buffer, int buffer_size)
 //  data on Intel machines.
 /* Uncomment this routine when compiling this code for use on an Intel-based
     computer.
+*/
 void reorder_short(short *i) 
 {
     char * p1, *p2;
@@ -410,7 +413,6 @@ void reorder_short(short *i)
     p2[1] = p1[0];
     *i = n;
 }
-*/
 
 
 //  Zero the analysis arrays.  Some of these arrays could be doubly used, 
