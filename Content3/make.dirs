@@ -5,4 +5,6 @@
 #
 
 CHILDDIRS= \
-	02SoundSynthesis
+	02SoundSynthesis \
+	04SpeechProcessing \
+	05SignalProcessing
