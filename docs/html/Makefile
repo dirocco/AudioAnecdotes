@@ -7,8 +7,8 @@ SED=/bin/sed
 
 TARGETS=linux-do.cgi win-do.cgi mac-do.cgi \
 debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi \
-06win.html 06unix.html head1.html head2.html main1.html main2.html \
-build.html.cd1 build.html.cd2
+06win.html 06unix.html head1.html head2.html head3.html main1.html main2.html main3.html\
+build.html.cd1 build.html.cd2 build.html.cd3
 
 all: $(TARGETS)
 
@@ -20,6 +20,9 @@ dist:
 
 %.cd2: %
 	$(SED) s/VOLUME/Volume2/g < $< > $@
+
+%.cd3: %
+	$(SED) s/VOLUME/Volume3/g < $< > $@
 
 debuglinux-do.cgi: do.cgi
 	$(CPP) do.cgi -D DEBUG -D LINUX -D UNIX > debuglinux-do.cgi
@@ -51,11 +54,17 @@ head1.html: head.html
 head2.html: head.html
 	$(CPP) head.html -D CD2 > head2.html
 
+head3.html: head.html
+	$(CPP) head.html -D CD3 > head3.html
+
 main1.html: main.html
 	$(CPP) main.html -D CD1 > main1.html
 
 main2.html: main.html
 	$(CPP) main.html -D CD2 > main2.html
+
+main3.html: main.html
+	$(CPP) main.html -D CD3 > main3.html
 
 clean:
 	rm -f linux-do.cgi win-do.cgi mac-do.cig
