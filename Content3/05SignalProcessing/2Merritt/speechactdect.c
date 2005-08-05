@@ -2,8 +2,14 @@
 
 #define SAMPLE_RATE  8000
 #define NUM_FRAMES    180
-#define FILENAME "voice1-mu.raw"
+// #define MU
+#ifdef MU
+#define FILENAME "count-noisy-mu-8000.raw"
+#else
+#define FILENAME "count-noisy-8-8000.raw"
+#endif
 
+#ifdef MU
 /*
 ** This routine converts from ulaw to 16 bit linear.
 **
@@ -36,6 +42,7 @@ unsigned char ulawbyte;
 
   return(sample);
 }
+#endif
 
 int main(int argc, char **argv)
 {
@@ -44,7 +51,7 @@ int main(int argc, char **argv)
    char charSample;
    double sample;
    int count=16;
-   double minavg=0.0,avg=0.0,thresh;
+   double minavg=256.0,avg=0.0,thresh;
    char outbuffer[NUM_FRAMES];
    char zerobuffer[NUM_FRAMES] = { 0 };
    int got= 1;
@@ -65,7 +72,11 @@ int main(int argc, char **argv)
 	    // process every sample
             avg = (fabs(sample)/256.0) + ((255.0 * avg)/256.0);
 
-            outbuffer[x++] = ulaw2linear(charSample) / 256.0;
+#ifdef MU
+            outbuffer[x++] = ulaw2linear(charSample) >> 8;
+#else
+            outbuffer[x++] = charSample;
+#endif
 
             if (x < NUM_FRAMES)
                continue;
@@ -73,7 +84,8 @@ int main(int argc, char **argv)
 	    // this computation is supposed to run once per 22.5ms parcel...
             thresh = minavg + 8;
             if (avg > thresh){
-printf("buff %f %f %f %d\n",avg,minavg,thresh,count);
+// printf("buff %f %f %f %d\n",avg,minavg,thresh,count);
+                printf("speech, average = %3.0f\n",avg);
                 WriteAudioStream(outStream,outbuffer,NUM_FRAMES);
 		count -=1;
 		if (count == 0){
@@ -81,7 +93,8 @@ printf("buff %f %f %f %d\n",avg,minavg,thresh,count);
 			count = 16;
 		}
 	    }else{
-printf("zero %f %f %f %d\n",avg,minavg,thresh,count);
+// printf("zero %f %f %f %d\n",avg,minavg,thresh,count);
+                printf("silence--------------\n");
                 WriteAudioStream(outStream,zerobuffer,NUM_FRAMES);
 		if (avg < minavg){
 			minavg = avg;
