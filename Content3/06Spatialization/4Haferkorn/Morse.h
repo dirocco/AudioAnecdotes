@@ -4,9 +4,10 @@
 #ifndef __MORSE_HPP
 #define __MORSE_HPP
 #include "Fh_math.h"
-#define EPS 1E-10
-#include <complex>
-#ifdef _WIN32
+// #define EPS 1E-10
+#include "Precisn.h"
+#include <complex.h>
+#if 1 // #ifdef _WIN32
 using namespace std;
 #endif
 
