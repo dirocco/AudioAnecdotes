@@ -1,0 +1,15 @@
+modified :
+	precisn.h
+	#define FLOAT double
+
+needed NRC Source files:
+
+nrutil.h
+beschb.c
+bessjy.c
+chebev.c
+nrutil.c
+plgndr.c
+sphbes.c
+
+

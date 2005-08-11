@@ -1,0 +1,41 @@
+#
+# Example Makefile.in
+#
+# By: H. Gregory Silber
+#
+# WARNING: MODIFY THIS FILE AT YOUR OWN RISK.  THIS FILE SOON TO BE REMOVED
+# 	AND REPLACED WITH AUTO GENERATED FILES USING AUTOMAKE
+#	IF YOU MUST MODIFY THIS FILE, PLEASE NOTE YOUR CHANGES IN DETAIL
+#	DIRECTLY BENEATH THIS MESSAGE
+#
+
+CC = g++
+CFLAGS = @CFLAGS@ -I.
+LDFLAGS = @LDFLAGS@
+LIBS = -lpablio @LIBS@ 
+LOCALCLEAN = 
+EXEEXT=@EXEEXT@
+OBJEXT=@OBJEXT@
+TOOLROOT=@TOOLROOT@
+LOCALOPT=@LOCALOPT@
+LOCALLINK=@LOCALLINK@
+
+CPPSOURCES = \
+	Morse.cpp \
+	beschb.c \
+	bessjy.c \
+	chebev.c \
+	nrutil.c \
+	plgndr.c \
+	sphbes.c
+
+EXECS=Rayleigh$(EXEEXT)
+
+include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
+
+# Dependencies
+
+Morse.o: Morse.h
+Rayleigh.o: Morse.h Fh_math.h
+bessjy.o: nrutil.h
+nrutil.o: nrutil.h
