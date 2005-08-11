@@ -22,12 +22,12 @@ LOCALLINK=@LOCALLINK@
 
 CPPSOURCES = \
 	Morse.cpp \
-	beschb.c \
-	bessjy.c \
-	chebev.c \
-	nrutil.c \
-	plgndr.c \
-	sphbes.c
+	beschb.cpp \
+	bessjy.cpp \
+	chebev.cpp \
+	nrutil.cpp \
+	plgndr.cpp \
+	sphbes.cpp
 
 EXECS=Rayleigh$(EXEEXT)
 
