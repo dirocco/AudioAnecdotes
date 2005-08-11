@@ -5,7 +5,7 @@
     email                Haferkorn@mail.com
  ***************************************************************************/
 
-#ifdef __unix__
+#if defined(__unix__) || defined(__APPLE_CC__)
 #include <unistd.h>
 #else
 #include <io.h>
