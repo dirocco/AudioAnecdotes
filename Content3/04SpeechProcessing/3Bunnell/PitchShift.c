@@ -1,13 +1,15 @@
 /* --------------------------------------------------------------------------
  * Name		PitchShift - Shift the F0 of an input file by a constant scale factor
  *
- * Synopsis	PitchShift -psc:sf input[.WAV] output[.WAV]
+ * Synopsis	PitchShift -psc:sf input[.WAV] [output[.WAV]]
  *		Required args:
  *		  input     input waveform file (RIFF or ASEL)
- *		  output    input waveform file (RIFF or ASEL)
  *		  -psc:ff   Scale factor 0.0 < sc < ~2.0 values
  *					less than 1.0 lower F0, while
  *					values > 1.0 raise F0.
+ *
+ *		Optional args:
+ *		  output    output waveform file (RIFF or ASEL)
  *
  * Description
  *		Copies input to output while applying the pitch shift
@@ -24,6 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <pablio.h>
 #include "wiodef.h"
 #include "libcu.h"
 #include "dsp.h"
@@ -45,7 +48,7 @@ int main(int argc, char **argv)
     int nout, nin, maxout;
     float srms, psc;
     short *outbuf, *inbuf;
-    char wavout[129], wavin[129];
+    char wavout[129] = "", wavin[129];
 	WVFILE *wfp;
 	WDB wdb;
 /* 
@@ -56,6 +59,7 @@ int main(int argc, char **argv)
 	psc = (float) atof(garg(cmdargs, "psc"));
 
 	strcpy(wavin, cmdfiles[0]);
+    if (cmdfiles[1] != NULL)
 	strcpy(wavout, cmdfiles[1]);
 
     if (!(wfp = opnwav(wavin, 'r', &wdb))) {
@@ -91,6 +95,14 @@ int main(int argc, char **argv)
 /*
  * Now write the output waveform
  */
+    PABLIO_Stream *stream;
+    if (*wavout == '\0') {
+      OpenAudioStream(&stream, wdb.sample_rate, paInt16, PABLIO_WRITE | PABLIO_MONO);
+      WriteAudioStream(stream, outbuf, nout);
+      CloseAudioStream(stream);
+      exit(0);
+    }
+
     if (!(wfp = opnwav(wavout, 'n', &wdb))) {
 		printf("TimeScale: Error opening output waveform file: %s\n", wavout);
 		exit(0);

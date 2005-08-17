@@ -1,15 +1,15 @@
 /* --------------------------------------------------------------------------
  * Name		TimeScale - Compress or Expand the time-scale of a waveform
  *
- * Synopsis	TimeScale -tsc:ff [-opt:par] input[.WAV] output[.WAV]
+ * Synopsis	TimeScale -tsc:ff [-opt:par] input[.WAV] [output[.WAV]]
  *		Required args:
  *		  input     input waveform file (RIFF or ASEL)
- *		  output    input waveform file (RIFF or ASEL)
  *		  -tsc:ff   Scale factor 0.0 < sc < MAX_FLOAT values
  *			    less than 1.0 produce compression, while
  *			    values > 1.0 produce expansion.
  *
  * 		Optional args:
+ *		  output    output waveform file (RIFF or ASEL)
  * 		  -min:mm   Minimum pitch period length in msec [4]
  *		  -max:mm   Maximum pitch period length in msec [12]
  * 		  -lap:nn   Number of overlapping samples for gating from 
@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <pablio.h>
 #include "wiodef.h"
 #include "libcu.h"
 #include "dsp.h"
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
     float stmax, stmin;
     float wl[128], wr[128], timein, timeot, tsc, cut;
     short *outbuf, *inbuf;
-    char wavout[129], wavin[129];
+    char wavout[129] = "", wavin[129];
     WVFILE *wfp;
     WDB wdb;
 
@@ -86,6 +87,7 @@ int main(int argc, char **argv)
     stmin = (float) atof(garg(cmdargs, "min"));
     
     strcpy(wavin, cmdfiles[0]);
+    if (cmdfiles[1] != NULL)
     strcpy(wavout, cmdfiles[1]);
 
     if (!(wfp = opnwav(wavin, 'r', &wdb))) {
@@ -204,6 +206,15 @@ int main(int argc, char **argv)
 /*
  * Now write the output waveform
  */
+    PABLIO_Stream *stream;
+    if (*wavout == '\0') {
+      OpenAudioStream(&stream, wdb.sample_rate, paInt16, PABLIO_WRITE | PABLIO_MONO);
+      nout = lsamp - 1;
+      WriteAudioStream(stream, outbuf, nout);
+      CloseAudioStream(stream);
+      exit(0);
+    }
+
     if (!(wfp = opnwav(wavout, 'n', &wdb))) {
       printf("TimeScale: Error opening output waveform file: %s\n", wavout);
       exit(0);
