@@ -17,8 +17,15 @@
 
 
 
+// #define NRC 1
+#ifdef NRC
 double    plgndr(int m,int l,double x);
 void    sphbes(int n,double x,double *sj,double *sy,double *sjp,double *syp);
+#else
+#include <gsl/gsl_sf_legendre.h>
+#include <gsl/gsl_sf_bessel.h>
+#define plgndr gsl_sf_legendre_Plm
+#endif
 Complex
 press(double ka,double rbya, double theta,double eps,Complex *pplane,Complex *pscatter)
 {
@@ -53,9 +60,21 @@ press(double ka,double rbya, double theta,double eps,Complex *pplane,Complex *ps
 
             factor*=(2*m+1)*plgndr(m,0L,costheta);
 
+#ifdef NRC
             sphbes(m,ka,&ja,&ya,&jpa,&ypa);
+#else
+            ja = gsl_sf_bessel_jl(m,ka);
+            jpa = -gsl_sf_bessel_jl(m+1,ka) + m/ka * ja;
+            ya = gsl_sf_bessel_yl(m,ka);
+            ypa = -gsl_sf_bessel_yl(m+1,ka) + m/ka * ya;
+#endif
             h2pa    =    jpa-I*ypa;       // h2'(ka)=j'(ka)-I*y'(ka)
+#ifdef NRC
             sphbes(m,kr,&jr,&yr,&jpr,&ypr);
+#else
+            jr = gsl_sf_bessel_jl(m,kr);
+            yr = gsl_sf_bessel_yl(m,kr);
+#endif
             h2r        =    jr-I*yr;                   // h2(ka)=j(ka)-I*y(ka)
 
             termsnew+= -factor*jpa*h2r/h2pa;        // j'(ka)/h2'(ka)*h2(kr)*I;

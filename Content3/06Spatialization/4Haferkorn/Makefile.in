@@ -12,7 +12,7 @@
 CC = g++
 CFLAGS = @CFLAGS@ -I.
 LDFLAGS = @LDFLAGS@
-LIBS = -lpablio @LIBS@ 
+LIBS = -lpablio -lgsl @LIBS@ 
 LOCALCLEAN = 
 EXEEXT=@EXEEXT@
 OBJEXT=@OBJEXT@
@@ -21,13 +21,13 @@ LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
 CPPSOURCES = \
-	Morse.cpp \
-	beschb.cpp \
-	bessjy.cpp \
-	chebev.cpp \
-	nrutil.cpp \
-	plgndr.cpp \
-	sphbes.cpp
+	Morse.cpp
+#	beschb.cpp \
+#	bessjy.cpp \
+#	chebev.cpp \
+#	nrutil.cpp \
+#	plgndr.cpp \
+#	sphbes.cpp \
 
 EXECS=Rayleigh$(EXEEXT)
 
@@ -37,5 +37,5 @@ include @MAKEINCLUDESDIR@/build.leaf.benmake.inc
 
 Morse.o: Morse.h
 Rayleigh.o: Morse.h Fh_math.h
-bessjy.o: nrutil.h
-nrutil.o: nrutil.h
+# bessjy.o: nrutil.h
+# nrutil.o: nrutil.h
