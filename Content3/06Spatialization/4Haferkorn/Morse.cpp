@@ -17,14 +17,13 @@
 
 
 
-// #define NRC 1
+//#define NRC 1
 #ifdef NRC
 double    plgndr(int m,int l,double x);
 void    sphbes(int n,double x,double *sj,double *sy,double *sjp,double *syp);
 #else
 #include <gsl/gsl_sf_legendre.h>
 #include <gsl/gsl_sf_bessel.h>
-#define plgndr gsl_sf_legendre_Plm
 #endif
 Complex
 press(double ka,double rbya, double theta,double eps,Complex *pplane,Complex *pscatter)
@@ -58,11 +57,13 @@ press(double ka,double rbya, double theta,double eps,Complex *pplane,Complex *ps
             case 3: factor=-I ;        break;
             }
 
+#ifdef NRC
             factor*=(2*m+1)*plgndr(m,0L,costheta);
 
-#ifdef NRC
             sphbes(m,ka,&ja,&ya,&jpa,&ypa);
 #else
+            factor*=(2*m+1)*gsl_sf_legendre_Plm(m,0L,costheta);
+
             ja = gsl_sf_bessel_jl(m,ka);
             jpa = -gsl_sf_bessel_jl(m+1,ka) + m/ka * ja;
             ya = gsl_sf_bessel_yl(m,ka);
