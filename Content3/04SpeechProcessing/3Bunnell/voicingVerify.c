@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include <malloc.h>
 #include <string.h>
 #ifdef MSC
 #include <io.h>

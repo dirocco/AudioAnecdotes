@@ -24,7 +24,6 @@
 
 
 #include <math.h>
-#include <malloc.h>
 #include <stdio.h>
 #include "dsp.h"
 #include "spenvel.h"
