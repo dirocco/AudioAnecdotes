@@ -12,7 +12,7 @@
 CC = g++
 CFLAGS = @CFLAGS@ -I.
 LDFLAGS = @LDFLAGS@
-LIBS = -lflavor -lpablio @LIBS@ 
+LIBS = -lpablio @LIBS@ 
 LOCALCLEAN = audio.h audio.cpp
 EXEEXT=@EXEEXT@
 OBJEXT=@OBJEXT@
