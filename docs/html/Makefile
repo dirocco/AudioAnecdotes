@@ -3,7 +3,7 @@ TOPDIR=../..
 # unfortunately gnu cpp stopped working after 3.2 (can't deal with #comments)
 # CPP=cpp -traditional -P -C -fpreprocessed
 CPP=../../bin/cpp.pl
-SED=/bin/sed
+SED=sed
 
 TARGETS=linux-do.cgi win-do.cgi mac-do.cgi \
 debuglinux-do.cgi debugwin-do.cgi debugmac-do.cgi \
