@@ -131,7 +131,11 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 	double s2=0, v2=0;
 	const SAMPL *ip;
 
+#if __GNUC__ >= 4
+	auto inline void a_init(double frq)
+#else
 	static inline void a_init(double frq)
+#endif
 	{
 		x = 1;
 		y = 0;
@@ -139,7 +143,11 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 		thy = sin(frq*M_PI);
 	}
 	
+#if __GNUC__ >= 4
+	auto inline const double a(double k, double L)
+#else
 	static inline const double a(double k, double L)
+#endif
 	{
 		double a, l, u;
 		l = L/2.0;
@@ -148,7 +156,11 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 		return a;
 	}
 
+#if __GNUC__ >= 4
+	auto inline void a_post(int k)
+#else
 	static inline void a_post(int k)
+#endif
 	{
 		double x1;
 		x1 = x*thx - y*thy;
