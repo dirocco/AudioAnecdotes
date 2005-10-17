@@ -1,0 +1,7 @@
+src_v3 configure	src_v3.tar Volume3/Content3/configure
+src_v3 config.sub	src_v3.tar Volume3/Content3/config.sub
+src_v3 config.guess	src_v3.tar Volume3/Content3/config.guess
+src_v3 install-sh    	src_v3.tar Volume3/Content3/install-sh
+src_v3 Makefile.in	src_v3.tar Volume3/Content3/Makefile.in
+src_v3 config.mak	src_v3.tar Volume3/Content3/config.mak
+src_v3 dist.make.dirs	src_v3.tar Volume3/Content3/make.dirs
