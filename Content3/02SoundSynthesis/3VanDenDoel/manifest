@@ -2,8 +2,8 @@ src_v3       Makefile.in src_v3.tar       Volume3/Content3/02SoundSynthesis/3Van
 src_v3       config.mak  src_v3.tar       Volume3/Content3/02SoundSynthesis/3VanDenDoel/config.mak
 src_v3       Bell.cpp    src_v3.tar       Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell.cpp
 
-bin_v3_win   Bell.exe    bin_v2_win.tar   Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell.exe
-bin_v3_mac   Bell        bin_v2_mac.tar   Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell
-bin_v3_linux Bell        bin_v2_linux.tar Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell
+bin_v3_win   Bell.exe    bin_v3_win.tar   Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell.exe
+bin_v3_mac   Bell        bin_v3_mac.tar   Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell
+bin_v3_linux Bell        bin_v3_linux.tar Volume3/Content3/02SoundSynthesis/3VanDenDoel/Bell
 
 src_v3       bell4.sy    src_v3.tar       Volume3/Content3/02SoundSynthesis/3VanDenDoel/bell4.sy

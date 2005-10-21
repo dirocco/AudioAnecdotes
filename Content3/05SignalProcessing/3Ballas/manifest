@@ -1,0 +1,7 @@
+src_v3       Makefile.in   src_v3.tar       Volume3/Content3/05SignalProcessing/3Ballas/Makefile.in
+src_v3       config.mak    src_v3.tar       Volume3/Content3/05SignalProcessing/3Ballas/config.mak
+src_v3       propeller.c   src_v3.tar       Volume3/Content3/05SignalProcessing/3Ballas/propeller.c
+
+bin_v3_win   propeller.exe bin_v3_win.tar   Volume3/Content3/05SignalProcessing/3Ballas/propeller.exe
+bin_v3_mac   propeller     bin_v3_mac.tar   Volume3/Content3/05SignalProcessing/3Ballas/propeller
+bin_v3_linux propeller     bin_v3_linux.tar Volume3/Content3/05SignalProcessing/3Ballas/propeller

@@ -1,0 +1,22 @@
+src_v3       Makefile.in     src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/Makefile.in
+src_v3       config.mak      src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/config.mak
+src_v3       PitchShift.c    src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/PitchShift.c
+src_v3       dsp.h           src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/dsp.h
+src_v3       fp_fft.c        src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/fp_fft.c
+src_v3       pps.h           src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/pps.h
+src_v3       ppsfns.c        src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/ppsfns.c
+src_v3       psola.c         src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/psola.c
+src_v3       ptracks.c       src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/ptracks.c
+src_v3       spenvel.h       src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/spenvel.h
+src_v3       spenvel.c       src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/spenvel.c
+src_v3       unpack.h        src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/unpack.h
+src_v3       unpack.c        src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/unpack.c
+src_v3       voicingVerify.c src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/voicingVerify.c
+
+bin_v3_win   PitchShift.exe  bin_v3_win.tar   Volume3/Content3/04SpeechProcessing/3Bunnell/PitchShift.exe
+bin_v3_mac   PitchShift      bin_v3_mac.tar   Volume3/Content3/04SpeechProcessing/3Bunnell/PitchShift
+bin_v3_linux PitchShift      bin_v3_linux.tar Volume3/Content3/04SpeechProcessing/3Bunnell/PitchShift
+
+src_v3       original.wav    src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/original.wav
+src_v3       higher.wav      src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/higher.wav
+src_v3       lower.wav       src_v3.tar       Volume3/Content3/04SpeechProcessing/3Bunnell/lower.wav
