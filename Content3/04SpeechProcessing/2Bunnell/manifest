@@ -1,0 +1,17 @@
+src_v3       Makefile.in src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/Makefile.in
+src_v3       config.mak  src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/config.mak
+src_v3       TimeScale.c src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/TimeScale.c
+src_v3       bestpt.c    src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/bestpt.c
+src_v3       dsp.h       src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/dsp.h
+src_v3       fp_fft.c    src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/fp_fft.c
+src_v3       lowpass.c   src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/lowpass.c
+src_v3       unpack.h    src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/unpack.h
+src_v3       unpack.c    src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/unpack.c
+
+bin_v3_win   TimeScale.exe   bin_v3_win.tar   Volume3/Content3/04SpeechProcessing/2Bunnell/TimeScale.exe
+bin_v3_mac   TimeScale       bin_v3_mac.tar   Volume3/Content3/04SpeechProcessing/2Bunnell/TimeScale
+bin_v3_linux TimeScale       bin_v3_linux.tar Volume3/Content3/04SpeechProcessing/2Bunnell/TimeScale
+
+src_v3       original.wav    src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/original.wav
+src_v3       halfspeed.wav   src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/halfspeed.wav
+src_v3       doublespeed.wav src_v3.tar       Volume3/Content3/04SpeechProcessing/2Bunnell/doublespeed.wav
