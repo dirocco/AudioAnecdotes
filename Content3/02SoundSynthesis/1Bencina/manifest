@@ -41,9 +41,9 @@ src_v3 StochasticSingleModulatorFMEssence.h         src_v3.tar Volume3/Content3/
 src_v3 StochasticStoredSampleGranulator.h           src_v3.tar Volume3/Content3/02SoundSynthesis/1Bencina/StochasticStoredSampleGranulator.h
 src_v3 TrapezoidalEnvelope.h                        src_v3.tar Volume3/Content3/02SoundSynthesis/1Bencina/TrapezoidalEnvelope.h
 
-bin_v3_win   Demo.exe    bin_v2_win.tar   Volume3/Content3/02SoundSynthesis/1Bencina/rsf.exe
-bin_v3_mac   Demo        bin_v2_mac.tar   Volume3/Content3/02SoundSynthesis/1Bencina/rsf
-bin_v3_linux Demo        bin_v2_linux.tar Volume3/Content3/02SoundSynthesis/1Bencina/rsf
+bin_v3_win   Demo.exe    bin_v2_win.tar   Volume3/Content3/02SoundSynthesis/1Bencina/Demo.exe
+bin_v3_mac   Demo        bin_v2_mac.tar   Volume3/Content3/02SoundSynthesis/1Bencina/Demo
+bin_v3_linux Demo        bin_v2_linux.tar Volume3/Content3/02SoundSynthesis/1Bencina/Demo
 
 src_v3       COPYING.txt src_v3.tar       Volume3/Content3/02SoundSynthesis/1Bencina/COPYING.txt
 src_v3       NOTES.txt src_v3.tar         Volume3/Content3/02SoundSynthesis/1Bencina/NOTES.txt
