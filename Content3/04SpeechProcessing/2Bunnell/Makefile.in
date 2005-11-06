@@ -20,10 +20,6 @@ TOOLROOT=@TOOLROOT@
 LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
-ifeq ($(EXEEXT),.exe)
-    CFLAGS := $(CFLAGS) -DMSC
-endif
-
 SOURCES = lowpass.c bestpt.c unpack.c fp_fft.c
 
 EXECS=TimeScale$(EXEEXT)

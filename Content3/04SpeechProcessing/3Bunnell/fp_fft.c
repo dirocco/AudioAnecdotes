@@ -219,6 +219,7 @@ void CplxT(int K, float D1[], float D2[])
  * functions.
  *----------------------------------------------------------------------
  */
+#include <math.h>
 
 void ffa(float *x, int ns)
 {

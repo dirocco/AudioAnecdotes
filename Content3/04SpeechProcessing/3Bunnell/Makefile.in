@@ -20,10 +20,6 @@ TOOLROOT=@TOOLROOT@
 LOCALOPT=@LOCALOPT@
 LOCALLINK=@LOCALLINK@
 
-ifeq ($(EXEEXT),.exe)
-    CFLAGS := $(CFLAGS) -DMSC
-endif
-
 SOURCES = psola.c ppsfns.c voicingVerify.c spenvel.c ptracks.c fp_fft.c unpack.c
 
 EXECS=PitchShift$(EXEEXT)
