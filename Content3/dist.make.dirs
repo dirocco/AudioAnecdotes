@@ -1,0 +1,9 @@
+#
+# make.dirs : holds a list of directories to be built
+#
+
+CHILDDIRS= \
+	02SoundSynthesis \
+	04SpeechProcessing \
+	05SignalProcessing \
+	06Spatialization
