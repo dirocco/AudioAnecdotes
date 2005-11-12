@@ -3,7 +3,12 @@
 #
 
 CHILDDIRS= \
+	01RecordingMusic \
 	02SoundSynthesis \
+	03VoiceSynthesis \
 	04SpeechProcessing \
 	05SignalProcessing \
-	06Spatialization
+	06Spatialization \
+	07Synchronization \
+	08MusicComposition \
+	09HumanExperience
