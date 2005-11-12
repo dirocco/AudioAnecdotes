@@ -1,5 +1,5 @@
 #subdirectories of the directory
-CHILDDIRS=
+include make.dirs
 
 #the path to the directory which contains configure for this directory
 CONFIGROOT=..
