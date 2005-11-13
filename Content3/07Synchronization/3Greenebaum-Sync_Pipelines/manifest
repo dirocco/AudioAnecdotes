@@ -1,3 +1,6 @@
+src_v3 Makefile.in	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/Makefile.in
+src_v3 config.mak	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/config.mak
+
 src_v3 newtrigger.c	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/newtrigger.c
 src_v3 trigger.c	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/trigger.c
 src_v3 chirp1.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp1.c
