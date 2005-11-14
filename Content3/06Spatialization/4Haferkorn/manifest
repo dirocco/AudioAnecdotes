@@ -1,6 +1,6 @@
 src_v3       Makefile.in  src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Makefile.in
 src_v3       config.mak   src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/config.mak
-src_v3       Rayleigh.cpp src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Rayleigh.c
+src_v3       Rayleigh.cpp src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Rayleigh.cpp
 src_v3       Fh_math.h    src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Fh_math.h
 src_v3       Precisn.h    src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Precisn.h
 src_v3       Morse.h      src_v3.tar       Volume3/Content3/06Spatialization/4Haferkorn/Morse.h
