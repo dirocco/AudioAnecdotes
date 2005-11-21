@@ -1,54 +1,23 @@
 #include <math.h>
 #include "pablio.h"
+#include "resample.h"
 
 #define SAMPLE_RATE      44100.0
 #define INPUT_FREQUENCY    440.0
 #define NUM_FRAMES          1024
 #define MAX_PLAY_RATE       10.0
-#define INTERP_TAPS           16
 
-float inBuffer[(int)(NUM_FRAMES * MAX_PLAY_RATE + 2 * INTERP_TAPS)];
+float inBuffer[(int)(NUM_FRAMES * MAX_PLAY_RATE + RESAMPLE_WINDOW_SIZE)];
 float outBuffer[NUM_FRAMES];
-
-float sinc(float x)
-{
-   if (x == 0.0f)
-   {
-      return 1.0f;
-   }
-   else
-   {
-      return sin(M_PI * x) / (M_PI * x);
-   }
-}
 
 void GetInputBuffer(float *inBuffer, int startFrameNum, int numFrames)
 {
+   // Generate a sine wave for the given interval.
    int i;
    for (i = 0; i < numFrames; i++)
    {
       float theta = (i + startFrameNum) * INPUT_FREQUENCY * 2.0 * M_PI / SAMPLE_RATE;
       inBuffer[i] = sin(theta);
-   }
-}
-
-void Resample(float *inBuffer, int numInputFrames, float *outBuffer, int numOutputFrames, float rate)
-{
-   int i = 0;
-   int j = 0;
-   inBuffer += INTERP_TAPS;
-
-   for (i = 0; i < numOutputFrames; i++)
-   {
-      float x = i * rate;
-      int xInt = (int)x;
-      float frac = x - xInt;
-
-      outBuffer[i] = 0.0f;
-      for (j = -INTERP_TAPS; j <= INTERP_TAPS; j++)
-      {
-         outBuffer[i] += sinc(-frac + j) * inBuffer[xInt + j];
-      }
    }
 }
 
@@ -71,11 +40,14 @@ int main(int argc, char *argv[])
 
    while (1)
    {
+      // Get the input samples.
       int numInputFrames = (int)ceilf(NUM_FRAMES * playRate);
-      GetInputBuffer(inBuffer, inFrameNum - INTERP_TAPS, numInputFrames + 2 * INTERP_TAPS);
+      GetInputBuffer(inBuffer, inFrameNum - RESAMPLE_WINDOW_SIZE_HALF, numInputFrames + RESAMPLE_WINDOW_SIZE);
 
-      Resample(inBuffer, numInputFrames, outBuffer, NUM_FRAMES, playRate);
+      // Resample it to get the desired playrate.
+      Resample(inBuffer, numInputFrames + RESAMPLE_WINDOW_SIZE, outBuffer, NUM_FRAMES, playRate);
 
+      // Output it to the audio device.
       WriteAudioStream(outStream, outBuffer, NUM_FRAMES); 
 
       inFrameNum += numInputFrames;
