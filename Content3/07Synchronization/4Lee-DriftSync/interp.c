@@ -7,9 +7,6 @@
 #define NUM_FRAMES          1024
 #define MAX_PLAY_RATE       10.0
 
-float inBuffer[(int)(NUM_FRAMES * MAX_PLAY_RATE + RESAMPLE_WINDOW_SIZE)];
-float outBuffer[NUM_FRAMES];
-
 void GetInputBuffer(float *inBuffer, int startFrameNum, int numFrames)
 {
    // Generate a sine wave for the given interval.
@@ -26,6 +23,8 @@ int main(int argc, char *argv[])
    PABLIO_Stream *outStream;
    int inFrameNum = 0;
    float playRate;
+   float inBuffer[(int)(NUM_FRAMES * MAX_PLAY_RATE + RESAMPLE_WINDOW_SIZE)];
+   float outBuffer[NUM_FRAMES];
 
    if (argc != 2)
    {
