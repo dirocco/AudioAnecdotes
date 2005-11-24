@@ -70,7 +70,10 @@ int main(int argc, char *argv[])
 
    if (argc != 3)
    {
-      printf("Usage: %s <video_drift_factor> <catchup interval>\n", argv[0]);
+      printf("Usage: %s <video_drift> <catchup interval>\n", argv[0]);
+      printf("  video drift          - artificial clock drift for the dependent track (e.g. 1.1 for 10% faster)\n");
+      printf("  catchup interval     - interval by which we target for the audio and video to sync up, as a\n");
+      printf("                         factor of the adjustment interval (e.g. 2.0)\n");
       return 1;
    }
 
@@ -81,18 +84,18 @@ int main(int argc, char *argv[])
 
    while (1)
    {
-      // Get A(t1), V(t1)
+      // Get the current position of the audio and video, A(t1), V(t1).
       At1 = GetCurrentATime();
       Vt1 = GetCurrentVTime();
       
       if (At0 != At1)
       {
-         // Estimate A(t1+deltaT), V(t1+deltaT)
+         // Estimate A(t1+deltaT), V(t1+deltaT).
          At1deltaT = At1 + deltaT * (At1 - At0) / (NUM_FRAMES / SAMPLE_RATE);
          Vt1deltaT = Vt1 + deltaT * (Vt1 - Vt0) / (NUM_FRAMES / SAMPLE_RATE);
          
-         // Compute adjusted play rate
-         adjustedRate = (At1deltaT - Vt1) / (Vt1deltaT - Vt1) * adjustedRate;
+         // Compute adjusted play rate.
+         adjustedRate *= (At1deltaT - Vt1) / (Vt1deltaT - Vt1);
          if (adjustedRate < MIN_RESAMPLE_RATE) adjustedRate = MIN_RESAMPLE_RATE;
          else if (adjustedRate > MAX_RESAMPLE_RATE) adjustedRate = MAX_RESAMPLE_RATE;
 
@@ -110,7 +113,7 @@ int main(int argc, char *argv[])
          GetVBuffer(vBufferResampled, vFrameCount, numVFrames);
       }
 
-      // Multiplex audio for output
+      // Multiplex audio for output.
       GetABuffer(aBuffer, aFrameCount, NUM_FRAMES);
       for (i = 0; i < NUM_FRAMES; i++)
       {
@@ -118,10 +121,10 @@ int main(int argc, char *argv[])
          outBuffer[2*i+1] = vBufferResampled[i];
       }
 
-      // Output to device
+      // Output to device.
       WriteAudioStream(outStream, outBuffer, NUM_FRAMES); 
 
-      // update A(t0)
+      // Update the current time.
       At0 = At1;
       Vt0 = Vt1;
       aFrameCount += NUM_FRAMES;

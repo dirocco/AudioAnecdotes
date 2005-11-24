@@ -5,6 +5,7 @@
 #
 
 CHILDDIRS= \
+	1Greenebaum-Intro \
 	4Greenebaum-Sync_Pipelines \
 	4Lee-DriftSync
 
