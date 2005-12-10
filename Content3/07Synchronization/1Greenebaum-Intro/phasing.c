@@ -1,12 +1,15 @@
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <math.h>
 #include "pablio.h"
 #include "resample.h"
 
-#define SAMPLE_RATE      44100.0
-#define INPUT_FREQUENCY    440.0
-#define NUM_FRAMES           512
-#define MIN_RESAMPLE_RATE    0.1
-#define MAX_RESAMPLE_RATE   10.0
+#define SAMPLE_RATE        44100.0
+#define INPUT_FREQUENCY      440.0
+#define NUM_FRAMES             512
+#define MIN_RESAMPLE_RATE      0.1
+#define MAX_RESAMPLE_RATE     10.0
+#define FILENAME           "soundclip.raw"
 
 void CalculateSine(float *buffer, int startFrameNum, int numFrames)
 {
@@ -19,12 +22,43 @@ void CalculateSine(float *buffer, int startFrameNum, int numFrames)
    }
 }
 
+int numInputSamples;
+float *inputBuffer;
+void GetInputBuffer(float *buffer, int startFrameNum, int numFrames)
+{
+   if (startFrameNum >= numInputSamples || (startFrameNum + numFrames) < 0)
+   {
+      // The range that has been requested is completely out of the inputBuffer range.
+      memset(buffer, 0, numFrames * sizeof(float));
+   }
+   else
+   {
+      int inputStart = startFrameNum > 0 ? startFrameNum : 0;
+      int inputEnd = startFrameNum + numFrames;
+      if (inputEnd > numInputSamples) inputEnd = numInputSamples;
+      
+      if (startFrameNum < 0)
+      {
+         memset(buffer, 0, -startFrameNum * sizeof(float));
+         buffer += -startFrameNum;
+      }
+
+      memcpy(buffer, inputBuffer + inputStart, (inputEnd - inputStart) * sizeof(float));
+      buffer += inputEnd - inputStart;
+
+      if ((startFrameNum + numFrames) > numInputSamples)
+      {
+         memset(buffer, 0, (startFrameNum + numFrames - numInputSamples) * sizeof(float));
+      }
+   }
+}
 
 int main(int argc, char *argv[])
 {
    PABLIO_Stream *outStream;
    int minDrift, maxDrift, totalDrift;
    float driftTime, adjustedRate;
+   int useSine = 0;
 
    int refFrameCount = 0;
    float refBuffer[NUM_FRAMES];
@@ -38,12 +72,13 @@ int main(int argc, char *argv[])
 
    int i;
 
-   if (argc != 4)
+   if (argc < 4)
    {
-      printf("Usage: %s <min drift> <max drift> <drift time>\n", argv[0]);
+      printf("Usage: %s <min drift> <max drift> <drift time> <use sine>\n", argv[0]);
       printf("  min drift  - lower bound of the drift [milliseconds]\n");
       printf("  max drift  - upper bound of the drift [milliseconds]\n");
       printf("  drift time - amount of time between when drift goes from min drift to max drift [seconds]\n");
+      printf("  use sine   - 1 to use a sine wave, 0 to use '%s' (default)\n", FILENAME);
       return 1;
    }
 
@@ -51,6 +86,43 @@ int main(int argc, char *argv[])
    minDrift = (int)(atof(argv[1]) * SAMPLE_RATE / 1000.0);
    maxDrift = (int)(atof(argv[2]) * SAMPLE_RATE / 1000.0);
    driftTime = atof(argv[3]);
+   if (argc >= 5)
+   {
+      useSine = atoi(argv[4]);
+   }
+
+   if (!useSine)
+   {
+      FILE *inputFd = fopen(FILENAME, "rb");
+      if (!inputFd)
+      {
+         printf("Error opening '%s' for reading.  Falling back to sine wave...\n", FILENAME);
+         useSine = 0;
+      }
+      else
+      {
+         char *rawBuffer;
+         struct stat fileStats;
+         int i;
+
+         if (stat(FILENAME, &fileStats) != 0)
+         {
+            printf("Error - could not get file size for '%s'.  Falling back to sine wave...\n", FILENAME);
+            useSine = 0;
+         }
+         else
+         {
+            numInputSamples = fileStats.st_size;
+            rawBuffer = malloc(numInputSamples);
+            inputBuffer = (float *)malloc(numInputSamples * sizeof(float));
+            fread(rawBuffer, numInputSamples, 1, inputFd);
+            for (i = 0; i < numInputSamples; i++)
+            {
+               inputBuffer[i] = (float)rawBuffer[i] / 255.0;
+            }
+         }
+      }
+   }
 
    // Sanity check...
    if (minDrift > maxDrift)
@@ -93,17 +165,33 @@ int main(int argc, char *argv[])
          
       // Apply the adjusted rate to the dependent track
       numDepFrames = (int)ceilf(NUM_FRAMES * adjustedRate);
-      CalculateSine(depBuffer, depFrameCount - RESAMPLE_WINDOW_SIZE_HALF, numDepFrames + RESAMPLE_WINDOW_SIZE);
+      if (useSine)
+      {
+         CalculateSine(depBuffer, depFrameCount - RESAMPLE_WINDOW_SIZE_HALF, numDepFrames + RESAMPLE_WINDOW_SIZE);
+      }
+      else
+      {
+         GetInputBuffer(depBuffer, depFrameCount - RESAMPLE_WINDOW_SIZE_HALF, numDepFrames + RESAMPLE_WINDOW_SIZE);
+      }
       Resample(depBuffer, numDepFrames + RESAMPLE_WINDOW_SIZE, depBufferResampled, NUM_FRAMES, adjustedRate);
 
       // Multiplex audio for output.
-      CalculateSine(refBuffer, refFrameCount, NUM_FRAMES);
+      if (useSine)
+      {
+         CalculateSine(refBuffer, refFrameCount, NUM_FRAMES);
+      }
+      else
+      {
+         GetInputBuffer(refBuffer, refFrameCount, NUM_FRAMES);
+      }
       for (i = 0; i < NUM_FRAMES; i++)
       {
          float mix = 0.5 * (refBuffer[i] + depBufferResampled[i]);
 //         printf("%d\t%f\n", i+outFrameCount, mix);
          outBuffer[2*i]   = mix;
          outBuffer[2*i+1] = mix;
+//         outBuffer[2*i]   = refBuffer[i];
+//         outBuffer[2*i+1] = depBufferResampled[i];
       }
 
       // Output to device.
