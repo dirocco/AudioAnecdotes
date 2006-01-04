@@ -1,0 +1,14 @@
+src_v3 Makefile.in	src_v3.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/Makefile.in
+src_v3 config.mak	src_v3.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/config.mak
+
+src_v3 interp.c		src_v3.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/interp.c
+src_v3 sync.c		src_v3.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/sync.c
+src_v3 resample.h	src_v3.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/resample.h
+
+bin_v3_win interp.exe	bin_v3_win.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/interp.exe
+bin_v3_win sync.exe	bin_v3_win.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/sync.exe
+bin_v3_mac interp	bin_v3_mac.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/interp
+bin_v3_mac sync		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/sync
+bin_v3_linux interp	bin_v3_linux.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/interp
+bin_v3_linux sync	bin_v3_linux.tar Volume3/Content3/07Synchronization/4Lee-DriftSync/sync
+
