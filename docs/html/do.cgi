@@ -52,11 +52,10 @@ echo QUERY_STRING:$QUERY_STRING >> /tmp/log
 
 # convert %20's back to spaces, and stricly elliminate dotdots,
 # and any other dangerous symbols...
-foo=`echo $QUERY_STRING   | \
-     $SED 's/%20/ /g' | \
-     $SED 's/\.\.//g' | \
-     $SED 's/;//g'    | \
-     $SED 's/\`//g'`
+foo=`echo $QUERY_STRING | $SED '
+     s/%20/ /g;
+     s/[^-a-zA-Z0-9 +&]//g;  # Only allow letters, numbers, and a few symbols.
+     '`
 
 #ifdef DEBUG
 echo QUERY_STRING:$foo >> /tmp/log
