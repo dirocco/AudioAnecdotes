@@ -6,7 +6,7 @@
 #include "Fh_math.h"
 // #define EPS 1E-10
 #include "Precisn.h"
-#include <complex.h>
+#include <complex>
 #if 1 // #ifdef _WIN32
 using namespace std;
 #endif
