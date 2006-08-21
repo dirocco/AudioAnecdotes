@@ -54,7 +54,8 @@ echo QUERY_STRING:$QUERY_STRING >> /tmp/log
 # and any other dangerous symbols...
 foo=`echo $QUERY_STRING | $SED '
      s/%20/ /g;
-     s/[^-a-zA-Z0-9 +&]//g;  # Only allow letters, numbers, and a few symbols.
+     s/[^-a-zA-Z0-9\. +&]//g;  # Only allow letters, numbers, and a few symbols.
+     s/\.\.//g;
      '`
 
 #ifdef DEBUG
