@@ -1,39 +1,39 @@
-src_v3 Makefile.in	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/Makefile.in
-src_v3 config.mak	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/config.mak
+src_v3 Makefile.in	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/Makefile.in
+src_v3 config.mak	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/config.mak
 
-src_v3 newtrigger.c	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/newtrigger.c
-src_v3 trigger.c	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/trigger.c
-src_v3 chirp1.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp1.c
-src_v3 chirp2.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp2.c
-src_v3 chirp3.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp3.c
-src_v3 click.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click.c
-src_v3 click2.c		src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click2.c
+src_v3 newtrigger.c	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger.c
+src_v3 trigger.c	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger.c
+src_v3 chirp1.c		src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1.c
+src_v3 chirp2.c		src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2.c
+src_v3 chirp3.c		src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp3.c
+src_v3 click.c		src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click.c
+src_v3 click2.c		src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2.c
 
-src_v3 1sec-5every-7-periods.sfk	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/1sec-5every-7-periods.sfk
-src_v3 1sec-5every-7-periods.wav	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/1sec-5every-7-periods.wav
-src_v3 5samples-every7-periods.sfk	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/5samples-every7-periods.sfk
-src_v3 5samples-every7-periods.wav	src_v3.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/5samples-every7-periods.wav
+src_v3 1sec-5every-7-periods.sfk	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/1sec-5every-7-periods.sfk
+src_v3 1sec-5every-7-periods.wav	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/1sec-5every-7-periods.wav
+src_v3 5samples-every7-periods.sfk	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/5samples-every7-periods.sfk
+src_v3 5samples-every7-periods.wav	src_v3.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/5samples-every7-periods.wav
 
 # exe
 
-bin_v3_win newtrigger.exe	bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/newtrigger.exe
-bin_v3_win trigger.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/trigger.exe
-bin_v3_win chirp1.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp1.exe
-bin_v3_win chirp2.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp2.exe
-bin_v3_win click.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click.exe
-bin_v3_win click2.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click2.exe
+bin_v3_win newtrigger.exe	bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger.exe
+bin_v3_win trigger.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger.exe
+bin_v3_win chirp1.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1.exe
+bin_v3_win chirp2.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2.exe
+bin_v3_win click.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click.exe
+bin_v3_win click2.exe		bin_v3_win.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2.exe
 
-bin_v3_mac newtrigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/newtrigger
-bin_v3_mac trigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/trigger
-bin_v3_mac chirp1		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp1
-bin_v3_mac chirp2		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp2
-bin_v3_mac click		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click
-bin_v3_mac click2		bin_v3_mac.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click2
+bin_v3_mac newtrigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger
+bin_v3_mac trigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger
+bin_v3_mac chirp1		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1
+bin_v3_mac chirp2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2
+bin_v3_mac click		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click
+bin_v3_mac click2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2
 
-bin_v3_linux newtrigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/newtrigger
-bin_v3_linux trigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/trigger
-bin_v3_linux chirp1		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp1
-bin_v3_linux chirp2		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/chirp2
-bin_v3_linux click		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click
-bin_v3_linux click2		bin_v3_linux.tar Volume3/Content3/07Synchronization/4Greenebaum-Sync_Pipelines/click2
+bin_v3_linux newtrigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger
+bin_v3_linux trigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger
+bin_v3_linux chirp1		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1
+bin_v3_linux chirp2		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2
+bin_v3_linux click		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click
+bin_v3_linux click2		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2
 
