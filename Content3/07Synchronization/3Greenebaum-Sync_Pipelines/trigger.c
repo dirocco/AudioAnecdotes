@@ -5,6 +5,9 @@
 #define SAMPLE_RATE 44100
 #define NUM_FRAMES 1000 // number of frames to buffer at a time
                         // size of buffer controls latency
+#define TRIGGER_THRESHOLD 0.2
+#define DEBOUNCE_THRESHOLD 0.006 // events that occur this number
+                                 // of seconds
 
 int main(void)
 {
@@ -17,14 +20,17 @@ int main(void)
 
    OpenAudioStream(&inStream, SAMPLE_RATE, paFloat32, PABLIO_READ|PABLIO_MONO);
 
-   while(1) {
+   while (1)
+   {
       ReadAudioStream(inStream, buffer, NUM_FRAMES);
-      for(x= 0; x < NUM_FRAMES; x++) {
-	 if((buffer[x]>0.20)&&(buffer[x]<0.22)&&(x>0)&&(buffer[x]>buffer[x-1])){
-	    printf("%f (%f)\n", time, time-lastTime);
-	    lastTime = time;
-	 }
-	 time+=delta;
+      for (x = 0; x < NUM_FRAMES; x++) 
+      {
+         if ((buffer[x] > 0.20) && (buffer[x] > buffer[x-1]) && (time - lastTime > DEBOUNCE_THRESHOLD))
+         {
+            printf("%f (%f)\n", time, time-lastTime);
+            lastTime = time;
+         }
+         time += delta;
       }
    }
 }
