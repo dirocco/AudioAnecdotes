@@ -19,6 +19,12 @@
  
 */
 
+// Apple Computer's gcc 4.0.1 complains about auto functions so dissable via:
+#ifdef __GNUC__ 
+#undef __GNUC__ 
+#endif /* __GNUC__ */
+
+
 #include <string.h>
 // for open,read,write:
 #include <sys/types.h>
@@ -117,6 +123,53 @@ static double eCenter(const SAMPL *ibuff, int len)
 	return v1;
 }
 
+#if __GNUC__ >= 4
+auto inline void a_init(double frq, double *x, double *y, double *thx, double *thy)
+#else
+static inline void a_init(double frq, double *x, double *y, double *thx, double *thy)
+#endif
+{
+	*x = 1.0;
+	*y = 0.0;
+	*thx = cos(frq*M_PI);
+	*thy = sin(frq*M_PI);
+}
+
+
+#if __GNUC__ >= 4
+auto inline const double a(double k, double L)
+#else
+static inline const double a(double k, double L)
+#endif
+{
+	double a, l, u;
+	l = L/2.0;
+	u = k/l - 1; /* in (-1,+1) */
+	a = 0.5*(1 + cos(M_PI * u));
+	return a;
+}
+
+
+#if __GNUC__ >= 4
+auto inline void a_post(int k, double *x, double *y, double *thx, double *thy)
+#else
+static inline void a_post(int k, double *x, double *y, double *thx, double *thy)
+#endif
+{
+	double x1;
+
+	x1  = (*x * *thx) - (*y * *thy);
+	*y  = (*x * *thy) + (*y * *thx);
+	*x = x1;
+	/* update (x,y) for next tic */
+	if ((k&0x0f)==0x0f) {  /* norm correction each 16 samples */
+		x1 = 1/sqrt(*x * *x + *y * *y);
+		*x *= x1;
+		*y *= x1;
+	}
+}
+
+
 static void
 bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 {
@@ -130,50 +183,7 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 	double cn,cx,cy;
 	double s2=0, v2=0;
 	const SAMPL *ip;
-
-#if __GNUC__ >= 4
-	auto inline void a_init(double frq)
-#else
-	static inline void a_init(double frq)
-#endif
-	{
-		x = 1;
-		y = 0;
-		thx = cos(frq*M_PI);
-		thy = sin(frq*M_PI);
-	}
 	
-#if __GNUC__ >= 4
-	auto inline const double a(double k, double L)
-#else
-	static inline const double a(double k, double L)
-#endif
-	{
-		double a, l, u;
-		l = L/2.0;
-		u = k/l - 1; /* in (-1,+1) */
-		a = 0.5*(1 + cos(M_PI * u));
-		return a;
-	}
-
-#if __GNUC__ >= 4
-	auto inline void a_post(int k)
-#else
-	static inline void a_post(int k)
-#endif
-	{
-		double x1;
-		x1 = x*thx - y*thy;
-		y  = x*thy + y*thx;
-		x = x1;
-		/* update (x,y) for next tic */
-		if ((k&0x0f)==0x0f) {  /* norm correction each 16 samples */
-			x1 = 1/sqrt(x*x+y*y);
-			x *= x1;
-			y *= x1;
-		}
-	}
-
 	c = eCenter(ibuff,len);
 	Len1 = Env.c*Factor*0.6; /* 60% of original const-amplitude area */
 	c += Env.c*Factor*0.15;  /* beginning after 30% */
@@ -188,7 +198,7 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 	fprintf(stderr,"del %.3f\n", del);
 	k1 = Len1-del;
 
-	a_init(Freq1);
+	a_init(Freq1, &x, &y, &thx, &thy);
 	h11 = h12 = h22 = 0;
 	sx = sy = ss = 0;
 	for(n=0; n<=k1; n++) {
@@ -206,7 +216,7 @@ bigcalc(double Factor, double Freq1, const SAMPL *ibuff, int len)
 		h12 += u*v;
 		h22 += v*v;
 
-		a_post(n);
+		a_post(n, &x, &y, &thx, &thy);
 	}
 	//fprintf(stderr,"h12 %.10f\n", (double)h12/(sqrt(h11)*sqrt(h22)));
 	
