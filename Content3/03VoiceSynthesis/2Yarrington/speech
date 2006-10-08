@@ -1,0 +1,17 @@
+#!/bin/csh
+
+set SPEECHDIR=/System/Library/Speech/Voices
+# $i=hh
+
+# $SPEECH="This is a speech example created for Ken Greenebaum's Audio Anecdotes Volume 3."
+
+# ls $SPEECHDIR
+
+forech i (`ls $SPEECHDIR`)
+   echo $i | sed s/\\.\.\*//;
+#  for v in `echo $i | sed s/\\.\.\*//`;
+#  do
+#	echo "hi" -v $v
+#  done
+
+end

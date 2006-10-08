@@ -1,0 +1,20 @@
+#!/bin/sh
+
+SPEECHDIR=/System/Library/Speech/Voices
+i=hh
+
+SPEECH="This is a speech example created for Ken Greenebaum's Audio Anecdotes Volume 3."
+
+# ls $SPEECHDIR
+
+for i in `ls $SPEECHDIR` ;
+do
+   # NAME=`echo $i | /usr/bin/sed "s/\\.\.\*//"`;
+   VOICE=`echo $i | /usr/bin/sed "s/\\..*//"`;
+   say -v $VOICE $SPEECH 
+#  for v in `echo $i | sed s/\\.\.\*//`;
+#  do
+#	echo "hi" -v $v
+#  done
+
+done
