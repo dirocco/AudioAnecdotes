@@ -30,6 +30,20 @@ bin_v3_mac chirp2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum
 bin_v3_mac click		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click
 bin_v3_mac click2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2
 
+bin_v3_macx86 newtrigger		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger
+bin_v3_macx86 trigger		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger
+bin_v3_macx86 chirp1		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1
+bin_v3_macx86 chirp2		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2
+bin_v3_macx86 click		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click
+bin_v3_macx86 click2		bin_v3_macx86.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2
+
+bin_v3_mac newtrigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger
+bin_v3_mac trigger		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger
+bin_v3_mac chirp1		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1
+bin_v3_mac chirp2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2
+bin_v3_mac click		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click
+bin_v3_mac click2		bin_v3_mac.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/click2
+
 bin_v3_linux newtrigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/newtrigger
 bin_v3_linux trigger		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger
 bin_v3_linux chirp1		bin_v3_linux.tar Volume3/Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1

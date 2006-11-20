@@ -4,6 +4,7 @@ src_v3       speechactdect.c   src_v3.tar       Volume3/Content3/05SignalProcess
 
 bin_v3_win   speechactdect.exe bin_v3_win.tar   Volume3/Content3/05SignalProcessing/2Merritt/speechactdect.exe
 bin_v3_mac   speechactdect     bin_v3_mac.tar   Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
+bin_v3_macx86 speechactdect     bin_v3_macx86.tar   Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
 bin_v3_linux speechactdect     bin_v3_linux.tar Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
 
 src_v3       count-noisy-8-8000.raw  src_v3.tar Volume3/Content3/05SignalProcessing/2Merritt/count-noisy-8-8000.raw
