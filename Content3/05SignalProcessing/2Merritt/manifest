@@ -3,7 +3,7 @@ src_v3       config.mak        src_v3.tar       Volume3/Content3/05SignalProcess
 src_v3       speechactdect.c   src_v3.tar       Volume3/Content3/05SignalProcessing/2Merritt/speechactdect.c
 
 bin_v3_win    speechactdect.exe bin_v3_win.tar    Volume3/Content3/05SignalProcessing/2Merritt/speechactdect.exe
-bin_v3_macppc speechactdect     bin_v3_mac.tar    Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
+bin_v3_macppc speechactdect     bin_v3_macppc.tar Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
 bin_v3_macx86 speechactdect     bin_v3_macx86.tar Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
 bin_v3_linux  speechactdect     bin_v3_linux.tar  Volume3/Content3/05SignalProcessing/2Merritt/speechactdect
 
