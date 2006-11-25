@@ -3,8 +3,8 @@ src_v3 config.mak	src_v3.tar Volume3/Content3/07Synchronization/1Greenebaum-Intr
 
 src_v3 phasing.c	src_v3.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing.c
 
-bin_v3_win phasing.exe	bin_v3_win.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing.exe
-bin_v3_mac phasing	bin_v3_mac.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
-bin_v3_macx86 phasing	bin_v3_macx86.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
-bin_v3_linux phasing	bin_v3_linux.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
+bin_v3_win    phasing.exe	bin_v3_win.tar    Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing.exe
+bin_v3_macppc phasing	    bin_v3_macppc.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
+bin_v3_macx86 phasing	    bin_v3_macx86.tar Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
+bin_v3_linux  phasing	    bin_v3_linux.tar  Volume3/Content3/07Synchronization/1Greenebaum-Intro/phasing
 

@@ -90,9 +90,9 @@ bin_v1_win   windowskill.cgi     bin_v1_win.tar   Volume1/docs/html/kill.cgi
 bin_v2_win   windowskill.cgi     bin_v2_win.tar   Volume2/docs/html/kill.cgi
 bin_v3_win   windowskill.cgi     bin_v3_win.tar   Volume3/docs/html/kill.cgi
 
-bin_v1_mac   mackill.cgi         bin_v1_mac.tar   Volume1/docs/html/kill.cgi
-bin_v2_mac   mackill.cgi         bin_v2_mac.tar   Volume2/docs/html/kill.cgi
-bin_v3_mac   mackill.cgi         bin_v3_mac.tar   Volume3/docs/html/kill.cgi
+bin_v1_mac    mackill.cgi        bin_v1_mac.tar    Volume1/docs/html/kill.cgi
+bin_v2_mac    mackill.cgi        bin_v2_mac.tar    Volume2/docs/html/kill.cgi
+bin_v3_macppc mackill.cgi        bin_v3_macppc.tar Volume3/docs/html/kill.cgi
 bin_v3_macx86 mackill.cgi        bin_v3_macx86.tar Volume3/docs/html/kill.cgi
 
 bin_v1_linux linuxkill.cgi       bin_v1_linux.tar Volume1/docs/html/kill.cgi
@@ -104,9 +104,9 @@ bin_v1_win   win-do.cgi          bin_v1_win.tar   Volume1/docs/html/nddo.cgi
 bin_v2_win   win-do.cgi          bin_v2_win.tar   Volume2/docs/html/nddo.cgi
 bin_v3_win   win-do.cgi          bin_v3_win.tar   Volume3/docs/html/nddo.cgi
 
-bin_v1_mac   mac-do.cgi          bin_v1_mac.tar   Volume1/docs/html/nddo.cgi
-bin_v2_mac   mac-do.cgi          bin_v2_mac.tar   Volume2/docs/html/nddo.cgi
-bin_v3_mac   mac-do.cgi          bin_v3_mac.tar   Volume3/docs/html/nddo.cgi
+bin_v1_mac    mac-do.cgi         bin_v1_mac.tar    Volume1/docs/html/nddo.cgi
+bin_v2_mac    mac-do.cgi         bin_v2_mac.tar    Volume2/docs/html/nddo.cgi
+bin_v3_macppc mac-do.cgi         bin_v3_macppc.tar Volume3/docs/html/nddo.cgi
 bin_v3_macx86 mac-do.cgi         bin_v3_macx86.tar Volume3/docs/html/nddo.cgi
 
 bin_v1_linux linux-do.cgi        bin_v1_linux.tar Volume1/docs/html/nddo.cgi
