@@ -33,4 +33,4 @@ play.o: audio.h
 
 # don't use the version in bin since it might be cygredll'd on windows
 audio.h audio.cpp: FL/audio.fl
-	@BINDIR@/../flavor_5_1/bin/flavorc -p -a 256 FL/audio.fl
+	@BINDIR@/../src/flavor_5_1/bin/flavorc -p -a 256 FL/audio.fl
