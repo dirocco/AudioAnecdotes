@@ -133,7 +133,7 @@ bin_v3_win   debugwin-do.cgi     bin_v3_win.tar   Volume3/docs/html/do.cgi
 
 bin_v1_mac    debugmac-do.cgi    bin_v1_mac.tar    Volume1/docs/html/do.cgi
 bin_v2_mac    debugmac-do.cgi    bin_v2_mac.tar    Volume2/docs/html/do.cgi
-bin_v3_macpcc debugmac-do.cgi    bin_v3_macppc.tar Volume3/docs/html/do.cgi
+bin_v3_macppc debugmac-do.cgi    bin_v3_macppc.tar Volume3/docs/html/do.cgi
 bin_v3_macx86 debugmac-do.cgi    bin_v3_macx86.tar Volume3/docs/html/do.cgi
 
 bin_v1_linux debuglinux-do.cgi   bin_v1_linux.tar Volume1/docs/html/do.cgi
