@@ -12,6 +12,101 @@
 
 <h1><a href="../../Content3/08MusicComposition">Chapter 8: Music Composition</a></h1>
 
+<h2><a href="../../Content3/08MusicComposition/2Brozman" name="2Brozman">Polyrhythm and Musical Culture - Brozman</a></h2>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<html>
+
+<head>
+
+<title>Chapter 7: Synchronization</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+
+<link type="text/css" rel="stylesheet" href="../html/css/text.css">
+
+</head>
+
+<h1><a href="../../Content3/07Synchronization">Chapter 7: Synchronization</a></h1>
+
+<h2><a href="../../Content3/07SoundSynthesis/1Greenebaum-Intro" name="1Greenebaum">Synchronization Demystified: An Introduction to Synchronization Terms and Concepts - Greenebaum</a></h2>
+
+<dd>
+The following example demonstrates the effects of two sine waves that are out of sync.
+</dd>
+<p>
+<dd>
+<a href="../html/do.cgi?Content3+07Synchronization+1Greenebaum-Intro&phasing&0%209.1%205%201">phasing 0 9.1 5 1</a> generates two 440 Hz sine waves.  The sine waves gradually shift in and out of sync over the first 5 seconds, which results in audible attenuation of the signal.
+</dd>
+</p>
+<p></p>
+
+<p></p>
+<dd>
+Click here to view the source code: <a href="../../Content3/07Synchronization/1Greenebaum-Intro/phasing.c">phasing.c</a>.
+</dd>
+<p></p>
+
+<h2><a href="../../Content3/07Synchronization/3Greenebaum-Sync_Pipelines" name="3Greenebaum">Sample Accurate Synchronization Using Pipelines: Put a Sample in and We Know When It Will Come Out - Greenebaum</a></h2>
+
+<dd>
+These examples demonstrate the various techniques for starting playback of an audio signal.
+</dd>
+<p>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+3Greenebaum-Sync_Pipelines&chirp1">chirp1</a> plays a short &quot;click&quot; once a second.  In between each click, the program is told to <tt>sleep()</tt> for one second.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+3Greenebaum-Sync_Pipelines&chirp2">chirp2</a> does something similar, but instead of using <tt>sleep()</tt>, which is subject to all sort of inaccuracies, silence is played for the remaining time until the next cycle.  For example, if our sampling rate is 44.1 kHz, and the chirp is 100 samples long, then 44000 of silence is played.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+3Greenebaum-Sync_Pipelines&trigger">trigger</a> is a simple program that reports a time when an impulse is detected on the sound input device.  So, if you connect your computer's line out to its line in (or place your computer's microphone close to the loudspeaker) and then start trigger together with chirp1 or chirp2, it will report the intervals between clicks.  For chirp1, it will be noticeably inaccurate, whereas for chirp2, it will be accurate to the nearest sample (within 23 microseconds).
+</dd>
+</p>
+<p></p>
+
+<p></p>
+<dd>
+Source code links: <a href="../../Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp1.c">chirp1.c</a> <a href="../../Content3/07Synchronization/3Greenebaum-Sync_Pipelines/chirp2.c">chirp2.c</a> <a href="../../Content3/07Synchronization/3Greenebaum-Sync_Pipelines/trigger.c">trigger.c</a>.
+</dd>
+
+<h2><a href="../../Content3/07Synchronization/4Lee-DriftSync" name="4Lee">Dynamic Synchronization: Drifting into Sync - Lee</a></h2>
+
+<dd>
+Here, we demonstrate the effects on synchronization of various values of the parameter <i>a</i> discussed in Section 5 of the article.  For illustration purposes, we use two sine waves, at 440 Hz.  While they start off in sync, one is playing at a rate of 1.1x relative to the other one, resulting in a clearly audible drift.
+</dd>
+<p>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+4Lee-DriftSync&sync&1.1%200.495">sync 1.1 0.495</a> - The system is unstable, resulting in a drift that increases with time.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+4Lee-DriftSync&sync&1.1%200.5">sync 1.1 0.50</a> - The system is marginally stable (the drift doesn't get any better or worse with time).  However, there are serious warbling artifacts in the audio.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+4Lee-DriftSync&sync&1.1%200.505">sync 1.1 0.505</a> - The system is asymptotically stable; the warbling is still audible, but will eventually go away.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+4Lee-DriftSync&sync&1.1%201.0">sync 1.1 1.0</a> - In this ideal case, the drift is corrected for almost instantaneously.  In practice, however, it is difficult for the drift estimation to be as exact as in this (rather contrived) example.
+</dd>
+<dd>
+  <a href="../html/do.cgi?Content3+07Synchronization+4Lee-DriftSync&sync&1.1%202.0">sync 1.1 2.0</a> - The drift is correct over time, resulting in minimal artifacts, even if the drift estimation is not 100% accurate.
+</dd>
+</p>
+<p></p>
+
+<p></p>
+<dd>
+Click here to view the modal synthesis source code: <a href="../../Content3/02SoundSynthesis/3VanDenDoel/Bell.cpp">Bell.cpp</a>.
+</dd>
+
 </body>
 
 </html>
